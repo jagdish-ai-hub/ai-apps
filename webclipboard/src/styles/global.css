@@ -17,17 +17,17 @@
   color-scheme: light;
 }
 :root[data-theme='dark'] {
-  --bg: #050505;
-  --surface: #0d0d0d;
-  --surface-2: #151515;
-  --fg: #f4f4f2;
-  --muted: #9a9a95;
-  --line: #222221;
-  --line-strong: #3a3a38;
-  --invert-bg: #f4f4f2;
-  --invert-fg: #050505;
+  --bg: #030604;
+  --surface: #070d09;
+  --surface-2: #0c1610;
+  --fg: #6ee7a0;
+  --muted: #4f9d6f;
+  --line: #12301f;
+  --line-strong: #226b45;
+  --invert-bg: #4ade80;
+  --invert-fg: #021008;
   --danger: #ff8a80;
-  --shadow: 0 1px 0 rgba(255, 255, 255, 0.04), 0 18px 40px -20px rgba(0, 0, 0, 0.9);
+  --shadow: 0 1px 0 rgba(74, 222, 128, 0.06), 0 18px 40px -20px rgba(0, 0, 0, 0.9);
   color-scheme: dark;
 }
 
