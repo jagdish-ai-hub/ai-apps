@@ -1,0 +1,43 @@
+---
+import Base from '../../layouts/Base.astro';
+import { guides, guidePath } from '../../lib/guides';
+import { absolute } from '../../lib/i18n';
+
+const jsonld = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Home', item: absolute('/') },
+      { '@type': 'ListItem', position: 2, name: 'Guides', item: absolute('/guides/') },
+    ],
+  },
+];
+const categories = [...new Set(guides.map((g) => g.meta.category))];
+---
+<Base title="Guides: Copy and Share Text Between Devices | WebClipboard" description="Practical guides for moving text, notes, links and code between phones, computers and TVs: students, developers, Wi-Fi passwords, public computers and more." page="/guides/" jsonld={jsonld}>
+  <div class="hero guide-hero">
+    <div class="wrap">
+      <nav class="crumbs" aria-label="Breadcrumb"><a href="/">Home</a> / Guides</nav>
+      <span class="eyebrow">Guides</span>
+      <h1>Copy and share text between devices</h1>
+      <p>Step-by-step guides for everyday jobs: getting text from a phone to a PC, sharing a Wi-Fi password, moving notes for school, passing code to a teammate, and doing all of it safely on devices that are not yours.</p>
+    </div>
+  </div>
+  <div class="wrap">
+    {categories.map((c) => (
+      <section class="block" aria-labelledby={`c-${c}`}>
+        <span class="eyebrow">{c}</span>
+        <div class="cards">
+          {guides.filter((g) => g.meta.category === c).map((g) => (
+            <a class="card" href={guidePath(g.slug)}>
+              <strong>{g.meta.h1}</strong>
+              <span>{g.meta.description}</span>
+            </a>
+          ))}
+        </div>
+      </section>
+    ))}
+    <p class="prose" style="margin-top:40px"><a href="/">← Open the online clipboard</a></p>
+  </div>
+</Base>

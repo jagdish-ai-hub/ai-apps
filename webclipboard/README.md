@@ -29,7 +29,8 @@ wrangler.toml           assets + D1 + rate limiters + cron
 migrations/             D1 schema
 worker/                 API (index.js), validation (clips.js), language negotiation (lang.js)
 src/i18n/               languages.json + one JSON per language (30)
-src/pages/              [...lang]/index.astro (home in every language), legal pages, sitemap, robots, ads.txt, manifest
+src/pages/              [...lang]/index.astro (home in every language), guides/, legal pages, sitemap, robots, ads.txt, manifest
+src/guides/             one Markdown file per guide (frontmatter: title, description, h1, lead, category, updated, related, faq)
 src/components/         Tool (the clipboard UI), Ad (lazy AdSense slot)
 src/scripts/app.ts      browser logic: send/receive, encryption, QR
 test/                   node --test: translation integrity + core logic
@@ -43,7 +44,7 @@ npm run dev                 # Astro dev server (UI only, no API)
 npm run build               # -> dist/
 npx wrangler d1 migrations apply webclipboard --local
 npx wrangler dev            # full site + API on http://127.0.0.1:8787
-npm test                    # 34 tests (translations + logic)
+npm run build && npm test   # translations, core logic, guide quality, broken-link crawl
 ```
 
 ## Deploy to Cloudflare (free plan)
@@ -78,6 +79,10 @@ Re-running `npm run db:migrate` is safe; the migration is idempotent.
 | Cron triggers | 5 per account | Uses 1 |
 
 When the daily API cap is hit, **pages keep loading and ads keep serving**; only saving/opening clips returns an error until midnight UTC. If you outgrow this, Workers Paid is $5/month and lifts all of these.
+
+## Guides (original, non-translated content)
+
+`/guides/` is a hub plus eight English how-to guides (phone to PC, iPhone and Windows, Wi-Fi password, students, notes transfer, code snippets, public computers, smart TVs). Each page embeds the working clipboard, a table of contents, an FAQ and related guides, and emits `Article`, `BreadcrumbList` and `FAQPage` JSON-LD. Add a guide by dropping a Markdown file in `src/guides/`; the hub, sitemap and tests pick it up automatically. Tests enforce a minimum body length (a thin-content guard), unique titles and descriptions, valid `related` slugs, and that no internal link in the built site is broken.
 
 ## SEO
 

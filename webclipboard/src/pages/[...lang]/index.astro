@@ -3,6 +3,7 @@ import Base from '../../layouts/Base.astro';
 import Tool from '../../components/Tool.astro';
 import Ad from '../../components/Ad.astro';
 import { languages, messages, fill, site, absolute, localePath } from '../../lib/i18n';
+import { guides, guidePath } from '../../lib/guides';
 
 export function getStaticPaths() {
   // English lives at "/", every other language at "/<code>/".
@@ -62,6 +63,21 @@ const jsonld = [
       <h2 id="how">{m.howTitle}</h2>
       <ol class="steps">{(m.steps as string[]).map((s) => <li>{s}</li>)}</ol>
     </section>
+
+    {code === 'en' && (
+      <section class="block" aria-labelledby="guides">
+        <span class="eyebrow">Guides</span>
+        <h2 id="guides">Popular guides</h2>
+        <div class="cards">
+          {guides.map((g) => (
+            <a class="card" href={guidePath(g.slug)}>
+              <span class="eyebrow">{g.meta.category}</span>
+              <strong>{g.meta.h1}</strong>
+            </a>
+          ))}
+        </div>
+      </section>
+    )}
 
     <Ad slot="inContent" lang={code} />
 
