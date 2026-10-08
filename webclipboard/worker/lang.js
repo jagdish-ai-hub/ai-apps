@@ -1,4 +1,4 @@
-import languages from '../src/i18n/languages.json';
+import languages from '../src/i18n/languages.json' with { type: 'json' };
 
 const CODES = new Set(languages.map((l) => l.code));
 

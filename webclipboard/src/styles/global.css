@@ -183,6 +183,7 @@ ol.steps li::before { content: counter(s, decimal-leading-zero); font: 600 14px/
   .receive-form { flex-direction: column; }
   .receive-form input { letter-spacing: 0.3em; }
   .brand b { display: none; }
+  .field .lbl { display: none; }
 }
 @media (prefers-reduced-motion: reduce) { * { transition: none !important; scroll-behavior: auto !important; } }
 @media print { .site-header, .ad, .site-footer, .tabs { display: none; } }
