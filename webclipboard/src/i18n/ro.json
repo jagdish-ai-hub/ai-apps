@@ -1,46 +1,127 @@
 {
-"metaTitle":"Clipboard online – copiază și lipește text între dispozitive gratuit",
-"metaDescription":"Clipboard online gratuit: lipește textul, primești un cod din 6 cifre și îl deschizi pe orice telefon sau computer. Fără cont, cu expirare automată, autodistrugere și criptare opțională.",
-"h1":"Clipboard online",
-"tagline":"Copiază textul pe un dispozitiv și lipește-l pe altul – fără aplicație și fără cont.",
-"sendTitle":"Trimite text","receiveTitle":"Primește text",
-"placeholder":"Scrie sau lipește textul aici…","characters":"caractere",
-"expiryLabel":"Șterge după","exp10m":"10 minute","exp1h":"1 oră","exp1d":"1 zi","exp7d":"7 zile",
-"burnLabel":"Șterge după prima vizualizare","passwordLabel":"Parolă (opțional)",
-"passwordHint":"Textul este criptat în browserul tău. Noi nu îl putem citi niciodată.",
-"sendBtn":"Salvează în clipboard","saving":"Se salvează…","yourCode":"Codul tău de clipboard",
-"codeHint":"Introdu acest cod pe celălalt dispozitiv, deschide linkul sau scanează codul QR.",
-"shareLink":"Link de partajare","copy":"Copiază","copied":"Copiat!","expiresAt":"Expiră","newClip":"Creează alt text",
-"codeLabel":"Introdu codul din 6 cifre","receiveBtn":"Obține textul","loading":"Se încarcă…","download":"Descarcă .txt",
-"passwordPrompt":"Acest text este protejat cu parolă. Introdu parola pentru a-l decripta.","unlock":"Deblochează",
-"wrongPassword":"Parolă greșită. Încearcă din nou.",
-"burnedNotice":"Acest text a fost acum șters de pe serverele noastre. Copiază-l înainte de a închide pagina.",
-"report":"Raportează abuz","reported":"Mulțumim. Raportul a fost trimis.",
-"errEmpty":"Introdu mai întâi un text.","errTooLong":"Textul este prea lung (maximum {max} de caractere).",
-"errNotFound":"Nu s-a găsit niciun text pentru acest cod. Este posibil să fi expirat sau să fi fost șters.",
-"errCode":"Introdu un cod valid din 6 cifre.","errRate":"Prea multe cereri. Așteaptă un minut și încearcă din nou.",
-"errGeneric":"Ceva nu a funcționat. Încearcă din nou.",
-"safetyNote":"Oricine are codul poate citi textul. Folosește o parolă pentru informații private.",
-"featuresTitle":"De ce WebClipboard?",
-"features":[
-{"t":"Fără înregistrare","d":"Lipește, salvează și partajează instant. Nu ai nevoie de cont, e-mail sau aplicație."},
-{"t":"Funcționează pe orice dispozitiv","d":"Windows, Mac, Linux, Android, iPhone și iPad – orice browser modern este suficient."},
-{"t":"Expirare automată","d":"Alege 10 minute, 1 oră, 1 zi sau 7 zile. Textul expirat este șters definitiv."},
-{"t":"Ștergere după citire","d":"Poți șterge textul imediat ce este deschis prima dată."},
-{"t":"Criptare end-to-end","d":"Adaugă o parolă, iar textul este criptat cu AES-256 înainte să părăsească browserul."},
-{"t":"Cod QR și link scurt","d":"Scanează codul QR cu camera telefonului sau trimite un link scurt în orice aplicație de chat."}],
-"howTitle":"Cum copiezi și lipești între dispozitive",
-"steps":["Scrie sau lipește textul în casetă și alege cât timp să fie păstrat.","Apasă „Salvează în clipboard” ca să primești un cod din 6 cifre, un link scurt și un cod QR.","Pe celălalt dispozitiv, deschide acest site și introdu codul – sau scanează pur și simplu codul QR.","Copiază textul sau descarcă-l ca fișier .txt. Dispare automat când expiră."],
-"aboutTitle":"Ce este un clipboard online?",
-"aboutText":["Clipboardul este memoria temporară pe care o folosește computerul sau telefonul când copiezi și lipești, și funcționează doar pe un singur dispozitiv. Un clipboard online face același lucru prin internet: copiezi textul pe laptop și îl lipești pe telefon, pe computerul de la serviciu, pe tableta unui prieten sau pe un smart TV.","WebClipboard este perfect pentru a muta linkuri, notițe, adrese, fragmente de cod sau date Wi-Fi fără să-ți trimiți e-mailuri și fără să instalezi nimic. Este rapid, gratuit și funcționează în orice limbă."],
-"faqTitle":"Întrebări frecvente",
-"faq":[
-{"q":"Este WebClipboard gratuit?","a":"Da. WebClipboard este complet gratuit și susținut de publicitate. Nu există o limită a numărului de texte pe care le poți crea."},
-{"q":"Cât timp este păstrat textul meu?","a":"Tu decizi: 10 minute, 1 oră, 1 zi sau 7 zile. După aceea, textul este șters definitiv. Cu „Șterge după prima vizualizare”, dispare imediat ce este deschis."},
-{"q":"Este sigur să partajez informații private?","a":"Oricine are codul din 6 cifre poate deschide un text, așa că nu partaja parole sau date bancare fără protecție. Dacă setezi o parolă, textul este criptat în browser și nimeni – nici măcar noi – nu îl poate citi fără ea."},
-{"q":"Trebuie să instalez o aplicație?","a":"Nu. WebClipboard funcționează în orice browser. Îl poți adăuga și pe ecranul principal pentru acces dintr-o atingere."},
-{"q":"Cât text pot salva?","a":"Până la {max} de caractere per text – suficient pentru documente lungi, cod sau liste."},
-{"q":"Mi-am pierdut codul. Pot recupera textul?","a":"Nu. Nu avem conturi sau jurnale care să lege un text de tine, așa că un cod pierdut nu poate fi recuperat. Creează pur și simplu un text nou."}],
-"adLabel":"Publicitate","language":"Limbă",
-"footerAbout":"Despre noi","footerPrivacy":"Politica de confidențialitate","footerTerms":"Termeni de utilizare","footerContact":"Contact","footerCookies":"Setări de confidențialitate","rights":"Toate drepturile rezervate."
+ "metaTitle": "Clipboard online – copiază și lipește text între dispozitive gratuit",
+ "metaDescription": "Clipboard online gratuit: lipește textul, primești un cod din 6 cifre și îl deschizi pe orice telefon sau computer. Fără cont, cu expirare automată, autodistrugere și criptare opțională.",
+ "h1": "Clipboard online",
+ "tagline": "Copiază textul pe un dispozitiv și lipește-l pe altul – fără aplicație și fără cont.",
+ "sendTitle": "Trimite text",
+ "receiveTitle": "Primește text",
+ "placeholder": "Scrie sau lipește textul aici…",
+ "characters": "caractere",
+ "expiryLabel": "Șterge după",
+ "exp10m": "10 minute",
+ "exp1h": "1 oră",
+ "exp1d": "1 zi",
+ "exp7d": "7 zile",
+ "burnLabel": "Șterge după prima vizualizare",
+ "passwordLabel": "Parolă (opțional)",
+ "passwordHint": "Textul este criptat în browserul tău. Noi nu îl putem citi niciodată.",
+ "sendBtn": "Salvează în clipboard",
+ "saving": "Se salvează…",
+ "yourCode": "Codul tău de clipboard",
+ "codeHint": "Introdu acest cod pe celălalt dispozitiv, deschide linkul sau scanează codul QR.",
+ "shareLink": "Link de partajare",
+ "copy": "Copiază",
+ "copied": "Copiat!",
+ "expiresAt": "Expiră",
+ "newClip": "Creează alt text",
+ "codeLabel": "Introdu codul din 6 cifre",
+ "receiveBtn": "Obține textul",
+ "loading": "Se încarcă…",
+ "download": "Descarcă .txt",
+ "passwordPrompt": "Acest text este protejat cu parolă. Introdu parola pentru a-l decripta.",
+ "unlock": "Deblochează",
+ "wrongPassword": "Parolă greșită. Încearcă din nou.",
+ "burnedNotice": "Acest text a fost acum șters de pe serverele noastre. Copiază-l înainte de a închide pagina.",
+ "report": "Raportează abuz",
+ "reported": "Mulțumim. Raportul a fost trimis.",
+ "errEmpty": "Introdu mai întâi un text.",
+ "errTooLong": "Textul este prea lung (maximum {max} de caractere).",
+ "errNotFound": "Nu s-a găsit niciun text pentru acest cod. Este posibil să fi expirat sau să fi fost șters.",
+ "errCode": "Introdu un cod valid din 6 cifre.",
+ "errRate": "Prea multe cereri. Așteaptă un minut și încearcă din nou.",
+ "errGeneric": "Ceva nu a funcționat. Încearcă din nou.",
+ "safetyNote": "Oricine are codul poate citi textul. Folosește o parolă pentru informații private.",
+ "featuresTitle": "De ce WebClipboard?",
+ "features": [
+  {
+   "t": "Fără înregistrare",
+   "d": "Lipește, salvează și partajează instant. Nu ai nevoie de cont, e-mail sau aplicație."
+  },
+  {
+   "t": "Funcționează pe orice dispozitiv",
+   "d": "Windows, Mac, Linux, Android, iPhone și iPad – orice browser modern este suficient."
+  },
+  {
+   "t": "Expirare automată",
+   "d": "Alege 10 minute, 1 oră, 1 zi sau 7 zile. Textul expirat este șters definitiv."
+  },
+  {
+   "t": "Ștergere după citire",
+   "d": "Poți șterge textul imediat ce este deschis prima dată."
+  },
+  {
+   "t": "Criptare end-to-end",
+   "d": "Adaugă o parolă, iar textul este criptat cu AES-256 înainte să părăsească browserul."
+  },
+  {
+   "t": "Cod QR și link scurt",
+   "d": "Scanează codul QR cu camera telefonului sau trimite un link scurt în orice aplicație de chat."
+  }
+ ],
+ "howTitle": "Cum copiezi și lipești între dispozitive",
+ "steps": [
+  "Scrie sau lipește textul în casetă și alege cât timp să fie păstrat.",
+  "Apasă „Salvează în clipboard” ca să primești un cod din 6 cifre, un link scurt și un cod QR.",
+  "Pe celălalt dispozitiv, deschide acest site și introdu codul – sau scanează pur și simplu codul QR.",
+  "Copiază textul sau descarcă-l ca fișier .txt. Dispare automat când expiră."
+ ],
+ "aboutTitle": "Ce este un clipboard online?",
+ "aboutText": [
+  "Clipboardul este memoria temporară pe care o folosește computerul sau telefonul când copiezi și lipești, și funcționează doar pe un singur dispozitiv. Un clipboard online face același lucru prin internet: copiezi textul pe laptop și îl lipești pe telefon, pe computerul de la serviciu, pe tableta unui prieten sau pe un smart TV.",
+  "WebClipboard este perfect pentru a muta linkuri, notițe, adrese, fragmente de cod sau date Wi-Fi fără să-ți trimiți e-mailuri și fără să instalezi nimic. Este rapid, gratuit și funcționează în orice limbă."
+ ],
+ "faqTitle": "Întrebări frecvente",
+ "faq": [
+  {
+   "q": "Este WebClipboard gratuit?",
+   "a": "Da. WebClipboard este complet gratuit și susținut de publicitate. Nu există o limită a numărului de texte pe care le poți crea."
+  },
+  {
+   "q": "Cât timp este păstrat textul meu?",
+   "a": "Tu decizi: 10 minute, 1 oră, 1 zi sau 7 zile. După aceea, textul este șters definitiv. Cu „Șterge după prima vizualizare”, dispare imediat ce este deschis."
+  },
+  {
+   "q": "Este sigur să partajez informații private?",
+   "a": "Oricine are codul din 6 cifre poate deschide un text, așa că nu partaja parole sau date bancare fără protecție. Dacă setezi o parolă, textul este criptat în browser și nimeni – nici măcar noi – nu îl poate citi fără ea."
+  },
+  {
+   "q": "Trebuie să instalez o aplicație?",
+   "a": "Nu. WebClipboard funcționează în orice browser. Îl poți adăuga și pe ecranul principal pentru acces dintr-o atingere."
+  },
+  {
+   "q": "Cât text pot salva?",
+   "a": "Până la {max} de caractere per text – suficient pentru documente lungi, cod sau liste."
+  },
+  {
+   "q": "Mi-am pierdut codul. Pot recupera textul?",
+   "a": "Nu. Nu avem conturi sau jurnale care să lege un text de tine, așa că un cod pierdut nu poate fi recuperat. Creează pur și simplu un text nou."
+  }
+ ],
+ "adLabel": "Publicitate",
+ "language": "Limbă",
+ "footerAbout": "Despre noi",
+ "footerPrivacy": "Politica de confidențialitate",
+ "footerTerms": "Termeni de utilizare",
+ "footerContact": "Contact",
+ "footerCookies": "Setări de confidențialitate",
+ "rights": "Toate drepturile rezervate.",
+ "share": "Distribuie",
+ "shareTitle": "Distribuie acest instrument",
+ "shareText": "Clipboard online gratuit: copiază textul pe un dispozitiv și lipește-l pe altul cu un cod din 6 cifre. Fără cont.",
+ "shareNudge": "Ți-a fost de folos? Trimite-l unui prieten.",
+ "shareCopy": "Copiază linkul",
+ "shareCopied": "Link copiat!",
+ "shareEmail": "E-mail",
+ "shareSms": "SMS",
+ "shareClose": "Închide"
 }

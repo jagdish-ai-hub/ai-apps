@@ -26,7 +26,7 @@ const jsonld = [
 const guideSlugs = ['how-tokenizers-work', 'how-many-tokens-in-a-word-or-page', 'tokens-in-different-languages', 'how-llm-api-pricing-works', 'how-to-reduce-token-usage'];
 const guides = guideSlugs.map(findGuide).filter(Boolean) as NonNullable<ReturnType<typeof findGuide>>[];
 ---
-<Base title={title} description={description} page="/token-calculator/" section="tokens" jsonld={jsonld}>
+<Base title={title} description={description} page="/token-calculator/" section="tokens" jsonld={jsonld} shareText="Free token counter for OpenAI models: paste text, see the token count and estimate API cost.">
   <div class="hero">
     <div class="wrap">
       <span class="eyebrow">~/tokens · runs in your browser</span>

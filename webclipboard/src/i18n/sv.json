@@ -1,46 +1,127 @@
 {
-"metaTitle":"Online-urklipp – kopiera och klistra in text mellan enheter gratis",
-"metaDescription":"Gratis online-urklipp: klistra in text, få en 6-siffrig kod och öppna den på valfri telefon eller dator. Utan registrering, med automatiskt utgångsdatum, självförstörelse och valfri kryptering.",
-"h1":"Online-urklipp",
-"tagline":"Kopiera text på en enhet och klistra in den på en annan – utan app eller konto.",
-"sendTitle":"Skicka text","receiveTitle":"Ta emot text",
-"placeholder":"Skriv eller klistra in din text här…","characters":"tecken",
-"expiryLabel":"Radera efter","exp10m":"10 minuter","exp1h":"1 timme","exp1d":"1 dag","exp7d":"7 dagar",
-"burnLabel":"Radera efter första visningen","passwordLabel":"Lösenord (valfritt)",
-"passwordHint":"Texten krypteras i din webbläsare. Vi kan aldrig läsa den.",
-"sendBtn":"Spara i urklipp","saving":"Sparar…","yourCode":"Din urklippskod",
-"codeHint":"Ange koden på den andra enheten, öppna länken eller skanna QR-koden.",
-"shareLink":"Delningslänk","copy":"Kopiera","copied":"Kopierat!","expiresAt":"Går ut","newClip":"Skapa en ny text",
-"codeLabel":"Ange den 6-siffriga koden","receiveBtn":"Hämta text","loading":"Laddar…","download":"Ladda ner .txt",
-"passwordPrompt":"Den här texten är lösenordsskyddad. Ange lösenordet för att dekryptera den.","unlock":"Lås upp",
-"wrongPassword":"Fel lösenord. Försök igen.",
-"burnedNotice":"Texten har nu raderats från våra servrar. Kopiera den innan du stänger sidan.",
-"report":"Rapportera missbruk","reported":"Tack. Rapporten har skickats.",
-"errEmpty":"Skriv någon text först.","errTooLong":"Texten är för lång (högst {max} tecken).",
-"errNotFound":"Ingen text hittades för den här koden. Den kan ha gått ut eller raderats.",
-"errCode":"Ange en giltig 6-siffrig kod.","errRate":"För många förfrågningar. Vänta en minut och försök igen.",
-"errGeneric":"Något gick fel. Försök igen.",
-"safetyNote":"Alla som har koden kan läsa texten. Använd ett lösenord för privat innehåll.",
-"featuresTitle":"Varför WebClipboard?",
-"features":[
-{"t":"Ingen registrering","d":"Klistra in, spara och dela direkt. Inget konto, ingen e-postadress och ingen app behövs."},
-{"t":"Fungerar på alla enheter","d":"Windows, Mac, Linux, Android, iPhone och iPad – vilken modern webbläsare som helst duger."},
-{"t":"Automatiskt utgångsdatum","d":"Välj 10 minuter, 1 timme, 1 dag eller 7 dagar. Utgången text raderas permanent."},
-{"t":"Radera efter läsning","d":"Radera texten om du vill så fort den öppnas första gången."},
-{"t":"End-to-end-kryptering","d":"Lägg till ett lösenord så krypteras texten med AES-256 innan den lämnar din webbläsare."},
-{"t":"QR-kod och kort länk","d":"Skanna QR-koden med mobilkameran eller dela en kort länk i valfri chatt."}],
-"howTitle":"Så kopierar och klistrar du in mellan enheter",
-"steps":["Skriv eller klistra in texten i rutan och välj hur länge den ska sparas.","Klicka på ”Spara i urklipp” för att få en 6-siffrig kod, en kort länk och en QR-kod.","Öppna den här webbplatsen på din andra enhet och ange koden – eller skanna bara QR-koden.","Kopiera texten eller ladda ner den som en .txt-fil. Den försvinner automatiskt när den går ut."],
-"aboutTitle":"Vad är ett online-urklipp?",
-"aboutText":["Urklipp är det tillfälliga minne som din dator eller telefon använder när du kopierar och klistrar in, och det fungerar bara på en enhet. Ett online-urklipp gör samma sak över internet: du kopierar text på laptopen och klistrar in den på mobilen, jobbdatorn, en väns surfplatta eller en smart-tv.","WebClipboard passar perfekt för att flytta länkar, anteckningar, adresser, kodsnuttar eller wifi-uppgifter utan att mejla dig själv eller installera något. Det är snabbt, gratis och fungerar på alla språk."],
-"faqTitle":"Vanliga frågor",
-"faq":[
-{"q":"Är WebClipboard gratis?","a":"Ja. WebClipboard är helt gratis och finansieras av annonser. Det finns ingen gräns för hur många texter du kan skapa."},
-{"q":"Hur länge sparas min text?","a":"Du bestämmer: 10 minuter, 1 timme, 1 dag eller 7 dagar. Därefter raderas texten permanent. Med ”Radera efter första visningen” tas den bort så fort den öppnas."},
-{"q":"Är det säkert att dela privat information?","a":"Alla som har den 6-siffriga koden kan öppna en text, så dela inte lösenord eller bankuppgifter utan skydd. Om du anger ett lösenord krypteras texten i webbläsaren och ingen – inte ens vi – kan läsa den utan lösenordet."},
-{"q":"Måste jag installera en app?","a":"Nej. WebClipboard fungerar i alla webbläsare. Du kan också lägga till det på startskärmen för åtkomst med ett tryck."},
-{"q":"Hur mycket text kan jag spara?","a":"Upp till {max} tecken per text – gott och väl för långa dokument, kod eller listor."},
-{"q":"Jag har tappat bort min kod. Kan jag få tillbaka texten?","a":"Nej. Vi har inga konton eller loggar som kopplar en text till dig, så en förlorad kod kan inte återställas. Skapa bara en ny text."}],
-"adLabel":"Annons","language":"Språk",
-"footerAbout":"Om oss","footerPrivacy":"Integritetspolicy","footerTerms":"Användarvillkor","footerContact":"Kontakt","footerCookies":"Sekretessinställningar","rights":"Alla rättigheter förbehållna."
+ "metaTitle": "Online-urklipp – kopiera och klistra in text mellan enheter gratis",
+ "metaDescription": "Gratis online-urklipp: klistra in text, få en 6-siffrig kod och öppna den på valfri telefon eller dator. Utan registrering, med automatiskt utgångsdatum, självförstörelse och valfri kryptering.",
+ "h1": "Online-urklipp",
+ "tagline": "Kopiera text på en enhet och klistra in den på en annan – utan app eller konto.",
+ "sendTitle": "Skicka text",
+ "receiveTitle": "Ta emot text",
+ "placeholder": "Skriv eller klistra in din text här…",
+ "characters": "tecken",
+ "expiryLabel": "Radera efter",
+ "exp10m": "10 minuter",
+ "exp1h": "1 timme",
+ "exp1d": "1 dag",
+ "exp7d": "7 dagar",
+ "burnLabel": "Radera efter första visningen",
+ "passwordLabel": "Lösenord (valfritt)",
+ "passwordHint": "Texten krypteras i din webbläsare. Vi kan aldrig läsa den.",
+ "sendBtn": "Spara i urklipp",
+ "saving": "Sparar…",
+ "yourCode": "Din urklippskod",
+ "codeHint": "Ange koden på den andra enheten, öppna länken eller skanna QR-koden.",
+ "shareLink": "Delningslänk",
+ "copy": "Kopiera",
+ "copied": "Kopierat!",
+ "expiresAt": "Går ut",
+ "newClip": "Skapa en ny text",
+ "codeLabel": "Ange den 6-siffriga koden",
+ "receiveBtn": "Hämta text",
+ "loading": "Laddar…",
+ "download": "Ladda ner .txt",
+ "passwordPrompt": "Den här texten är lösenordsskyddad. Ange lösenordet för att dekryptera den.",
+ "unlock": "Lås upp",
+ "wrongPassword": "Fel lösenord. Försök igen.",
+ "burnedNotice": "Texten har nu raderats från våra servrar. Kopiera den innan du stänger sidan.",
+ "report": "Rapportera missbruk",
+ "reported": "Tack. Rapporten har skickats.",
+ "errEmpty": "Skriv någon text först.",
+ "errTooLong": "Texten är för lång (högst {max} tecken).",
+ "errNotFound": "Ingen text hittades för den här koden. Den kan ha gått ut eller raderats.",
+ "errCode": "Ange en giltig 6-siffrig kod.",
+ "errRate": "För många förfrågningar. Vänta en minut och försök igen.",
+ "errGeneric": "Något gick fel. Försök igen.",
+ "safetyNote": "Alla som har koden kan läsa texten. Använd ett lösenord för privat innehåll.",
+ "featuresTitle": "Varför WebClipboard?",
+ "features": [
+  {
+   "t": "Ingen registrering",
+   "d": "Klistra in, spara och dela direkt. Inget konto, ingen e-postadress och ingen app behövs."
+  },
+  {
+   "t": "Fungerar på alla enheter",
+   "d": "Windows, Mac, Linux, Android, iPhone och iPad – vilken modern webbläsare som helst duger."
+  },
+  {
+   "t": "Automatiskt utgångsdatum",
+   "d": "Välj 10 minuter, 1 timme, 1 dag eller 7 dagar. Utgången text raderas permanent."
+  },
+  {
+   "t": "Radera efter läsning",
+   "d": "Radera texten om du vill så fort den öppnas första gången."
+  },
+  {
+   "t": "End-to-end-kryptering",
+   "d": "Lägg till ett lösenord så krypteras texten med AES-256 innan den lämnar din webbläsare."
+  },
+  {
+   "t": "QR-kod och kort länk",
+   "d": "Skanna QR-koden med mobilkameran eller dela en kort länk i valfri chatt."
+  }
+ ],
+ "howTitle": "Så kopierar och klistrar du in mellan enheter",
+ "steps": [
+  "Skriv eller klistra in texten i rutan och välj hur länge den ska sparas.",
+  "Klicka på ”Spara i urklipp” för att få en 6-siffrig kod, en kort länk och en QR-kod.",
+  "Öppna den här webbplatsen på din andra enhet och ange koden – eller skanna bara QR-koden.",
+  "Kopiera texten eller ladda ner den som en .txt-fil. Den försvinner automatiskt när den går ut."
+ ],
+ "aboutTitle": "Vad är ett online-urklipp?",
+ "aboutText": [
+  "Urklipp är det tillfälliga minne som din dator eller telefon använder när du kopierar och klistrar in, och det fungerar bara på en enhet. Ett online-urklipp gör samma sak över internet: du kopierar text på laptopen och klistrar in den på mobilen, jobbdatorn, en väns surfplatta eller en smart-tv.",
+  "WebClipboard passar perfekt för att flytta länkar, anteckningar, adresser, kodsnuttar eller wifi-uppgifter utan att mejla dig själv eller installera något. Det är snabbt, gratis och fungerar på alla språk."
+ ],
+ "faqTitle": "Vanliga frågor",
+ "faq": [
+  {
+   "q": "Är WebClipboard gratis?",
+   "a": "Ja. WebClipboard är helt gratis och finansieras av annonser. Det finns ingen gräns för hur många texter du kan skapa."
+  },
+  {
+   "q": "Hur länge sparas min text?",
+   "a": "Du bestämmer: 10 minuter, 1 timme, 1 dag eller 7 dagar. Därefter raderas texten permanent. Med ”Radera efter första visningen” tas den bort så fort den öppnas."
+  },
+  {
+   "q": "Är det säkert att dela privat information?",
+   "a": "Alla som har den 6-siffriga koden kan öppna en text, så dela inte lösenord eller bankuppgifter utan skydd. Om du anger ett lösenord krypteras texten i webbläsaren och ingen – inte ens vi – kan läsa den utan lösenordet."
+  },
+  {
+   "q": "Måste jag installera en app?",
+   "a": "Nej. WebClipboard fungerar i alla webbläsare. Du kan också lägga till det på startskärmen för åtkomst med ett tryck."
+  },
+  {
+   "q": "Hur mycket text kan jag spara?",
+   "a": "Upp till {max} tecken per text – gott och väl för långa dokument, kod eller listor."
+  },
+  {
+   "q": "Jag har tappat bort min kod. Kan jag få tillbaka texten?",
+   "a": "Nej. Vi har inga konton eller loggar som kopplar en text till dig, så en förlorad kod kan inte återställas. Skapa bara en ny text."
+  }
+ ],
+ "adLabel": "Annons",
+ "language": "Språk",
+ "footerAbout": "Om oss",
+ "footerPrivacy": "Integritetspolicy",
+ "footerTerms": "Användarvillkor",
+ "footerContact": "Kontakt",
+ "footerCookies": "Sekretessinställningar",
+ "rights": "Alla rättigheter förbehållna.",
+ "share": "Dela",
+ "shareTitle": "Dela det här verktyget",
+ "shareText": "Gratis online-urklipp: kopiera text på en enhet och klistra in den på en annan med en 6-siffrig kod. Utan registrering.",
+ "shareNudge": "Användbart? Dela det med en vän.",
+ "shareCopy": "Kopiera länk",
+ "shareCopied": "Länk kopierad!",
+ "shareEmail": "E-post",
+ "shareSms": "SMS",
+ "shareClose": "Stäng"
 }

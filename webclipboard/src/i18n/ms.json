@@ -1,46 +1,127 @@
 {
-"metaTitle":"Papan Keratan Dalam Talian – Salin dan Tampal Teks Antara Peranti Percuma",
-"metaDescription":"Papan keratan dalam talian percuma: tampal teks, dapatkan kod 6 digit dan buka pada mana-mana telefon atau komputer. Tanpa pendaftaran, tamat tempoh automatik, padam selepas dibaca dan penyulitan pilihan.",
-"h1":"Papan Keratan Dalam Talian",
-"tagline":"Salin teks pada satu peranti dan tampal pada peranti lain – tanpa aplikasi, tanpa akaun.",
-"sendTitle":"Hantar teks","receiveTitle":"Terima teks",
-"placeholder":"Taip atau tampal teks anda di sini…","characters":"aksara",
-"expiryLabel":"Padam selepas","exp10m":"10 minit","exp1h":"1 jam","exp1d":"1 hari","exp7d":"7 hari",
-"burnLabel":"Padam selepas paparan pertama","passwordLabel":"Kata laluan (pilihan)",
-"passwordHint":"Teks disulitkan dalam pelayar anda. Kami tidak pernah dapat membacanya.",
-"sendBtn":"Simpan ke papan keratan","saving":"Menyimpan…","yourCode":"Kod papan keratan anda",
-"codeHint":"Masukkan kod ini pada peranti lain, buka pautan atau imbas kod QR.",
-"shareLink":"Pautan perkongsian","copy":"Salin","copied":"Disalin!","expiresAt":"Tamat tempoh","newClip":"Cipta teks lain",
-"codeLabel":"Masukkan kod 6 digit","receiveBtn":"Dapatkan teks","loading":"Memuatkan…","download":"Muat turun .txt",
-"passwordPrompt":"Teks ini dilindungi kata laluan. Masukkan kata laluan untuk menyahsulitnya.","unlock":"Buka kunci",
-"wrongPassword":"Kata laluan salah. Sila cuba lagi.",
-"burnedNotice":"Teks ini kini telah dipadam daripada pelayan kami. Salin sebelum menutup halaman.",
-"report":"Laporkan penyalahgunaan","reported":"Terima kasih. Laporan telah dihantar.",
-"errEmpty":"Sila masukkan teks dahulu.","errTooLong":"Teks terlalu panjang (maksimum {max} aksara).",
-"errNotFound":"Tiada teks ditemui untuk kod ini. Ia mungkin telah tamat tempoh atau dipadam.",
-"errCode":"Sila masukkan kod 6 digit yang sah.","errRate":"Terlalu banyak permintaan. Tunggu seminit dan cuba lagi.",
-"errGeneric":"Sesuatu tidak kena. Sila cuba lagi.",
-"safetyNote":"Sesiapa yang mempunyai kod boleh membaca teks. Gunakan kata laluan untuk perkara peribadi.",
-"featuresTitle":"Mengapa WebClipboard?",
-"features":[
-{"t":"Tanpa pendaftaran","d":"Tampal, simpan dan kongsi serta-merta. Tiada akaun, e-mel atau aplikasi diperlukan."},
-{"t":"Berfungsi pada semua peranti","d":"Windows, Mac, Linux, Android, iPhone dan iPad – mana-mana pelayar moden sudah memadai."},
-{"t":"Tamat tempoh automatik","d":"Pilih 10 minit, 1 jam, 1 hari atau 7 hari. Teks yang tamat tempoh dipadam secara kekal."},
-{"t":"Padam selepas dibaca","d":"Secara pilihan, padam teks sebaik sahaja ia dibuka buat kali pertama."},
-{"t":"Penyulitan hujung ke hujung","d":"Tambah kata laluan dan teks anda disulitkan dengan AES-256 sebelum meninggalkan pelayar."},
-{"t":"Kod QR dan pautan pendek","d":"Imbas kod QR dengan kamera telefon atau kongsi pautan pendek dalam mana-mana aplikasi sembang."}],
-"howTitle":"Cara menyalin dan menampal antara peranti",
-"steps":["Taip atau tampal teks anda dalam kotak dan pilih berapa lama ia disimpan.","Klik “Simpan ke papan keratan” untuk mendapatkan kod 6 digit, pautan pendek dan kod QR.","Pada peranti lain, buka laman web ini dan masukkan kod – atau imbas sahaja kod QR.","Salin teks atau muat turun sebagai fail .txt. Ia hilang secara automatik apabila tamat tempoh."],
-"aboutTitle":"Apakah papan keratan dalam talian?",
-"aboutText":["Papan keratan ialah memori sementara yang digunakan komputer atau telefon anda semasa menyalin dan menampal, dan ia hanya berfungsi pada satu peranti. Papan keratan dalam talian melakukan perkara yang sama melalui internet: anda menyalin teks pada komputer riba dan menampalnya pada telefon, komputer pejabat, tablet rakan atau TV pintar.","WebClipboard sesuai untuk memindahkan pautan, nota, alamat, serpihan kod atau maklumat Wi-Fi tanpa perlu menghantar e-mel kepada diri sendiri atau memasang apa-apa. Ia pantas, percuma dan berfungsi dalam semua bahasa."],
-"faqTitle":"Soalan lazim",
-"faq":[
-{"q":"Adakah WebClipboard percuma?","a":"Ya. WebClipboard sepenuhnya percuma dan disokong oleh iklan. Tiada had bilangan teks yang boleh anda cipta."},
-{"q":"Berapa lama teks saya disimpan?","a":"Anda yang tentukan: 10 minit, 1 jam, 1 hari atau 7 hari. Selepas itu teks dipadam secara kekal. Dengan “Padam selepas paparan pertama”, ia dibuang sebaik sahaja dibuka."},
-{"q":"Adakah selamat berkongsi maklumat peribadi?","a":"Sesiapa yang mempunyai kod 6 digit boleh membuka teks, jadi jangan kongsi kata laluan atau butiran bank tanpa perlindungan. Jika anda menetapkan kata laluan, teks disulitkan dalam pelayar dan tiada sesiapa – termasuk kami – dapat membacanya tanpa kata laluan itu."},
-{"q":"Adakah saya perlu memasang aplikasi?","a":"Tidak. WebClipboard berfungsi dalam mana-mana pelayar web. Anda juga boleh menambahkannya ke skrin utama untuk akses satu ketikan."},
-{"q":"Berapa banyak teks yang boleh saya simpan?","a":"Sehingga {max} aksara bagi setiap teks – cukup untuk dokumen panjang, kod atau senarai."},
-{"q":"Saya kehilangan kod saya. Bolehkah teks dipulihkan?","a":"Tidak. Kami tidak mempunyai akaun atau log yang mengaitkan teks dengan anda, jadi kod yang hilang tidak dapat dipulihkan. Cipta sahaja teks baharu."}],
-"adLabel":"Iklan","language":"Bahasa",
-"footerAbout":"Tentang","footerPrivacy":"Dasar Privasi","footerTerms":"Terma Penggunaan","footerContact":"Hubungi","footerCookies":"Tetapan privasi","rights":"Hak cipta terpelihara."
+ "metaTitle": "Papan Keratan Dalam Talian – Salin dan Tampal Teks Antara Peranti Percuma",
+ "metaDescription": "Papan keratan dalam talian percuma: tampal teks, dapatkan kod 6 digit dan buka pada mana-mana telefon atau komputer. Tanpa pendaftaran, tamat tempoh automatik, padam selepas dibaca dan penyulitan pilihan.",
+ "h1": "Papan Keratan Dalam Talian",
+ "tagline": "Salin teks pada satu peranti dan tampal pada peranti lain – tanpa aplikasi, tanpa akaun.",
+ "sendTitle": "Hantar teks",
+ "receiveTitle": "Terima teks",
+ "placeholder": "Taip atau tampal teks anda di sini…",
+ "characters": "aksara",
+ "expiryLabel": "Padam selepas",
+ "exp10m": "10 minit",
+ "exp1h": "1 jam",
+ "exp1d": "1 hari",
+ "exp7d": "7 hari",
+ "burnLabel": "Padam selepas paparan pertama",
+ "passwordLabel": "Kata laluan (pilihan)",
+ "passwordHint": "Teks disulitkan dalam pelayar anda. Kami tidak pernah dapat membacanya.",
+ "sendBtn": "Simpan ke papan keratan",
+ "saving": "Menyimpan…",
+ "yourCode": "Kod papan keratan anda",
+ "codeHint": "Masukkan kod ini pada peranti lain, buka pautan atau imbas kod QR.",
+ "shareLink": "Pautan perkongsian",
+ "copy": "Salin",
+ "copied": "Disalin!",
+ "expiresAt": "Tamat tempoh",
+ "newClip": "Cipta teks lain",
+ "codeLabel": "Masukkan kod 6 digit",
+ "receiveBtn": "Dapatkan teks",
+ "loading": "Memuatkan…",
+ "download": "Muat turun .txt",
+ "passwordPrompt": "Teks ini dilindungi kata laluan. Masukkan kata laluan untuk menyahsulitnya.",
+ "unlock": "Buka kunci",
+ "wrongPassword": "Kata laluan salah. Sila cuba lagi.",
+ "burnedNotice": "Teks ini kini telah dipadam daripada pelayan kami. Salin sebelum menutup halaman.",
+ "report": "Laporkan penyalahgunaan",
+ "reported": "Terima kasih. Laporan telah dihantar.",
+ "errEmpty": "Sila masukkan teks dahulu.",
+ "errTooLong": "Teks terlalu panjang (maksimum {max} aksara).",
+ "errNotFound": "Tiada teks ditemui untuk kod ini. Ia mungkin telah tamat tempoh atau dipadam.",
+ "errCode": "Sila masukkan kod 6 digit yang sah.",
+ "errRate": "Terlalu banyak permintaan. Tunggu seminit dan cuba lagi.",
+ "errGeneric": "Sesuatu tidak kena. Sila cuba lagi.",
+ "safetyNote": "Sesiapa yang mempunyai kod boleh membaca teks. Gunakan kata laluan untuk perkara peribadi.",
+ "featuresTitle": "Mengapa WebClipboard?",
+ "features": [
+  {
+   "t": "Tanpa pendaftaran",
+   "d": "Tampal, simpan dan kongsi serta-merta. Tiada akaun, e-mel atau aplikasi diperlukan."
+  },
+  {
+   "t": "Berfungsi pada semua peranti",
+   "d": "Windows, Mac, Linux, Android, iPhone dan iPad – mana-mana pelayar moden sudah memadai."
+  },
+  {
+   "t": "Tamat tempoh automatik",
+   "d": "Pilih 10 minit, 1 jam, 1 hari atau 7 hari. Teks yang tamat tempoh dipadam secara kekal."
+  },
+  {
+   "t": "Padam selepas dibaca",
+   "d": "Secara pilihan, padam teks sebaik sahaja ia dibuka buat kali pertama."
+  },
+  {
+   "t": "Penyulitan hujung ke hujung",
+   "d": "Tambah kata laluan dan teks anda disulitkan dengan AES-256 sebelum meninggalkan pelayar."
+  },
+  {
+   "t": "Kod QR dan pautan pendek",
+   "d": "Imbas kod QR dengan kamera telefon atau kongsi pautan pendek dalam mana-mana aplikasi sembang."
+  }
+ ],
+ "howTitle": "Cara menyalin dan menampal antara peranti",
+ "steps": [
+  "Taip atau tampal teks anda dalam kotak dan pilih berapa lama ia disimpan.",
+  "Klik “Simpan ke papan keratan” untuk mendapatkan kod 6 digit, pautan pendek dan kod QR.",
+  "Pada peranti lain, buka laman web ini dan masukkan kod – atau imbas sahaja kod QR.",
+  "Salin teks atau muat turun sebagai fail .txt. Ia hilang secara automatik apabila tamat tempoh."
+ ],
+ "aboutTitle": "Apakah papan keratan dalam talian?",
+ "aboutText": [
+  "Papan keratan ialah memori sementara yang digunakan komputer atau telefon anda semasa menyalin dan menampal, dan ia hanya berfungsi pada satu peranti. Papan keratan dalam talian melakukan perkara yang sama melalui internet: anda menyalin teks pada komputer riba dan menampalnya pada telefon, komputer pejabat, tablet rakan atau TV pintar.",
+  "WebClipboard sesuai untuk memindahkan pautan, nota, alamat, serpihan kod atau maklumat Wi-Fi tanpa perlu menghantar e-mel kepada diri sendiri atau memasang apa-apa. Ia pantas, percuma dan berfungsi dalam semua bahasa."
+ ],
+ "faqTitle": "Soalan lazim",
+ "faq": [
+  {
+   "q": "Adakah WebClipboard percuma?",
+   "a": "Ya. WebClipboard sepenuhnya percuma dan disokong oleh iklan. Tiada had bilangan teks yang boleh anda cipta."
+  },
+  {
+   "q": "Berapa lama teks saya disimpan?",
+   "a": "Anda yang tentukan: 10 minit, 1 jam, 1 hari atau 7 hari. Selepas itu teks dipadam secara kekal. Dengan “Padam selepas paparan pertama”, ia dibuang sebaik sahaja dibuka."
+  },
+  {
+   "q": "Adakah selamat berkongsi maklumat peribadi?",
+   "a": "Sesiapa yang mempunyai kod 6 digit boleh membuka teks, jadi jangan kongsi kata laluan atau butiran bank tanpa perlindungan. Jika anda menetapkan kata laluan, teks disulitkan dalam pelayar dan tiada sesiapa – termasuk kami – dapat membacanya tanpa kata laluan itu."
+  },
+  {
+   "q": "Adakah saya perlu memasang aplikasi?",
+   "a": "Tidak. WebClipboard berfungsi dalam mana-mana pelayar web. Anda juga boleh menambahkannya ke skrin utama untuk akses satu ketikan."
+  },
+  {
+   "q": "Berapa banyak teks yang boleh saya simpan?",
+   "a": "Sehingga {max} aksara bagi setiap teks – cukup untuk dokumen panjang, kod atau senarai."
+  },
+  {
+   "q": "Saya kehilangan kod saya. Bolehkah teks dipulihkan?",
+   "a": "Tidak. Kami tidak mempunyai akaun atau log yang mengaitkan teks dengan anda, jadi kod yang hilang tidak dapat dipulihkan. Cipta sahaja teks baharu."
+  }
+ ],
+ "adLabel": "Iklan",
+ "language": "Bahasa",
+ "footerAbout": "Tentang",
+ "footerPrivacy": "Dasar Privasi",
+ "footerTerms": "Terma Penggunaan",
+ "footerContact": "Hubungi",
+ "footerCookies": "Tetapan privasi",
+ "rights": "Hak cipta terpelihara.",
+ "share": "Kongsi",
+ "shareTitle": "Kongsi alat ini",
+ "shareText": "Papan keratan dalam talian percuma: salin teks pada satu peranti dan tampal pada peranti lain dengan kod 6 digit. Tanpa pendaftaran.",
+ "shareNudge": "Berguna? Kongsi dengan rakan.",
+ "shareCopy": "Salin pautan",
+ "shareCopied": "Pautan disalin!",
+ "shareEmail": "E-mel",
+ "shareSms": "SMS",
+ "shareClose": "Tutup"
 }

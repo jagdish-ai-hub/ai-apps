@@ -1,5 +1,6 @@
 ---
 import '../styles/global.css';
+import ShareWidget from '../components/ShareWidget.astro';
 import { languages, site, messages, localePath, absolute, langByCode } from '../lib/i18n';
 
 interface Props {
@@ -14,13 +15,17 @@ interface Props {
   jsonld?: object[];
   /** Highlights the matching nav item */
   section?: 'tokens' | 'guides';
+  /** Text offered with the Share button (defaults to the clipboard tagline in the page language) */
+  shareText?: string;
 }
-const { lang = 'en', title, description, page = '/', translated = false, noindex = false, jsonld = [], section } = Astro.props;
+const { lang = 'en', title, description, page = '/', translated = false, noindex = false, jsonld = [], section, shareText } = Astro.props;
 const m = messages(lang);
 const meta = langByCode(lang);
 const canonical = absolute(translated ? localePath(lang, page) : page);
 const ogImage = absolute('/og.png');
 const rtl = false;
+// Share the tool's own address; legal and error pages share the language home page instead.
+const shareUrl = ['/about/', '/privacy/', '/terms/', '/contact/', '/404/'].includes(page) ? absolute(localePath(lang)) : canonical;
 ---
 <!doctype html>
 <html lang={meta.htmlLang} dir={rtl ? 'rtl' : 'ltr'}>
@@ -121,6 +126,8 @@ const rtl = false;
         </div>
       </div>
     </footer>
+
+    <ShareWidget lang={lang} url={shareUrl} title={title} text={shareText ?? m.shareText} />
 
     <script>
       const root = document.documentElement;

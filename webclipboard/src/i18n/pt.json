@@ -1,46 +1,127 @@
 {
-"metaTitle":"Área de Transferência Online – Copie e Cole Texto entre Dispositivos Grátis",
-"metaDescription":"Área de transferência online grátis: cole seu texto, receba um código de 6 dígitos e abra em qualquer celular ou computador. Sem cadastro, com expiração automática, autodestruição e criptografia opcional.",
-"h1":"Área de Transferência Online",
-"tagline":"Copie o texto em um dispositivo e cole em outro, sem app e sem conta.",
-"sendTitle":"Enviar texto","receiveTitle":"Receber texto",
-"placeholder":"Digite ou cole seu texto aqui…","characters":"caracteres",
-"expiryLabel":"Excluir após","exp10m":"10 minutos","exp1h":"1 hora","exp1d":"1 dia","exp7d":"7 dias",
-"burnLabel":"Excluir após a primeira visualização","passwordLabel":"Senha (opcional)",
-"passwordHint":"O texto é criptografado no seu navegador. Nós nunca conseguimos lê-lo.",
-"sendBtn":"Salvar na área de transferência","saving":"Salvando…","yourCode":"Seu código da área de transferência",
-"codeHint":"Digite este código no outro dispositivo, abra o link ou escaneie o QR code.",
-"shareLink":"Link de compartilhamento","copy":"Copiar","copied":"Copiado!","expiresAt":"Expira em","newClip":"Criar outro texto",
-"codeLabel":"Digite o código de 6 dígitos","receiveBtn":"Obter texto","loading":"Carregando…","download":"Baixar .txt",
-"passwordPrompt":"Este texto está protegido por senha. Digite a senha para descriptografá-lo.","unlock":"Desbloquear",
-"wrongPassword":"Senha incorreta. Tente novamente.",
-"burnedNotice":"Este texto já foi excluído dos nossos servidores. Copie-o antes de fechar a página.",
-"report":"Denunciar abuso","reported":"Obrigado. A denúncia foi enviada.",
-"errEmpty":"Digite algum texto primeiro.","errTooLong":"O texto é muito longo (máximo de {max} caracteres).",
-"errNotFound":"Nenhum texto foi encontrado para este código. Ele pode ter expirado ou sido excluído.",
-"errCode":"Digite um código válido de 6 dígitos.","errRate":"Muitas solicitações. Aguarde um minuto e tente novamente.",
-"errGeneric":"Algo deu errado. Tente novamente.",
-"safetyNote":"Qualquer pessoa com o código pode ler o texto. Use uma senha para o que for privado.",
-"featuresTitle":"Por que usar o WebClipboard?",
-"features":[
-{"t":"Sem cadastro","d":"Cole, salve e compartilhe na hora. Não precisa de conta, e-mail nem aplicativo."},
-{"t":"Funciona em todos os dispositivos","d":"Windows, Mac, Linux, Android, iPhone e iPad: qualquer navegador moderno serve."},
-{"t":"Expiração automática","d":"Escolha 10 minutos, 1 hora, 1 dia ou 7 dias. O texto expirado é excluído para sempre."},
-{"t":"Autodestruição após a leitura","d":"Exclua o texto assim que ele for aberto pela primeira vez."},
-{"t":"Criptografia de ponta a ponta","d":"Adicione uma senha e seu texto é criptografado com AES-256 antes de sair do navegador."},
-{"t":"QR code e link curto","d":"Escaneie o QR code com a câmera do celular ou envie um link curto em qualquer chat."}],
-"howTitle":"Como copiar e colar entre dispositivos",
-"steps":["Digite ou cole seu texto na caixa e escolha por quanto tempo ele será mantido.","Clique em “Salvar na área de transferência” para receber um código de 6 dígitos, um link curto e um QR code.","No outro dispositivo, abra este site e digite o código, ou apenas escaneie o QR code.","Copie o texto ou baixe como arquivo .txt. Ele some sozinho quando expira."],
-"aboutTitle":"O que é uma área de transferência online?",
-"aboutText":["A área de transferência é a memória temporária que o computador ou o celular usa ao copiar e colar, e só funciona em um único dispositivo. Uma área de transferência online faz o mesmo pela internet: você copia o texto no notebook e cola no celular, no computador do trabalho, no tablet de um amigo ou na smart TV.","O WebClipboard é perfeito para passar links, anotações, endereços, trechos de código ou dados de Wi-Fi sem enviar e-mail para si mesmo nem instalar nada. É rápido, gratuito e funciona em todos os idiomas."],
-"faqTitle":"Perguntas frequentes",
-"faq":[
-{"q":"O WebClipboard é gratuito?","a":"Sim. O WebClipboard é totalmente gratuito e mantido por publicidade. Não há limite de textos que você pode criar."},
-{"q":"Por quanto tempo meu texto fica armazenado?","a":"Você decide: 10 minutos, 1 hora, 1 dia ou 7 dias. Depois disso, o texto é excluído para sempre. Com “Excluir após a primeira visualização”, ele é removido assim que for aberto."},
-{"q":"É seguro compartilhar informações privadas?","a":"Qualquer pessoa com o código de 6 dígitos pode abrir um texto, então não compartilhe senhas ou dados bancários sem proteção. Se você definir uma senha, o texto é criptografado no seu navegador e ninguém, nem mesmo nós, consegue lê-lo sem ela."},
-{"q":"Preciso instalar um aplicativo?","a":"Não. O WebClipboard funciona em qualquer navegador. Você também pode adicioná-lo à tela inicial para acessar com um toque."},
-{"q":"Quanto texto posso salvar?","a":"Até {max} caracteres por texto, o suficiente para documentos longos, códigos ou listas."},
-{"q":"Perdi meu código. Posso recuperar o texto?","a":"Não. Não temos contas nem registros que liguem um texto a você, então um código perdido não pode ser recuperado. Basta criar um novo texto."}],
-"adLabel":"Publicidade","language":"Idioma",
-"footerAbout":"Sobre","footerPrivacy":"Política de Privacidade","footerTerms":"Termos de Uso","footerContact":"Contato","footerCookies":"Configurações de privacidade","rights":"Todos os direitos reservados."
+ "metaTitle": "Área de Transferência Online – Copie e Cole Texto entre Dispositivos Grátis",
+ "metaDescription": "Área de transferência online grátis: cole seu texto, receba um código de 6 dígitos e abra em qualquer celular ou computador. Sem cadastro, com expiração automática, autodestruição e criptografia opcional.",
+ "h1": "Área de Transferência Online",
+ "tagline": "Copie o texto em um dispositivo e cole em outro, sem app e sem conta.",
+ "sendTitle": "Enviar texto",
+ "receiveTitle": "Receber texto",
+ "placeholder": "Digite ou cole seu texto aqui…",
+ "characters": "caracteres",
+ "expiryLabel": "Excluir após",
+ "exp10m": "10 minutos",
+ "exp1h": "1 hora",
+ "exp1d": "1 dia",
+ "exp7d": "7 dias",
+ "burnLabel": "Excluir após a primeira visualização",
+ "passwordLabel": "Senha (opcional)",
+ "passwordHint": "O texto é criptografado no seu navegador. Nós nunca conseguimos lê-lo.",
+ "sendBtn": "Salvar na área de transferência",
+ "saving": "Salvando…",
+ "yourCode": "Seu código da área de transferência",
+ "codeHint": "Digite este código no outro dispositivo, abra o link ou escaneie o QR code.",
+ "shareLink": "Link de compartilhamento",
+ "copy": "Copiar",
+ "copied": "Copiado!",
+ "expiresAt": "Expira em",
+ "newClip": "Criar outro texto",
+ "codeLabel": "Digite o código de 6 dígitos",
+ "receiveBtn": "Obter texto",
+ "loading": "Carregando…",
+ "download": "Baixar .txt",
+ "passwordPrompt": "Este texto está protegido por senha. Digite a senha para descriptografá-lo.",
+ "unlock": "Desbloquear",
+ "wrongPassword": "Senha incorreta. Tente novamente.",
+ "burnedNotice": "Este texto já foi excluído dos nossos servidores. Copie-o antes de fechar a página.",
+ "report": "Denunciar abuso",
+ "reported": "Obrigado. A denúncia foi enviada.",
+ "errEmpty": "Digite algum texto primeiro.",
+ "errTooLong": "O texto é muito longo (máximo de {max} caracteres).",
+ "errNotFound": "Nenhum texto foi encontrado para este código. Ele pode ter expirado ou sido excluído.",
+ "errCode": "Digite um código válido de 6 dígitos.",
+ "errRate": "Muitas solicitações. Aguarde um minuto e tente novamente.",
+ "errGeneric": "Algo deu errado. Tente novamente.",
+ "safetyNote": "Qualquer pessoa com o código pode ler o texto. Use uma senha para o que for privado.",
+ "featuresTitle": "Por que usar o WebClipboard?",
+ "features": [
+  {
+   "t": "Sem cadastro",
+   "d": "Cole, salve e compartilhe na hora. Não precisa de conta, e-mail nem aplicativo."
+  },
+  {
+   "t": "Funciona em todos os dispositivos",
+   "d": "Windows, Mac, Linux, Android, iPhone e iPad: qualquer navegador moderno serve."
+  },
+  {
+   "t": "Expiração automática",
+   "d": "Escolha 10 minutos, 1 hora, 1 dia ou 7 dias. O texto expirado é excluído para sempre."
+  },
+  {
+   "t": "Autodestruição após a leitura",
+   "d": "Exclua o texto assim que ele for aberto pela primeira vez."
+  },
+  {
+   "t": "Criptografia de ponta a ponta",
+   "d": "Adicione uma senha e seu texto é criptografado com AES-256 antes de sair do navegador."
+  },
+  {
+   "t": "QR code e link curto",
+   "d": "Escaneie o QR code com a câmera do celular ou envie um link curto em qualquer chat."
+  }
+ ],
+ "howTitle": "Como copiar e colar entre dispositivos",
+ "steps": [
+  "Digite ou cole seu texto na caixa e escolha por quanto tempo ele será mantido.",
+  "Clique em “Salvar na área de transferência” para receber um código de 6 dígitos, um link curto e um QR code.",
+  "No outro dispositivo, abra este site e digite o código, ou apenas escaneie o QR code.",
+  "Copie o texto ou baixe como arquivo .txt. Ele some sozinho quando expira."
+ ],
+ "aboutTitle": "O que é uma área de transferência online?",
+ "aboutText": [
+  "A área de transferência é a memória temporária que o computador ou o celular usa ao copiar e colar, e só funciona em um único dispositivo. Uma área de transferência online faz o mesmo pela internet: você copia o texto no notebook e cola no celular, no computador do trabalho, no tablet de um amigo ou na smart TV.",
+  "O WebClipboard é perfeito para passar links, anotações, endereços, trechos de código ou dados de Wi-Fi sem enviar e-mail para si mesmo nem instalar nada. É rápido, gratuito e funciona em todos os idiomas."
+ ],
+ "faqTitle": "Perguntas frequentes",
+ "faq": [
+  {
+   "q": "O WebClipboard é gratuito?",
+   "a": "Sim. O WebClipboard é totalmente gratuito e mantido por publicidade. Não há limite de textos que você pode criar."
+  },
+  {
+   "q": "Por quanto tempo meu texto fica armazenado?",
+   "a": "Você decide: 10 minutos, 1 hora, 1 dia ou 7 dias. Depois disso, o texto é excluído para sempre. Com “Excluir após a primeira visualização”, ele é removido assim que for aberto."
+  },
+  {
+   "q": "É seguro compartilhar informações privadas?",
+   "a": "Qualquer pessoa com o código de 6 dígitos pode abrir um texto, então não compartilhe senhas ou dados bancários sem proteção. Se você definir uma senha, o texto é criptografado no seu navegador e ninguém, nem mesmo nós, consegue lê-lo sem ela."
+  },
+  {
+   "q": "Preciso instalar um aplicativo?",
+   "a": "Não. O WebClipboard funciona em qualquer navegador. Você também pode adicioná-lo à tela inicial para acessar com um toque."
+  },
+  {
+   "q": "Quanto texto posso salvar?",
+   "a": "Até {max} caracteres por texto, o suficiente para documentos longos, códigos ou listas."
+  },
+  {
+   "q": "Perdi meu código. Posso recuperar o texto?",
+   "a": "Não. Não temos contas nem registros que liguem um texto a você, então um código perdido não pode ser recuperado. Basta criar um novo texto."
+  }
+ ],
+ "adLabel": "Publicidade",
+ "language": "Idioma",
+ "footerAbout": "Sobre",
+ "footerPrivacy": "Política de Privacidade",
+ "footerTerms": "Termos de Uso",
+ "footerContact": "Contato",
+ "footerCookies": "Configurações de privacidade",
+ "rights": "Todos os direitos reservados.",
+ "share": "Compartilhar",
+ "shareTitle": "Compartilhar esta ferramenta",
+ "shareText": "Área de transferência online grátis: copie o texto em um dispositivo e cole em outro com um código de 6 dígitos. Sem cadastro.",
+ "shareNudge": "Gostou? Compartilhe com um amigo.",
+ "shareCopy": "Copiar link",
+ "shareCopied": "Link copiado!",
+ "shareEmail": "E-mail",
+ "shareSms": "Mensagem de texto",
+ "shareClose": "Fechar"
 }

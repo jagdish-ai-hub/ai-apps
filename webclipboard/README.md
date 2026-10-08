@@ -109,6 +109,10 @@ After launch: add the site to **Google Search Console** and **Bing Webmaster Too
 4. **EU/UK/Switzerland visitors require a consent message** (Google's certified CMP). Turn on *Privacy & messaging → European regulations* in AdSense; the footer "Privacy settings" link reopens it.
 5. Running **Google Ads campaigns** to buy traffic: create one campaign per language and send each to its own URL (`/es/`, `/ja/` ...), keep the landing page's language identical to the ad's. Start with exact-match keywords in each language. Add `gtagId` in `site.config.json` and import conversions (e.g. "clip saved") if you want to optimise for them.
 
+## Share this tool
+
+A small floating **Share** button (bottom-right, icon-only on phones, hidden while the footer is on screen) and a "Share this tool" prompt shown after a code is created and after text is received. On touch devices it opens the phone's native share sheet (WhatsApp, Messages, etc.); everywhere else, or if the native sheet errors, it shows a menu whose order depends on the page language (e.g. LINE first for Japanese, Thai and Traditional Chinese, Telegram and VK for Russian, Weibo for Simplified Chinese). It always shares the page's canonical URL with `utm_source=share&utm_medium=<channel>`, never `location.href`, so a clip code in the address bar can never leak. Strings are translated in all 30 languages (`share*` keys); code is in `src/components/ShareWidget.astro` and `src/scripts/share.ts`.
+
 ## Analytics (Cloudflare Web Analytics, cookie-free)
 
 Workers logs and request metrics are already on in the Cloudflare dashboard (`observability` in `wrangler.toml`). For visitor analytics (page views, countries, referrers, Core Web Vitals):

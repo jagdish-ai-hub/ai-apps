@@ -1,46 +1,127 @@
 {
-"metaTitle":"Clipboard Online – Sao chép và dán văn bản giữa các thiết bị miễn phí",
-"metaDescription":"Clipboard online miễn phí: dán văn bản, nhận mã 6 chữ số rồi mở trên bất kỳ điện thoại hoặc máy tính nào. Không cần đăng ký, tự động hết hạn, xóa sau khi xem và mã hóa tùy chọn.",
-"h1":"Clipboard Online",
-"tagline":"Sao chép văn bản trên thiết bị này và dán sang thiết bị khác – không cần ứng dụng, không cần tài khoản.",
-"sendTitle":"Gửi văn bản","receiveTitle":"Nhận văn bản",
-"placeholder":"Nhập hoặc dán văn bản của bạn vào đây…","characters":"ký tự",
-"expiryLabel":"Xóa sau","exp10m":"10 phút","exp1h":"1 giờ","exp1d":"1 ngày","exp7d":"7 ngày",
-"burnLabel":"Xóa sau lần xem đầu tiên","passwordLabel":"Mật khẩu (tùy chọn)",
-"passwordHint":"Văn bản được mã hóa ngay trong trình duyệt của bạn. Chúng tôi không bao giờ đọc được.",
-"sendBtn":"Lưu vào clipboard","saving":"Đang lưu…","yourCode":"Mã clipboard của bạn",
-"codeHint":"Nhập mã này trên thiết bị kia, mở liên kết hoặc quét mã QR.",
-"shareLink":"Liên kết chia sẻ","copy":"Sao chép","copied":"Đã sao chép!","expiresAt":"Hết hạn","newClip":"Tạo văn bản khác",
-"codeLabel":"Nhập mã 6 chữ số","receiveBtn":"Lấy văn bản","loading":"Đang tải…","download":"Tải .txt",
-"passwordPrompt":"Văn bản này được bảo vệ bằng mật khẩu. Nhập mật khẩu để giải mã.","unlock":"Mở khóa",
-"wrongPassword":"Sai mật khẩu. Vui lòng thử lại.",
-"burnedNotice":"Văn bản này đã bị xóa khỏi máy chủ của chúng tôi. Hãy sao chép trước khi đóng trang.",
-"report":"Báo cáo lạm dụng","reported":"Cảm ơn bạn. Báo cáo đã được gửi.",
-"errEmpty":"Vui lòng nhập văn bản trước.","errTooLong":"Văn bản quá dài (tối đa {max} ký tự).",
-"errNotFound":"Không tìm thấy văn bản cho mã này. Có thể nó đã hết hạn hoặc bị xóa.",
-"errCode":"Vui lòng nhập mã 6 chữ số hợp lệ.","errRate":"Quá nhiều yêu cầu. Vui lòng đợi một phút rồi thử lại.",
-"errGeneric":"Đã xảy ra lỗi. Vui lòng thử lại.",
-"safetyNote":"Bất kỳ ai có mã đều đọc được văn bản. Hãy đặt mật khẩu cho nội dung riêng tư.",
-"featuresTitle":"Vì sao chọn WebClipboard?",
-"features":[
-{"t":"Không cần đăng ký","d":"Dán, lưu và chia sẻ ngay lập tức. Không cần tài khoản, email hay ứng dụng."},
-{"t":"Chạy trên mọi thiết bị","d":"Windows, Mac, Linux, Android, iPhone và iPad – trình duyệt hiện đại nào cũng dùng được."},
-{"t":"Tự động hết hạn","d":"Chọn 10 phút, 1 giờ, 1 ngày hoặc 7 ngày. Văn bản hết hạn sẽ bị xóa vĩnh viễn."},
-{"t":"Xóa sau khi đọc","d":"Tùy chọn xóa văn bản ngay khi nó được mở lần đầu tiên."},
-{"t":"Mã hóa đầu cuối","d":"Thêm mật khẩu và văn bản sẽ được mã hóa bằng AES-256 trước khi rời khỏi trình duyệt."},
-{"t":"Mã QR và liên kết ngắn","d":"Quét mã QR bằng camera điện thoại hoặc chia sẻ liên kết ngắn trong bất kỳ ứng dụng nhắn tin nào."}],
-"howTitle":"Cách sao chép và dán giữa các thiết bị",
-"steps":["Nhập hoặc dán văn bản vào ô và chọn thời gian lưu giữ.","Nhấp “Lưu vào clipboard” để nhận mã 6 chữ số, liên kết ngắn và mã QR.","Trên thiết bị kia, mở trang web này và nhập mã – hoặc chỉ cần quét mã QR.","Sao chép văn bản hoặc tải về dưới dạng tệp .txt. Văn bản tự biến mất khi hết hạn."],
-"aboutTitle":"Clipboard online là gì?",
-"aboutText":["Clipboard là bộ nhớ tạm mà máy tính hoặc điện thoại dùng khi bạn sao chép và dán, và chỉ hoạt động trên một thiết bị. Clipboard online làm điều tương tự qua internet: bạn sao chép văn bản trên laptop rồi dán vào điện thoại, máy tính ở cơ quan, máy tính bảng của bạn bè hoặc smart TV.","WebClipboard rất phù hợp để chuyển liên kết, ghi chú, địa chỉ, đoạn mã hoặc thông tin Wi-Fi mà không cần gửi email cho chính mình hay cài đặt gì. Nhanh, miễn phí và hoạt động với mọi ngôn ngữ."],
-"faqTitle":"Câu hỏi thường gặp",
-"faq":[
-{"q":"WebClipboard có miễn phí không?","a":"Có. WebClipboard hoàn toàn miễn phí và được duy trì nhờ quảng cáo. Không giới hạn số văn bản bạn có thể tạo."},
-{"q":"Văn bản của tôi được lưu bao lâu?","a":"Bạn quyết định: 10 phút, 1 giờ, 1 ngày hoặc 7 ngày. Sau đó văn bản bị xóa vĩnh viễn. Với “Xóa sau lần xem đầu tiên”, văn bản bị xóa ngay khi được mở."},
-{"q":"Chia sẻ thông tin riêng tư có an toàn không?","a":"Bất kỳ ai có mã 6 chữ số đều mở được văn bản, vì vậy đừng chia sẻ mật khẩu hay thông tin ngân hàng mà không bảo vệ. Nếu đặt mật khẩu, văn bản được mã hóa trong trình duyệt và không ai – kể cả chúng tôi – đọc được nếu thiếu mật khẩu."},
-{"q":"Tôi có cần cài ứng dụng không?","a":"Không. WebClipboard chạy trên mọi trình duyệt web. Bạn cũng có thể thêm vào màn hình chính để mở bằng một chạm."},
-{"q":"Tôi có thể lưu bao nhiêu văn bản?","a":"Tối đa {max} ký tự cho mỗi văn bản – đủ cho tài liệu dài, mã nguồn hoặc danh sách."},
-{"q":"Tôi làm mất mã. Có lấy lại văn bản được không?","a":"Không. Chúng tôi không có tài khoản hay nhật ký nào liên kết văn bản với bạn, nên mã đã mất không thể khôi phục. Hãy tạo văn bản mới."}],
-"adLabel":"Quảng cáo","language":"Ngôn ngữ",
-"footerAbout":"Giới thiệu","footerPrivacy":"Chính sách quyền riêng tư","footerTerms":"Điều khoản sử dụng","footerContact":"Liên hệ","footerCookies":"Cài đặt quyền riêng tư","rights":"Bảo lưu mọi quyền."
+ "metaTitle": "Clipboard Online – Sao chép và dán văn bản giữa các thiết bị miễn phí",
+ "metaDescription": "Clipboard online miễn phí: dán văn bản, nhận mã 6 chữ số rồi mở trên bất kỳ điện thoại hoặc máy tính nào. Không cần đăng ký, tự động hết hạn, xóa sau khi xem và mã hóa tùy chọn.",
+ "h1": "Clipboard Online",
+ "tagline": "Sao chép văn bản trên thiết bị này và dán sang thiết bị khác – không cần ứng dụng, không cần tài khoản.",
+ "sendTitle": "Gửi văn bản",
+ "receiveTitle": "Nhận văn bản",
+ "placeholder": "Nhập hoặc dán văn bản của bạn vào đây…",
+ "characters": "ký tự",
+ "expiryLabel": "Xóa sau",
+ "exp10m": "10 phút",
+ "exp1h": "1 giờ",
+ "exp1d": "1 ngày",
+ "exp7d": "7 ngày",
+ "burnLabel": "Xóa sau lần xem đầu tiên",
+ "passwordLabel": "Mật khẩu (tùy chọn)",
+ "passwordHint": "Văn bản được mã hóa ngay trong trình duyệt của bạn. Chúng tôi không bao giờ đọc được.",
+ "sendBtn": "Lưu vào clipboard",
+ "saving": "Đang lưu…",
+ "yourCode": "Mã clipboard của bạn",
+ "codeHint": "Nhập mã này trên thiết bị kia, mở liên kết hoặc quét mã QR.",
+ "shareLink": "Liên kết chia sẻ",
+ "copy": "Sao chép",
+ "copied": "Đã sao chép!",
+ "expiresAt": "Hết hạn",
+ "newClip": "Tạo văn bản khác",
+ "codeLabel": "Nhập mã 6 chữ số",
+ "receiveBtn": "Lấy văn bản",
+ "loading": "Đang tải…",
+ "download": "Tải .txt",
+ "passwordPrompt": "Văn bản này được bảo vệ bằng mật khẩu. Nhập mật khẩu để giải mã.",
+ "unlock": "Mở khóa",
+ "wrongPassword": "Sai mật khẩu. Vui lòng thử lại.",
+ "burnedNotice": "Văn bản này đã bị xóa khỏi máy chủ của chúng tôi. Hãy sao chép trước khi đóng trang.",
+ "report": "Báo cáo lạm dụng",
+ "reported": "Cảm ơn bạn. Báo cáo đã được gửi.",
+ "errEmpty": "Vui lòng nhập văn bản trước.",
+ "errTooLong": "Văn bản quá dài (tối đa {max} ký tự).",
+ "errNotFound": "Không tìm thấy văn bản cho mã này. Có thể nó đã hết hạn hoặc bị xóa.",
+ "errCode": "Vui lòng nhập mã 6 chữ số hợp lệ.",
+ "errRate": "Quá nhiều yêu cầu. Vui lòng đợi một phút rồi thử lại.",
+ "errGeneric": "Đã xảy ra lỗi. Vui lòng thử lại.",
+ "safetyNote": "Bất kỳ ai có mã đều đọc được văn bản. Hãy đặt mật khẩu cho nội dung riêng tư.",
+ "featuresTitle": "Vì sao chọn WebClipboard?",
+ "features": [
+  {
+   "t": "Không cần đăng ký",
+   "d": "Dán, lưu và chia sẻ ngay lập tức. Không cần tài khoản, email hay ứng dụng."
+  },
+  {
+   "t": "Chạy trên mọi thiết bị",
+   "d": "Windows, Mac, Linux, Android, iPhone và iPad – trình duyệt hiện đại nào cũng dùng được."
+  },
+  {
+   "t": "Tự động hết hạn",
+   "d": "Chọn 10 phút, 1 giờ, 1 ngày hoặc 7 ngày. Văn bản hết hạn sẽ bị xóa vĩnh viễn."
+  },
+  {
+   "t": "Xóa sau khi đọc",
+   "d": "Tùy chọn xóa văn bản ngay khi nó được mở lần đầu tiên."
+  },
+  {
+   "t": "Mã hóa đầu cuối",
+   "d": "Thêm mật khẩu và văn bản sẽ được mã hóa bằng AES-256 trước khi rời khỏi trình duyệt."
+  },
+  {
+   "t": "Mã QR và liên kết ngắn",
+   "d": "Quét mã QR bằng camera điện thoại hoặc chia sẻ liên kết ngắn trong bất kỳ ứng dụng nhắn tin nào."
+  }
+ ],
+ "howTitle": "Cách sao chép và dán giữa các thiết bị",
+ "steps": [
+  "Nhập hoặc dán văn bản vào ô và chọn thời gian lưu giữ.",
+  "Nhấp “Lưu vào clipboard” để nhận mã 6 chữ số, liên kết ngắn và mã QR.",
+  "Trên thiết bị kia, mở trang web này và nhập mã – hoặc chỉ cần quét mã QR.",
+  "Sao chép văn bản hoặc tải về dưới dạng tệp .txt. Văn bản tự biến mất khi hết hạn."
+ ],
+ "aboutTitle": "Clipboard online là gì?",
+ "aboutText": [
+  "Clipboard là bộ nhớ tạm mà máy tính hoặc điện thoại dùng khi bạn sao chép và dán, và chỉ hoạt động trên một thiết bị. Clipboard online làm điều tương tự qua internet: bạn sao chép văn bản trên laptop rồi dán vào điện thoại, máy tính ở cơ quan, máy tính bảng của bạn bè hoặc smart TV.",
+  "WebClipboard rất phù hợp để chuyển liên kết, ghi chú, địa chỉ, đoạn mã hoặc thông tin Wi-Fi mà không cần gửi email cho chính mình hay cài đặt gì. Nhanh, miễn phí và hoạt động với mọi ngôn ngữ."
+ ],
+ "faqTitle": "Câu hỏi thường gặp",
+ "faq": [
+  {
+   "q": "WebClipboard có miễn phí không?",
+   "a": "Có. WebClipboard hoàn toàn miễn phí và được duy trì nhờ quảng cáo. Không giới hạn số văn bản bạn có thể tạo."
+  },
+  {
+   "q": "Văn bản của tôi được lưu bao lâu?",
+   "a": "Bạn quyết định: 10 phút, 1 giờ, 1 ngày hoặc 7 ngày. Sau đó văn bản bị xóa vĩnh viễn. Với “Xóa sau lần xem đầu tiên”, văn bản bị xóa ngay khi được mở."
+  },
+  {
+   "q": "Chia sẻ thông tin riêng tư có an toàn không?",
+   "a": "Bất kỳ ai có mã 6 chữ số đều mở được văn bản, vì vậy đừng chia sẻ mật khẩu hay thông tin ngân hàng mà không bảo vệ. Nếu đặt mật khẩu, văn bản được mã hóa trong trình duyệt và không ai – kể cả chúng tôi – đọc được nếu thiếu mật khẩu."
+  },
+  {
+   "q": "Tôi có cần cài ứng dụng không?",
+   "a": "Không. WebClipboard chạy trên mọi trình duyệt web. Bạn cũng có thể thêm vào màn hình chính để mở bằng một chạm."
+  },
+  {
+   "q": "Tôi có thể lưu bao nhiêu văn bản?",
+   "a": "Tối đa {max} ký tự cho mỗi văn bản – đủ cho tài liệu dài, mã nguồn hoặc danh sách."
+  },
+  {
+   "q": "Tôi làm mất mã. Có lấy lại văn bản được không?",
+   "a": "Không. Chúng tôi không có tài khoản hay nhật ký nào liên kết văn bản với bạn, nên mã đã mất không thể khôi phục. Hãy tạo văn bản mới."
+  }
+ ],
+ "adLabel": "Quảng cáo",
+ "language": "Ngôn ngữ",
+ "footerAbout": "Giới thiệu",
+ "footerPrivacy": "Chính sách quyền riêng tư",
+ "footerTerms": "Điều khoản sử dụng",
+ "footerContact": "Liên hệ",
+ "footerCookies": "Cài đặt quyền riêng tư",
+ "rights": "Bảo lưu mọi quyền.",
+ "share": "Chia sẻ",
+ "shareTitle": "Chia sẻ công cụ này",
+ "shareText": "Clipboard online miễn phí: sao chép văn bản trên thiết bị này và dán sang thiết bị khác bằng mã 6 chữ số. Không cần đăng ký.",
+ "shareNudge": "Thấy hữu ích? Chia sẻ cho bạn bè.",
+ "shareCopy": "Sao chép liên kết",
+ "shareCopied": "Đã sao chép liên kết!",
+ "shareEmail": "Email",
+ "shareSms": "Tin nhắn SMS",
+ "shareClose": "Đóng"
 }

@@ -1,0 +1,28 @@
+---
+import { messages } from '../lib/i18n';
+interface Props { lang: string; url: string; title: string; text: string }
+const { lang, url, title, text } = Astro.props;
+const m = messages(lang);
+const config = { lang, url, title, text, ui: { copied: m.shareCopied, copy: m.shareCopy, email: m.shareEmail, sms: m.shareSms } };
+---
+<button class="share-fab" id="share-fab" type="button" data-share-open aria-haspopup="dialog" aria-label={m.shareTitle}>
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="18" cy="5" r="3" /><circle cx="6" cy="12" r="3" /><circle cx="18" cy="19" r="3" /><path d="M8.6 10.5l6.8-4M8.6 13.5l6.8 4" /></svg>
+  <span>{m.share}</span>
+</button>
+<dialog class="share-dialog" id="share-dialog" aria-labelledby="share-h">
+  <div class="share-head">
+    <h2 id="share-h">{m.shareTitle}</h2>
+    <button class="icon-btn" id="share-close" type="button" aria-label={m.shareClose}>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" /></svg>
+    </button>
+  </div>
+  <div class="share-grid" id="share-grid"></div>
+  <div class="linkbox">
+    <input type="text" id="share-link" readonly aria-label={m.shareCopy} />
+    <button class="btn small" id="share-copy" type="button">{m.shareCopy}</button>
+  </div>
+  <script type="application/json" id="share-config" set:html={JSON.stringify(config)} />
+</dialog>
+<script>
+  import '../scripts/share';
+</script>

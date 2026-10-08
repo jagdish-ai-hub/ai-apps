@@ -1,46 +1,127 @@
 {
-"metaTitle":"Online utklippstavle – kopier og lim inn tekst mellom enheter gratis",
-"metaDescription":"Gratis online utklippstavle: lim inn tekst, få en 6-sifret kode og åpne den på hvilken som helst telefon eller datamaskin. Uten registrering, med automatisk utløp, selvdestruksjon og valgfri kryptering.",
-"h1":"Online utklippstavle",
-"tagline":"Kopier tekst på én enhet og lim den inn på en annen – uten app og uten konto.",
-"sendTitle":"Send tekst","receiveTitle":"Motta tekst",
-"placeholder":"Skriv eller lim inn teksten din her…","characters":"tegn",
-"expiryLabel":"Slett etter","exp10m":"10 minutter","exp1h":"1 time","exp1d":"1 dag","exp7d":"7 dager",
-"burnLabel":"Slett etter første visning","passwordLabel":"Passord (valgfritt)",
-"passwordHint":"Teksten krypteres i nettleseren din. Vi kan aldri lese den.",
-"sendBtn":"Lagre på utklippstavlen","saving":"Lagrer…","yourCode":"Utklippskoden din",
-"codeHint":"Skriv inn koden på den andre enheten, åpne lenken eller skann QR-koden.",
-"shareLink":"Delingslenke","copy":"Kopier","copied":"Kopiert!","expiresAt":"Utløper","newClip":"Lag en ny tekst",
-"codeLabel":"Skriv inn den 6-sifrede koden","receiveBtn":"Hent tekst","loading":"Laster…","download":"Last ned .txt",
-"passwordPrompt":"Denne teksten er passordbeskyttet. Skriv inn passordet for å dekryptere den.","unlock":"Lås opp",
-"wrongPassword":"Feil passord. Prøv igjen.",
-"burnedNotice":"Teksten er nå slettet fra serverne våre. Kopier den før du lukker siden.",
-"report":"Rapporter misbruk","reported":"Takk. Rapporten er sendt.",
-"errEmpty":"Skriv inn tekst først.","errTooLong":"Teksten er for lang (maks {max} tegn).",
-"errNotFound":"Fant ingen tekst for denne koden. Den kan ha utløpt eller blitt slettet.",
-"errCode":"Skriv inn en gyldig 6-sifret kode.","errRate":"For mange forespørsler. Vent ett minutt og prøv igjen.",
-"errGeneric":"Noe gikk galt. Prøv igjen.",
-"safetyNote":"Alle som har koden kan lese teksten. Bruk passord for private opplysninger.",
-"featuresTitle":"Hvorfor WebClipboard?",
-"features":[
-{"t":"Ingen registrering","d":"Lim inn, lagre og del med en gang. Ingen konto, e-post eller app nødvendig."},
-{"t":"Fungerer på alle enheter","d":"Windows, Mac, Linux, Android, iPhone og iPad – en moderne nettleser holder."},
-{"t":"Automatisk utløp","d":"Velg 10 minutter, 1 time, 1 dag eller 7 dager. Utløpt tekst slettes permanent."},
-{"t":"Slett etter lesing","d":"Slett om ønskelig teksten så snart den åpnes første gang."},
-{"t":"Ende-til-ende-kryptering","d":"Legg til et passord, så krypteres teksten med AES-256 før den forlater nettleseren din."},
-{"t":"QR-kode og kort lenke","d":"Skann QR-koden med mobilkameraet eller del en kort lenke i en hvilken som helst chat."}],
-"howTitle":"Slik kopierer og limer du inn mellom enheter",
-"steps":["Skriv eller lim inn teksten i feltet, og velg hvor lenge den skal lagres.","Klikk «Lagre på utklippstavlen» for å få en 6-sifret kode, en kort lenke og en QR-kode.","Åpne dette nettstedet på den andre enheten og skriv inn koden – eller bare skann QR-koden.","Kopier teksten eller last den ned som en .txt-fil. Den forsvinner automatisk når den utløper."],
-"aboutTitle":"Hva er en online utklippstavle?",
-"aboutText":["Utklippstavlen er det midlertidige minnet datamaskinen eller telefonen bruker når du kopierer og limer inn, og den virker bare på én enhet. En online utklippstavle gjør det samme via internett: du kopierer tekst på den bærbare og limer den inn på mobilen, jobbdatamaskinen, en venns nettbrett eller en smart-TV.","WebClipboard er perfekt for å flytte lenker, notater, adresser, kodebiter eller wifi-opplysninger uten å sende e-post til deg selv eller installere noe. Det er raskt, gratis og fungerer på alle språk."],
-"faqTitle":"Vanlige spørsmål",
-"faq":[
-{"q":"Er WebClipboard gratis?","a":"Ja. WebClipboard er helt gratis og finansieres av annonser. Det er ingen grense for hvor mange tekster du kan lage."},
-{"q":"Hvor lenge lagres teksten min?","a":"Du bestemmer: 10 minutter, 1 time, 1 dag eller 7 dager. Deretter slettes teksten permanent. Med «Slett etter første visning» fjernes den så snart den åpnes."},
-{"q":"Er det trygt å dele private opplysninger?","a":"Alle med den 6-sifrede koden kan åpne en tekst, så ikke del passord eller bankopplysninger uten beskyttelse. Hvis du angir et passord, krypteres teksten i nettleseren din, og ingen – heller ikke vi – kan lese den uten passordet."},
-{"q":"Må jeg installere en app?","a":"Nei. WebClipboard fungerer i alle nettlesere. Du kan også legge det til på startskjermen for tilgang med ett trykk."},
-{"q":"Hvor mye tekst kan jeg lagre?","a":"Opptil {max} tegn per tekst – nok til lange dokumenter, kode eller lister."},
-{"q":"Jeg har mistet koden min. Kan jeg få tilbake teksten?","a":"Nei. Vi har verken kontoer eller logger som knytter en tekst til deg, så en mistet kode kan ikke gjenopprettes. Lag bare en ny tekst."}],
-"adLabel":"Annonse","language":"Språk",
-"footerAbout":"Om oss","footerPrivacy":"Personvernerklæring","footerTerms":"Bruksvilkår","footerContact":"Kontakt","footerCookies":"Personverninnstillinger","rights":"Alle rettigheter forbeholdt."
+ "metaTitle": "Online utklippstavle – kopier og lim inn tekst mellom enheter gratis",
+ "metaDescription": "Gratis online utklippstavle: lim inn tekst, få en 6-sifret kode og åpne den på hvilken som helst telefon eller datamaskin. Uten registrering, med automatisk utløp, selvdestruksjon og valgfri kryptering.",
+ "h1": "Online utklippstavle",
+ "tagline": "Kopier tekst på én enhet og lim den inn på en annen – uten app og uten konto.",
+ "sendTitle": "Send tekst",
+ "receiveTitle": "Motta tekst",
+ "placeholder": "Skriv eller lim inn teksten din her…",
+ "characters": "tegn",
+ "expiryLabel": "Slett etter",
+ "exp10m": "10 minutter",
+ "exp1h": "1 time",
+ "exp1d": "1 dag",
+ "exp7d": "7 dager",
+ "burnLabel": "Slett etter første visning",
+ "passwordLabel": "Passord (valgfritt)",
+ "passwordHint": "Teksten krypteres i nettleseren din. Vi kan aldri lese den.",
+ "sendBtn": "Lagre på utklippstavlen",
+ "saving": "Lagrer…",
+ "yourCode": "Utklippskoden din",
+ "codeHint": "Skriv inn koden på den andre enheten, åpne lenken eller skann QR-koden.",
+ "shareLink": "Delingslenke",
+ "copy": "Kopier",
+ "copied": "Kopiert!",
+ "expiresAt": "Utløper",
+ "newClip": "Lag en ny tekst",
+ "codeLabel": "Skriv inn den 6-sifrede koden",
+ "receiveBtn": "Hent tekst",
+ "loading": "Laster…",
+ "download": "Last ned .txt",
+ "passwordPrompt": "Denne teksten er passordbeskyttet. Skriv inn passordet for å dekryptere den.",
+ "unlock": "Lås opp",
+ "wrongPassword": "Feil passord. Prøv igjen.",
+ "burnedNotice": "Teksten er nå slettet fra serverne våre. Kopier den før du lukker siden.",
+ "report": "Rapporter misbruk",
+ "reported": "Takk. Rapporten er sendt.",
+ "errEmpty": "Skriv inn tekst først.",
+ "errTooLong": "Teksten er for lang (maks {max} tegn).",
+ "errNotFound": "Fant ingen tekst for denne koden. Den kan ha utløpt eller blitt slettet.",
+ "errCode": "Skriv inn en gyldig 6-sifret kode.",
+ "errRate": "For mange forespørsler. Vent ett minutt og prøv igjen.",
+ "errGeneric": "Noe gikk galt. Prøv igjen.",
+ "safetyNote": "Alle som har koden kan lese teksten. Bruk passord for private opplysninger.",
+ "featuresTitle": "Hvorfor WebClipboard?",
+ "features": [
+  {
+   "t": "Ingen registrering",
+   "d": "Lim inn, lagre og del med en gang. Ingen konto, e-post eller app nødvendig."
+  },
+  {
+   "t": "Fungerer på alle enheter",
+   "d": "Windows, Mac, Linux, Android, iPhone og iPad – en moderne nettleser holder."
+  },
+  {
+   "t": "Automatisk utløp",
+   "d": "Velg 10 minutter, 1 time, 1 dag eller 7 dager. Utløpt tekst slettes permanent."
+  },
+  {
+   "t": "Slett etter lesing",
+   "d": "Slett om ønskelig teksten så snart den åpnes første gang."
+  },
+  {
+   "t": "Ende-til-ende-kryptering",
+   "d": "Legg til et passord, så krypteres teksten med AES-256 før den forlater nettleseren din."
+  },
+  {
+   "t": "QR-kode og kort lenke",
+   "d": "Skann QR-koden med mobilkameraet eller del en kort lenke i en hvilken som helst chat."
+  }
+ ],
+ "howTitle": "Slik kopierer og limer du inn mellom enheter",
+ "steps": [
+  "Skriv eller lim inn teksten i feltet, og velg hvor lenge den skal lagres.",
+  "Klikk «Lagre på utklippstavlen» for å få en 6-sifret kode, en kort lenke og en QR-kode.",
+  "Åpne dette nettstedet på den andre enheten og skriv inn koden – eller bare skann QR-koden.",
+  "Kopier teksten eller last den ned som en .txt-fil. Den forsvinner automatisk når den utløper."
+ ],
+ "aboutTitle": "Hva er en online utklippstavle?",
+ "aboutText": [
+  "Utklippstavlen er det midlertidige minnet datamaskinen eller telefonen bruker når du kopierer og limer inn, og den virker bare på én enhet. En online utklippstavle gjør det samme via internett: du kopierer tekst på den bærbare og limer den inn på mobilen, jobbdatamaskinen, en venns nettbrett eller en smart-TV.",
+  "WebClipboard er perfekt for å flytte lenker, notater, adresser, kodebiter eller wifi-opplysninger uten å sende e-post til deg selv eller installere noe. Det er raskt, gratis og fungerer på alle språk."
+ ],
+ "faqTitle": "Vanlige spørsmål",
+ "faq": [
+  {
+   "q": "Er WebClipboard gratis?",
+   "a": "Ja. WebClipboard er helt gratis og finansieres av annonser. Det er ingen grense for hvor mange tekster du kan lage."
+  },
+  {
+   "q": "Hvor lenge lagres teksten min?",
+   "a": "Du bestemmer: 10 minutter, 1 time, 1 dag eller 7 dager. Deretter slettes teksten permanent. Med «Slett etter første visning» fjernes den så snart den åpnes."
+  },
+  {
+   "q": "Er det trygt å dele private opplysninger?",
+   "a": "Alle med den 6-sifrede koden kan åpne en tekst, så ikke del passord eller bankopplysninger uten beskyttelse. Hvis du angir et passord, krypteres teksten i nettleseren din, og ingen – heller ikke vi – kan lese den uten passordet."
+  },
+  {
+   "q": "Må jeg installere en app?",
+   "a": "Nei. WebClipboard fungerer i alle nettlesere. Du kan også legge det til på startskjermen for tilgang med ett trykk."
+  },
+  {
+   "q": "Hvor mye tekst kan jeg lagre?",
+   "a": "Opptil {max} tegn per tekst – nok til lange dokumenter, kode eller lister."
+  },
+  {
+   "q": "Jeg har mistet koden min. Kan jeg få tilbake teksten?",
+   "a": "Nei. Vi har verken kontoer eller logger som knytter en tekst til deg, så en mistet kode kan ikke gjenopprettes. Lag bare en ny tekst."
+  }
+ ],
+ "adLabel": "Annonse",
+ "language": "Språk",
+ "footerAbout": "Om oss",
+ "footerPrivacy": "Personvernerklæring",
+ "footerTerms": "Bruksvilkår",
+ "footerContact": "Kontakt",
+ "footerCookies": "Personverninnstillinger",
+ "rights": "Alle rettigheter forbeholdt.",
+ "share": "Del",
+ "shareTitle": "Del dette verktøyet",
+ "shareText": "Gratis online utklippstavle: kopier tekst på én enhet og lim den inn på en annen med en 6-sifret kode. Uten registrering.",
+ "shareNudge": "Nyttig? Del den med en venn.",
+ "shareCopy": "Kopier lenke",
+ "shareCopied": "Lenke kopiert!",
+ "shareEmail": "E-post",
+ "shareSms": "SMS",
+ "shareClose": "Lukk"
 }

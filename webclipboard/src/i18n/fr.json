@@ -1,46 +1,127 @@
 {
-"metaTitle":"Presse-papiers en ligne – Copiez et collez du texte entre appareils gratuitement",
-"metaDescription":"Presse-papiers en ligne gratuit : collez votre texte, obtenez un code à 6 chiffres et ouvrez-le sur n'importe quel téléphone ou ordinateur. Sans inscription, expiration automatique, autodestruction et chiffrement en option.",
-"h1":"Presse-papiers en ligne",
-"tagline":"Copiez du texte sur un appareil et collez-le sur un autre, sans appli ni compte.",
-"sendTitle":"Envoyer du texte","receiveTitle":"Recevoir du texte",
-"placeholder":"Saisissez ou collez votre texte ici…","characters":"caractères",
-"expiryLabel":"Supprimer après","exp10m":"10 minutes","exp1h":"1 heure","exp1d":"1 jour","exp7d":"7 jours",
-"burnLabel":"Supprimer après la première lecture","passwordLabel":"Mot de passe (facultatif)",
-"passwordHint":"Le texte est chiffré dans votre navigateur. Nous ne pouvons jamais le lire.",
-"sendBtn":"Enregistrer dans le presse-papiers","saving":"Enregistrement…","yourCode":"Votre code de presse-papiers",
-"codeHint":"Saisissez ce code sur l'autre appareil, ouvrez le lien ou scannez le QR code.",
-"shareLink":"Lien de partage","copy":"Copier","copied":"Copié !","expiresAt":"Expire le","newClip":"Créer un autre texte",
-"codeLabel":"Saisissez le code à 6 chiffres","receiveBtn":"Obtenir le texte","loading":"Chargement…","download":"Télécharger .txt",
-"passwordPrompt":"Ce texte est protégé par un mot de passe. Saisissez-le pour le déchiffrer.","unlock":"Déverrouiller",
-"wrongPassword":"Mot de passe incorrect. Veuillez réessayer.",
-"burnedNotice":"Ce texte a maintenant été supprimé de nos serveurs. Copiez-le avant de fermer la page.",
-"report":"Signaler un abus","reported":"Merci. Le signalement a été envoyé.",
-"errEmpty":"Veuillez d'abord saisir du texte.","errTooLong":"Le texte est trop long (maximum {max} caractères).",
-"errNotFound":"Aucun texte trouvé pour ce code. Il a peut-être expiré ou été supprimé.",
-"errCode":"Veuillez saisir un code valide à 6 chiffres.","errRate":"Trop de requêtes. Patientez une minute puis réessayez.",
-"errGeneric":"Une erreur s'est produite. Veuillez réessayer.",
-"safetyNote":"Toute personne ayant le code peut lire le texte. Utilisez un mot de passe pour tout contenu privé.",
-"featuresTitle":"Pourquoi utiliser WebClipboard ?",
-"features":[
-{"t":"Sans inscription","d":"Collez, enregistrez et partagez instantanément. Aucun compte, e-mail ni application requis."},
-{"t":"Fonctionne sur tous les appareils","d":"Windows, Mac, Linux, Android, iPhone et iPad : tout navigateur récent convient."},
-{"t":"Expiration automatique","d":"Choisissez 10 minutes, 1 heure, 1 jour ou 7 jours. Le texte expiré est définitivement supprimé."},
-{"t":"Autodestruction après lecture","d":"Supprimez le texte dès sa première ouverture."},
-{"t":"Chiffrement de bout en bout","d":"Ajoutez un mot de passe et votre texte est chiffré en AES-256 avant de quitter votre navigateur."},
-{"t":"QR code et lien court","d":"Scannez le QR code avec l'appareil photo de votre téléphone ou partagez un lien court dans n'importe quelle messagerie."}],
-"howTitle":"Comment copier-coller entre appareils",
-"steps":["Saisissez ou collez votre texte dans le champ et choisissez sa durée de conservation.","Cliquez sur « Enregistrer dans le presse-papiers » pour obtenir un code à 6 chiffres, un lien court et un QR code.","Sur votre autre appareil, ouvrez ce site et saisissez le code, ou scannez simplement le QR code.","Copiez le texte ou téléchargez-le en fichier .txt. Il disparaît automatiquement à son expiration."],
-"aboutTitle":"Qu'est-ce qu'un presse-papiers en ligne ?",
-"aboutText":["Le presse-papiers est la mémoire temporaire qu'utilise votre ordinateur ou téléphone lors d'un copier-coller, et il ne fonctionne que sur un seul appareil. Un presse-papiers en ligne remplit la même fonction via internet : vous copiez du texte sur votre ordinateur portable et le collez sur votre téléphone, un ordinateur de bureau, la tablette d'un ami ou une télé connectée.","WebClipboard est idéal pour transférer des liens, notes, adresses, extraits de code ou identifiants Wi-Fi sans vous envoyer d'e-mail ni installer d'application. Il est rapide, gratuit et disponible dans toutes les langues."],
-"faqTitle":"Questions fréquentes",
-"faq":[
-{"q":"WebClipboard est-il gratuit ?","a":"Oui. WebClipboard est entièrement gratuit et financé par la publicité. Le nombre de textes que vous pouvez créer n'est pas limité."},
-{"q":"Combien de temps mon texte est-il conservé ?","a":"Vous décidez : 10 minutes, 1 heure, 1 jour ou 7 jours. Ensuite, le texte est définitivement supprimé. Avec « Supprimer après la première lecture », il disparaît dès qu'il est ouvert."},
-{"q":"Peut-on partager des informations privées en toute sécurité ?","a":"Toute personne disposant du code à 6 chiffres peut ouvrir un texte : ne partagez donc pas de mots de passe ou de données bancaires sans protection. Si vous définissez un mot de passe, le texte est chiffré dans votre navigateur et personne, pas même nous, ne peut le lire sans lui."},
-{"q":"Dois-je installer une application ?","a":"Non. WebClipboard fonctionne dans n'importe quel navigateur. Vous pouvez aussi l'ajouter à votre écran d'accueil pour un accès en un geste."},
-{"q":"Quelle quantité de texte puis-je enregistrer ?","a":"Jusqu'à {max} caractères par texte, de quoi stocker de longs documents, du code ou des listes."},
-{"q":"J'ai perdu mon code. Puis-je récupérer mon texte ?","a":"Non. Nous n'avons ni comptes ni journaux permettant de relier un texte à vous : un code perdu ne peut donc pas être récupéré. Créez simplement un nouveau texte."}],
-"adLabel":"Publicité","language":"Langue",
-"footerAbout":"À propos","footerPrivacy":"Politique de confidentialité","footerTerms":"Conditions d'utilisation","footerContact":"Contact","footerCookies":"Paramètres de confidentialité","rights":"Tous droits réservés."
+ "metaTitle": "Presse-papiers en ligne – Copiez et collez du texte entre appareils gratuitement",
+ "metaDescription": "Presse-papiers en ligne gratuit : collez votre texte, obtenez un code à 6 chiffres et ouvrez-le sur n'importe quel téléphone ou ordinateur. Sans inscription, expiration automatique, autodestruction et chiffrement en option.",
+ "h1": "Presse-papiers en ligne",
+ "tagline": "Copiez du texte sur un appareil et collez-le sur un autre, sans appli ni compte.",
+ "sendTitle": "Envoyer du texte",
+ "receiveTitle": "Recevoir du texte",
+ "placeholder": "Saisissez ou collez votre texte ici…",
+ "characters": "caractères",
+ "expiryLabel": "Supprimer après",
+ "exp10m": "10 minutes",
+ "exp1h": "1 heure",
+ "exp1d": "1 jour",
+ "exp7d": "7 jours",
+ "burnLabel": "Supprimer après la première lecture",
+ "passwordLabel": "Mot de passe (facultatif)",
+ "passwordHint": "Le texte est chiffré dans votre navigateur. Nous ne pouvons jamais le lire.",
+ "sendBtn": "Enregistrer dans le presse-papiers",
+ "saving": "Enregistrement…",
+ "yourCode": "Votre code de presse-papiers",
+ "codeHint": "Saisissez ce code sur l'autre appareil, ouvrez le lien ou scannez le QR code.",
+ "shareLink": "Lien de partage",
+ "copy": "Copier",
+ "copied": "Copié !",
+ "expiresAt": "Expire le",
+ "newClip": "Créer un autre texte",
+ "codeLabel": "Saisissez le code à 6 chiffres",
+ "receiveBtn": "Obtenir le texte",
+ "loading": "Chargement…",
+ "download": "Télécharger .txt",
+ "passwordPrompt": "Ce texte est protégé par un mot de passe. Saisissez-le pour le déchiffrer.",
+ "unlock": "Déverrouiller",
+ "wrongPassword": "Mot de passe incorrect. Veuillez réessayer.",
+ "burnedNotice": "Ce texte a maintenant été supprimé de nos serveurs. Copiez-le avant de fermer la page.",
+ "report": "Signaler un abus",
+ "reported": "Merci. Le signalement a été envoyé.",
+ "errEmpty": "Veuillez d'abord saisir du texte.",
+ "errTooLong": "Le texte est trop long (maximum {max} caractères).",
+ "errNotFound": "Aucun texte trouvé pour ce code. Il a peut-être expiré ou été supprimé.",
+ "errCode": "Veuillez saisir un code valide à 6 chiffres.",
+ "errRate": "Trop de requêtes. Patientez une minute puis réessayez.",
+ "errGeneric": "Une erreur s'est produite. Veuillez réessayer.",
+ "safetyNote": "Toute personne ayant le code peut lire le texte. Utilisez un mot de passe pour tout contenu privé.",
+ "featuresTitle": "Pourquoi utiliser WebClipboard ?",
+ "features": [
+  {
+   "t": "Sans inscription",
+   "d": "Collez, enregistrez et partagez instantanément. Aucun compte, e-mail ni application requis."
+  },
+  {
+   "t": "Fonctionne sur tous les appareils",
+   "d": "Windows, Mac, Linux, Android, iPhone et iPad : tout navigateur récent convient."
+  },
+  {
+   "t": "Expiration automatique",
+   "d": "Choisissez 10 minutes, 1 heure, 1 jour ou 7 jours. Le texte expiré est définitivement supprimé."
+  },
+  {
+   "t": "Autodestruction après lecture",
+   "d": "Supprimez le texte dès sa première ouverture."
+  },
+  {
+   "t": "Chiffrement de bout en bout",
+   "d": "Ajoutez un mot de passe et votre texte est chiffré en AES-256 avant de quitter votre navigateur."
+  },
+  {
+   "t": "QR code et lien court",
+   "d": "Scannez le QR code avec l'appareil photo de votre téléphone ou partagez un lien court dans n'importe quelle messagerie."
+  }
+ ],
+ "howTitle": "Comment copier-coller entre appareils",
+ "steps": [
+  "Saisissez ou collez votre texte dans le champ et choisissez sa durée de conservation.",
+  "Cliquez sur « Enregistrer dans le presse-papiers » pour obtenir un code à 6 chiffres, un lien court et un QR code.",
+  "Sur votre autre appareil, ouvrez ce site et saisissez le code, ou scannez simplement le QR code.",
+  "Copiez le texte ou téléchargez-le en fichier .txt. Il disparaît automatiquement à son expiration."
+ ],
+ "aboutTitle": "Qu'est-ce qu'un presse-papiers en ligne ?",
+ "aboutText": [
+  "Le presse-papiers est la mémoire temporaire qu'utilise votre ordinateur ou téléphone lors d'un copier-coller, et il ne fonctionne que sur un seul appareil. Un presse-papiers en ligne remplit la même fonction via internet : vous copiez du texte sur votre ordinateur portable et le collez sur votre téléphone, un ordinateur de bureau, la tablette d'un ami ou une télé connectée.",
+  "WebClipboard est idéal pour transférer des liens, notes, adresses, extraits de code ou identifiants Wi-Fi sans vous envoyer d'e-mail ni installer d'application. Il est rapide, gratuit et disponible dans toutes les langues."
+ ],
+ "faqTitle": "Questions fréquentes",
+ "faq": [
+  {
+   "q": "WebClipboard est-il gratuit ?",
+   "a": "Oui. WebClipboard est entièrement gratuit et financé par la publicité. Le nombre de textes que vous pouvez créer n'est pas limité."
+  },
+  {
+   "q": "Combien de temps mon texte est-il conservé ?",
+   "a": "Vous décidez : 10 minutes, 1 heure, 1 jour ou 7 jours. Ensuite, le texte est définitivement supprimé. Avec « Supprimer après la première lecture », il disparaît dès qu'il est ouvert."
+  },
+  {
+   "q": "Peut-on partager des informations privées en toute sécurité ?",
+   "a": "Toute personne disposant du code à 6 chiffres peut ouvrir un texte : ne partagez donc pas de mots de passe ou de données bancaires sans protection. Si vous définissez un mot de passe, le texte est chiffré dans votre navigateur et personne, pas même nous, ne peut le lire sans lui."
+  },
+  {
+   "q": "Dois-je installer une application ?",
+   "a": "Non. WebClipboard fonctionne dans n'importe quel navigateur. Vous pouvez aussi l'ajouter à votre écran d'accueil pour un accès en un geste."
+  },
+  {
+   "q": "Quelle quantité de texte puis-je enregistrer ?",
+   "a": "Jusqu'à {max} caractères par texte, de quoi stocker de longs documents, du code ou des listes."
+  },
+  {
+   "q": "J'ai perdu mon code. Puis-je récupérer mon texte ?",
+   "a": "Non. Nous n'avons ni comptes ni journaux permettant de relier un texte à vous : un code perdu ne peut donc pas être récupéré. Créez simplement un nouveau texte."
+  }
+ ],
+ "adLabel": "Publicité",
+ "language": "Langue",
+ "footerAbout": "À propos",
+ "footerPrivacy": "Politique de confidentialité",
+ "footerTerms": "Conditions d'utilisation",
+ "footerContact": "Contact",
+ "footerCookies": "Paramètres de confidentialité",
+ "rights": "Tous droits réservés.",
+ "share": "Partager",
+ "shareTitle": "Partager cet outil",
+ "shareText": "Presse-papiers en ligne gratuit : copiez du texte sur un appareil et collez-le sur un autre avec un code à 6 chiffres. Sans inscription.",
+ "shareNudge": "Utile ? Partagez-le avec un ami.",
+ "shareCopy": "Copier le lien",
+ "shareCopied": "Lien copié !",
+ "shareEmail": "E-mail",
+ "shareSms": "SMS",
+ "shareClose": "Fermer"
 }

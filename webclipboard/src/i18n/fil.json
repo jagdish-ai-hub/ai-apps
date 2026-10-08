@@ -1,46 +1,127 @@
 {
-"metaTitle":"Online Clipboard – Mag-copy at Mag-paste ng Teksto sa Pagitan ng mga Device Nang Libre",
-"metaDescription":"Libreng online clipboard: i-paste ang teksto, kumuha ng 6-digit na code, at buksan ito sa anumang telepono o computer. Walang sign-up, awtomatikong nag-e-expire, nabubura pagkatapos mabasa, at opsyonal na encryption.",
-"h1":"Online Clipboard",
-"tagline":"Mag-copy ng teksto sa isang device at i-paste sa iba – walang app, walang account.",
-"sendTitle":"Magpadala ng teksto","receiveTitle":"Tumanggap ng teksto",
-"placeholder":"I-type o i-paste ang iyong teksto rito…","characters":"character",
-"expiryLabel":"Burahin pagkalipas ng","exp10m":"10 minuto","exp1h":"1 oras","exp1d":"1 araw","exp7d":"7 araw",
-"burnLabel":"Burahin pagkatapos ng unang pagtingin","passwordLabel":"Password (opsyonal)",
-"passwordHint":"Ine-encrypt ang teksto sa iyong browser. Hindi namin ito mababasa kailanman.",
-"sendBtn":"I-save sa clipboard","saving":"Sine-save…","yourCode":"Ang iyong clipboard code",
-"codeHint":"Ilagay ang code na ito sa kabilang device, buksan ang link, o i-scan ang QR code.",
-"shareLink":"Link na ibabahagi","copy":"Kopyahin","copied":"Nakopya na!","expiresAt":"Mag-e-expire","newClip":"Gumawa ng isa pang teksto",
-"codeLabel":"Ilagay ang 6-digit na code","receiveBtn":"Kunin ang teksto","loading":"Naglo-load…","download":"I-download ang .txt",
-"passwordPrompt":"Naka-password ang tekstong ito. Ilagay ang password para ma-decrypt ito.","unlock":"I-unlock",
-"wrongPassword":"Maling password. Pakisubukang muli.",
-"burnedNotice":"Nabura na ang tekstong ito sa aming mga server. Kopyahin ito bago isara ang pahina.",
-"report":"Mag-ulat ng pang-aabuso","reported":"Salamat. Naipadala na ang ulat.",
-"errEmpty":"Mag-type muna ng teksto.","errTooLong":"Masyadong mahaba ang teksto (hanggang {max} character lamang).",
-"errNotFound":"Walang nakitang teksto para sa code na ito. Maaaring nag-expire na ito o nabura.",
-"errCode":"Maglagay ng wastong 6-digit na code.","errRate":"Masyadong maraming request. Maghintay ng isang minuto at subukang muli.",
-"errGeneric":"May nangyaring mali. Pakisubukang muli.",
-"safetyNote":"Mababasa ng sinumang may code ang teksto. Gumamit ng password para sa mga pribadong bagay.",
-"featuresTitle":"Bakit WebClipboard?",
-"features":[
-{"t":"Walang sign-up","d":"I-paste, i-save, at ibahagi agad. Hindi kailangan ng account, email, o app."},
-{"t":"Gumagana sa lahat ng device","d":"Windows, Mac, Linux, Android, iPhone, at iPad – sapat na ang anumang modernong browser."},
-{"t":"Awtomatikong pag-expire","d":"Pumili ng 10 minuto, 1 oras, 1 araw, o 7 araw. Permanenteng binubura ang teksto kapag nag-expire."},
-{"t":"Burahin pagkatapos mabasa","d":"Opsyonal na burahin ang teksto sa sandaling unang mabuksan ito."},
-{"t":"End-to-end encryption","d":"Maglagay ng password at ie-encrypt ang teksto gamit ang AES-256 bago pa ito lumabas sa iyong browser."},
-{"t":"QR code at maikling link","d":"I-scan ang QR code gamit ang camera ng telepono o magbahagi ng maikling link sa anumang chat app."}],
-"howTitle":"Paano mag-copy at mag-paste sa pagitan ng mga device",
-"steps":["I-type o i-paste ang iyong teksto sa kahon at piliin kung gaano katagal itong itatago.","I-click ang “I-save sa clipboard” para makakuha ng 6-digit na code, maikling link, at QR code.","Sa iyong kabilang device, buksan ang website na ito at ilagay ang code – o i-scan na lang ang QR code.","Kopyahin ang teksto o i-download bilang .txt file. Kusa itong mawawala kapag nag-expire."],
-"aboutTitle":"Ano ang online clipboard?",
-"aboutText":["Ang clipboard ay ang pansamantalang memorya na ginagamit ng iyong computer o telepono kapag nagko-copy at nagpe-paste, at gumagana lang ito sa iisang device. Ginagawa rin ito ng online clipboard sa pamamagitan ng internet: magko-copy ka ng teksto sa laptop at ipe-paste mo sa telepono, computer sa trabaho, tablet ng kaibigan, o smart TV.","Perpekto ang WebClipboard sa paglilipat ng mga link, tala, address, code snippet, o impormasyon ng Wi-Fi nang hindi nag-eemail sa sarili o nag-i-install ng kahit ano. Mabilis, libre, at gumagana sa anumang wika."],
-"faqTitle":"Mga madalas itanong",
-"faq":[
-{"q":"Libre ba ang WebClipboard?","a":"Oo. Ganap na libre ang WebClipboard at sinusuportahan ng mga ad. Walang limitasyon sa dami ng tekstong maaari mong gawin."},
-{"q":"Gaano katagal itatago ang aking teksto?","a":"Ikaw ang magpapasya: 10 minuto, 1 oras, 1 araw, o 7 araw. Pagkatapos nito, permanente na itong mabubura. Sa “Burahin pagkatapos ng unang pagtingin,” maaalis ito sa sandaling mabuksan."},
-{"q":"Ligtas ba ang pagbabahagi ng pribadong impormasyon?","a":"Mabubuksan ng sinumang may 6-digit na code ang teksto, kaya huwag magbahagi ng mga password o detalye ng bangko nang walang proteksyon. Kung magtatakda ka ng password, ie-encrypt ang teksto sa iyong browser at walang makakabasa nito kung wala ang password – kahit kami."},
-{"q":"Kailangan ko bang mag-install ng app?","a":"Hindi. Gumagana ang WebClipboard sa anumang web browser. Maaari mo rin itong idagdag sa home screen para mabuksan sa isang tap."},
-{"q":"Gaano karaming teksto ang puwede kong i-save?","a":"Hanggang {max} character bawat teksto – sapat para sa mahahabang dokumento, code, o listahan."},
-{"q":"Nawala ko ang aking code. Mababawi ko ba ang teksto?","a":"Hindi. Wala kaming account o log na nag-uugnay sa teksto sa iyo, kaya hindi na mababawi ang nawalang code. Gumawa na lang ng bagong teksto."}],
-"adLabel":"Patalastas","language":"Wika",
-"footerAbout":"Tungkol sa amin","footerPrivacy":"Patakaran sa Privacy","footerTerms":"Mga Tuntunin ng Paggamit","footerContact":"Makipag-ugnayan","footerCookies":"Mga setting ng privacy","rights":"Lahat ng karapatan ay nakalaan."
+ "metaTitle": "Online Clipboard – Mag-copy at Mag-paste ng Teksto sa Pagitan ng mga Device Nang Libre",
+ "metaDescription": "Libreng online clipboard: i-paste ang teksto, kumuha ng 6-digit na code, at buksan ito sa anumang telepono o computer. Walang sign-up, awtomatikong nag-e-expire, nabubura pagkatapos mabasa, at opsyonal na encryption.",
+ "h1": "Online Clipboard",
+ "tagline": "Mag-copy ng teksto sa isang device at i-paste sa iba – walang app, walang account.",
+ "sendTitle": "Magpadala ng teksto",
+ "receiveTitle": "Tumanggap ng teksto",
+ "placeholder": "I-type o i-paste ang iyong teksto rito…",
+ "characters": "character",
+ "expiryLabel": "Burahin pagkalipas ng",
+ "exp10m": "10 minuto",
+ "exp1h": "1 oras",
+ "exp1d": "1 araw",
+ "exp7d": "7 araw",
+ "burnLabel": "Burahin pagkatapos ng unang pagtingin",
+ "passwordLabel": "Password (opsyonal)",
+ "passwordHint": "Ine-encrypt ang teksto sa iyong browser. Hindi namin ito mababasa kailanman.",
+ "sendBtn": "I-save sa clipboard",
+ "saving": "Sine-save…",
+ "yourCode": "Ang iyong clipboard code",
+ "codeHint": "Ilagay ang code na ito sa kabilang device, buksan ang link, o i-scan ang QR code.",
+ "shareLink": "Link na ibabahagi",
+ "copy": "Kopyahin",
+ "copied": "Nakopya na!",
+ "expiresAt": "Mag-e-expire",
+ "newClip": "Gumawa ng isa pang teksto",
+ "codeLabel": "Ilagay ang 6-digit na code",
+ "receiveBtn": "Kunin ang teksto",
+ "loading": "Naglo-load…",
+ "download": "I-download ang .txt",
+ "passwordPrompt": "Naka-password ang tekstong ito. Ilagay ang password para ma-decrypt ito.",
+ "unlock": "I-unlock",
+ "wrongPassword": "Maling password. Pakisubukang muli.",
+ "burnedNotice": "Nabura na ang tekstong ito sa aming mga server. Kopyahin ito bago isara ang pahina.",
+ "report": "Mag-ulat ng pang-aabuso",
+ "reported": "Salamat. Naipadala na ang ulat.",
+ "errEmpty": "Mag-type muna ng teksto.",
+ "errTooLong": "Masyadong mahaba ang teksto (hanggang {max} character lamang).",
+ "errNotFound": "Walang nakitang teksto para sa code na ito. Maaaring nag-expire na ito o nabura.",
+ "errCode": "Maglagay ng wastong 6-digit na code.",
+ "errRate": "Masyadong maraming request. Maghintay ng isang minuto at subukang muli.",
+ "errGeneric": "May nangyaring mali. Pakisubukang muli.",
+ "safetyNote": "Mababasa ng sinumang may code ang teksto. Gumamit ng password para sa mga pribadong bagay.",
+ "featuresTitle": "Bakit WebClipboard?",
+ "features": [
+  {
+   "t": "Walang sign-up",
+   "d": "I-paste, i-save, at ibahagi agad. Hindi kailangan ng account, email, o app."
+  },
+  {
+   "t": "Gumagana sa lahat ng device",
+   "d": "Windows, Mac, Linux, Android, iPhone, at iPad – sapat na ang anumang modernong browser."
+  },
+  {
+   "t": "Awtomatikong pag-expire",
+   "d": "Pumili ng 10 minuto, 1 oras, 1 araw, o 7 araw. Permanenteng binubura ang teksto kapag nag-expire."
+  },
+  {
+   "t": "Burahin pagkatapos mabasa",
+   "d": "Opsyonal na burahin ang teksto sa sandaling unang mabuksan ito."
+  },
+  {
+   "t": "End-to-end encryption",
+   "d": "Maglagay ng password at ie-encrypt ang teksto gamit ang AES-256 bago pa ito lumabas sa iyong browser."
+  },
+  {
+   "t": "QR code at maikling link",
+   "d": "I-scan ang QR code gamit ang camera ng telepono o magbahagi ng maikling link sa anumang chat app."
+  }
+ ],
+ "howTitle": "Paano mag-copy at mag-paste sa pagitan ng mga device",
+ "steps": [
+  "I-type o i-paste ang iyong teksto sa kahon at piliin kung gaano katagal itong itatago.",
+  "I-click ang “I-save sa clipboard” para makakuha ng 6-digit na code, maikling link, at QR code.",
+  "Sa iyong kabilang device, buksan ang website na ito at ilagay ang code – o i-scan na lang ang QR code.",
+  "Kopyahin ang teksto o i-download bilang .txt file. Kusa itong mawawala kapag nag-expire."
+ ],
+ "aboutTitle": "Ano ang online clipboard?",
+ "aboutText": [
+  "Ang clipboard ay ang pansamantalang memorya na ginagamit ng iyong computer o telepono kapag nagko-copy at nagpe-paste, at gumagana lang ito sa iisang device. Ginagawa rin ito ng online clipboard sa pamamagitan ng internet: magko-copy ka ng teksto sa laptop at ipe-paste mo sa telepono, computer sa trabaho, tablet ng kaibigan, o smart TV.",
+  "Perpekto ang WebClipboard sa paglilipat ng mga link, tala, address, code snippet, o impormasyon ng Wi-Fi nang hindi nag-eemail sa sarili o nag-i-install ng kahit ano. Mabilis, libre, at gumagana sa anumang wika."
+ ],
+ "faqTitle": "Mga madalas itanong",
+ "faq": [
+  {
+   "q": "Libre ba ang WebClipboard?",
+   "a": "Oo. Ganap na libre ang WebClipboard at sinusuportahan ng mga ad. Walang limitasyon sa dami ng tekstong maaari mong gawin."
+  },
+  {
+   "q": "Gaano katagal itatago ang aking teksto?",
+   "a": "Ikaw ang magpapasya: 10 minuto, 1 oras, 1 araw, o 7 araw. Pagkatapos nito, permanente na itong mabubura. Sa “Burahin pagkatapos ng unang pagtingin,” maaalis ito sa sandaling mabuksan."
+  },
+  {
+   "q": "Ligtas ba ang pagbabahagi ng pribadong impormasyon?",
+   "a": "Mabubuksan ng sinumang may 6-digit na code ang teksto, kaya huwag magbahagi ng mga password o detalye ng bangko nang walang proteksyon. Kung magtatakda ka ng password, ie-encrypt ang teksto sa iyong browser at walang makakabasa nito kung wala ang password – kahit kami."
+  },
+  {
+   "q": "Kailangan ko bang mag-install ng app?",
+   "a": "Hindi. Gumagana ang WebClipboard sa anumang web browser. Maaari mo rin itong idagdag sa home screen para mabuksan sa isang tap."
+  },
+  {
+   "q": "Gaano karaming teksto ang puwede kong i-save?",
+   "a": "Hanggang {max} character bawat teksto – sapat para sa mahahabang dokumento, code, o listahan."
+  },
+  {
+   "q": "Nawala ko ang aking code. Mababawi ko ba ang teksto?",
+   "a": "Hindi. Wala kaming account o log na nag-uugnay sa teksto sa iyo, kaya hindi na mababawi ang nawalang code. Gumawa na lang ng bagong teksto."
+  }
+ ],
+ "adLabel": "Patalastas",
+ "language": "Wika",
+ "footerAbout": "Tungkol sa amin",
+ "footerPrivacy": "Patakaran sa Privacy",
+ "footerTerms": "Mga Tuntunin ng Paggamit",
+ "footerContact": "Makipag-ugnayan",
+ "footerCookies": "Mga setting ng privacy",
+ "rights": "Lahat ng karapatan ay nakalaan.",
+ "share": "Ibahagi",
+ "shareTitle": "Ibahagi ang tool na ito",
+ "shareText": "Libreng online clipboard: mag-copy ng teksto sa isang device at i-paste sa iba gamit ang 6-digit na code. Walang sign-up.",
+ "shareNudge": "Nakatulong ba? Ibahagi sa kaibigan.",
+ "shareCopy": "Kopyahin ang link",
+ "shareCopied": "Nakopya na ang link!",
+ "shareEmail": "Email",
+ "shareSms": "SMS",
+ "shareClose": "Isara"
 }

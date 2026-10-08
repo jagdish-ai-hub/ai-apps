@@ -254,6 +254,28 @@ ol.steps li::before { content: counter(s, decimal-leading-zero); font: 600 14px/
 .cta strong { color: var(--fg); display: block; font-size: 18px; margin-bottom: 4px; }
 .cta .btn { text-decoration: none; }
 
+
+/* share */
+.share-fab { position: fixed; right: max(16px, env(safe-area-inset-right)); bottom: max(16px, env(safe-area-inset-bottom)); z-index: 20; display: inline-flex; align-items: center; gap: 8px; height: 44px; padding: 0 16px 0 14px; background: var(--surface); color: var(--fg); border: 1px solid var(--line-strong); border-radius: 99px; box-shadow: var(--shadow); font-size: 14px; font-weight: 500; cursor: pointer; transition: opacity 0.2s, transform 0.2s, border-color 0.15s; }
+.share-fab:hover { border-color: var(--fg); }
+.share-fab svg { width: 18px; height: 18px; flex: none; }
+.share-fab.hide { opacity: 0; transform: translateY(10px); pointer-events: none; }
+.share-dialog { width: min(420px, calc(100vw - 32px)); padding: 18px; background: var(--surface); color: var(--fg); border: 1px solid var(--line-strong); border-radius: 16px; box-shadow: var(--shadow); }
+.share-dialog::backdrop { background: rgba(0, 0, 0, 0.6); }
+.share-head { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 14px; }
+.share-head h2 { margin: 0; font-size: 18px; letter-spacing: -0.01em; }
+.share-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-bottom: 14px; }
+.share-tile { display: grid; place-items: center; min-height: 48px; padding: 8px; background: var(--bg); border: 1px solid var(--line); border-radius: 10px; font-size: 14px; text-align: center; text-decoration: none; }
+.share-tile:hover { border-color: var(--fg); }
+.share-nudge { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 10px; margin: 18px 0 0; padding-top: 14px; border-top: 1px dashed var(--line-strong); font-size: 14px; color: var(--muted); }
+.share-nudge[hidden] { display: none; }
+@media (max-width: 700px) {
+  .share-fab { width: 44px; padding: 0; justify-content: center; }
+  .share-fab span { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+  .share-dialog { margin: auto auto 0; width: 100%; max-width: none; border-radius: 18px 18px 0 0; border-bottom: 0; padding-bottom: max(18px, env(safe-area-inset-bottom)); }
+}
+@media print { .share-fab, .share-dialog { display: none; } }
+
 /* footer */
 .site-footer { margin-top: 72px; border-top: 1px solid var(--line); padding: 32px 0 40px; font-size: 14px; color: var(--muted); }
 .langs { display: flex; flex-wrap: wrap; gap: 4px 14px; margin: 0 0 22px; padding: 0; list-style: none; }

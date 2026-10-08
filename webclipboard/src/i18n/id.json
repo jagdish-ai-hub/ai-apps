@@ -1,46 +1,127 @@
 {
-"metaTitle":"Clipboard Online – Salin dan Tempel Teks Antar Perangkat Gratis",
-"metaDescription":"Clipboard online gratis: tempel teks, dapatkan kode 6 digit, lalu buka di ponsel atau komputer mana pun. Tanpa daftar, kedaluwarsa otomatis, hapus setelah dibaca, dan enkripsi opsional.",
-"h1":"Clipboard Online",
-"tagline":"Salin teks di satu perangkat dan tempel di perangkat lain – tanpa aplikasi, tanpa akun.",
-"sendTitle":"Kirim teks","receiveTitle":"Terima teks",
-"placeholder":"Ketik atau tempel teks Anda di sini…","characters":"karakter",
-"expiryLabel":"Hapus setelah","exp10m":"10 menit","exp1h":"1 jam","exp1d":"1 hari","exp7d":"7 hari",
-"burnLabel":"Hapus setelah dilihat pertama kali","passwordLabel":"Kata sandi (opsional)",
-"passwordHint":"Teks dienkripsi di browser Anda. Kami tidak pernah bisa membacanya.",
-"sendBtn":"Simpan ke clipboard","saving":"Menyimpan…","yourCode":"Kode clipboard Anda",
-"codeHint":"Masukkan kode ini di perangkat lain, buka tautan, atau pindai kode QR.",
-"shareLink":"Tautan berbagi","copy":"Salin","copied":"Tersalin!","expiresAt":"Kedaluwarsa","newClip":"Buat teks lain",
-"codeLabel":"Masukkan kode 6 digit","receiveBtn":"Ambil teks","loading":"Memuat…","download":"Unduh .txt",
-"passwordPrompt":"Teks ini dilindungi kata sandi. Masukkan kata sandi untuk mendekripsinya.","unlock":"Buka kunci",
-"wrongPassword":"Kata sandi salah. Silakan coba lagi.",
-"burnedNotice":"Teks ini sekarang sudah dihapus dari server kami. Salin sebelum menutup halaman.",
-"report":"Laporkan penyalahgunaan","reported":"Terima kasih. Laporan telah dikirim.",
-"errEmpty":"Silakan masukkan teks terlebih dahulu.","errTooLong":"Teks terlalu panjang (maksimal {max} karakter).",
-"errNotFound":"Tidak ada teks untuk kode ini. Mungkin sudah kedaluwarsa atau dihapus.",
-"errCode":"Masukkan kode 6 digit yang valid.","errRate":"Terlalu banyak permintaan. Tunggu semenit lalu coba lagi.",
-"errGeneric":"Terjadi kesalahan. Silakan coba lagi.",
-"safetyNote":"Siapa pun yang memiliki kode dapat membaca teks. Gunakan kata sandi untuk hal yang bersifat pribadi.",
-"featuresTitle":"Mengapa WebClipboard?",
-"features":[
-{"t":"Tanpa pendaftaran","d":"Tempel, simpan, dan bagikan seketika. Tidak perlu akun, email, atau aplikasi."},
-{"t":"Berfungsi di semua perangkat","d":"Windows, Mac, Linux, Android, iPhone, dan iPad – browser modern mana pun bisa dipakai."},
-{"t":"Kedaluwarsa otomatis","d":"Pilih 10 menit, 1 jam, 1 hari, atau 7 hari. Teks yang kedaluwarsa dihapus permanen."},
-{"t":"Hapus setelah dibaca","d":"Opsional: hapus teks begitu dibuka untuk pertama kalinya."},
-{"t":"Enkripsi end-to-end","d":"Tambahkan kata sandi dan teks Anda dienkripsi dengan AES-256 sebelum meninggalkan browser."},
-{"t":"Kode QR dan tautan pendek","d":"Pindai kode QR dengan kamera ponsel atau bagikan tautan pendek di aplikasi chat apa pun."}],
-"howTitle":"Cara menyalin dan menempel antar perangkat",
-"steps":["Ketik atau tempel teks Anda ke kotak, lalu pilih berapa lama teks disimpan.","Klik “Simpan ke clipboard” untuk mendapatkan kode 6 digit, tautan pendek, dan kode QR.","Di perangkat lain, buka situs ini lalu masukkan kode – atau cukup pindai kode QR.","Salin teks atau unduh sebagai file .txt. Teks hilang otomatis saat kedaluwarsa."],
-"aboutTitle":"Apa itu clipboard online?",
-"aboutText":["Clipboard adalah memori sementara yang dipakai komputer atau ponsel saat Anda menyalin dan menempel, dan hanya berfungsi di satu perangkat. Clipboard online melakukan hal yang sama lewat internet: Anda menyalin teks di laptop lalu menempelnya di ponsel, komputer kantor, tablet teman, atau smart TV.","WebClipboard cocok untuk memindahkan tautan, catatan, alamat, potongan kode, atau info Wi-Fi tanpa perlu mengirim email ke diri sendiri atau memasang aplikasi. Cepat, gratis, dan bisa dipakai dalam bahasa apa pun."],
-"faqTitle":"Pertanyaan yang sering diajukan",
-"faq":[
-{"q":"Apakah WebClipboard gratis?","a":"Ya. WebClipboard sepenuhnya gratis dan didukung iklan. Jumlah teks yang bisa Anda buat tidak dibatasi."},
-{"q":"Berapa lama teks saya disimpan?","a":"Anda yang menentukan: 10 menit, 1 jam, 1 hari, atau 7 hari. Setelah itu teks dihapus permanen. Dengan “Hapus setelah dilihat pertama kali”, teks dihapus begitu dibuka."},
-{"q":"Apakah aman membagikan informasi pribadi?","a":"Siapa pun yang memiliki kode 6 digit dapat membuka teks, jadi jangan bagikan kata sandi atau data bank tanpa perlindungan. Jika Anda mengatur kata sandi, teks dienkripsi di browser dan tidak ada yang bisa membacanya tanpa kata sandi tersebut, termasuk kami."},
-{"q":"Apakah saya perlu memasang aplikasi?","a":"Tidak. WebClipboard berjalan di browser apa pun. Anda juga bisa menambahkannya ke layar utama agar terbuka dengan satu ketukan."},
-{"q":"Berapa banyak teks yang bisa saya simpan?","a":"Hingga {max} karakter per teks – cukup untuk dokumen panjang, kode, atau daftar."},
-{"q":"Kode saya hilang. Bisakah teks dipulihkan?","a":"Tidak. Kami tidak memiliki akun atau log yang menghubungkan teks dengan Anda, sehingga kode yang hilang tidak dapat dipulihkan. Cukup buat teks baru."}],
-"adLabel":"Iklan","language":"Bahasa",
-"footerAbout":"Tentang","footerPrivacy":"Kebijakan Privasi","footerTerms":"Ketentuan Penggunaan","footerContact":"Kontak","footerCookies":"Pengaturan privasi","rights":"Hak cipta dilindungi."
+ "metaTitle": "Clipboard Online – Salin dan Tempel Teks Antar Perangkat Gratis",
+ "metaDescription": "Clipboard online gratis: tempel teks, dapatkan kode 6 digit, lalu buka di ponsel atau komputer mana pun. Tanpa daftar, kedaluwarsa otomatis, hapus setelah dibaca, dan enkripsi opsional.",
+ "h1": "Clipboard Online",
+ "tagline": "Salin teks di satu perangkat dan tempel di perangkat lain – tanpa aplikasi, tanpa akun.",
+ "sendTitle": "Kirim teks",
+ "receiveTitle": "Terima teks",
+ "placeholder": "Ketik atau tempel teks Anda di sini…",
+ "characters": "karakter",
+ "expiryLabel": "Hapus setelah",
+ "exp10m": "10 menit",
+ "exp1h": "1 jam",
+ "exp1d": "1 hari",
+ "exp7d": "7 hari",
+ "burnLabel": "Hapus setelah dilihat pertama kali",
+ "passwordLabel": "Kata sandi (opsional)",
+ "passwordHint": "Teks dienkripsi di browser Anda. Kami tidak pernah bisa membacanya.",
+ "sendBtn": "Simpan ke clipboard",
+ "saving": "Menyimpan…",
+ "yourCode": "Kode clipboard Anda",
+ "codeHint": "Masukkan kode ini di perangkat lain, buka tautan, atau pindai kode QR.",
+ "shareLink": "Tautan berbagi",
+ "copy": "Salin",
+ "copied": "Tersalin!",
+ "expiresAt": "Kedaluwarsa",
+ "newClip": "Buat teks lain",
+ "codeLabel": "Masukkan kode 6 digit",
+ "receiveBtn": "Ambil teks",
+ "loading": "Memuat…",
+ "download": "Unduh .txt",
+ "passwordPrompt": "Teks ini dilindungi kata sandi. Masukkan kata sandi untuk mendekripsinya.",
+ "unlock": "Buka kunci",
+ "wrongPassword": "Kata sandi salah. Silakan coba lagi.",
+ "burnedNotice": "Teks ini sekarang sudah dihapus dari server kami. Salin sebelum menutup halaman.",
+ "report": "Laporkan penyalahgunaan",
+ "reported": "Terima kasih. Laporan telah dikirim.",
+ "errEmpty": "Silakan masukkan teks terlebih dahulu.",
+ "errTooLong": "Teks terlalu panjang (maksimal {max} karakter).",
+ "errNotFound": "Tidak ada teks untuk kode ini. Mungkin sudah kedaluwarsa atau dihapus.",
+ "errCode": "Masukkan kode 6 digit yang valid.",
+ "errRate": "Terlalu banyak permintaan. Tunggu semenit lalu coba lagi.",
+ "errGeneric": "Terjadi kesalahan. Silakan coba lagi.",
+ "safetyNote": "Siapa pun yang memiliki kode dapat membaca teks. Gunakan kata sandi untuk hal yang bersifat pribadi.",
+ "featuresTitle": "Mengapa WebClipboard?",
+ "features": [
+  {
+   "t": "Tanpa pendaftaran",
+   "d": "Tempel, simpan, dan bagikan seketika. Tidak perlu akun, email, atau aplikasi."
+  },
+  {
+   "t": "Berfungsi di semua perangkat",
+   "d": "Windows, Mac, Linux, Android, iPhone, dan iPad – browser modern mana pun bisa dipakai."
+  },
+  {
+   "t": "Kedaluwarsa otomatis",
+   "d": "Pilih 10 menit, 1 jam, 1 hari, atau 7 hari. Teks yang kedaluwarsa dihapus permanen."
+  },
+  {
+   "t": "Hapus setelah dibaca",
+   "d": "Opsional: hapus teks begitu dibuka untuk pertama kalinya."
+  },
+  {
+   "t": "Enkripsi end-to-end",
+   "d": "Tambahkan kata sandi dan teks Anda dienkripsi dengan AES-256 sebelum meninggalkan browser."
+  },
+  {
+   "t": "Kode QR dan tautan pendek",
+   "d": "Pindai kode QR dengan kamera ponsel atau bagikan tautan pendek di aplikasi chat apa pun."
+  }
+ ],
+ "howTitle": "Cara menyalin dan menempel antar perangkat",
+ "steps": [
+  "Ketik atau tempel teks Anda ke kotak, lalu pilih berapa lama teks disimpan.",
+  "Klik “Simpan ke clipboard” untuk mendapatkan kode 6 digit, tautan pendek, dan kode QR.",
+  "Di perangkat lain, buka situs ini lalu masukkan kode – atau cukup pindai kode QR.",
+  "Salin teks atau unduh sebagai file .txt. Teks hilang otomatis saat kedaluwarsa."
+ ],
+ "aboutTitle": "Apa itu clipboard online?",
+ "aboutText": [
+  "Clipboard adalah memori sementara yang dipakai komputer atau ponsel saat Anda menyalin dan menempel, dan hanya berfungsi di satu perangkat. Clipboard online melakukan hal yang sama lewat internet: Anda menyalin teks di laptop lalu menempelnya di ponsel, komputer kantor, tablet teman, atau smart TV.",
+  "WebClipboard cocok untuk memindahkan tautan, catatan, alamat, potongan kode, atau info Wi-Fi tanpa perlu mengirim email ke diri sendiri atau memasang aplikasi. Cepat, gratis, dan bisa dipakai dalam bahasa apa pun."
+ ],
+ "faqTitle": "Pertanyaan yang sering diajukan",
+ "faq": [
+  {
+   "q": "Apakah WebClipboard gratis?",
+   "a": "Ya. WebClipboard sepenuhnya gratis dan didukung iklan. Jumlah teks yang bisa Anda buat tidak dibatasi."
+  },
+  {
+   "q": "Berapa lama teks saya disimpan?",
+   "a": "Anda yang menentukan: 10 menit, 1 jam, 1 hari, atau 7 hari. Setelah itu teks dihapus permanen. Dengan “Hapus setelah dilihat pertama kali”, teks dihapus begitu dibuka."
+  },
+  {
+   "q": "Apakah aman membagikan informasi pribadi?",
+   "a": "Siapa pun yang memiliki kode 6 digit dapat membuka teks, jadi jangan bagikan kata sandi atau data bank tanpa perlindungan. Jika Anda mengatur kata sandi, teks dienkripsi di browser dan tidak ada yang bisa membacanya tanpa kata sandi tersebut, termasuk kami."
+  },
+  {
+   "q": "Apakah saya perlu memasang aplikasi?",
+   "a": "Tidak. WebClipboard berjalan di browser apa pun. Anda juga bisa menambahkannya ke layar utama agar terbuka dengan satu ketukan."
+  },
+  {
+   "q": "Berapa banyak teks yang bisa saya simpan?",
+   "a": "Hingga {max} karakter per teks – cukup untuk dokumen panjang, kode, atau daftar."
+  },
+  {
+   "q": "Kode saya hilang. Bisakah teks dipulihkan?",
+   "a": "Tidak. Kami tidak memiliki akun atau log yang menghubungkan teks dengan Anda, sehingga kode yang hilang tidak dapat dipulihkan. Cukup buat teks baru."
+  }
+ ],
+ "adLabel": "Iklan",
+ "language": "Bahasa",
+ "footerAbout": "Tentang",
+ "footerPrivacy": "Kebijakan Privasi",
+ "footerTerms": "Ketentuan Penggunaan",
+ "footerContact": "Kontak",
+ "footerCookies": "Pengaturan privasi",
+ "rights": "Hak cipta dilindungi.",
+ "share": "Bagikan",
+ "shareTitle": "Bagikan alat ini",
+ "shareText": "Clipboard online gratis: salin teks di satu perangkat dan tempel di perangkat lain dengan kode 6 digit. Tanpa daftar.",
+ "shareNudge": "Berguna? Bagikan ke teman.",
+ "shareCopy": "Salin tautan",
+ "shareCopied": "Tautan disalin!",
+ "shareEmail": "Email",
+ "shareSms": "SMS",
+ "shareClose": "Tutup"
 }

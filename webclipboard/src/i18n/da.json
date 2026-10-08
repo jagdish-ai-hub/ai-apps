@@ -1,46 +1,127 @@
 {
-"metaTitle":"Online udklipsholder – kopier og indsæt tekst mellem enheder gratis",
-"metaDescription":"Gratis online udklipsholder: indsæt tekst, få en 6-cifret kode og åbn den på en hvilken som helst telefon eller computer. Uden tilmelding, med automatisk udløb, selvdestruktion og valgfri kryptering.",
-"h1":"Online udklipsholder",
-"tagline":"Kopier tekst på én enhed og indsæt den på en anden – uden app og uden konto.",
-"sendTitle":"Send tekst","receiveTitle":"Modtag tekst",
-"placeholder":"Skriv eller indsæt din tekst her…","characters":"tegn",
-"expiryLabel":"Slet efter","exp10m":"10 minutter","exp1h":"1 time","exp1d":"1 dag","exp7d":"7 dage",
-"burnLabel":"Slet efter første visning","passwordLabel":"Adgangskode (valgfri)",
-"passwordHint":"Teksten krypteres i din browser. Vi kan aldrig læse den.",
-"sendBtn":"Gem i udklipsholder","saving":"Gemmer…","yourCode":"Din udklipskode",
-"codeHint":"Indtast koden på den anden enhed, åbn linket eller scan QR-koden.",
-"shareLink":"Delingslink","copy":"Kopiér","copied":"Kopieret!","expiresAt":"Udløber","newClip":"Opret endnu en tekst",
-"codeLabel":"Indtast den 6-cifrede kode","receiveBtn":"Hent tekst","loading":"Indlæser…","download":"Download .txt",
-"passwordPrompt":"Denne tekst er beskyttet med adgangskode. Indtast den for at dekryptere teksten.","unlock":"Lås op",
-"wrongPassword":"Forkert adgangskode. Prøv igen.",
-"burnedNotice":"Teksten er nu slettet fra vores servere. Kopiér den, før du lukker siden.",
-"report":"Anmeld misbrug","reported":"Tak. Anmeldelsen er sendt.",
-"errEmpty":"Skriv først noget tekst.","errTooLong":"Teksten er for lang (højst {max} tegn).",
-"errNotFound":"Der blev ikke fundet nogen tekst med denne kode. Den kan være udløbet eller slettet.",
-"errCode":"Indtast en gyldig 6-cifret kode.","errRate":"For mange forespørgsler. Vent et minut, og prøv igen.",
-"errGeneric":"Noget gik galt. Prøv igen.",
-"safetyNote":"Alle med koden kan læse teksten. Brug en adgangskode til private oplysninger.",
-"featuresTitle":"Hvorfor bruge WebClipboard?",
-"features":[
-{"t":"Ingen tilmelding","d":"Indsæt, gem og del med det samme. Ingen konto, e-mail eller app nødvendig."},
-{"t":"Virker på alle enheder","d":"Windows, Mac, Linux, Android, iPhone og iPad – enhver moderne browser dur."},
-{"t":"Automatisk udløb","d":"Vælg 10 minutter, 1 time, 1 dag eller 7 dage. Udløbet tekst slettes permanent."},
-{"t":"Slet efter læsning","d":"Slet om ønsket teksten, så snart den åbnes første gang."},
-{"t":"Ende-til-ende-kryptering","d":"Tilføj en adgangskode, og din tekst krypteres med AES-256, før den forlader din browser."},
-{"t":"QR-kode og kort link","d":"Scan QR-koden med telefonens kamera, eller del et kort link i en hvilken som helst chat."}],
-"howTitle":"Sådan kopierer og indsætter du mellem enheder",
-"steps":["Skriv eller indsæt din tekst i feltet, og vælg, hvor længe den skal gemmes.","Klik på “Gem i udklipsholder” for at få en 6-cifret kode, et kort link og en QR-kode.","Åbn dette websted på din anden enhed, og indtast koden – eller scan blot QR-koden.","Kopiér teksten, eller download den som en .txt-fil. Den forsvinder automatisk, når den udløber."],
-"aboutTitle":"Hvad er en online udklipsholder?",
-"aboutText":["Udklipsholderen er den midlertidige hukommelse, din computer eller telefon bruger, når du kopierer og indsætter, og den virker kun på én enhed. En online udklipsholder gør det samme via internettet: du kopierer tekst på din bærbare og indsætter den på telefonen, arbejdscomputeren, en vens tablet eller et smart-tv.","WebClipboard er perfekt til at flytte links, noter, adresser, kodestumper eller wifi-oplysninger uden at maile til dig selv eller installere noget. Det er hurtigt, gratis og virker på alle sprog."],
-"faqTitle":"Ofte stillede spørgsmål",
-"faq":[
-{"q":"Er WebClipboard gratis?","a":"Ja. WebClipboard er helt gratis og finansieres af annoncer. Der er ingen grænse for, hvor mange tekster du kan oprette."},
-{"q":"Hvor længe gemmes min tekst?","a":"Du bestemmer: 10 minutter, 1 time, 1 dag eller 7 dage. Derefter slettes teksten permanent. Med “Slet efter første visning” fjernes den, så snart den åbnes."},
-{"q":"Er det sikkert at dele private oplysninger?","a":"Alle med den 6-cifrede kode kan åbne en tekst, så del ikke adgangskoder eller bankoplysninger uden beskyttelse. Hvis du angiver en adgangskode, krypteres teksten i din browser, og ingen – heller ikke os – kan læse den uden adgangskoden."},
-{"q":"Skal jeg installere en app?","a":"Nej. WebClipboard virker i enhver webbrowser. Du kan også føje det til startskærmen for adgang med ét tryk."},
-{"q":"Hvor meget tekst kan jeg gemme?","a":"Op til {max} tegn pr. tekst – rigeligt til lange dokumenter, kode eller lister."},
-{"q":"Jeg har mistet min kode. Kan jeg få teksten tilbage?","a":"Nej. Vi har hverken konti eller logs, der kobler en tekst til dig, så en mistet kode kan ikke gendannes. Opret blot en ny tekst."}],
-"adLabel":"Annonce","language":"Sprog",
-"footerAbout":"Om os","footerPrivacy":"Privatlivspolitik","footerTerms":"Brugsvilkår","footerContact":"Kontakt","footerCookies":"Privatlivsindstillinger","rights":"Alle rettigheder forbeholdes."
+ "metaTitle": "Online udklipsholder – kopier og indsæt tekst mellem enheder gratis",
+ "metaDescription": "Gratis online udklipsholder: indsæt tekst, få en 6-cifret kode og åbn den på en hvilken som helst telefon eller computer. Uden tilmelding, med automatisk udløb, selvdestruktion og valgfri kryptering.",
+ "h1": "Online udklipsholder",
+ "tagline": "Kopier tekst på én enhed og indsæt den på en anden – uden app og uden konto.",
+ "sendTitle": "Send tekst",
+ "receiveTitle": "Modtag tekst",
+ "placeholder": "Skriv eller indsæt din tekst her…",
+ "characters": "tegn",
+ "expiryLabel": "Slet efter",
+ "exp10m": "10 minutter",
+ "exp1h": "1 time",
+ "exp1d": "1 dag",
+ "exp7d": "7 dage",
+ "burnLabel": "Slet efter første visning",
+ "passwordLabel": "Adgangskode (valgfri)",
+ "passwordHint": "Teksten krypteres i din browser. Vi kan aldrig læse den.",
+ "sendBtn": "Gem i udklipsholder",
+ "saving": "Gemmer…",
+ "yourCode": "Din udklipskode",
+ "codeHint": "Indtast koden på den anden enhed, åbn linket eller scan QR-koden.",
+ "shareLink": "Delingslink",
+ "copy": "Kopiér",
+ "copied": "Kopieret!",
+ "expiresAt": "Udløber",
+ "newClip": "Opret endnu en tekst",
+ "codeLabel": "Indtast den 6-cifrede kode",
+ "receiveBtn": "Hent tekst",
+ "loading": "Indlæser…",
+ "download": "Download .txt",
+ "passwordPrompt": "Denne tekst er beskyttet med adgangskode. Indtast den for at dekryptere teksten.",
+ "unlock": "Lås op",
+ "wrongPassword": "Forkert adgangskode. Prøv igen.",
+ "burnedNotice": "Teksten er nu slettet fra vores servere. Kopiér den, før du lukker siden.",
+ "report": "Anmeld misbrug",
+ "reported": "Tak. Anmeldelsen er sendt.",
+ "errEmpty": "Skriv først noget tekst.",
+ "errTooLong": "Teksten er for lang (højst {max} tegn).",
+ "errNotFound": "Der blev ikke fundet nogen tekst med denne kode. Den kan være udløbet eller slettet.",
+ "errCode": "Indtast en gyldig 6-cifret kode.",
+ "errRate": "For mange forespørgsler. Vent et minut, og prøv igen.",
+ "errGeneric": "Noget gik galt. Prøv igen.",
+ "safetyNote": "Alle med koden kan læse teksten. Brug en adgangskode til private oplysninger.",
+ "featuresTitle": "Hvorfor bruge WebClipboard?",
+ "features": [
+  {
+   "t": "Ingen tilmelding",
+   "d": "Indsæt, gem og del med det samme. Ingen konto, e-mail eller app nødvendig."
+  },
+  {
+   "t": "Virker på alle enheder",
+   "d": "Windows, Mac, Linux, Android, iPhone og iPad – enhver moderne browser dur."
+  },
+  {
+   "t": "Automatisk udløb",
+   "d": "Vælg 10 minutter, 1 time, 1 dag eller 7 dage. Udløbet tekst slettes permanent."
+  },
+  {
+   "t": "Slet efter læsning",
+   "d": "Slet om ønsket teksten, så snart den åbnes første gang."
+  },
+  {
+   "t": "Ende-til-ende-kryptering",
+   "d": "Tilføj en adgangskode, og din tekst krypteres med AES-256, før den forlader din browser."
+  },
+  {
+   "t": "QR-kode og kort link",
+   "d": "Scan QR-koden med telefonens kamera, eller del et kort link i en hvilken som helst chat."
+  }
+ ],
+ "howTitle": "Sådan kopierer og indsætter du mellem enheder",
+ "steps": [
+  "Skriv eller indsæt din tekst i feltet, og vælg, hvor længe den skal gemmes.",
+  "Klik på “Gem i udklipsholder” for at få en 6-cifret kode, et kort link og en QR-kode.",
+  "Åbn dette websted på din anden enhed, og indtast koden – eller scan blot QR-koden.",
+  "Kopiér teksten, eller download den som en .txt-fil. Den forsvinder automatisk, når den udløber."
+ ],
+ "aboutTitle": "Hvad er en online udklipsholder?",
+ "aboutText": [
+  "Udklipsholderen er den midlertidige hukommelse, din computer eller telefon bruger, når du kopierer og indsætter, og den virker kun på én enhed. En online udklipsholder gør det samme via internettet: du kopierer tekst på din bærbare og indsætter den på telefonen, arbejdscomputeren, en vens tablet eller et smart-tv.",
+  "WebClipboard er perfekt til at flytte links, noter, adresser, kodestumper eller wifi-oplysninger uden at maile til dig selv eller installere noget. Det er hurtigt, gratis og virker på alle sprog."
+ ],
+ "faqTitle": "Ofte stillede spørgsmål",
+ "faq": [
+  {
+   "q": "Er WebClipboard gratis?",
+   "a": "Ja. WebClipboard er helt gratis og finansieres af annoncer. Der er ingen grænse for, hvor mange tekster du kan oprette."
+  },
+  {
+   "q": "Hvor længe gemmes min tekst?",
+   "a": "Du bestemmer: 10 minutter, 1 time, 1 dag eller 7 dage. Derefter slettes teksten permanent. Med “Slet efter første visning” fjernes den, så snart den åbnes."
+  },
+  {
+   "q": "Er det sikkert at dele private oplysninger?",
+   "a": "Alle med den 6-cifrede kode kan åbne en tekst, så del ikke adgangskoder eller bankoplysninger uden beskyttelse. Hvis du angiver en adgangskode, krypteres teksten i din browser, og ingen – heller ikke os – kan læse den uden adgangskoden."
+  },
+  {
+   "q": "Skal jeg installere en app?",
+   "a": "Nej. WebClipboard virker i enhver webbrowser. Du kan også føje det til startskærmen for adgang med ét tryk."
+  },
+  {
+   "q": "Hvor meget tekst kan jeg gemme?",
+   "a": "Op til {max} tegn pr. tekst – rigeligt til lange dokumenter, kode eller lister."
+  },
+  {
+   "q": "Jeg har mistet min kode. Kan jeg få teksten tilbage?",
+   "a": "Nej. Vi har hverken konti eller logs, der kobler en tekst til dig, så en mistet kode kan ikke gendannes. Opret blot en ny tekst."
+  }
+ ],
+ "adLabel": "Annonce",
+ "language": "Sprog",
+ "footerAbout": "Om os",
+ "footerPrivacy": "Privatlivspolitik",
+ "footerTerms": "Brugsvilkår",
+ "footerContact": "Kontakt",
+ "footerCookies": "Privatlivsindstillinger",
+ "rights": "Alle rettigheder forbeholdes.",
+ "share": "Del",
+ "shareTitle": "Del dette værktøj",
+ "shareText": "Gratis online udklipsholder: kopier tekst på én enhed og indsæt den på en anden med en 6-cifret kode. Uden tilmelding.",
+ "shareNudge": "Nyttigt? Del det med en ven.",
+ "shareCopy": "Kopiér link",
+ "shareCopied": "Link kopieret!",
+ "shareEmail": "E-mail",
+ "shareSms": "SMS",
+ "shareClose": "Luk"
 }

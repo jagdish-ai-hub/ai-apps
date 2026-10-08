@@ -1,46 +1,127 @@
 {
-"metaTitle":"Online vágólap – szöveg másolása és beillesztése eszközök között ingyen",
-"metaDescription":"Ingyenes online vágólap: illessze be a szöveget, kapjon egy 6 számjegyű kódot, és nyissa meg bármilyen telefonon vagy számítógépen. Regisztráció nélkül, automatikus lejárattal, önmegsemmisítéssel és opcionális titkosítással.",
-"h1":"Online vágólap",
-"tagline":"Másolja a szöveget az egyik eszközön, és illessze be egy másikon – alkalmazás és fiók nélkül.",
-"sendTitle":"Szöveg küldése","receiveTitle":"Szöveg fogadása",
-"placeholder":"Írja vagy illessze be ide a szöveget…","characters":"karakter",
-"expiryLabel":"Törlés ennyi idő után","exp10m":"10 perc","exp1h":"1 óra","exp1d":"1 nap","exp7d":"7 nap",
-"burnLabel":"Törlés az első megtekintés után","passwordLabel":"Jelszó (nem kötelező)",
-"passwordHint":"A szöveget a böngészője titkosítja. Mi soha nem tudjuk elolvasni.",
-"sendBtn":"Mentés a vágólapra","saving":"Mentés…","yourCode":"Az Ön vágólapkódja",
-"codeHint":"Adja meg ezt a kódot a másik eszközön, nyissa meg a hivatkozást, vagy olvassa be a QR-kódot.",
-"shareLink":"Megosztási hivatkozás","copy":"Másolás","copied":"Másolva!","expiresAt":"Lejár","newClip":"Újabb szöveg létrehozása",
-"codeLabel":"Adja meg a 6 számjegyű kódot","receiveBtn":"Szöveg lekérése","loading":"Betöltés…","download":".txt letöltése",
-"passwordPrompt":"Ez a szöveg jelszóval védett. A visszafejtéshez adja meg a jelszót.","unlock":"Feloldás",
-"wrongPassword":"Hibás jelszó. Próbálja újra.",
-"burnedNotice":"Ezt a szöveget most töröltük a szervereinkről. Másolja ki, mielőtt bezárja az oldalt.",
-"report":"Visszaélés bejelentése","reported":"Köszönjük. A bejelentést elküldtük.",
-"errEmpty":"Először írjon be valamilyen szöveget.","errTooLong":"A szöveg túl hosszú (legfeljebb {max} karakter).",
-"errNotFound":"Ehhez a kódhoz nem található szöveg. Lehet, hogy lejárt vagy törölték.",
-"errCode":"Adjon meg egy érvényes, 6 számjegyű kódot.","errRate":"Túl sok kérés. Várjon egy percet, és próbálja újra.",
-"errGeneric":"Valami hiba történt. Próbálja újra.",
-"safetyNote":"A szöveget bárki elolvashatja, aki ismeri a kódot. Privát tartalomhoz használjon jelszót.",
-"featuresTitle":"Miért a WebClipboard?",
-"features":[
-{"t":"Regisztráció nélkül","d":"Illessze be, mentse és ossza meg azonnal. Nincs szükség fiókra, e-mailre vagy alkalmazásra."},
-{"t":"Minden eszközön működik","d":"Windows, Mac, Linux, Android, iPhone és iPad – bármelyik modern böngésző megfelel."},
-{"t":"Automatikus lejárat","d":"Válasszon 10 percet, 1 órát, 1 napot vagy 7 napot. A lejárt szöveg véglegesen törlődik."},
-{"t":"Törlés olvasás után","d":"A szöveget kérésre azonnal törölheti, amint először megnyitják."},
-{"t":"Végpontok közötti titkosítás","d":"Adjon meg jelszót, és a szöveg AES-256-tal titkosítva hagyja el a böngészőjét."},
-{"t":"QR-kód és rövid hivatkozás","d":"Olvassa be a QR-kódot a telefon kamerájával, vagy ossza meg a rövid hivatkozást bármelyik csevegőalkalmazásban."}],
-"howTitle":"Így másolhat és illeszthet be eszközök között",
-"steps":["Írja vagy illessze be a szöveget a mezőbe, és válassza ki, meddig őrizzük meg.","Kattintson a „Mentés a vágólapra” gombra, és kap egy 6 számjegyű kódot, egy rövid hivatkozást és egy QR-kódot.","A másik eszközön nyissa meg ezt a webhelyet, és adja meg a kódot – vagy egyszerűen olvassa be a QR-kódot.","Másolja ki a szöveget, vagy töltse le .txt fájlként. Lejáratkor automatikusan eltűnik."],
-"aboutTitle":"Mi az az online vágólap?",
-"aboutText":["A vágólap az az átmeneti memória, amelyet a számítógép vagy a telefon másoláskor és beillesztéskor használ, és csak egyetlen eszközön működik. Az online vágólap ugyanezt teszi az interneten keresztül: a laptopján kimásolja a szöveget, és beilleszti a telefonjára, a munkahelyi gépre, egy barát táblagépére vagy az okostévére.","A WebClipboard tökéletes hivatkozások, jegyzetek, címek, kódrészletek vagy Wi-Fi-adatok átvitelére anélkül, hogy e-mailt küldene magának vagy bármit telepítene. Gyors, ingyenes, és minden nyelven működik."],
-"faqTitle":"Gyakori kérdések",
-"faq":[
-{"q":"Ingyenes a WebClipboard?","a":"Igen. A WebClipboard teljesen ingyenes, a működését hirdetések finanszírozzák. A létrehozható szövegek számának nincs korlátja."},
-{"q":"Meddig tárolják a szövegemet?","a":"Ön dönt: 10 perc, 1 óra, 1 nap vagy 7 nap. Ezután a szöveg véglegesen törlődik. A „Törlés az első megtekintés után” beállítással a megnyitás pillanatában eltűnik."},
-{"q":"Biztonságos privát információt megosztani?","a":"A 6 számjegyű kód birtokában bárki megnyithatja a szöveget, ezért jelszavakat vagy bankadatokat ne ossza meg védelem nélkül. Ha jelszót ad meg, a szöveg a böngészőjében titkosítódik, és jelszó nélkül senki – még mi sem – tudja elolvasni."},
-{"q":"Kell alkalmazást telepítenem?","a":"Nem. A WebClipboard bármelyik böngészőben működik. A kezdőképernyőre is felveheti, hogy egy érintéssel elérje."},
-{"q":"Mennyi szöveget menthetek?","a":"Szövegenként legfeljebb {max} karaktert – elég hosszú dokumentumokhoz, kódhoz vagy listákhoz."},
-{"q":"Elvesztettem a kódomat. Visszaállítható a szöveg?","a":"Nem. Nincsenek fiókjaink vagy naplóink, amelyek egy szöveget Önhöz kötnének, így az elvesztett kód nem állítható vissza. Hozzon létre egyszerűen új szöveget."}],
-"adLabel":"Hirdetés","language":"Nyelv",
-"footerAbout":"Rólunk","footerPrivacy":"Adatvédelmi irányelvek","footerTerms":"Felhasználási feltételek","footerContact":"Kapcsolat","footerCookies":"Adatvédelmi beállítások","rights":"Minden jog fenntartva."
+ "metaTitle": "Online vágólap – szöveg másolása és beillesztése eszközök között ingyen",
+ "metaDescription": "Ingyenes online vágólap: illessze be a szöveget, kapjon egy 6 számjegyű kódot, és nyissa meg bármilyen telefonon vagy számítógépen. Regisztráció nélkül, automatikus lejárattal, önmegsemmisítéssel és opcionális titkosítással.",
+ "h1": "Online vágólap",
+ "tagline": "Másolja a szöveget az egyik eszközön, és illessze be egy másikon – alkalmazás és fiók nélkül.",
+ "sendTitle": "Szöveg küldése",
+ "receiveTitle": "Szöveg fogadása",
+ "placeholder": "Írja vagy illessze be ide a szöveget…",
+ "characters": "karakter",
+ "expiryLabel": "Törlés ennyi idő után",
+ "exp10m": "10 perc",
+ "exp1h": "1 óra",
+ "exp1d": "1 nap",
+ "exp7d": "7 nap",
+ "burnLabel": "Törlés az első megtekintés után",
+ "passwordLabel": "Jelszó (nem kötelező)",
+ "passwordHint": "A szöveget a böngészője titkosítja. Mi soha nem tudjuk elolvasni.",
+ "sendBtn": "Mentés a vágólapra",
+ "saving": "Mentés…",
+ "yourCode": "Az Ön vágólapkódja",
+ "codeHint": "Adja meg ezt a kódot a másik eszközön, nyissa meg a hivatkozást, vagy olvassa be a QR-kódot.",
+ "shareLink": "Megosztási hivatkozás",
+ "copy": "Másolás",
+ "copied": "Másolva!",
+ "expiresAt": "Lejár",
+ "newClip": "Újabb szöveg létrehozása",
+ "codeLabel": "Adja meg a 6 számjegyű kódot",
+ "receiveBtn": "Szöveg lekérése",
+ "loading": "Betöltés…",
+ "download": ".txt letöltése",
+ "passwordPrompt": "Ez a szöveg jelszóval védett. A visszafejtéshez adja meg a jelszót.",
+ "unlock": "Feloldás",
+ "wrongPassword": "Hibás jelszó. Próbálja újra.",
+ "burnedNotice": "Ezt a szöveget most töröltük a szervereinkről. Másolja ki, mielőtt bezárja az oldalt.",
+ "report": "Visszaélés bejelentése",
+ "reported": "Köszönjük. A bejelentést elküldtük.",
+ "errEmpty": "Először írjon be valamilyen szöveget.",
+ "errTooLong": "A szöveg túl hosszú (legfeljebb {max} karakter).",
+ "errNotFound": "Ehhez a kódhoz nem található szöveg. Lehet, hogy lejárt vagy törölték.",
+ "errCode": "Adjon meg egy érvényes, 6 számjegyű kódot.",
+ "errRate": "Túl sok kérés. Várjon egy percet, és próbálja újra.",
+ "errGeneric": "Valami hiba történt. Próbálja újra.",
+ "safetyNote": "A szöveget bárki elolvashatja, aki ismeri a kódot. Privát tartalomhoz használjon jelszót.",
+ "featuresTitle": "Miért a WebClipboard?",
+ "features": [
+  {
+   "t": "Regisztráció nélkül",
+   "d": "Illessze be, mentse és ossza meg azonnal. Nincs szükség fiókra, e-mailre vagy alkalmazásra."
+  },
+  {
+   "t": "Minden eszközön működik",
+   "d": "Windows, Mac, Linux, Android, iPhone és iPad – bármelyik modern böngésző megfelel."
+  },
+  {
+   "t": "Automatikus lejárat",
+   "d": "Válasszon 10 percet, 1 órát, 1 napot vagy 7 napot. A lejárt szöveg véglegesen törlődik."
+  },
+  {
+   "t": "Törlés olvasás után",
+   "d": "A szöveget kérésre azonnal törölheti, amint először megnyitják."
+  },
+  {
+   "t": "Végpontok közötti titkosítás",
+   "d": "Adjon meg jelszót, és a szöveg AES-256-tal titkosítva hagyja el a böngészőjét."
+  },
+  {
+   "t": "QR-kód és rövid hivatkozás",
+   "d": "Olvassa be a QR-kódot a telefon kamerájával, vagy ossza meg a rövid hivatkozást bármelyik csevegőalkalmazásban."
+  }
+ ],
+ "howTitle": "Így másolhat és illeszthet be eszközök között",
+ "steps": [
+  "Írja vagy illessze be a szöveget a mezőbe, és válassza ki, meddig őrizzük meg.",
+  "Kattintson a „Mentés a vágólapra” gombra, és kap egy 6 számjegyű kódot, egy rövid hivatkozást és egy QR-kódot.",
+  "A másik eszközön nyissa meg ezt a webhelyet, és adja meg a kódot – vagy egyszerűen olvassa be a QR-kódot.",
+  "Másolja ki a szöveget, vagy töltse le .txt fájlként. Lejáratkor automatikusan eltűnik."
+ ],
+ "aboutTitle": "Mi az az online vágólap?",
+ "aboutText": [
+  "A vágólap az az átmeneti memória, amelyet a számítógép vagy a telefon másoláskor és beillesztéskor használ, és csak egyetlen eszközön működik. Az online vágólap ugyanezt teszi az interneten keresztül: a laptopján kimásolja a szöveget, és beilleszti a telefonjára, a munkahelyi gépre, egy barát táblagépére vagy az okostévére.",
+  "A WebClipboard tökéletes hivatkozások, jegyzetek, címek, kódrészletek vagy Wi-Fi-adatok átvitelére anélkül, hogy e-mailt küldene magának vagy bármit telepítene. Gyors, ingyenes, és minden nyelven működik."
+ ],
+ "faqTitle": "Gyakori kérdések",
+ "faq": [
+  {
+   "q": "Ingyenes a WebClipboard?",
+   "a": "Igen. A WebClipboard teljesen ingyenes, a működését hirdetések finanszírozzák. A létrehozható szövegek számának nincs korlátja."
+  },
+  {
+   "q": "Meddig tárolják a szövegemet?",
+   "a": "Ön dönt: 10 perc, 1 óra, 1 nap vagy 7 nap. Ezután a szöveg véglegesen törlődik. A „Törlés az első megtekintés után” beállítással a megnyitás pillanatában eltűnik."
+  },
+  {
+   "q": "Biztonságos privát információt megosztani?",
+   "a": "A 6 számjegyű kód birtokában bárki megnyithatja a szöveget, ezért jelszavakat vagy bankadatokat ne ossza meg védelem nélkül. Ha jelszót ad meg, a szöveg a böngészőjében titkosítódik, és jelszó nélkül senki – még mi sem – tudja elolvasni."
+  },
+  {
+   "q": "Kell alkalmazást telepítenem?",
+   "a": "Nem. A WebClipboard bármelyik böngészőben működik. A kezdőképernyőre is felveheti, hogy egy érintéssel elérje."
+  },
+  {
+   "q": "Mennyi szöveget menthetek?",
+   "a": "Szövegenként legfeljebb {max} karaktert – elég hosszú dokumentumokhoz, kódhoz vagy listákhoz."
+  },
+  {
+   "q": "Elvesztettem a kódomat. Visszaállítható a szöveg?",
+   "a": "Nem. Nincsenek fiókjaink vagy naplóink, amelyek egy szöveget Önhöz kötnének, így az elvesztett kód nem állítható vissza. Hozzon létre egyszerűen új szöveget."
+  }
+ ],
+ "adLabel": "Hirdetés",
+ "language": "Nyelv",
+ "footerAbout": "Rólunk",
+ "footerPrivacy": "Adatvédelmi irányelvek",
+ "footerTerms": "Felhasználási feltételek",
+ "footerContact": "Kapcsolat",
+ "footerCookies": "Adatvédelmi beállítások",
+ "rights": "Minden jog fenntartva.",
+ "share": "Megosztás",
+ "shareTitle": "Eszköz megosztása",
+ "shareText": "Ingyenes online vágólap: másoljon szöveget az egyik eszközön, és illessze be egy másikon 6 számjegyű kóddal. Regisztráció nélkül.",
+ "shareNudge": "Hasznos volt? Ossza meg egy baráttal.",
+ "shareCopy": "Hivatkozás másolása",
+ "shareCopied": "Hivatkozás másolva!",
+ "shareEmail": "E-mail",
+ "shareSms": "SMS",
+ "shareClose": "Bezárás"
 }
