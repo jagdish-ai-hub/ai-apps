@@ -1,0 +1,66 @@
+---
+const sample = 'Tokens are the pieces of text a language model reads and writes. A token can be a whole word, part of a word, a number, a space or a symbol.\n\nTry pasting an email, a prompt, some code or a paragraph in another language and watch how the count changes: 日本語のテキストや हिन्दी भी試してみてください.';
+---
+<div class="tool tc" id="token-calc">
+  <div class="panel">
+    <div class="tc-head">
+      <label class="eyebrow" for="tc-text">Paste your text</label>
+      <div class="actions" style="margin:0">
+        <button class="btn ghost small" id="tc-paste" type="button">Paste from clipboard</button>
+        <button class="btn ghost small" id="tc-sample" type="button">Try an example</button>
+        <button class="btn ghost small" id="tc-clear" type="button">Clear</button>
+      </div>
+    </div>
+    <textarea class="clip" id="tc-text" spellcheck="false" autocomplete="off" placeholder="Paste or type text, a prompt, code or a document here…"></textarea>
+    <p class="msg" id="tc-status" role="status"></p>
+    <p class="hint" id="tc-trunc" hidden>Only the first 1,000,000 characters are counted.</p>
+
+    <div class="field tc-tok">
+      <label for="tc-tokenizer">Tokenizer</label>
+      <select id="tc-tokenizer">
+        <option value="o200k_base">o200k_base – GPT-4o and newer OpenAI models</option>
+        <option value="cl100k_base">cl100k_base – GPT-4, GPT-3.5, embeddings v3</option>
+        <option value="estimate">Rule of thumb – about 4 characters per token</option>
+      </select>
+    </div>
+
+    <div class="tc-grid" aria-live="polite">
+      <div class="stat big"><span class="eyebrow">Tokens</span><strong id="tc-tokens">0</strong><button class="linkish" id="tc-copy" type="button">Copy count</button></div>
+      <div class="stat"><span class="eyebrow">Characters</span><strong id="tc-chars">0</strong></div>
+      <div class="stat"><span class="eyebrow">Words</span><strong id="tc-words">0</strong></div>
+      <div class="stat"><span class="eyebrow">Chars / token</span><strong id="tc-cpt">–</strong></div>
+      <div class="stat"><span class="eyebrow">Tokens / word</span><strong id="tc-tpw">–</strong></div>
+    </div>
+
+    <h2 class="tc-h">Estimate the cost</h2>
+    <p class="hint" style="margin-top:0">Enter the prices from your provider's pricing page, in price per <strong>1 million tokens</strong>. Nothing is pre-filled because prices change.</p>
+    <div class="opts">
+      <div class="field"><label for="tc-in-price">Input price / 1M tokens</label><input id="tc-in-price" type="text" inputmode="decimal" placeholder="e.g. 2.50" autocomplete="off" /></div>
+      <div class="field"><label for="tc-out-price">Output price / 1M tokens</label><input id="tc-out-price" type="text" inputmode="decimal" placeholder="e.g. 10.00" autocomplete="off" /></div>
+      <div class="field"><label for="tc-out-tokens">Expected output tokens</label><input id="tc-out-tokens" type="text" inputmode="numeric" value="500" autocomplete="off" /></div>
+      <div class="field"><label for="tc-requests">Number of requests</label><input id="tc-requests" type="text" inputmode="numeric" value="1" autocomplete="off" /></div>
+      <div class="field"><label for="tc-currency">Currency symbol</label><input id="tc-currency" type="text" value="$" maxlength="3" autocomplete="off" /></div>
+    </div>
+    <div class="tc-cost">
+      <div class="stat"><span class="eyebrow">Input cost</span><strong id="tc-cost-in">–</strong><small>for the pasted text</small></div>
+      <div class="stat"><span class="eyebrow">Output cost</span><strong id="tc-cost-out">–</strong><small><span id="tc-out-count">500</span> output tokens</small></div>
+      <div class="stat"><span class="eyebrow">Per request</span><strong id="tc-cost-req">–</strong><small>input + output</small></div>
+      <div class="stat big"><span class="eyebrow" id="tc-total-label">Total</span><strong id="tc-cost-total">–</strong></div>
+    </div>
+    <p class="hint" id="tc-price-hint">Add at least one price above to see a cost.</p>
+
+    <h2 class="tc-h">Does it fit?</h2>
+    <p class="hint" style="margin-top:0">Your text as a share of common context window sizes. The window also has to hold the reply.</p>
+    <div class="wins" id="tc-windows"></div>
+
+    <h2 class="tc-h">How the text is split</h2>
+    <p class="hint" style="margin-top:0">Each shaded block is one token (or a few tokens that make up one character). Hover a block to see its id.</p>
+    <div class="chips" id="tc-chips" dir="auto"></div>
+    <p class="hint" id="tc-chips-note"></p>
+  </div>
+  <div class="safety">Your text is processed in your browser and is never uploaded. OpenAI tokenizer counts are exact for the text you enter. Chat messages, tool definitions and images add a few extra tokens per request that this tool does not include, and other providers use different tokenizers, so treat totals as estimates.</div>
+  <script type="text/plain" id="tc-sample-text" set:html={sample}></script>
+</div>
+<script>
+  import '../scripts/tokens';
+</script>

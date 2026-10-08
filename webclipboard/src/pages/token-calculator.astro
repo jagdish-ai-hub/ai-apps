@@ -1,0 +1,86 @@
+---
+import Base from '../layouts/Base.astro';
+import TokenCalc from '../components/TokenCalc.astro';
+import Ad from '../components/Ad.astro';
+import { findGuide, guidePath } from '../lib/guides';
+import { absolute, site } from '../lib/i18n';
+
+const title = 'Token Calculator: Count OpenAI Tokens and Estimate API Cost';
+const description = 'Free token counter using OpenAI tokenizers (o200k_base, cl100k_base). Paste text, see the token count and how it is split, and estimate input and output cost from your own prices.';
+const url = absolute('/token-calculator/');
+
+const faq = [
+  { q: 'How does the token calculator count tokens?', a: 'It runs the same byte-pair-encoding vocabularies that OpenAI publishes (o200k_base for GPT-4o and newer models, cl100k_base for GPT-4 and GPT-3.5) directly in your browser. The count is exact for the text you paste with that tokenizer.' },
+  { q: 'Is my text uploaded anywhere?', a: 'No. Tokenizing happens on your device. The page only downloads the tokenizer vocabulary once, and your text is never sent to a server.' },
+  { q: 'Will the count match Claude, Gemini or Llama?', a: 'Not exactly. Each model family uses its own tokenizer, so the same text can produce a different count. Use the OpenAI counts as a close guide for English text and test with your provider\'s own counter before you rely on a number for billing.' },
+  { q: 'How do I estimate the price?', a: 'Enter the input and output prices per 1 million tokens from your provider\'s pricing page. The calculator multiplies your token count by the input price, adds the cost of the output tokens you expect, and scales by the number of requests.' },
+  { q: 'Why is there no price list built in?', a: 'Model prices change often and differ by provider, so a stale table would give wrong answers. Typing your current price takes a few seconds and keeps the estimate correct.' },
+  { q: 'What is the difference between o200k_base and cl100k_base?', a: 'They are two vocabularies. cl100k_base has about 100,000 entries and is used by GPT-4 and GPT-3.5 era models. o200k_base has about 200,000 entries and splits many non-English scripts, emoji and code into fewer tokens.' },
+];
+
+const jsonld = [
+  { '@context': 'https://schema.org', '@type': 'WebApplication', name: `${site.siteName} Token Calculator`, url, description, applicationCategory: 'DeveloperApplication', operatingSystem: 'Any', browserRequirements: 'Requires JavaScript', inLanguage: 'en', isAccessibleForFree: true, offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' } },
+  { '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: [{ '@type': 'ListItem', position: 1, name: 'Home', item: absolute('/') }, { '@type': 'ListItem', position: 2, name: 'Token Calculator', item: url }] },
+  { '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: faq.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })) },
+];
+const guideSlugs = ['how-tokenizers-work', 'how-many-tokens-in-a-word-or-page', 'tokens-in-different-languages', 'how-llm-api-pricing-works', 'how-to-reduce-token-usage'];
+const guides = guideSlugs.map(findGuide).filter(Boolean) as NonNullable<ReturnType<typeof findGuide>>[];
+---
+<Base title={title} description={description} page="/token-calculator/" section="tokens" jsonld={jsonld}>
+  <div class="hero">
+    <div class="wrap">
+      <span class="eyebrow">~/tokens · runs in your browser</span>
+      <h1>Token Calculator</h1>
+      <p>Count the tokens in any text with OpenAI's real tokenizers, see exactly how it is split, and estimate what it will cost to send and receive.</p>
+    </div>
+  </div>
+
+  <div class="wrap">
+    <TokenCalc />
+    <Ad slot="afterTool" />
+
+    <section class="block" aria-labelledby="how">
+      <span class="eyebrow">01</span>
+      <h2 id="how">How to use the token calculator</h2>
+      <ol class="steps">
+        <li><span>Paste your text, prompt, code or document into the box. The count updates as you type.</span></li>
+        <li><span>Pick a tokenizer. Use <strong>o200k_base</strong> for GPT-4o and newer models and <strong>cl100k_base</strong> for GPT-4 and GPT-3.5.</span></li>
+        <li><span>Read the token count, the characters-per-token ratio and how much of each context window your text uses.</span></li>
+        <li><span>Type your provider's input and output prices per 1 million tokens, the output length you expect and the number of requests to see the estimated cost.</span></li>
+      </ol>
+    </section>
+
+    <section class="block prose" aria-labelledby="what">
+      <span class="eyebrow">02</span>
+      <h2 id="what">What is a token?</h2>
+      <p>Language models do not read letters or whole words. They read <strong>tokens</strong>: chunks of text drawn from a fixed vocabulary of tens or hundreds of thousands of entries. Common English words are usually one token, longer or rarer words are split into several, and punctuation, numbers, spaces and line breaks are tokens too. A rough rule for English is that one token is about four characters, or three quarters of a word, but the real number depends heavily on the language, the formatting and whether the text is code.</p>
+      <p>Tokens matter for two reasons. Every model has a <strong>context window</strong>, a maximum number of tokens it can handle in one request, and most APIs <strong>charge per token</strong>, with separate prices for the text you send and the text the model writes back. Knowing the count before you send a request helps you stay inside the limit and predict the bill.</p>
+      <p>To go deeper, read <a href="/guides/how-tokenizers-work/">how tokenizers work</a>, <a href="/guides/how-many-tokens-in-a-word-or-page/">how many tokens a word or page uses</a>, and <a href="/guides/how-to-reduce-token-usage/">how to reduce token usage</a>.</p>
+    </section>
+
+    <section class="block faq" aria-labelledby="faq">
+      <span class="eyebrow">03</span>
+      <h2 id="faq">Frequently asked questions</h2>
+      {faq.map((f) => <details><summary>{f.q}</summary><p>{f.a}</p></details>)}
+    </section>
+
+    <Ad slot="inContent" />
+
+    {guides.length > 0 && (
+      <section class="block" aria-labelledby="g">
+        <span class="eyebrow">04</span>
+        <h2 id="g">Token guides</h2>
+        <div class="cards">
+          {guides.map((g) => (
+            <a class="card" href={guidePath(g.slug)}>
+              <span class="eyebrow">{g.meta.category}</span>
+              <strong>{g.meta.h1}</strong>
+              <span>{g.meta.description}</span>
+            </a>
+          ))}
+        </div>
+      </section>
+    )}
+    <Ad slot="beforeFooter" />
+  </div>
+</Base>

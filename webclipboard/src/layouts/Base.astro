@@ -12,8 +12,10 @@ interface Props {
   translated?: boolean;
   noindex?: boolean;
   jsonld?: object[];
+  /** Highlights the matching nav item */
+  section?: 'tokens' | 'guides';
 }
-const { lang = 'en', title, description, page = '/', translated = false, noindex = false, jsonld = [] } = Astro.props;
+const { lang = 'en', title, description, page = '/', translated = false, noindex = false, jsonld = [], section } = Astro.props;
 const m = messages(lang);
 const meta = langByCode(lang);
 const canonical = absolute(translated ? localePath(lang, page) : page);
@@ -76,6 +78,10 @@ const rtl = false;
           </svg>
           <span>webclipboard<b>.online</b></span>
         </a>
+        <nav class="main-nav" aria-label="Main">
+          <a href="/token-calculator/" aria-current={section === 'tokens' ? 'page' : undefined}>Token Calculator</a>
+          {lang === 'en' && <a href="/guides/" aria-current={section === 'guides' ? 'page' : undefined}>Guides</a>}
+        </nav>
         <div class="header-tools">
           <label class="sr-only" for="lang-switch">{m.language}</label>
           <select class="select" id="lang-switch" aria-label={m.language}>

@@ -3,6 +3,7 @@ import { guides, guidePath } from '../lib/guides';
 
 const lastmod = new Date().toISOString().slice(0, 10);
 const legal = ['/about/', '/privacy/', '/terms/', '/contact/'];
+const tools = ['/token-calculator/'];
 
 export function GET() {
   const alternates = [
@@ -13,7 +14,8 @@ export function GET() {
     .map((l) => `<url><loc>${absolute(localePath(l.code))}</loc><lastmod>${lastmod}</lastmod><changefreq>weekly</changefreq><priority>${l.code === 'en' ? '1.0' : '0.9'}</priority>${alternates}</url>`)
     .join('');
   const guidePages = [`<url><loc>${absolute('/guides/')}</loc><lastmod>${lastmod}</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>`, ...guides.map((g) => `<url><loc>${absolute(guidePath(g.slug))}</loc><lastmod>${g.meta.updated}</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>`)].join('');
+  const toolPages = tools.map((p) => `<url><loc>${absolute(p)}</loc><lastmod>${lastmod}</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>`).join('');
   const pages = legal.map((p) => `<url><loc>${absolute(p)}</loc><lastmod>${lastmod}</lastmod><changefreq>yearly</changefreq><priority>0.3</priority></url>`).join('');
-  const xml = `<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">${home}${guidePages}${pages}</urlset>`;
+  const xml = `<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">${home}${toolPages}${guidePages}${pages}</urlset>`;
   return new Response(xml, { headers: { 'Content-Type': 'application/xml; charset=utf-8' } });
 }

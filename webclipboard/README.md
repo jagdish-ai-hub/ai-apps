@@ -31,8 +31,10 @@ worker/                 API (index.js), validation (clips.js), language negotiat
 src/i18n/               languages.json + one JSON per language (30)
 src/pages/              [...lang]/index.astro (home in every language), guides/, legal pages, sitemap, robots, ads.txt, manifest
 src/guides/             one Markdown file per guide (frontmatter: title, description, h1, lead, category, updated, related, faq)
-src/components/         Tool (the clipboard UI), Ad (lazy AdSense slot)
+src/components/         Tool (the clipboard UI), TokenCalc (token calculator UI), Ad (lazy AdSense slot)
 src/scripts/app.ts      browser logic: send/receive, encryption, QR
+src/scripts/tokens.ts   token calculator: OpenAI BPE tokenizers (lazy-loaded), cost, context-fit, token view
+src/lib/tokencalc.js    pure helpers for the calculator (cost maths, formatting, token grouping), unit-tested
 test/                   node --test: translation integrity + core logic
 ```
 
@@ -80,9 +82,13 @@ Re-running `npm run db:migrate` is safe; the migration is idempotent.
 
 When the daily API cap is hit, **pages keep loading and ads keep serving**; only saving/opening clips returns an error until midnight UTC. If you outgrow this, Workers Paid is $5/month and lifts all of these.
 
+## Token Calculator (`/token-calculator/`)
+
+A second tool, linked from the nav bar. It counts tokens with OpenAI's real vocabularies (`o200k_base` for GPT-4o and newer, `cl100k_base` for GPT-4/3.5, via the MIT-licensed `gpt-tokenizer` package), shows how the text is split, how much of common context windows it uses, and estimates input/output cost from prices the visitor types in (per 1M tokens; no price table is shipped because prices change). Everything runs in the browser; each 1-2 MB vocabulary is a separate chunk that downloads only when needed. Five guides in the **Tokens** category explain tokenizers, rules of thumb, language differences, API pricing and token-saving tips; their numbers were measured with the same library.
+
 ## Guides (original, non-translated content)
 
-`/guides/` is a hub plus eight English how-to guides (phone to PC, iPhone and Windows, Wi-Fi password, students, notes transfer, code snippets, public computers, smart TVs). Each page embeds the working clipboard, a table of contents, an FAQ and related guides, and emits `Article`, `BreadcrumbList` and `FAQPage` JSON-LD. Add a guide by dropping a Markdown file in `src/guides/`; the hub, sitemap and tests pick it up automatically. Tests enforce a minimum body length (a thin-content guard), unique titles and descriptions, valid `related` slugs, and that no internal link in the built site is broken.
+`/guides/` is a hub plus thirteen English guides: eight clipboard how-tos (phone to PC, iPhone and Windows, Wi-Fi password, students, notes transfer, code snippets, public computers, smart TVs) and five token guides (set `tool: tokens` in the frontmatter to show a calculator link instead of the clipboard). Each page embeds the working clipboard, a table of contents, an FAQ and related guides, and emits `Article`, `BreadcrumbList` and `FAQPage` JSON-LD. Add a guide by dropping a Markdown file in `src/guides/`; the hub, sitemap and tests pick it up automatically. Tests enforce a minimum body length (a thin-content guard), unique titles and descriptions, valid `related` slugs, and that no internal link in the built site is broken.
 
 ## SEO
 

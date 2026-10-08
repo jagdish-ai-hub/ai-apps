@@ -13,6 +13,7 @@ const guide = findGuide(slug)!;
 const { meta, Content, headings } = guide;
 const url = absolute(guidePath(slug));
 const toc = headings.filter((h) => h.depth === 2);
+const showTokensCta = (meta as any).tool === 'tokens';
 const related = meta.related.map(findGuide).filter(Boolean) as typeof guides;
 
 const jsonld = [
@@ -45,7 +46,7 @@ const jsonld = [
   },
 ];
 ---
-<Base title={meta.title} description={meta.description} page={guidePath(slug)} jsonld={jsonld}>
+<Base title={meta.title} description={meta.description} page={guidePath(slug)} jsonld={jsonld} section="guides">
   <div class="hero guide-hero">
     <div class="wrap">
       <nav class="crumbs" aria-label="Breadcrumb"><a href="/">Home</a> / <a href="/guides/">Guides</a></nav>
@@ -56,7 +57,12 @@ const jsonld = [
   </div>
 
   <div class="wrap">
-    <Tool lang="en" />
+    {showTokensCta ? (
+      <div class="cta">
+        <p><strong>Count your own tokens</strong>Paste any text to see exactly how many tokens it uses with OpenAI's tokenizers, how it is split, and what it costs at your prices.</p>
+        <a class="btn" href="/token-calculator/">Open the Token Calculator</a>
+      </div>
+    ) : (<Tool lang="en" />)}
     <Ad slot="afterTool" />
 
     <div class="guide-body">
