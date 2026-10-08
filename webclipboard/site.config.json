@@ -4,7 +4,6 @@
   "contactEmail": "support@webclipboard.online",
   "maxChars": 100000,
   "defaultExpiry": "1d",
-
   "adsense": {
     "client": "",
     "slots": {
@@ -13,6 +12,7 @@
       "beforeFooter": ""
     }
   },
+  "cloudflareAnalyticsToken": "",
   "gtagId": "",
   "turnstileSiteKey": ""
 }

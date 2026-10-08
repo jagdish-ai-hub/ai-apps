@@ -109,6 +109,16 @@ After launch: add the site to **Google Search Console** and **Bing Webmaster Too
 4. **EU/UK/Switzerland visitors require a consent message** (Google's certified CMP). Turn on *Privacy & messaging → European regulations* in AdSense; the footer "Privacy settings" link reopens it.
 5. Running **Google Ads campaigns** to buy traffic: create one campaign per language and send each to its own URL (`/es/`, `/ja/` ...), keep the landing page's language identical to the ad's. Start with exact-match keywords in each language. Add `gtagId` in `site.config.json` and import conversions (e.g. "clip saved") if you want to optimise for them.
 
+## Analytics (Cloudflare Web Analytics, cookie-free)
+
+Workers logs and request metrics are already on in the Cloudflare dashboard (`observability` in `wrangler.toml`). For visitor analytics (page views, countries, referrers, Core Web Vitals):
+
+1. Cloudflare dashboard → **Analytics & Logs** → **Web Analytics** → **Add a site**, hostname `webclipboard.online`.
+2. Copy the `token` from the snippet it shows and put it in `site.config.json` as `cloudflareAnalyticsToken`, then deploy. The beacon loads deferred on every page; with an empty token no analytics code is emitted.
+   (Alternatively use the "automatic setup" toggle there, which needs no code once the domain is proxied through Cloudflare.)
+
+Because it uses no cookies, it needs no consent banner. The privacy policy already describes it.
+
 ## Operations
 
 - Abuse reports: `SELECT * FROM reports ORDER BY id DESC;` in the D1 console. Clips are auto-removed at 3 reports.

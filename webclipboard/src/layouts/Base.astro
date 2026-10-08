@@ -141,6 +141,9 @@ const rtl = false;
         w.googlefc.showRevocationMessage?.();
       });
     </script>
+    {site.cloudflareAnalyticsToken && (
+      <script is:inline defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon={JSON.stringify({ token: site.cloudflareAnalyticsToken })}></script>
+    )}
     {site.gtagId && (
       <script is:inline define:vars={{ id: site.gtagId }}>
         window.addEventListener('load', function () {
