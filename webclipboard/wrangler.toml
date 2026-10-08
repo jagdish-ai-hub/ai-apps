@@ -1,6 +1,6 @@
 #:schema node_modules/wrangler/config-schema.json
 name = "webclipboard"
-main = "src/worker.js"
+main = "worker/index.js"
 compatibility_date = "2026-10-01"
 workers_dev = true
 
@@ -22,8 +22,7 @@ run_worker_first = ["/api/*", "/c/*"]
 [[d1_databases]]
 binding = "DB"
 database_name = "webclipboard"
-# Replace with the id printed by: npx wrangler d1 create webclipboard
-database_id = "00000000-0000-0000-0000-000000000000"
+database_id = "8cfa58f8-c4df-41ef-b69c-e3aa5c01086a"
 migrations_dir = "migrations"
 
 # Workers Rate Limiting (per client IP). namespace_id is any number unique within your account.

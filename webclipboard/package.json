@@ -5,13 +5,15 @@
   "type": "module",
   "description": "WebClipboard.online - free multilingual online clipboard on Cloudflare Workers (free plan)",
   "scripts": {
-    "build": "node scripts/build.mjs",
-    "dev": "npm run build && wrangler d1 migrations apply webclipboard --local && wrangler dev",
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro build && wrangler d1 migrations apply webclipboard --local && wrangler dev",
     "test": "node --test test/",
     "db:migrate": "wrangler d1 migrations apply webclipboard --remote",
-    "deploy": "npm run build && wrangler deploy"
+    "deploy": "astro build && wrangler deploy"
   },
   "devDependencies": {
+    "astro": "7.3.5",
     "qrcode-generator": "2.0.4",
     "wrangler": "4.149.0"
   }

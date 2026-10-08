@@ -1,0 +1,82 @@
+---
+import Base from '../../layouts/Base.astro';
+import Tool from '../../components/Tool.astro';
+import Ad from '../../components/Ad.astro';
+import { languages, messages, fill, site, absolute, localePath } from '../../lib/i18n';
+
+export function getStaticPaths() {
+  // English lives at "/", every other language at "/<code>/".
+  return languages.map((l) => ({ params: { lang: l.code === 'en' ? undefined : l.code }, props: { code: l.code } }));
+}
+const { code } = Astro.props;
+const m = messages(code);
+const faq = (m.faq as { q: string; a: string }[]).map((f) => ({ q: fill(f.q), a: fill(f.a) }));
+const url = absolute(localePath(code));
+
+const jsonld = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'WebApplication',
+    name: site.siteName,
+    url,
+    description: m.metaDescription,
+    applicationCategory: 'UtilitiesApplication',
+    operatingSystem: 'Any',
+    browserRequirements: 'Requires JavaScript',
+    inLanguage: code,
+    isAccessibleForFree: true,
+    offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: faq.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })),
+  },
+];
+---
+<Base lang={code} title={m.metaTitle} description={m.metaDescription} page="/" translated jsonld={jsonld}>
+  <div class="hero">
+    <div class="wrap">
+      <span class="eyebrow">~/clipboard · {site.domain}</span>
+      <h1>{m.h1}</h1>
+      <p>{m.tagline}</p>
+    </div>
+  </div>
+
+  <div class="wrap">
+    <Tool lang={code} />
+    <Ad slot="afterTool" lang={code} />
+
+    <section class="block" aria-labelledby="features">
+      <span class="eyebrow">01</span>
+      <h2 id="features">{m.featuresTitle}</h2>
+      <div class="features">
+        {(m.features as { t: string; d: string }[]).map((f, i) => (
+          <div class="feature"><span class="n">{String(i + 1).padStart(2, '0')}</span><h3>{f.t}</h3><p>{f.d}</p></div>
+        ))}
+      </div>
+    </section>
+
+    <section class="block" aria-labelledby="how">
+      <span class="eyebrow">02</span>
+      <h2 id="how">{m.howTitle}</h2>
+      <ol class="steps">{(m.steps as string[]).map((s) => <li>{s}</li>)}</ol>
+    </section>
+
+    <Ad slot="inContent" lang={code} />
+
+    <section class="block prose" aria-labelledby="about">
+      <span class="eyebrow">03</span>
+      <h2 id="about">{m.aboutTitle}</h2>
+      {(m.aboutText as string[]).map((p) => <p>{p}</p>)}
+    </section>
+
+    <section class="block faq" aria-labelledby="faq">
+      <span class="eyebrow">04</span>
+      <h2 id="faq">{m.faqTitle}</h2>
+      {faq.map((f) => <details><summary>{f.q}</summary><p>{f.a}</p></details>)}
+    </section>
+
+    <Ad slot="beforeFooter" lang={code} />
+  </div>
+</Base>

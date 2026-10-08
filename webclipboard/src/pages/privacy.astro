@@ -1,0 +1,31 @@
+---
+import Page from '../layouts/Page.astro';
+import { site } from '../lib/i18n';
+---
+<Page title={`Privacy Policy – ${site.siteName}`} description={`How ${site.siteName} handles your text, cookies, advertising and technical data.`} page="/privacy/">
+  <span class="eyebrow">Privacy Policy · Last updated 8 October 2026</span>
+  <h1>Privacy Policy</h1>
+  <p>This policy explains what {site.domain} (“we”, “the service”) collects and why. We have no user accounts and ask for no personal information.</p>
+
+  <h2>Text you save</h2>
+  <p>When you save a clip we store its text, the options you chose and its expiry time, under a random 6-digit code. Anyone who knows the code can read the clip, so do not store sensitive information unless you set a password. If you set a password, the text is encrypted in your browser with AES-256-GCM before upload; we only receive ciphertext and cannot read it, and we cannot recover a lost password.</p>
+  <p>Clips are permanently deleted when they expire, after their first view if you chose that option, or when removed after abuse reports. We do not sell or analyse clip contents. For clips that are reported as abusive we keep a short excerpt of unencrypted text so that we can review it.</p>
+
+  <h2>Technical data</h2>
+  <p>Our hosting provider, Cloudflare, processes your IP address and request metadata to deliver the site, protect it from abuse and apply rate limits. We do not store IP addresses with your clips. Cloudflare may keep short-lived technical logs in line with its own <a href="https://www.cloudflare.com/privacypolicy/" rel="noopener">privacy policy</a>.</p>
+
+  <h2>Local storage</h2>
+  <p>We store your light/dark theme choice in your browser's local storage. It is never sent to us.</p>
+
+  <h2>Advertising and cookies</h2>
+  <p>We show ads served by Google AdSense. Google and its partners use cookies and similar technologies to serve and measure ads, and may personalise them based on your visits to this and other sites. In the European Economic Area, the United Kingdom and Switzerland, ads that use cookies are shown only according to your choice in the consent message. You can change that choice at any time with the “Privacy settings” link in the footer. You can also manage personalised advertising in <a href="https://adssettings.google.com" rel="noopener">Google Ads Settings</a> or learn how Google uses data from partner sites at <a href="https://policies.google.com/technologies/partner-sites" rel="noopener">policies.google.com/technologies/partner-sites</a>.</p>
+
+  <h2>Your rights</h2>
+  <p>Because we do not hold accounts or identifiers, we generally cannot link stored text to a person. If you believe a clip contains your personal data, email us the 6-digit code at <a href={`mailto:${site.contactEmail}`}>{site.contactEmail}</a> and we will review and delete it where appropriate.</p>
+
+  <h2>Children</h2>
+  <p>The service is not directed at children under 13.</p>
+
+  <h2>Changes</h2>
+  <p>We may update this policy; the date above shows the latest revision.</p>
+</Page>

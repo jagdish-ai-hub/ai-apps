@@ -1,0 +1,13 @@
+---
+import Page from '../layouts/Page.astro';
+import { site } from '../lib/i18n';
+---
+<Page title={`Contact – ${site.siteName}`} description={`Contact the ${site.siteName} team for support, feedback or to report abuse.`} page="/contact/">
+  <span class="eyebrow">Contact</span>
+  <h1>Get in touch</h1>
+  <p>Email: <a href={`mailto:${site.contactEmail}`}>{site.contactEmail}</a></p>
+  <h2>Reporting abuse</h2>
+  <p>Use the “Report abuse” button when you open a clip, or email us the 6-digit code and a short explanation. Clips that break our <a href="/terms/">Terms of Use</a> are removed.</p>
+  <h2>Lost code</h2>
+  <p>We have no accounts and cannot link a clip to a person, so we cannot recover lost codes or passwords.</p>
+</Page>

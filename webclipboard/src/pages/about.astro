@@ -1,0 +1,15 @@
+---
+import Page from '../layouts/Page.astro';
+import { site } from '../lib/i18n';
+---
+<Page title={`About ${site.siteName} – Free Online Clipboard`} description={`${site.siteName} is a free online clipboard for moving text between phones, tablets and computers with a 6-digit code, link or QR code.`} page="/about/">
+  <span class="eyebrow">About</span>
+  <h1>A clipboard that works across every device.</h1>
+  <p>{site.siteName} lets you copy text on one device and paste it on another, with no account and no app. Save your text, get a 6-digit code, then enter the code, open the short link or scan the QR code on the other device.</p>
+  <h2>How it works</h2>
+  <p>Each clip is stored with a random 6-digit code and an expiry time that you choose, from ten minutes to seven days. When it expires, the text is permanently deleted. You can also delete a clip after its first view, or protect it with a password so that it is encrypted in your browser before it is uploaded.</p>
+  <h2>Built to be fast and free</h2>
+  <p>The site runs on Cloudflare's global network, so pages load quickly in Asia-Pacific, Latin America, Europe and everywhere else. It is available in 30 languages and is supported by advertising.</p>
+  <h2>Contact</h2>
+  <p>Questions, feedback or a takedown request? Write to <a href={`mailto:${site.contactEmail}`}>{site.contactEmail}</a>.</p>
+</Page>

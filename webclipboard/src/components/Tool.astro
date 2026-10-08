@@ -1,0 +1,117 @@
+---
+import { messages, fill, site } from '../lib/i18n';
+interface Props { lang?: string }
+const { lang = 'en' } = Astro.props;
+const m = messages(lang);
+
+// Only the strings the browser script needs, embedded as JSON (no extra request).
+const keys = ['saving', 'sendBtn', 'copied', 'copy', 'loading', 'receiveBtn', 'errEmpty', 'errTooLong', 'errNotFound', 'errCode',
+  'errRate', 'errGeneric', 'wrongPassword', 'reported', 'expiresAt', 'burnedNotice', 'passwordPrompt', 'characters'];
+const ui: Record<string, string> = Object.fromEntries(keys.map((k) => [k, fill(m[k])]));
+const config = { maxChars: site.maxChars, turnstileSiteKey: site.turnstileSiteKey, domain: site.domain, defaultExpiry: site.defaultExpiry };
+---
+<div class="tool" id="tool" data-lang={lang}>
+  <div class="tabs" role="tablist">
+    <button class="tab" role="tab" id="tab-send" aria-controls="panel-send" aria-selected="true" type="button">{m.sendTitle}</button>
+    <button class="tab" role="tab" id="tab-receive" aria-controls="panel-receive" aria-selected="false" type="button">{m.receiveTitle}</button>
+  </div>
+
+  <!-- SEND -->
+  <section class="panel" id="panel-send" role="tabpanel" aria-labelledby="tab-send">
+    <form id="send-form" novalidate>
+      <div id="compose">
+        <label class="sr-only" for="text">{m.sendTitle}</label>
+        <textarea class="clip" id="text" name="text" placeholder={m.placeholder} spellcheck="false" autocomplete="off" autocapitalize="off"></textarea>
+        <div class="row">
+          <span class="count"><span id="count">0</span> / {site.maxChars.toLocaleString('en-US')} {m.characters}</span>
+        </div>
+        <div class="opts">
+          <div class="field">
+            <label for="expiry">{m.expiryLabel}</label>
+            <select id="expiry" name="expiry">
+              <option value="10m">{m.exp10m}</option>
+              <option value="1h">{m.exp1h}</option>
+              <option value="1d" selected>{m.exp1d}</option>
+              <option value="7d">{m.exp7d}</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="password">{m.passwordLabel}</label>
+            <input type="password" id="password" name="password" autocomplete="new-password" />
+          </div>
+          <div class="field">
+            <span class="lbl">&nbsp;</span>
+            <label class="check"><input type="checkbox" id="burn" /><span>{m.burnLabel}</span></label>
+          </div>
+        </div>
+        <p class="hint">{m.passwordHint}</p>
+        <div class="row">
+          <button class="btn" id="send-btn" type="submit">{m.sendBtn}</button>
+        </div>
+        <div id="turnstile"></div>
+        <p class="msg err" id="send-msg" role="alert"></p>
+      </div>
+
+      <div class="result" id="result" hidden>
+        <div class="code-label"><span class="eyebrow">{m.yourCode}</span></div>
+        <div class="digits" id="digits" aria-live="polite"></div>
+        <p class="hint center">{m.codeHint}</p>
+        <div class="share">
+          <div>
+            <span class="eyebrow">{m.shareLink}</span>
+            <div class="linkbox" style="margin-top:8px">
+              <input type="text" id="share-url" readonly aria-label={m.shareLink} />
+              <button class="btn ghost small" id="copy-link" type="button">{m.copy}</button>
+            </div>
+            <div class="actions">
+              <button class="btn ghost small" id="copy-code" type="button">{m.copy} · 000000</button>
+              <button class="btn ghost small" id="new-clip" type="button">{m.newClip}</button>
+            </div>
+            <p class="hint" id="expires"></p>
+          </div>
+          <div class="qr" id="qr" aria-hidden="true"></div>
+        </div>
+      </div>
+    </form>
+  </section>
+
+  <!-- RECEIVE -->
+  <section class="panel" id="panel-receive" role="tabpanel" aria-labelledby="tab-receive" hidden>
+    <div id="receive-box">
+      <label class="eyebrow" for="code-input" style="display:block;margin-bottom:10px">{m.codeLabel}</label>
+      <form class="receive-form" id="receive-form" novalidate>
+        <input id="code-input" inputmode="numeric" pattern="[0-9]*" maxlength="7" autocomplete="off" placeholder="000000" />
+        <button class="btn" id="receive-btn" type="submit">{m.receiveBtn}</button>
+      </form>
+      <p class="msg err" id="receive-msg" role="alert"></p>
+    </div>
+
+    <form class="pw" id="pw-form" hidden>
+      <p class="hint" style="margin-top:0">{m.passwordPrompt}</p>
+      <div class="receive-form">
+        <input type="password" id="pw-input" autocomplete="off" style="letter-spacing:normal;font-size:18px" aria-label={m.passwordLabel} />
+        <button class="btn" type="submit">{m.unlock}</button>
+      </div>
+      <p class="msg err" id="pw-msg" role="alert"></p>
+    </form>
+
+    <div class="opened" id="opened" hidden>
+      <pre id="opened-text" dir="auto"></pre>
+      <div class="actions">
+        <button class="btn small" id="copy-text" type="button">{m.copy}</button>
+        <button class="btn ghost small" id="download" type="button">{m.download}</button>
+        <button class="btn ghost small" id="report" type="button">{m.report}</button>
+        <button class="btn ghost small" id="another" type="button">{m.receiveTitle}</button>
+      </div>
+      <div class="notice" id="burned" hidden>{m.burnedNotice}</div>
+      <p class="hint" id="opened-meta"></p>
+    </div>
+  </section>
+
+  <div class="safety">{m.safetyNote}</div>
+  <script type="application/json" id="tool-config" set:html={JSON.stringify({ ...config, ui })} />
+</div>
+
+<script>
+  import '../scripts/app';
+</script>

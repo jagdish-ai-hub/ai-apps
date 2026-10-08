@@ -1,0 +1,19 @@
+---
+import Page from '../layouts/Page.astro';
+import { site } from '../lib/i18n';
+---
+<Page title={`Terms of Use – ${site.siteName}`} description={`Terms of use for ${site.siteName}, the free online clipboard.`} page="/terms/">
+  <span class="eyebrow">Terms of Use · Last updated 8 October 2026</span>
+  <h1>Terms of Use</h1>
+  <p>By using {site.domain} you agree to these terms.</p>
+  <h2>Acceptable use</h2>
+  <p>Do not use the service to store or share anything unlawful, malicious or harmful, including malware, content that exploits children, content that infringes others' rights, harassment, or other people's personal data without permission. Do not use automated tools to create clips in bulk or to guess codes.</p>
+  <h2>Public by design</h2>
+  <p>Anyone who has a clip's 6-digit code can read it. Choose a password for anything private. Clips are temporary and may be deleted at any time; keep your own copy of anything important.</p>
+  <h2>Removal</h2>
+  <p>We may remove any clip, or block access to the service, without notice, particularly after abuse reports.</p>
+  <h2>No warranty</h2>
+  <p>The service is provided “as is”, without warranties of any kind. We are not liable for lost, expired, deleted or disclosed text, or for any indirect or consequential loss, to the extent permitted by law.</p>
+  <h2>Contact</h2>
+  <p><a href={`mailto:${site.contactEmail}`}>{site.contactEmail}</a></p>
+</Page>

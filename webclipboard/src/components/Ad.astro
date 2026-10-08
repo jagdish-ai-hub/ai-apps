@@ -1,0 +1,45 @@
+---
+import { site, messages } from '../lib/i18n';
+interface Props { slot: 'afterTool' | 'inContent' | 'beforeFooter'; lang?: string }
+const { slot, lang = 'en' } = Astro.props;
+const id = site.adsense.slots[slot];
+const enabled = Boolean(site.adsense.client && id);
+const m = messages(lang);
+---
+{enabled && (
+  <aside class="ad" aria-label={m.adLabel}>
+    <small>{m.adLabel}</small>
+    <ins class="adsbygoogle" style="display:block" data-ad-client={site.adsense.client} data-ad-slot={id} data-ad-format="auto" data-full-width-responsive="true"></ins>
+  </aside>
+)}
+{enabled && (
+<script is:inline define:vars={{ client: site.adsense.client }}>
+  // Load AdSense only when an ad slot is about to scroll into view (keeps the first paint fast).
+  if (!window.__wcAds) {
+  window.__wcAds = true;
+  document.addEventListener('DOMContentLoaded', function () {
+    var slots = document.querySelectorAll('ins.adsbygoogle');
+    if (!slots.length) return;
+    var loaded = false;
+    function load() {
+      if (loaded) return;
+      loaded = true;
+      var s = document.createElement('script');
+      s.async = true;
+      s.crossOrigin = 'anonymous';
+      s.src = 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=' + client;
+      document.head.appendChild(s);
+    }
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (!e.isIntersecting) return;
+        io.unobserve(e.target);
+        load();
+        (window.adsbygoogle = window.adsbygoogle || []).push({});
+      });
+    }, { rootMargin: '300px 0px' });
+    slots.forEach(function (el) { io.observe(el); });
+  });
+  }
+</script>
+)}
