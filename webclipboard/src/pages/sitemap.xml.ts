@@ -3,7 +3,7 @@ import { guides, guidePath } from '../lib/guides';
 
 const lastmod = new Date().toISOString().slice(0, 10);
 const legal = ['/about/', '/privacy/', '/terms/', '/contact/'];
-const tools = ['/token-calculator/'];
+const tools = ['/token-calculator/', '/token-cost-by-language/', '/o200k-base-token-counter/', '/cl100k-base-tokenizer/'];
 
 export function GET() {
   const alternates = [

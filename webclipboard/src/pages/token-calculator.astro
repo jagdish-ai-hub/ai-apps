@@ -66,6 +66,16 @@ const guides = guideSlugs.map(findGuide).filter(Boolean) as NonNullable<ReturnTy
 
     <Ad slot="inContent" />
 
+    <section class="block" aria-labelledby="tools">
+      <span class="eyebrow">More tools</span>
+      <h2 id="tools">Tokenizer pages and data</h2>
+      <div class="cards">
+        <a class="card" href="/o200k-base-token-counter/"><span class="eyebrow">Tool</span><strong>o200k_base token counter</strong><span>Count tokens with the encoding used by GPT-4o and newer OpenAI models.</span></a>
+        <a class="card" href="/cl100k-base-tokenizer/"><span class="eyebrow">Tool</span><strong>cl100k_base tokenizer online</strong><span>Count tokens with the encoding used by GPT-4 and GPT-3.5.</span></a>
+        <a class="card" href="/token-cost-by-language/"><span class="eyebrow">Data</span><strong>Token cost by language</strong><span>The same text in 30 languages, measured with two tokenizers. CSV and JSON included.</span></a>
+      </div>
+    </section>
+
     {guides.length > 0 && (
       <section class="block" aria-labelledby="g">
         <span class="eyebrow">04</span>

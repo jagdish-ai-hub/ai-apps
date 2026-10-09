@@ -38,6 +38,17 @@ We took one sentence from this site, the tagline "Copy text on one device and pa
 | Hindi | 71 | 25 | 69 | 2.8 |
 | Thai | 81 | 29 | 75 | 2.8 |
 
+## A larger sample: 30 languages, a full page of text
+
+One sentence is easy to read but easy to over-interpret, so we repeated the measurement on a bigger text: this site's own homepage copy (about 900 characters in English) in all 30 of its languages, again with both tokenizers. The full table, a chart and CSV/JSON downloads are on the [token cost by language](/token-cost-by-language/) page. The headline results, as measured on 9 October 2026:
+
+- **Median cost against English** across the 29 other languages was 1.31× on `o200k_base` and 1.58× on `cl100k_base`.
+- **On the older tokenizer the worst cases were Bengali (4.99×), Greek (4.62×) and Hindi (4.39×).** On the newer one they fell to 1.54×, 1.93× and 1.49×.
+- **On the newer tokenizer the most expensive language was Greek at 1.93×,** followed by Hungarian at 1.76×. Hungarian is a Latin-script language, which shows that script is not the only factor.
+- **Chinese (Simplified) came out at 1.02× English** even though it has about 1.5 characters per token, because the same copy is so much shorter in Chinese.
+
+The single-sentence table below and the larger sample agree on the direction, and the larger one is the better guide to the size of the effect. Both are samples of our own translations, so test your own text before making a decision that costs money.
+
 ## What the numbers say
 
 **Latin-script languages are cheap on both tokenizers.** Spanish, French and German need only one to three more tokens than English, and the two vocabularies give almost the same count.

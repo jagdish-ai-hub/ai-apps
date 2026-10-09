@@ -1,7 +1,9 @@
 ---
+interface Props { tokenizer?: 'o200k_base' | 'cl100k_base' | 'estimate' }
+const { tokenizer } = Astro.props;
 const sample = 'Tokens are the pieces of text a language model reads and writes. A token can be a whole word, part of a word, a number, a space or a symbol.\n\nTry pasting an email, a prompt, some code or a paragraph in another language and watch how the count changes: 日本語のテキストや हिन्दी भी試してみてください.';
 ---
-<div class="tool tc" id="token-calc">
+<div class="tool tc" id="token-calc" data-lock-tokenizer={tokenizer ? '1' : undefined}>
   <div class="panel">
     <div class="tc-head">
       <label class="eyebrow" for="tc-text">Paste your text</label>
@@ -18,9 +20,9 @@ const sample = 'Tokens are the pieces of text a language model reads and writes.
     <div class="field tc-tok">
       <label for="tc-tokenizer">Tokenizer</label>
       <select id="tc-tokenizer">
-        <option value="o200k_base">o200k_base – GPT-4o and newer OpenAI models</option>
-        <option value="cl100k_base">cl100k_base – GPT-4, GPT-3.5, embeddings v3</option>
-        <option value="estimate">Rule of thumb – about 4 characters per token</option>
+        <option value="o200k_base" selected={tokenizer === undefined || tokenizer === 'o200k_base'}>o200k_base – GPT-4o and newer OpenAI models</option>
+        <option value="cl100k_base" selected={tokenizer === 'cl100k_base'}>cl100k_base – GPT-4, GPT-3.5, embeddings v3</option>
+        <option value="estimate" selected={tokenizer === 'estimate'}>Rule of thumb – about 4 characters per token</option>
       </select>
     </div>
 

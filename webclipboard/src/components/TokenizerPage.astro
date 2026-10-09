@@ -1,0 +1,186 @@
+---
+import Base from '../layouts/Base.astro';
+import TokenCalc from './TokenCalc.astro';
+import Ad from './Ad.astro';
+import { TOKENIZERS, type TokenizerInfo } from '../lib/tokenizers';
+import { rows, summary as s, libVersion, modelsFor, encoders } from '../lib/langdata';
+import { fmtRatio, fmtPct } from '../lib/tokenstats.js';
+import { absolute, site } from '../lib/i18n';
+import { findGuide, guidePath } from '../lib/guides';
+
+interface Props { id: TokenizerInfo['id'] }
+const { id } = Astro.props;
+const t = TOKENIZERS[id];
+const other = TOKENIZERS[t.other];
+const enc = encoders[id];
+const otherEnc = encoders[t.other];
+const isNew = id === 'o200k_base';
+const url = absolute(t.path);
+const plain = { disallowedSpecial: new Set<string>() };
+
+// Live examples, computed at build time with the real encodings.
+const SAMPLES: { label: string; text: string }[] = [
+  { label: 'hello world', text: 'hello world' },
+  { label: 'Hello', text: 'Hello' },
+  { label: 'HELLO', text: 'HELLO' },
+  { label: 'tokenization', text: 'tokenization' },
+  { label: '1234567', text: '1234567' },
+  { label: 'https://webclipboard.online/', text: 'https://webclipboard.online/' },
+  { label: 'jane.doe@example.com', text: 'jane.doe@example.com' },
+  { label: '🌍', text: '🌍' },
+  { label: 'こんにちは世界', text: 'こんにちは世界' },
+  { label: 'Привет, мир', text: 'Привет, мир' },
+  { label: 'नमस्ते दुनिया', text: 'नमस्ते दुनिया' },
+  { label: '8 spaces in a row', text: '        ' },
+];
+const examples = SAMPLES.map((x) => {
+  const ids = enc.encode(x.text, plain);
+  return { ...x, here: ids.length, there: otherEnc.encode(x.text, plain).length, ids: ids.slice(0, 8), more: ids.length > 8 };
+});
+const helloIds = enc.encode('hello world', plain);
+
+const own = (r: (typeof rows)[number]) => (isNew ? r.ratioO : r.ratioC);
+const others = rows.filter((r) => r.code !== 'en');
+const worst = [...others].sort((a, b) => own(b) - own(a))[0];
+const median = isNew ? s.medianRatioO : s.medianRatioC;
+const within = isNew ? s.withinQuarterO : s.withinQuarterC;
+const models = modelsFor(id);
+
+const jsSnippet = `import { encode, decode } from 'gpt-tokenizer/encoding/${id}';
+
+const ids = encode('hello world');   // [${helloIds.join(', ')}]
+console.log(ids.length);              // ${helloIds.length}
+console.log(decode(ids));             // 'hello world'`;
+const pySnippet = `import tiktoken
+
+enc = tiktoken.get_encoding("${id}")
+ids = enc.encode("hello world")
+print(len(ids))   # ${helloIds.length}`;
+
+const faq = [
+  { q: `What is ${id}?`, a: `${id} is a byte-pair-encoding vocabulary with ${t.approxVocab} entries. A tokenizer built on it turns text into integer token ids, and language models that use it read and write those ids.` },
+  { q: `Which models use ${id}?`, a: t.usedBy + ' Check your provider\'s documentation for the model you are using, since model lists change.' },
+  { q: `Is this ${id} counter exact?`, a: `The counts come from gpt-tokenizer ${libVersion}, a port of OpenAI's tiktoken that is tested for compatibility with it, so the token count of the text you paste is exact for ${id}. Message wrappers, tool definitions and images add extra tokens in a real API request that are not included here.` },
+  { q: 'Is my text sent to a server?', a: 'No. The tokenizer runs in your browser. Only the tokenizer vocabulary is downloaded, once, and your text never leaves your device.' },
+  { q: `How is ${id} different from ${t.other}?`, a: `${t.other} has ${other.approxVocab} entries. Across the ${s.others} non-English languages we measured, ${id} costs a median of ${fmtRatio(median)} the English token count, against ${fmtRatio(isNew ? s.medianRatioC : s.medianRatioO)} for ${t.other}. See the full table on the token cost by language page.` },
+  { q: `Can I count ${id} tokens in code?`, a: 'Yes. The examples on this page show how to count them in JavaScript with gpt-tokenizer and in Python with tiktoken.' },
+];
+
+const jsonld = [
+  { '@context': 'https://schema.org', '@type': 'WebApplication', name: `${id} Token Counter`, url, description: t.description, applicationCategory: 'DeveloperApplication', operatingSystem: 'Any', browserRequirements: 'Requires JavaScript', inLanguage: 'en', isAccessibleForFree: true, offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' } },
+  { '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: [{ '@type': 'ListItem', position: 1, name: 'Home', item: absolute('/') }, { '@type': 'ListItem', position: 2, name: 'Token Calculator', item: absolute('/token-calculator/') }, { '@type': 'ListItem', position: 3, name: t.h1, item: url }] },
+  { '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: faq.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })) },
+];
+const guides = ['how-tokenizers-work', 'how-many-tokens-in-a-word-or-page', 'how-llm-api-pricing-works'].map(findGuide).filter(Boolean) as NonNullable<ReturnType<typeof findGuide>>[];
+---
+<Base title={t.title} description={t.description} page={t.path} section="tokens" jsonld={jsonld} shareText={`Free ${id} token counter: paste text, see the exact token count and cost.`}>
+  <div class="hero">
+    <div class="wrap">
+      <span class="eyebrow">~/tokens · {id} · runs in your browser</span>
+      <h1>{t.h1}</h1>
+      <p>{t.lead}</p>
+    </div>
+  </div>
+
+  <div class="wrap">
+    <TokenCalc tokenizer={id} />
+    <Ad slot="afterTool" />
+
+    <section class="block" aria-labelledby="how">
+      <span class="eyebrow">01</span>
+      <h2 id="how">How to count {id} tokens</h2>
+      <ol class="steps">
+        <li><span>Paste your text, prompt, code or document into the box above. The count updates as you type.</span></li>
+        <li><span>Read the exact {id} token count, the characters-per-token ratio and how much of common context windows it uses.</span></li>
+        <li><span>Hover a shaded block to see its token id, and watch how spaces, case, numbers and non-English text are split.</span></li>
+        <li><span>Optionally enter your provider's input and output prices per 1 million tokens to estimate the cost of a request.</span></li>
+      </ol>
+    </section>
+
+    <section class="block prose" aria-labelledby="what">
+      <span class="eyebrow">02</span>
+      <h2 id="what">What is {id}?</h2>
+      <p><strong>{id}</strong> is one of the tokenizer vocabularies published by OpenAI. It was built with byte-pair encoding, which repeatedly merges the most frequent neighbouring pieces of text until the vocabulary reaches its target size. {id} has {t.approxVocab} entries (the library reports a vocabulary size of {enc.vocabularySize.toLocaleString()}, which includes special tokens). Every piece of text is mapped to a list of integer ids from this table, and the model reads and writes those ids, not letters or words.</p>
+      <p>{t.usedBy}</p>
+      <p>The counter on this page is {t.shortName}-specific: it applies the {id} merge rules only. {isNew ? 'Because this vocabulary is larger, it usually represents code, emoji and many non-English scripts in fewer tokens than the older cl100k_base.' : 'It is the older of the two common vocabularies and usually needs more tokens than o200k_base for code, emoji and many non-English scripts.'} For a broader explanation, read <a href="/guides/how-tokenizers-work/">how tokenizers work</a>.</p>
+      <details class="sample">
+        <summary>Models mapped to cl100k_base in the library ({modelsFor('cl100k_base').length})</summary>
+        <p class="hint">Generated from the gpt-tokenizer {libVersion} model table. Models the library does not list explicitly default to o200k_base. Model lists change, so confirm in your provider's documentation.</p>
+        <p class="mono" style="font-size:13px;color:var(--muted);overflow-wrap:anywhere">{modelsFor('cl100k_base').join(', ')}</p>
+      </details>
+    </section>
+
+    <section class="block" aria-labelledby="examples">
+      <span class="eyebrow">03</span>
+      <h2 id="examples">Token counts for common text</h2>
+      <p class="hint" style="margin-top:0">Measured with the real encodings when this site was built. Token ids are shown for {id}; the last column shows the same text in {t.other}.</p>
+      <div class="dtable-wrap" tabindex="0" role="region" aria-label="Examples table, scrollable">
+        <table class="dtable">
+          <thead><tr><th scope="col">Text</th><th scope="col" class="num">{id} tokens</th><th scope="col" class="num">{t.other} tokens</th><th scope="col">{id} token ids</th></tr></thead>
+          <tbody>
+            {examples.map((e) => (
+              <tr>
+                <th scope="row" class="mono ex">{e.label}</th>
+                <td class="num">{e.here}</td>
+                <td class="num">{e.there}</td>
+                <td class="mono ids">{e.ids.join(', ')}{e.more ? ', …' : ''}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="block prose" aria-labelledby="langs">
+      <span class="eyebrow">04</span>
+      <h2 id="langs">{id} across languages</h2>
+      <p>We counted the same website copy in {s.count} languages. With {id}, the median non-English language costs <strong>{fmtRatio(median)}</strong> the English token count, and <strong>{within} of {s.others}</strong> languages stay within 25% of English. The most expensive was {worst.englishName} at <strong>{fmtRatio(own(worst))}</strong>. {isNew ? `Compared with cl100k_base, ${id} needed ${fmtPct(s.overallSaving)} fewer tokens in total across the non-English languages.` : `Compared with o200k_base, ${id} needed more tokens for almost every non-English language, and ${s.maxC.englishName} reached ${fmtRatio(s.maxC.ratioC)} the English count.`}</p>
+      <p>See every language, the chart and the downloadable data on <a href="/token-cost-by-language/">token cost by language</a>.</p>
+    </section>
+
+    <section class="block" aria-labelledby="code">
+      <span class="eyebrow">05</span>
+      <h2 id="code">Count {id} tokens in code</h2>
+      <p class="prose" style="margin:0 0 14px"><span style="color:var(--muted)">To count tokens inside your own application, use the same encoding. In JavaScript with gpt-tokenizer, which this page uses:</span></p>
+      <pre class="codeblock" tabindex="0">{jsSnippet}</pre>
+      <p class="prose" style="margin:18px 0 14px"><span style="color:var(--muted)">In Python with OpenAI's tiktoken:</span></p>
+      <pre class="codeblock" tabindex="0">{pySnippet}</pre>
+    </section>
+
+    <section class="block prose" aria-labelledby="limits">
+      <span class="eyebrow">06</span>
+      <h2 id="limits">What this counter does not include</h2>
+      <p>The number shown is the exact token count of the text you pasted, for {id}. A real API request usually contains more than that:</p>
+      <ul class="plainlist">
+        <li><strong>Message formatting.</strong> Roles and separators add a few tokens per message.</li>
+        <li><strong>System instructions and tool definitions.</strong> These are billed as input on every request.</li>
+        <li><strong>Images, audio and files.</strong> They are converted to tokens by the provider.</li>
+        <li><strong>Hidden reasoning.</strong> Some models bill internal thinking as output tokens.</li>
+        <li><strong>Other providers.</strong> Models from other companies use different tokenizers, so this count is only a guide for them.</li>
+      </ul>
+      <p>Learn how those pieces turn into a bill in <a href="/guides/how-llm-api-pricing-works/">how LLM API pricing works</a>.</p>
+    </section>
+
+    <section class="block faq" aria-labelledby="faq">
+      <span class="eyebrow">07</span>
+      <h2 id="faq">Frequently asked questions</h2>
+      {faq.map((f) => <details><summary>{f.q}</summary><p>{f.a}</p></details>)}
+    </section>
+
+    <Ad slot="inContent" />
+
+    <section class="block" aria-labelledby="more">
+      <span class="eyebrow">08</span>
+      <h2 id="more">More token tools and guides</h2>
+      <div class="cards">
+        <a class="card" href={other.path}><span class="eyebrow">Tool</span><strong>{other.h1}</strong><span>Compare the same text with the {other.id} encoding.</span></a>
+        <a class="card" href="/token-cost-by-language/"><span class="eyebrow">Data</span><strong>Token cost by language</strong><span>30 languages, two tokenizers, with CSV and JSON downloads.</span></a>
+        <a class="card" href="/token-calculator/"><span class="eyebrow">Tool</span><strong>Token Calculator</strong><span>All tokenizers, pricing and context-window fit in one page.</span></a>
+        {guides.map((g) => (
+          <a class="card" href={guidePath(g.slug)}><span class="eyebrow">{g.meta.category}</span><strong>{g.meta.h1}</strong><span>{g.meta.description}</span></a>
+        ))}
+      </div>
+    </section>
+    <Ad slot="beforeFooter" />
+  </div>
+</Base>

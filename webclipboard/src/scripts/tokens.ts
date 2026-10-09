@@ -16,6 +16,7 @@ const text = $<HTMLTextAreaElement>('tc-text');
 const tokenizer = $<HTMLSelectElement>('tc-tokenizer');
 const fields = ['tc-in-price', 'tc-out-price', 'tc-out-tokens', 'tc-requests', 'tc-currency'] as const;
 const MAX_CHIPS = 3000;
+const locked = $('token-calc').dataset.lockTokenizer === '1'; // dedicated tokenizer pages keep their own default
 
 // ---------------------------------------------------------------- saved preferences (convenience only)
 const KEY = 'wc-token-prefs';
@@ -23,12 +24,14 @@ function loadPrefs() {
   try {
     const p = JSON.parse(localStorage.getItem(KEY) || '{}');
     for (const id of fields) if (typeof p[id] === 'string') $<HTMLInputElement>(id).value = p[id];
-    if (typeof p.tokenizer === 'string' && p.tokenizer in { ...loaders, estimate: 1 }) tokenizer.value = p.tokenizer;
+    if (!locked && typeof p.tokenizer === 'string' && p.tokenizer in { ...loaders, estimate: 1 }) tokenizer.value = p.tokenizer;
   } catch { /* storage unavailable */ }
 }
 function savePrefs() {
   try {
-    const p: Record<string, string> = { tokenizer: tokenizer.value };
+    let p: Record<string, string> = {};
+    try { p = JSON.parse(localStorage.getItem(KEY) || '{}'); } catch { /* start fresh */ }
+    if (!locked) p.tokenizer = tokenizer.value;
     for (const id of fields) p[id] = $<HTMLInputElement>(id).value;
     localStorage.setItem(KEY, JSON.stringify(p));
   } catch { /* ignore */ }
