@@ -123,6 +123,14 @@ Workers logs and request metrics are already on in the Cloudflare dashboard (`ob
 
 Because it uses no cookies, it needs no consent banner. The privacy policy already describes it.
 
+## IndexNow (instant indexing for Bing, Yandex, Naver, Seznam and other participating engines)
+
+- The key lives in `site.config.json` (`indexNowKey`) and is published as `public/<key>.txt` (the file contains only the key). A key is public by design, not a secret.
+- Submit after you add or change pages: `npm run build && npm run indexnow` (every URL in `dist/sitemap.xml`), or `node scripts/indexnow.mjs https://webclipboard.online/new-page/` for specific URLs. Add `--dry-run` to preview. The script first checks that the key file is live and aborts if not, and sends at most 10,000 URLs per request.
+- Do not run it on every deploy: repeatedly submitting unchanged URLs can be rate-limited (HTTP 429) or flagged as spam. `--soft` makes it exit 0 on failure if you do chain it after `wrangler deploy`.
+- Cloudflare **Crawler Hints** (zone → Caching → Configuration) can also send IndexNow signals automatically, based on cache misses. It is free, but whether it fires for assets served by Workers is not something we have confirmed, so the script is the dependable route.
+- Google does not use IndexNow as far as we could confirm; keep using Search Console and the sitemap for Google.
+
 ## Operations
 
 - Abuse reports: `SELECT * FROM reports ORDER BY id DESC;` in the D1 console. Clips are auto-removed at 3 reports.

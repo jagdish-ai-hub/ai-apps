@@ -5,6 +5,7 @@
   "maxChars": 100000,
   "defaultExpiry": "1d",
   "bingSiteVerification": "CCDB481DB1AB761C2E0F27A55A53BF64",
+  "indexNowKey": "713c821b4e8f8c37afe5cb7672c6ed2b",
   "adsense": {
     "client": "",
     "slots": {

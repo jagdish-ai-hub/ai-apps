@@ -10,7 +10,8 @@
     "preview": "astro build && wrangler d1 migrations apply webclipboard --local && wrangler dev",
     "test": "node --test test/*.test.mjs",
     "db:migrate": "wrangler d1 migrations apply webclipboard --remote",
-    "deploy": "astro build && wrangler deploy"
+    "deploy": "astro build && wrangler deploy",
+    "indexnow": "node scripts/indexnow.mjs"
   },
   "devDependencies": {
     "astro": "7.3.5",
