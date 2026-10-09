@@ -3,7 +3,7 @@ import { messages } from '../lib/i18n';
 interface Props { lang: string; url: string; title: string; text: string }
 const { lang, url, title, text } = Astro.props;
 const m = messages(lang);
-const config = { lang, url, title, text, ui: { copied: m.shareCopied, copy: m.shareCopy, email: m.shareEmail, sms: m.shareSms } };
+const config = { lang, url, title, text, ui: { copied: m.shareCopied, copy: m.shareCopy, email: m.shareEmail, sms: m.shareSms, more: m.shareMore } };
 ---
 <button class="share-fab" id="share-fab" type="button" data-share-open aria-haspopup="dialog" aria-label={m.shareTitle}>
   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="18" cy="5" r="3" /><circle cx="6" cy="12" r="3" /><circle cx="18" cy="19" r="3" /><path d="M8.6 10.5l6.8-4M8.6 13.5l6.8 4" /></svg>

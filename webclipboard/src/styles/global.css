@@ -265,7 +265,9 @@ ol.steps li::before { content: counter(s, decimal-leading-zero); font: 600 14px/
 .share-head { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 14px; }
 .share-head h2 { margin: 0; font-size: 18px; letter-spacing: -0.01em; }
 .share-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-bottom: 14px; }
-.share-tile { display: grid; place-items: center; min-height: 48px; padding: 8px; background: var(--bg); border: 1px solid var(--line); border-radius: 10px; font-size: 14px; text-align: center; text-decoration: none; }
+.share-tile { display: grid; place-items: center; min-height: 74px; padding: 10px 6px; background: var(--bg); border: 1px solid var(--line); border-radius: 10px; font-size: 13px; text-align: center; text-decoration: none; color: var(--fg); cursor: pointer; }
+.share-tile .tile-inner { display: grid; justify-items: center; gap: 7px; }
+.share-tile svg { width: 24px; height: 24px; }
 .share-tile:hover { border-color: var(--fg); }
 .share-nudge { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 10px; margin: 18px 0 0; padding-top: 14px; border-top: 1px dashed var(--line-strong); font-size: 14px; color: var(--muted); }
 .share-nudge[hidden] { display: none; }

@@ -1,41 +1,16 @@
-// Share this tool: native share sheet on phones, a language-aware menu on desktop.
+// Share this tool: native share sheet on phones, a language-aware menu with icons on desktop.
 // It only ever shares the page's canonical URL, never the current address (which may carry a clip code in #hash).
+import { networks, orderFor, opensExternally } from '../lib/sharenets.js';
+import { iconSvg } from '../lib/shareicons.js';
 
 type Cfg = { lang: string; url: string; title: string; text: string; ui: Record<string, string> };
 const $ = <T extends HTMLElement = HTMLElement>(id: string) => document.getElementById(id) as T;
 const cfg: Cfg = JSON.parse($('share-config').textContent || '{}');
 
 const touch = matchMedia('(pointer: coarse)').matches;
-const canNative = typeof navigator.share === 'function' && touch;
-
-type Net = { id: string; label: string; href: (url: string, text: string, title: string) => string; touchOnly?: boolean };
-const enc = encodeURIComponent;
-const NETS: Record<string, Net> = {
-  whatsapp: { id: 'whatsapp', label: 'WhatsApp', href: (u, t) => `https://wa.me/?text=${enc(`${t} ${u}`)}` },
-  telegram: { id: 'telegram', label: 'Telegram', href: (u, t) => `https://t.me/share/url?url=${enc(u)}&text=${enc(t)}` },
-  facebook: { id: 'facebook', label: 'Facebook', href: (u) => `https://www.facebook.com/sharer/sharer.php?u=${enc(u)}` },
-  x: { id: 'x', label: 'X', href: (u, t) => `https://x.com/intent/tweet?text=${enc(t)}&url=${enc(u)}` },
-  linkedin: { id: 'linkedin', label: 'LinkedIn', href: (u) => `https://www.linkedin.com/sharing/share-offsite/?url=${enc(u)}` },
-  reddit: { id: 'reddit', label: 'Reddit', href: (u, _t, title) => `https://www.reddit.com/submit?url=${enc(u)}&title=${enc(title)}` },
-  line: { id: 'line', label: 'LINE', href: (u) => `https://social-plugins.line.me/lineit/share?url=${enc(u)}` },
-  vk: { id: 'vk', label: 'VK', href: (u, _t, title) => `https://vk.com/share.php?url=${enc(u)}&title=${enc(title)}` },
-  weibo: { id: 'weibo', label: 'Weibo', href: (u, t) => `https://service.weibo.com/share/share.php?url=${enc(u)}&title=${enc(t)}` },
-  email: { id: 'email', label: cfg.ui.email, href: (u, t, title) => `mailto:?subject=${enc(title)}&body=${enc(`${t}\n\n${u}`)}` },
-  sms: { id: 'sms', label: cfg.ui.sms, touchOnly: true, href: (u, t) => `sms:?&body=${enc(`${t} ${u}`)}` },
-};
-
-// Which networks lead depends on the visitor's language, because messaging habits differ by region.
-const BASE = ['whatsapp', 'telegram', 'facebook', 'x', 'linkedin', 'reddit', 'email', 'sms'];
-const ORDER: Record<string, string[]> = {
-  ja: ['line', ...BASE],
-  th: ['line', ...BASE],
-  'zh-tw': ['line', ...BASE],
-  id: ['whatsapp', 'line', 'telegram', 'facebook', 'x', 'linkedin', 'reddit', 'email', 'sms'],
-  ru: ['telegram', 'vk', 'whatsapp', 'facebook', 'x', 'email', 'sms'],
-  uk: ['telegram', 'whatsapp', 'facebook', 'x', 'linkedin', 'reddit', 'email', 'sms'],
-  'zh-cn': ['weibo', 'email', 'sms'],
-};
-const order = (ORDER[cfg.lang] || BASE).filter((id) => touch || !NETS[id].touchOnly);
+const hasNative = typeof navigator.share === 'function';
+const canNative = hasNative && touch; // phones go straight to the system sheet
+const NETS = networks({ email: cfg.ui.email, sms: cfg.ui.sms });
 
 function tracked(medium: string): string {
   const u = new URL(cfg.url);
@@ -47,24 +22,41 @@ function tracked(medium: string): string {
 const dialog = $<HTMLDialogElement>('share-dialog');
 const fab = $('share-fab');
 
+function tile(label: string, icon: string): HTMLElement {
+  const el = document.createElement('span');
+  el.className = 'tile-inner';
+  el.innerHTML = iconSvg(icon); // static, trusted markup from shareicons.js
+  const text = document.createElement('span');
+  text.textContent = label;
+  el.appendChild(text);
+  return el;
+}
+
 function buildMenu() {
-  const grid = $('share-grid');
-  grid.replaceChildren(
-    ...order.map((id) => {
-      const n = NETS[id];
-      const a = document.createElement('a');
-      a.className = 'share-tile';
-      a.textContent = n.label;
-      a.href = n.href(tracked(id), cfg.text, cfg.title);
-      a.dataset.net = id;
-      if (!n.href('', '', '').startsWith('mailto:') && !n.href('', '', '').startsWith('sms:')) {
-        a.target = '_blank';
-        a.rel = 'noopener noreferrer';
-      }
-      a.addEventListener('click', () => setTimeout(() => dialog.close(), 150));
-      return a;
-    }),
-  );
+  const items: HTMLElement[] = orderFor(cfg.lang, touch).map((id) => {
+    const n = NETS[id];
+    const a = document.createElement('a');
+    a.className = 'share-tile';
+    a.dataset.net = id;
+    a.href = n.href(tracked(id), cfg.text, cfg.title);
+    if (opensExternally(n)) { a.target = '_blank'; a.rel = 'noopener noreferrer'; }
+    a.appendChild(tile(n.label, id));
+    a.addEventListener('click', () => setTimeout(() => dialog.close(), 150));
+    return a;
+  });
+  // Desktop browsers that expose the system share sheet (AirDrop, Nearby Share, installed apps) get a "More" tile.
+  if (hasNative && !touch) {
+    const more = document.createElement('button');
+    more.type = 'button';
+    more.className = 'share-tile';
+    more.dataset.net = 'more';
+    more.appendChild(tile(cfg.ui.more, 'more'));
+    more.addEventListener('click', async () => {
+      try { await navigator.share({ title: cfg.title, text: cfg.text, url: tracked('native') }); dialog.close(); } catch { /* cancelled */ }
+    });
+    items.push(more);
+  }
+  $('share-grid').replaceChildren(...items);
   $<HTMLInputElement>('share-link').value = cfg.url;
 }
 

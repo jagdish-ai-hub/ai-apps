@@ -23,6 +23,7 @@ const m = messages(lang);
 const meta = langByCode(lang);
 const canonical = absolute(translated ? localePath(lang, page) : page);
 const ogImage = absolute('/og.png');
+const ogImageAlt = 'WebClipboard: copy text on one device and paste it on another with a 6-digit code';
 const rtl = false;
 // Share the tool's own address; legal and error pages share the language home page instead.
 const shareUrl = ['/about/', '/privacy/', '/terms/', '/contact/', '/404/'].includes(page) ? absolute(localePath(lang)) : canonical;
@@ -48,11 +49,14 @@ const shareUrl = ['/about/', '/privacy/', '/terms/', '/contact/', '/404/'].inclu
     <meta property="og:image" content={ogImage} />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
+    <meta property="og:image:type" content="image/png" />
+    <meta property="og:image:alt" content={ogImageAlt} />
     <meta property="og:locale" content={meta.ogLocale} />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={ogImage} />
+    <meta name="twitter:image:alt" content={ogImageAlt} />
 
     <meta name="theme-color" content="#fafaf9" media="(prefers-color-scheme: light)" />
     <meta name="theme-color" content="#030604" media="(prefers-color-scheme: dark)" />
