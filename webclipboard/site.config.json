@@ -4,6 +4,7 @@
   "contactEmail": "support@webclipboard.online",
   "maxChars": 100000,
   "defaultExpiry": "1d",
+  "bingSiteVerification": "CCDB481DB1AB761C2E0F27A55A53BF64",
   "adsense": {
     "client": "",
     "slots": {

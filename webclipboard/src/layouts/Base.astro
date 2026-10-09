@@ -64,6 +64,7 @@ const shareUrl = ['/about/', '/privacy/', '/terms/', '/contact/', '/404/'].inclu
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
     <link rel="manifest" href="/manifest.webmanifest" />
     {site.adsense.client && <meta name="google-adsense-account" content={site.adsense.client} />}
+    {site.bingSiteVerification && <meta name="msvalidate.01" content={site.bingSiteVerification} />}
 
     <!-- Set the theme before first paint to avoid a flash -->
     <script is:inline>

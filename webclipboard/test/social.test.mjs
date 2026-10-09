@@ -58,3 +58,10 @@ test('home-screen icons referenced by the manifest exist', { skip }, () => {
   for (const icon of manifest.icons) assert.ok(existsSync(new URL(icon.src.slice(1), dist)), icon.src);
   for (const f of ['favicon.svg', 'apple-touch-icon.png']) assert.ok(statSync(new URL(f, dist)).size > 100, f);
 });
+
+test('Bing Webmaster verification tag is on the homepage and every other page', { skip }, () => {
+  const cfg = JSON.parse(readFileSync(new URL('../site.config.json', import.meta.url), 'utf8'));
+  assert.match(cfg.bingSiteVerification, /^[0-9A-F]{32}$/);
+  const tag = `<meta name="msvalidate.01" content="${cfg.bingSiteVerification}">`;
+  for (const f of htmlFiles()) assert.ok(readFileSync(f, 'utf8').includes(tag), `${f.pathname.split('/dist/')[1]} is missing the Bing tag`);
+});
