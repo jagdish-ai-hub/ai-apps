@@ -1,5 +1,5 @@
 {
- "metaTitle": "Online-Zwischenablage – Text kostenlos zwischen Geräten kopieren und einfügen",
+ "metaTitle": "Online-Zwischenablage – Text zwischen Geräten kopieren",
  "metaDescription": "Kostenlose Online-Zwischenablage: Text einfügen, 6-stelligen Code erhalten und auf jedem Handy oder Computer öffnen. Ohne Anmeldung, mit automatischem Ablauf, Selbstzerstörung und optionaler Verschlüsselung.",
  "h1": "Online-Zwischenablage",
  "tagline": "Text auf einem Gerät kopieren und auf einem anderen einfügen – ohne App, ohne Konto.",
@@ -124,5 +124,8 @@
  "shareEmail": "E-Mail",
  "shareSms": "SMS",
  "shareClose": "Schließen",
- "shareMore": "Mehr…"
+ "shareMore": "Mehr…",
+ "langAuto": "Wir haben diese Seite in der Sprache Ihres Browsers angezeigt.",
+ "langBack": "Auf Englisch wechseln",
+ "langSuggest": "Diese Website gibt es auch in Ihrer Sprache."
 }

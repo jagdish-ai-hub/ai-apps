@@ -1,5 +1,5 @@
 {
- "metaTitle": "Appunti online – Copia e incolla testo tra dispositivi gratis",
+ "metaTitle": "Appunti online – Copia e incolla tra dispositivi gratis",
  "metaDescription": "Appunti online gratuiti: incolla il testo, ottieni un codice di 6 cifre e aprilo su qualsiasi telefono o computer. Senza registrazione, con scadenza automatica, autodistruzione e crittografia opzionale.",
  "h1": "Appunti online",
  "tagline": "Copia il testo su un dispositivo e incollalo su un altro, senza app e senza account.",
@@ -124,5 +124,8 @@
  "shareEmail": "E-mail",
  "shareSms": "SMS",
  "shareClose": "Chiudi",
- "shareMore": "Altro…"
+ "shareMore": "Altro…",
+ "langAuto": "Abbiamo mostrato questa pagina nella lingua del tuo browser.",
+ "langBack": "Passa all'inglese",
+ "langSuggest": "Questo sito è disponibile anche nella tua lingua."
 }

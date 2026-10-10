@@ -5,7 +5,17 @@ import { readFileSync, existsSync } from 'node:fs';
 const read = (p) => JSON.parse(readFileSync(new URL(p, import.meta.url), 'utf8'));
 const languages = read('../src/i18n/languages.json');
 const en = read('../src/i18n/en.json');
-const UNUSED_OK = new Set(['langSuggest']); // present in en.json, not rendered anywhere
+const UNUSED_OK = new Set([]);
+
+// Approximate width of a search-result title: CJK and fullwidth characters count double, Thai/Devanagari/Bengali letters 1.5,
+// combining marks 0. Google truncates around 600px, roughly 60 units.
+const titleWidth = (t) => [...t].reduce((w, ch) => {
+  const o = ch.codePointAt(0);
+  if (/\p{M}/u.test(ch)) return w;
+  if ((o >= 0x3040 && o <= 0x30ff) || (o >= 0x4e00 && o <= 0x9fff) || (o >= 0xac00 && o <= 0xd7af) || (o >= 0xff00 && o <= 0xffef)) return w + 2;
+  if ((o >= 0x0e00 && o <= 0x0e7f) || (o >= 0x0900 && o <= 0x09ff) || (o >= 0x0980 && o <= 0x09ff)) return w + 1.5;
+  return w + 1;
+}, 0);
 
 test('every language in languages.json has a translation file (the short-link redirect relies on it)', () => {
   for (const l of languages) assert.ok(existsSync(new URL(`../src/i18n/${l.code}.json`, import.meta.url)), `missing ${l.code}.json`);
@@ -30,7 +40,8 @@ for (const l of languages.filter((x) => x.code !== 'en')) {
     assert.ok(t.errTooLong.includes('{max}'), `${l.code}: errTooLong lost {max}`);
     assert.ok(JSON.stringify(t.faq).includes('{max}'), `${l.code}: FAQ lost {max}`);
     assert.notEqual(t.metaTitle, en.metaTitle, `${l.code}: metaTitle not translated`);
-    assert.ok(t.metaTitle.length <= 90, `${l.code}: metaTitle too long (${t.metaTitle.length})`);
+    assert.ok(titleWidth(t.metaTitle) <= 60, `${l.code}: metaTitle too wide for a search result (${titleWidth(t.metaTitle)} units): ${t.metaTitle}`);
+    for (const k of ['langAuto', 'langBack', 'langSuggest']) assert.ok(t[k] && [...t[k]].length >= 4 && t[k] !== en[k], `${l.code}: ${k} must be translated`);
     assert.ok(t.metaDescription.length <= 320, `${l.code}: metaDescription too long (${t.metaDescription.length})`);
   });
 }

@@ -1,5 +1,5 @@
 {
- "metaTitle": "Clipboard online – copiază și lipește text între dispozitive gratuit",
+ "metaTitle": "Clipboard online – copiază și lipește text gratuit",
  "metaDescription": "Clipboard online gratuit: lipește textul, primești un cod din 6 cifre și îl deschizi pe orice telefon sau computer. Fără cont, cu expirare automată, autodistrugere și criptare opțională.",
  "h1": "Clipboard online",
  "tagline": "Copiază textul pe un dispozitiv și lipește-l pe altul – fără aplicație și fără cont.",
@@ -124,5 +124,8 @@
  "shareEmail": "E-mail",
  "shareSms": "SMS",
  "shareClose": "Închide",
- "shareMore": "Mai multe…"
+ "shareMore": "Mai multe…",
+ "langAuto": "Am afișat această pagină în limba browserului tău.",
+ "langBack": "Treci la engleză",
+ "langSuggest": "Site-ul este disponibil și în limba ta."
 }

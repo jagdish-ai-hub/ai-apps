@@ -1,5 +1,5 @@
 {
- "metaTitle": "Online Clipboard – Mag-copy at Mag-paste ng Teksto sa Pagitan ng mga Device Nang Libre",
+ "metaTitle": "Online Clipboard – Mag-copy at Mag-paste ng Teksto",
  "metaDescription": "Libreng online clipboard: i-paste ang teksto, kumuha ng 6-digit na code, at buksan ito sa anumang telepono o computer. Walang sign-up, awtomatikong nag-e-expire, nabubura pagkatapos mabasa, at opsyonal na encryption.",
  "h1": "Online Clipboard",
  "tagline": "Mag-copy ng teksto sa isang device at i-paste sa iba – walang app, walang account.",
@@ -124,5 +124,8 @@
  "shareEmail": "Email",
  "shareSms": "SMS",
  "shareClose": "Isara",
- "shareMore": "Iba pa…"
+ "shareMore": "Iba pa…",
+ "langAuto": "Ipinakita namin ang pahinang ito sa wika ng iyong browser.",
+ "langBack": "Lumipat sa Ingles",
+ "langSuggest": "Available rin ang site na ito sa iyong wika."
 }

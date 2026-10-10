@@ -1,5 +1,5 @@
 {
- "metaTitle": "Área de Transferência Online – Copie e Cole Texto entre Dispositivos Grátis",
+ "metaTitle": "Área de Transferência Online Grátis – Copie e Cole",
  "metaDescription": "Área de transferência online grátis: cole seu texto, receba um código de 6 dígitos e abra em qualquer celular ou computador. Sem cadastro, com expiração automática, autodestruição e criptografia opcional.",
  "h1": "Área de Transferência Online",
  "tagline": "Copie o texto em um dispositivo e cole em outro, sem app e sem conta.",
@@ -124,5 +124,8 @@
  "shareEmail": "E-mail",
  "shareSms": "Mensagem de texto",
  "shareClose": "Fechar",
- "shareMore": "Mais…"
+ "shareMore": "Mais…",
+ "langAuto": "Mostramos esta página no idioma do seu navegador.",
+ "langBack": "Mudar para inglês",
+ "langSuggest": "Este site também está disponível no seu idioma."
 }

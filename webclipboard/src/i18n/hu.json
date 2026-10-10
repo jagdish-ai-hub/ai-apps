@@ -1,5 +1,5 @@
 {
- "metaTitle": "Online vágólap – szöveg másolása és beillesztése eszközök között ingyen",
+ "metaTitle": "Online vágólap – szöveg másolása és beillesztése ingyen",
  "metaDescription": "Ingyenes online vágólap: illessze be a szöveget, kapjon egy 6 számjegyű kódot, és nyissa meg bármilyen telefonon vagy számítógépen. Regisztráció nélkül, automatikus lejárattal, önmegsemmisítéssel és opcionális titkosítással.",
  "h1": "Online vágólap",
  "tagline": "Másolja a szöveget az egyik eszközön, és illessze be egy másikon – alkalmazás és fiók nélkül.",
@@ -124,5 +124,8 @@
  "shareEmail": "E-mail",
  "shareSms": "SMS",
  "shareClose": "Bezárás",
- "shareMore": "Továbbiak…"
+ "shareMore": "Továbbiak…",
+ "langAuto": "Az oldalt a böngészője nyelvén jelenítettük meg.",
+ "langBack": "Váltás angolra",
+ "langSuggest": "Az oldal az Ön nyelvén is elérhető."
 }

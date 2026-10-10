@@ -1,5 +1,5 @@
 {
- "metaTitle": "Schowek online – kopiuj i wklejaj tekst między urządzeniami za darmo",
+ "metaTitle": "Schowek online – kopiuj i wklejaj tekst za darmo",
  "metaDescription": "Darmowy schowek online: wklej tekst, otrzymaj 6-cyfrowy kod i otwórz go na dowolnym telefonie lub komputerze. Bez rejestracji, z automatycznym wygasaniem, samozniszczeniem i opcjonalnym szyfrowaniem.",
  "h1": "Schowek online",
  "tagline": "Skopiuj tekst na jednym urządzeniu i wklej na drugim – bez aplikacji i konta.",
@@ -124,5 +124,8 @@
  "shareEmail": "E-mail",
  "shareSms": "SMS",
  "shareClose": "Zamknij",
- "shareMore": "Więcej…"
+ "shareMore": "Więcej…",
+ "langAuto": "Wyświetliliśmy tę stronę w języku Twojej przeglądarki.",
+ "langBack": "Przełącz na angielski",
+ "langSuggest": "Ta strona jest dostępna także w Twoim języku."
 }

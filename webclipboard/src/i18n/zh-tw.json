@@ -124,5 +124,8 @@
  "shareEmail": "電子郵件",
  "shareSms": "簡訊",
  "shareClose": "關閉",
- "shareMore": "更多…"
+ "shareMore": "更多…",
+ "langAuto": "已依您的瀏覽器語言顯示此頁面。",
+ "langBack": "切換為英文",
+ "langSuggest": "本網站也提供您的語言版本。"
 }

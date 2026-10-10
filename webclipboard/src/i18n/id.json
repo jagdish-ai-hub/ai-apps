@@ -1,5 +1,5 @@
 {
- "metaTitle": "Clipboard Online – Salin dan Tempel Teks Antar Perangkat Gratis",
+ "metaTitle": "Clipboard Online – Salin dan Tempel Teks Gratis",
  "metaDescription": "Clipboard online gratis: tempel teks, dapatkan kode 6 digit, lalu buka di ponsel atau komputer mana pun. Tanpa daftar, kedaluwarsa otomatis, hapus setelah dibaca, dan enkripsi opsional.",
  "h1": "Clipboard Online",
  "tagline": "Salin teks di satu perangkat dan tempel di perangkat lain – tanpa aplikasi, tanpa akun.",
@@ -124,5 +124,8 @@
  "shareEmail": "Email",
  "shareSms": "SMS",
  "shareClose": "Tutup",
- "shareMore": "Lainnya…"
+ "shareMore": "Lainnya…",
+ "langAuto": "Kami menampilkan halaman ini dalam bahasa peramban Anda.",
+ "langBack": "Ganti ke Inggris",
+ "langSuggest": "Situs ini juga tersedia dalam bahasa Anda."
 }

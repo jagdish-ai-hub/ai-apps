@@ -1,5 +1,5 @@
 {
- "metaTitle": "Papan Keratan Dalam Talian – Salin dan Tampal Teks Antara Peranti Percuma",
+ "metaTitle": "Papan Keratan Dalam Talian – Salin dan Tampal Teks",
  "metaDescription": "Papan keratan dalam talian percuma: tampal teks, dapatkan kod 6 digit dan buka pada mana-mana telefon atau komputer. Tanpa pendaftaran, tamat tempoh automatik, padam selepas dibaca dan penyulitan pilihan.",
  "h1": "Papan Keratan Dalam Talian",
  "tagline": "Salin teks pada satu peranti dan tampal pada peranti lain – tanpa aplikasi, tanpa akaun.",
@@ -124,5 +124,8 @@
  "shareEmail": "E-mel",
  "shareSms": "SMS",
  "shareClose": "Tutup",
- "shareMore": "Lagi…"
+ "shareMore": "Lagi…",
+ "langAuto": "Kami memaparkan halaman ini dalam bahasa pelayar anda.",
+ "langBack": "Tukar ke Inggeris",
+ "langSuggest": "Laman web ini turut tersedia dalam bahasa anda."
 }

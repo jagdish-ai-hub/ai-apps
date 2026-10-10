@@ -1,5 +1,5 @@
 {
- "metaTitle": "Online udklipsholder – kopier og indsæt tekst mellem enheder gratis",
+ "metaTitle": "Online udklipsholder – kopier og indsæt tekst gratis",
  "metaDescription": "Gratis online udklipsholder: indsæt tekst, få en 6-cifret kode og åbn den på en hvilken som helst telefon eller computer. Uden tilmelding, med automatisk udløb, selvdestruktion og valgfri kryptering.",
  "h1": "Online udklipsholder",
  "tagline": "Kopier tekst på én enhed og indsæt den på en anden – uden app og uden konto.",
@@ -124,5 +124,8 @@
  "shareEmail": "E-mail",
  "shareSms": "SMS",
  "shareClose": "Luk",
- "shareMore": "Mere…"
+ "shareMore": "Mere…",
+ "langAuto": "Vi viste siden på din browsers sprog.",
+ "langBack": "Skift til engelsk",
+ "langSuggest": "Websitet findes også på dit sprog."
 }

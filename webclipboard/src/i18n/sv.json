@@ -1,5 +1,5 @@
 {
- "metaTitle": "Online-urklipp – kopiera och klistra in text mellan enheter gratis",
+ "metaTitle": "Online-urklipp – kopiera och klistra in text gratis",
  "metaDescription": "Gratis online-urklipp: klistra in text, få en 6-siffrig kod och öppna den på valfri telefon eller dator. Utan registrering, med automatiskt utgångsdatum, självförstörelse och valfri kryptering.",
  "h1": "Online-urklipp",
  "tagline": "Kopiera text på en enhet och klistra in den på en annan – utan app eller konto.",
@@ -124,5 +124,8 @@
  "shareEmail": "E-post",
  "shareSms": "SMS",
  "shareClose": "Stäng",
- "shareMore": "Mer…"
+ "shareMore": "Mer…",
+ "langAuto": "Vi visade sidan på din webbläsares språk.",
+ "langBack": "Byt till engelska",
+ "langSuggest": "Webbplatsen finns även på ditt språk."
 }

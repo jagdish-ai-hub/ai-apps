@@ -1,6 +1,7 @@
 ---
 import '../styles/global.css';
 import ShareWidget from '../components/ShareWidget.astro';
+import { detectLanguage } from '../lib/langmatch.js';
 import { languages, site, messages, localePath, absolute, langByCode } from '../lib/i18n';
 
 interface Props {
@@ -25,6 +26,14 @@ const canonical = absolute(translated ? localePath(lang, page) : page);
 const ogImage = absolute('/og.png');
 const ogImageAlt = 'WebClipboard: copy text on one device and paste it on another with a 6-digit code';
 const rtl = false;
+const codes = languages.map((l) => l.code);
+// First-visit language redirect: only on the English homepage ("/"), inlined in <head> so it runs before first paint.
+// Explicit choices (language menu, footer, banner) are saved in localStorage ("wc-lang") and always win over the browser setting.
+// Crawlers do not send a non-English language preference, so they keep seeing the English page. If storage is blocked we
+// do not redirect at all, because a choice (e.g. staying on English) could not be remembered and would loop.
+const redirectScript = lang === 'en' && page === '/' && translated
+  ? `(function(){try{if(location.pathname!=='/')return;try{localStorage.setItem('wc-t','1');localStorage.removeItem('wc-t')}catch(e){return}var codes=${JSON.stringify(codes)};var detect=${detectLanguage.toString()};var pref=null;try{pref=localStorage.getItem('wc-lang')}catch(e){}var t=pref&&codes.indexOf(pref)>-1?pref:detect(navigator.languages&&navigator.languages.length?navigator.languages:[navigator.language||'en'],codes);if(t&&t!=='en'){try{sessionStorage.setItem('wc-auto',t+':'+(pref?'saved':'browser'))}catch(e){}location.replace('/'+t+'/'+location.search+location.hash)}}catch(e){}})();`
+  : '';
 // Share the tool's own address; legal and error pages share the language home page instead.
 const shareUrl = ['/about/', '/privacy/', '/terms/', '/contact/', '/404/'].includes(page) ? absolute(localePath(lang)) : canonical;
 ---
@@ -33,6 +42,7 @@ const shareUrl = ['/about/', '/privacy/', '/terms/', '/contact/', '/404/'].inclu
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    {redirectScript && <script is:inline set:html={redirectScript} />}
     <title>{title}</title>
     <meta name="description" content={description} />
     <link rel="canonical" href={canonical} />
@@ -96,7 +106,7 @@ const shareUrl = ['/about/', '/privacy/', '/terms/', '/contact/', '/404/'].inclu
           <label class="sr-only" for="lang-switch">{m.language}</label>
           <select class="select" id="lang-switch" aria-label={m.language}>
             {languages.map((l) => (
-              <option value={l.code === lang ? page : localePath(l.code, translated ? page : '/')} selected={l.code === lang}>{l.name}</option>
+              <option value={l.code === lang ? page : localePath(l.code, translated ? page : '/')} data-code={l.code} selected={l.code === lang}>{l.name}</option>
             ))}
           </select>
           <button class="icon-btn" id="theme-toggle" type="button" aria-label="Toggle light / dark theme">
@@ -115,7 +125,7 @@ const shareUrl = ['/about/', '/privacy/', '/terms/', '/contact/', '/404/'].inclu
       <div class="wrap">
         <ul class="langs" aria-label={m.language}>
           {languages.map((l) => (
-            <li><a href={localePath(l.code)} hreflang={l.hreflang} lang={l.htmlLang} aria-current={l.code === lang ? 'true' : undefined}>{l.name}</a></li>
+            <li><a href={localePath(l.code)} hreflang={l.hreflang} lang={l.htmlLang} data-code={l.code} aria-current={l.code === lang ? 'true' : undefined}>{l.name}</a></li>
           ))}
         </ul>
         <div class="foot-row">
@@ -132,6 +142,15 @@ const shareUrl = ['/about/', '/privacy/', '/terms/', '/contact/', '/404/'].inclu
       </div>
     </footer>
 
+    <aside class="lang-banner" id="lang-banner" role="region" aria-label={m.language} hidden>
+      <p id="lang-banner-text"></p>
+      <a class="btn small" id="lang-banner-go" href="/"></a>
+      <button class="icon-btn" id="lang-banner-close" type="button" aria-label={m.shareClose}>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" /></svg>
+      </button>
+    </aside>
+    <script type="application/json" id="lang-config" set:html={JSON.stringify({ current: lang, codes })} />
+
     <ShareWidget lang={lang} url={shareUrl} title={title} text={shareText ?? m.shareText} />
 
     <script>
@@ -141,10 +160,17 @@ const shareUrl = ['/about/', '/privacy/', '/terms/', '/contact/', '/404/'].inclu
         root.dataset.theme = next;
         try { localStorage.setItem('wc-theme', next); } catch {}
       });
+      const rememberLang = (code?: string) => {
+        if (code) try { localStorage.setItem('wc-lang', code); } catch {}
+      };
       document.getElementById('lang-switch')?.addEventListener('change', (e) => {
         const target = e.target as HTMLSelectElement;
+        rememberLang(target.selectedOptions[0]?.dataset.code);
         location.href = target.value + location.hash;
       });
+      document.querySelectorAll<HTMLAnchorElement>('.langs a[data-code]').forEach((a) =>
+        a.addEventListener('click', () => rememberLang(a.dataset.code)),
+      );
       document.getElementById('privacy-settings')?.addEventListener('click', () => {
         const w = window as any;
         w.googlefc = w.googlefc || {};
@@ -152,6 +178,9 @@ const shareUrl = ['/about/', '/privacy/', '/terms/', '/contact/', '/404/'].inclu
         w.googlefc.callbackQueue.push({ CONSENT_DATA_READY: () => w.googlefc.showRevocationMessage?.() });
         w.googlefc.showRevocationMessage?.();
       });
+    </script>
+    <script>
+      import '../scripts/langprefs';
     </script>
     {site.cloudflareAnalyticsToken && (
       <script is:inline defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon={JSON.stringify({ token: site.cloudflareAnalyticsToken })}></script>

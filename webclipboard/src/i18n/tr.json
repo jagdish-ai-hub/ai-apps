@@ -1,5 +1,5 @@
 {
- "metaTitle": "Online Pano – Cihazlar Arasında Ücretsiz Metin Kopyala ve Yapıştır",
+ "metaTitle": "Online Pano – Metin Kopyala ve Yapıştır, Ücretsiz",
  "metaDescription": "Ücretsiz online pano: metninizi yapıştırın, 6 haneli bir kod alın ve herhangi bir telefon veya bilgisayarda açın. Üyelik yok, otomatik süre dolumu, okununca silme ve isteğe bağlı şifreleme.",
  "h1": "Online Pano",
  "tagline": "Metni bir cihazda kopyalayın, başka bir cihaza yapıştırın – uygulama ve hesap gerekmez.",
@@ -124,5 +124,8 @@
  "shareEmail": "E-posta",
  "shareSms": "SMS",
  "shareClose": "Kapat",
- "shareMore": "Diğer…"
+ "shareMore": "Diğer…",
+ "langAuto": "Bu sayfayı tarayıcınızın dilinde gösterdik.",
+ "langBack": "İngilizceye geç",
+ "langSuggest": "Bu site kendi dilinizde de mevcut."
 }

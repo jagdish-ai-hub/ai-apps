@@ -1,5 +1,5 @@
 {
- "metaTitle": "Portapapeles Online – Copia y Pega Texto entre Dispositivos Gratis",
+ "metaTitle": "Portapapeles Online Gratis – Copia y Pega Texto",
  "metaDescription": "Portapapeles online gratis: pega tu texto, obtén un código de 6 dígitos y ábrelo en cualquier móvil u ordenador. Sin registro, con caducidad automática, autodestrucción y cifrado opcional.",
  "h1": "Portapapeles Online",
  "tagline": "Copia texto en un dispositivo y pégalo en otro, sin apps ni cuentas.",
@@ -124,5 +124,8 @@
  "shareEmail": "Correo",
  "shareSms": "Mensaje de texto",
  "shareClose": "Cerrar",
- "shareMore": "Más…"
+ "shareMore": "Más…",
+ "langAuto": "Hemos mostrado esta página en el idioma de tu navegador.",
+ "langBack": "Cambiar a inglés",
+ "langSuggest": "Este sitio también está disponible en tu idioma."
 }

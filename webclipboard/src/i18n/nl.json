@@ -1,5 +1,5 @@
 {
- "metaTitle": "Online klembord – Tekst gratis kopiëren en plakken tussen apparaten",
+ "metaTitle": "Online klembord – Kopieer en plak tekst tussen apparaten",
  "metaDescription": "Gratis online klembord: plak je tekst, ontvang een code van 6 cijfers en open die op elke telefoon of computer. Zonder account, met automatische verloopdatum, zelfvernietiging en optionele versleuteling.",
  "h1": "Online klembord",
  "tagline": "Kopieer tekst op het ene apparaat en plak hem op een ander, zonder app of account.",
@@ -124,5 +124,8 @@
  "shareEmail": "E-mail",
  "shareSms": "Sms",
  "shareClose": "Sluiten",
- "shareMore": "Meer…"
+ "shareMore": "Meer…",
+ "langAuto": "We hebben deze pagina getoond in de taal van je browser.",
+ "langBack": "Overschakelen naar Engels",
+ "langSuggest": "Deze website is ook beschikbaar in je eigen taal."
 }

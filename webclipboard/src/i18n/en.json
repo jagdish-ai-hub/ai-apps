@@ -109,7 +109,7 @@
  ],
  "adLabel": "Advertisement",
  "language": "Language",
- "langSuggest": "This page is available in English",
+ "langSuggest": "This site is also available in your language.",
  "footerAbout": "About",
  "footerPrivacy": "Privacy Policy",
  "footerTerms": "Terms of Use",
@@ -125,5 +125,7 @@
  "shareEmail": "Email",
  "shareSms": "Text message",
  "shareClose": "Close",
- "shareMore": "More…"
+ "shareMore": "More…",
+ "langAuto": "We showed this page in your browser's language.",
+ "langBack": "Switch to English"
 }

@@ -1,5 +1,5 @@
 {
- "metaTitle": "Online utklippstavle – kopier og lim inn tekst mellom enheter gratis",
+ "metaTitle": "Online utklippstavle – kopier og lim inn tekst gratis",
  "metaDescription": "Gratis online utklippstavle: lim inn tekst, få en 6-sifret kode og åpne den på hvilken som helst telefon eller datamaskin. Uten registrering, med automatisk utløp, selvdestruksjon og valgfri kryptering.",
  "h1": "Online utklippstavle",
  "tagline": "Kopier tekst på én enhet og lim den inn på en annen – uten app og uten konto.",
@@ -124,5 +124,8 @@
  "shareEmail": "E-post",
  "shareSms": "SMS",
  "shareClose": "Lukk",
- "shareMore": "Mer…"
+ "shareMore": "Mer…",
+ "langAuto": "Vi viste siden på nettleserens språk.",
+ "langBack": "Bytt til engelsk",
+ "langSuggest": "Nettstedet finnes også på ditt språk."
 }

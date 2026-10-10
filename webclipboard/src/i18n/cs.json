@@ -1,5 +1,5 @@
 {
- "metaTitle": "Online schránka – kopírujte a vkládejte text mezi zařízeními zdarma",
+ "metaTitle": "Online schránka – kopírujte a vkládejte text zdarma",
  "metaDescription": "Bezplatná online schránka: vložte text, získejte 6místný kód a otevřete ho na jakémkoli telefonu nebo počítači. Bez registrace, s automatickým vypršením, samodestrukcí a volitelným šifrováním.",
  "h1": "Online schránka",
  "tagline": "Zkopírujte text na jednom zařízení a vložte ho na jiném – bez aplikace a bez účtu.",
@@ -124,5 +124,8 @@
  "shareEmail": "E-mail",
  "shareSms": "SMS",
  "shareClose": "Zavřít",
- "shareMore": "Další…"
+ "shareMore": "Další…",
+ "langAuto": "Tuto stránku jsme zobrazili v jazyce vašeho prohlížeče.",
+ "langBack": "Přepnout na angličtinu",
+ "langSuggest": "Web je k dispozici také ve vašem jazyce."
 }

@@ -319,6 +319,15 @@ ol.steps li > span { min-width: 0; }
   .bar-val { grid-column: 1 / -1; text-align: left; margin-bottom: 6px; }
 }
 
+
+/* language banner: fixed, so showing it never shifts the page layout */
+.lang-banner { position: fixed; left: max(16px, env(safe-area-inset-left)); bottom: max(16px, env(safe-area-inset-bottom)); z-index: 19; display: flex; align-items: center; gap: 12px; max-width: min(560px, calc(100vw - 96px)); padding: 10px 10px 10px 16px; background: var(--surface); color: var(--fg); border: 1px solid var(--line-strong); border-radius: 14px; box-shadow: var(--shadow); font-size: 14px; }
+.lang-banner[hidden] { display: none; }
+.lang-banner p { margin: 0; flex: 1; min-width: 0; line-height: 1.4; }
+.lang-banner .btn { white-space: nowrap; text-decoration: none; }
+@media (max-width: 700px) { .lang-banner { right: 72px; max-width: none; flex-wrap: wrap; gap: 8px; } .lang-banner p { flex-basis: 100%; } .lang-banner .btn { flex: 1; } }
+@media print { .lang-banner { display: none; } }
+
 /* footer */
 .site-footer { margin-top: 72px; border-top: 1px solid var(--line); padding: 32px 0 40px; font-size: 14px; color: var(--muted); }
 .langs { display: flex; flex-wrap: wrap; gap: 4px 14px; margin: 0 0 22px; padding: 0; list-style: none; }

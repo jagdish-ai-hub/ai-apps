@@ -1,5 +1,5 @@
 {
- "metaTitle": "Online-leikepöytä – kopioi ja liitä tekstiä laitteiden välillä ilmaiseksi",
+ "metaTitle": "Online-leikepöytä – kopioi ja liitä tekstiä ilmaiseksi",
  "metaDescription": "Ilmainen online-leikepöytä: liitä teksti, saa 6-numeroinen koodi ja avaa se millä tahansa puhelimella tai tietokoneella. Ei rekisteröitymistä, automaattinen vanheneminen, itsetuhoutuminen ja valinnainen salaus.",
  "h1": "Online-leikepöytä",
  "tagline": "Kopioi teksti yhdellä laitteella ja liitä se toisella – ilman sovellusta tai tiliä.",
@@ -124,5 +124,8 @@
  "shareEmail": "Sähköposti",
  "shareSms": "Tekstiviesti",
  "shareClose": "Sulje",
- "shareMore": "Lisää…"
+ "shareMore": "Lisää…",
+ "langAuto": "Näytimme sivun selaimesi kielellä.",
+ "langBack": "Vaihda englantiin",
+ "langSuggest": "Sivusto on saatavilla myös omalla kielelläsi."
 }

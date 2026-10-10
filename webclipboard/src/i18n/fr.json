@@ -1,5 +1,5 @@
 {
- "metaTitle": "Presse-papiers en ligne – Copiez et collez du texte entre appareils gratuitement",
+ "metaTitle": "Presse-papiers en ligne – Copier-coller entre appareils",
  "metaDescription": "Presse-papiers en ligne gratuit : collez votre texte, obtenez un code à 6 chiffres et ouvrez-le sur n'importe quel téléphone ou ordinateur. Sans inscription, expiration automatique, autodestruction et chiffrement en option.",
  "h1": "Presse-papiers en ligne",
  "tagline": "Copiez du texte sur un appareil et collez-le sur un autre, sans appli ni compte.",
@@ -124,5 +124,8 @@
  "shareEmail": "E-mail",
  "shareSms": "SMS",
  "shareClose": "Fermer",
- "shareMore": "Plus…"
+ "shareMore": "Plus…",
+ "langAuto": "Nous avons affiché cette page dans la langue de votre navigateur.",
+ "langBack": "Passer à l'anglais",
+ "langSuggest": "Ce site est aussi disponible dans votre langue."
 }

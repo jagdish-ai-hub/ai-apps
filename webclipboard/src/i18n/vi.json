@@ -1,5 +1,5 @@
 {
- "metaTitle": "Clipboard Online – Sao chép và dán văn bản giữa các thiết bị miễn phí",
+ "metaTitle": "Clipboard Online – Sao chép và dán văn bản miễn phí",
  "metaDescription": "Clipboard online miễn phí: dán văn bản, nhận mã 6 chữ số rồi mở trên bất kỳ điện thoại hoặc máy tính nào. Không cần đăng ký, tự động hết hạn, xóa sau khi xem và mã hóa tùy chọn.",
  "h1": "Clipboard Online",
  "tagline": "Sao chép văn bản trên thiết bị này và dán sang thiết bị khác – không cần ứng dụng, không cần tài khoản.",
@@ -124,5 +124,8 @@
  "shareEmail": "Email",
  "shareSms": "Tin nhắn SMS",
  "shareClose": "Đóng",
- "shareMore": "Thêm…"
+ "shareMore": "Thêm…",
+ "langAuto": "Chúng tôi đã hiển thị trang này theo ngôn ngữ trình duyệt của bạn.",
+ "langBack": "Chuyển sang tiếng Anh",
+ "langSuggest": "Trang web này cũng có bằng ngôn ngữ của bạn."
 }
