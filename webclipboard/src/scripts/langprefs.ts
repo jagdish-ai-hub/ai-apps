@@ -1,7 +1,7 @@
 // Language preference banner. Two cases, both written in a language the visitor can read:
-//   auto    - the English homepage sent them to their language on a first visit: offer a way back to English.
+//   auto    - the English homepage sent them to their language on a first visit: offer a way back to English (written in English).
 //   suggest - the page is in another language than the one they prefer (or an English-only page): offer to switch.
-// A choice made here, in the language menu or in the footer is saved ("wc-lang") and wins over the browser setting.
+// Suggestions are written in the language being offered. A choice made here, in the language menu or in the footer is saved ("wc-lang") and wins over the browser setting.
 import { detectLanguage } from '../lib/langmatch.js';
 
 type Ui = Record<string, { name: string; path: string; auto: string; back: string; suggest: string; close: string }>;
@@ -42,9 +42,10 @@ if (kind) {
       const here = ui[cfg.current] || ui.en;
       const there = ui[shownTarget] || ui.en;
       if (shownKind === 'auto') {
-        text.textContent = here.auto;
-        go.textContent = here.back;
-        banner.lang = document.documentElement.lang;
+        // This banner exists to offer English to people who did not want the automatic switch, so it is written in English.
+        text.textContent = ui.en.auto;
+        go.textContent = ui.en.back;
+        banner.lang = 'en';
       } else {
         text.textContent = there.suggest;
         go.textContent = there.name;
@@ -57,7 +58,7 @@ if (kind) {
         write(KEY, shownTarget);
         location.href = there.path + location.hash;
       });
-      (document.getElementById('lang-banner-close') as HTMLElement).setAttribute('aria-label', here.close);
+      (document.getElementById('lang-banner-close') as HTMLElement).setAttribute('aria-label', shownKind === 'auto' ? ui.en.close : here.close);
       document.getElementById('lang-banner-close')!.addEventListener('click', () => {
         if (shownKind === 'suggest') write(DISMISSED, shownTarget);
         banner.hidden = true;

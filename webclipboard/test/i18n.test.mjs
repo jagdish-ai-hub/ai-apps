@@ -5,7 +5,8 @@ import { readFileSync, existsSync } from 'node:fs';
 const read = (p) => JSON.parse(readFileSync(new URL(p, import.meta.url), 'utf8'));
 const languages = read('../src/i18n/languages.json');
 const en = read('../src/i18n/en.json');
-const UNUSED_OK = new Set([]);
+// Strings that exist only in English on purpose (the "back to English" banner is always English).
+const UNUSED_OK = new Set(['langAuto', 'langBack']);
 
 // Approximate width of a search-result title: CJK and fullwidth characters count double, Thai/Devanagari/Bengali letters 1.5,
 // combining marks 0. Google truncates around 600px, roughly 60 units.
@@ -41,7 +42,7 @@ for (const l of languages.filter((x) => x.code !== 'en')) {
     assert.ok(JSON.stringify(t.faq).includes('{max}'), `${l.code}: FAQ lost {max}`);
     assert.notEqual(t.metaTitle, en.metaTitle, `${l.code}: metaTitle not translated`);
     assert.ok(titleWidth(t.metaTitle) <= 60, `${l.code}: metaTitle too wide for a search result (${titleWidth(t.metaTitle)} units): ${t.metaTitle}`);
-    for (const k of ['langAuto', 'langBack', 'langSuggest']) assert.ok(t[k] && [...t[k]].length >= 4 && t[k] !== en[k], `${l.code}: ${k} must be translated`);
+    for (const k of ['langSuggest']) assert.ok(t[k] && [...t[k]].length >= 4 && t[k] !== en[k], `${l.code}: ${k} must be translated`);
     assert.ok(t.metaDescription.length <= 320, `${l.code}: metaDescription too long (${t.metaDescription.length})`);
   });
 }

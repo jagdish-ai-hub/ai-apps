@@ -116,6 +116,15 @@ const shareUrl = ['/about/', '/privacy/', '/terms/', '/contact/', '/404/'].inclu
         </div>
       </div>
     </header>
+    <div class="lang-anchor">
+      <aside class="lang-banner" id="lang-banner" role="region" aria-label={m.language} hidden>
+        <p id="lang-banner-text"></p>
+        <a class="btn small" id="lang-banner-go" href="/"></a>
+        <button class="icon-btn" id="lang-banner-close" type="button" aria-label={m.shareClose}>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" /></svg>
+        </button>
+      </aside>
+    </div>
 
     <main>
       <slot />
@@ -142,13 +151,6 @@ const shareUrl = ['/about/', '/privacy/', '/terms/', '/contact/', '/404/'].inclu
       </div>
     </footer>
 
-    <aside class="lang-banner" id="lang-banner" role="region" aria-label={m.language} hidden>
-      <p id="lang-banner-text"></p>
-      <a class="btn small" id="lang-banner-go" href="/"></a>
-      <button class="icon-btn" id="lang-banner-close" type="button" aria-label={m.shareClose}>
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" /></svg>
-      </button>
-    </aside>
     <script type="application/json" id="lang-config" set:html={JSON.stringify({ current: lang, codes })} />
 
     <ShareWidget lang={lang} url={shareUrl} title={title} text={shareText ?? m.shareText} />
