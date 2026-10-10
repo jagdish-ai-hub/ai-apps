@@ -1,14 +1,14 @@
 /* WebClipboard — monochrome, technical, no accent colour. Light and dark share one token set. */
 :root {
-  --bg: #fafaf9;
-  --surface: #ffffff;
-  --surface-2: #f3f3f1;
-  --fg: #0a0a0a;
-  --muted: #5f5f5b;
-  --line: #e3e3df;
-  --line-strong: #c9c9c4;
-  --invert-bg: #0a0a0a;
-  --invert-fg: #fafaf9;
+  --bg: #f2f1ed;
+  --surface: #f9f8f5;
+  --surface-2: #e9e8e3;
+  --fg: #2d2d2a;
+  --muted: #62625c;
+  --line: #dddcd6;
+  --line-strong: #c3c2bb;
+  --invert-bg: #2d2d2a;
+  --invert-fg: #f2f1ed;
   --danger: #b42318;
   --shadow: 0 1px 0 rgba(0, 0, 0, 0.04), 0 12px 32px -16px rgba(0, 0, 0, 0.18);
   --mono: ui-monospace, 'SF Mono', 'JetBrains Mono', 'Cascadia Code', Menlo, Consolas, 'Liberation Mono', monospace;
@@ -119,7 +119,7 @@ textarea.clip:focus { border-color: var(--fg); outline: none; }
 .digits { display: flex; justify-content: center; gap: clamp(6px, 2vw, 12px); direction: ltr; }
 .digit { width: clamp(42px, 12vw, 64px); height: clamp(58px, 16vw, 84px); display: grid; place-items: center; border: 1px solid var(--line-strong); border-radius: 10px; background: var(--bg); font: 600 clamp(28px, 8vw, 44px)/1 var(--mono); }
 .share { display: grid; grid-template-columns: 1fr auto; gap: 24px; align-items: center; margin-top: 22px; }
-.share .qr { width: 148px; height: 148px; padding: 10px; background: #fff; border: 1px solid var(--line); border-radius: 10px; }
+.share .qr { width: 148px; height: 148px; padding: 10px; background: #fff; /* stays pure white: QR scanners read it most reliably */ border: 1px solid var(--line); border-radius: 10px; }
 .share .qr svg { width: 100%; height: 100%; display: block; }
 .linkbox { display: flex; gap: 8px; }
 .linkbox input { flex: 1; min-width: 0; height: 38px; padding: 0 10px; background: var(--bg); border: 1px solid var(--line); border-radius: 8px; font: 13px var(--mono); }
