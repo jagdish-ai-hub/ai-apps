@@ -134,6 +134,10 @@ Workers logs and request metrics are already on in the Cloudflare dashboard (`ob
 
 Because it uses no cookies, it needs no consent banner. The privacy policy already describes it.
 
+## Microsoft Clarity (heatmaps, session replay)
+
+`clarityId` in `site.config.json` (empty = no code emitted). The tag loads 2 s after the page's `load` event and is skipped when the URL holds a clip code (`#123456`). The textarea, password fields, code digits, share link, received text and token-calculator input carry `data-clr-mask="true"`, so Clarity never records them. Clarity uses cookies; for visitors in the EEA, UK and Switzerland Microsoft asks for a consent signal (`clarity("consent")`), so wire that to your consent banner once you add one for AdSense.
+
 ## IndexNow (instant indexing for Bing, Yandex, Naver, Seznam and other participating engines)
 
 - The key lives in `site.config.json` (`indexNowKey`) and is published as `public/<key>.txt` (the file contains only the key). A key is public by design, not a secret.

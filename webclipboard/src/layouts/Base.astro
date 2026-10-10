@@ -187,6 +187,22 @@ const shareUrl = ['/about/', '/privacy/', '/terms/', '/contact/', '/404/'].inclu
     {site.cloudflareAnalyticsToken && (
       <script is:inline defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon={JSON.stringify({ token: site.cloudflareAnalyticsToken })}></script>
     )}
+    {site.clarityId && (
+      <script is:inline define:vars={{ id: site.clarityId }}>
+        // Microsoft Clarity (heatmaps / session replay). Loaded after the page is idle. Skipped when the address holds a clip code
+        // (#123456), and clip text, codes and passwords are masked in the markup with data-clr-mask.
+        window.addEventListener('load', function () {
+          if (/^#\d{6}$/.test(location.hash)) return;
+          setTimeout(function () {
+            (function (c, l, a, r, i, t, y) {
+              c[a] = c[a] || function () { (c[a].q = c[a].q || []).push(arguments); };
+              t = l.createElement(r); t.async = 1; t.src = 'https://www.clarity.ms/tag/' + i;
+              y = l.getElementsByTagName(r)[0]; y.parentNode.insertBefore(t, y);
+            })(window, document, 'clarity', 'script', id);
+          }, 2000);
+        });
+      </script>
+    )}
     {site.gtagId && (
       <script is:inline define:vars={{ id: site.gtagId }}>
         window.addEventListener('load', function () {

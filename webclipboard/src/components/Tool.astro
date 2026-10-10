@@ -21,7 +21,7 @@ const config = { maxChars: site.maxChars, turnstileSiteKey: site.turnstileSiteKe
     <form id="send-form" novalidate>
       <div id="compose">
         <label class="sr-only" for="text">{m.sendTitle}</label>
-        <textarea class="clip" id="text" name="text" placeholder={m.placeholder} spellcheck="false" autocomplete="off" autocapitalize="off"></textarea>
+        <textarea class="clip" id="text" data-clr-mask="true" name="text" placeholder={m.placeholder} spellcheck="false" autocomplete="off" autocapitalize="off"></textarea>
         <div class="row">
           <span class="count"><span id="count">0</span> / {site.maxChars.toLocaleString('en-US')} {m.characters}</span>
         </div>
@@ -37,7 +37,7 @@ const config = { maxChars: site.maxChars, turnstileSiteKey: site.turnstileSiteKe
           </div>
           <div class="field">
             <label for="password">{m.passwordLabel}</label>
-            <input type="password" id="password" name="password" autocomplete="new-password" />
+            <input type="password" id="password" data-clr-mask="true" name="password" autocomplete="new-password" />
           </div>
           <div class="field">
             <span class="lbl">&nbsp;</span>
@@ -54,13 +54,13 @@ const config = { maxChars: site.maxChars, turnstileSiteKey: site.turnstileSiteKe
 
       <div class="result" id="result" hidden>
         <div class="code-label"><span class="eyebrow">{m.yourCode}</span></div>
-        <div class="digits" id="digits" aria-live="polite"></div>
+        <div class="digits" id="digits" data-clr-mask="true" aria-live="polite"></div>
         <p class="hint center">{m.codeHint}</p>
         <div class="share">
           <div>
             <span class="eyebrow">{m.shareLink}</span>
             <div class="linkbox" style="margin-top:8px">
-              <input type="text" id="share-url" readonly aria-label={m.shareLink} />
+              <input type="text" id="share-url" data-clr-mask="true" readonly aria-label={m.shareLink} />
               <button class="btn ghost small" id="copy-link" type="button">{m.copy}</button>
             </div>
             <div class="actions">
@@ -81,7 +81,7 @@ const config = { maxChars: site.maxChars, turnstileSiteKey: site.turnstileSiteKe
     <div id="receive-box">
       <label class="eyebrow" for="code-input" style="display:block;margin-bottom:10px">{m.codeLabel}</label>
       <form class="receive-form" id="receive-form" novalidate>
-        <input id="code-input" inputmode="numeric" pattern="[0-9]*" maxlength="7" autocomplete="off" placeholder="000000" />
+        <input id="code-input" data-clr-mask="true" inputmode="numeric" pattern="[0-9]*" maxlength="7" autocomplete="off" placeholder="000000" />
         <button class="btn" id="receive-btn" type="submit">{m.receiveBtn}</button>
       </form>
       <p class="msg err" id="receive-msg" role="alert"></p>
@@ -90,14 +90,14 @@ const config = { maxChars: site.maxChars, turnstileSiteKey: site.turnstileSiteKe
     <form class="pw" id="pw-form" hidden>
       <p class="hint" style="margin-top:0">{m.passwordPrompt}</p>
       <div class="receive-form">
-        <input type="password" id="pw-input" autocomplete="off" style="letter-spacing:normal;font-size:18px" aria-label={m.passwordLabel} />
+        <input type="password" id="pw-input" data-clr-mask="true" autocomplete="off" style="letter-spacing:normal;font-size:18px" aria-label={m.passwordLabel} />
         <button class="btn" type="submit">{m.unlock}</button>
       </div>
       <p class="msg err" id="pw-msg" role="alert"></p>
     </form>
 
     <div class="opened" id="opened" hidden>
-      <pre id="opened-text" dir="auto"></pre>
+      <pre id="opened-text" data-clr-mask="true" dir="auto"></pre>
       <div class="actions">
         <button class="btn small" id="copy-text" type="button">{m.copy}</button>
         <button class="btn ghost small" id="download" type="button">{m.download}</button>
