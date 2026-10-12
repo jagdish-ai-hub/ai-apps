@@ -1,0 +1,41 @@
+---
+const sample = 'Paste or type your text here and the counts update as you go. This sentence has a few words in it. 日本語のテキストも数えられます。';
+---
+<div class="tool wc" id="wordcount">
+  <div class="panel">
+    <div class="tc-head">
+      <label class="eyebrow" for="wc-in">Paste or type your text</label>
+      <div class="actions" style="margin:0">
+        <button class="btn ghost small" id="wc-paste" type="button">Paste from clipboard</button>
+        <button class="btn ghost small" id="wc-sample" type="button">Try an example</button>
+        <button class="btn ghost small" id="wc-clear" type="button">Clear</button>
+      </div>
+    </div>
+    <textarea class="clip" id="wc-in" data-clr-mask="true" spellcheck="false" autocomplete="off" placeholder="Start typing or paste your text…"></textarea>
+    <div class="tc-grid wc-grid" aria-live="polite">
+      <div class="stat big"><span class="eyebrow">Words</span><strong id="wc-words">0</strong></div>
+      <div class="stat"><span class="eyebrow">Characters</span><strong id="wc-chars">0</strong></div>
+      <div class="stat"><span class="eyebrow">No spaces</span><strong id="wc-nospace">0</strong></div>
+      <div class="stat"><span class="eyebrow">Sentences</span><strong id="wc-sent">0</strong></div>
+      <div class="stat"><span class="eyebrow">Paragraphs</span><strong id="wc-para">0</strong></div>
+    </div>
+    <div class="tc-grid wc-grid2">
+      <div class="stat"><span class="eyebrow">Reading time</span><strong id="wc-read">0 s</strong><small>about 238 words a minute</small></div>
+      <div class="stat"><span class="eyebrow">Speaking time</span><strong id="wc-speak">0 s</strong><small>about 150 words a minute</small></div>
+      <div class="stat"><span class="eyebrow">Lines</span><strong id="wc-lines">0</strong></div>
+      <div class="stat"><span class="eyebrow">Size</span><strong id="wc-bytes">0 B</strong><small>UTF-8 bytes</small></div>
+    </div>
+    <div class="opts" style="margin-top:18px">
+      <div class="field"><label for="wc-limit">Character limit (optional)</label><input id="wc-limit" type="text" inputmode="numeric" placeholder="e.g. 280 or 160" autocomplete="off" /></div>
+      <div class="field"><span class="lbl">&nbsp;</span><span class="hint" id="wc-limit-msg" style="margin:0" aria-live="polite"></span></div>
+    </div>
+    <h2 class="tc-h">Most used words</h2>
+    <p class="hint" style="margin-top:0" id="wc-top-msg">Words of three or more letters, most frequent first.</p>
+    <ol class="toplist" id="wc-top"></ol>
+  </div>
+  <div class="safety">Your text is counted in your browser and is never uploaded.</div>
+  <script type="text/plain" id="wc-sample-text" set:html={sample}></script>
+</div>
+<script>
+  import '../../scripts/wordcount';
+</script>

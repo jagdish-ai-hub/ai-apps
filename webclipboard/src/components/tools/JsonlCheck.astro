@@ -1,0 +1,58 @@
+---
+const sample = [
+  JSON.stringify({ messages: [{ role: 'system', content: 'You are a concise support assistant.' }, { role: 'user', content: 'How do I reset my password?' }, { role: 'assistant', content: 'Open Settings, choose Security, then Reset password.' }] }),
+  JSON.stringify({ messages: [{ role: 'user', content: 'Where is my invoice?' }, { role: 'assistant', content: 'Invoices are under Billing, then History.' }] }),
+  '{"messages": [{"role": "user", "content": "Missing assistant reply"}]}',
+  '{"messages": [{"role": "robot", "content": "wrong role"}]}',
+  '{"prompt": "old format", "completion": "not accepted for chat"}',
+  '{not valid json',
+].join('\n');
+---
+<div class="tool jl" id="jsonlcheck">
+  <div class="panel">
+    <div class="tc-head">
+      <label class="eyebrow" for="jl-in">Paste your JSONL, or open a file</label>
+      <div class="actions" style="margin:0">
+        <label class="btn ghost small" for="jl-file" style="cursor:pointer">Open a file…</label>
+        <input id="jl-file" type="file" accept=".jsonl,.json,.txt,application/json,text/plain" class="sr-only" />
+        <button class="btn ghost small" id="jl-sample" type="button">Try an example</button>
+        <button class="btn ghost small" id="jl-clear" type="button">Clear</button>
+      </div>
+    </div>
+    <textarea class="clip" id="jl-in" data-clr-mask="true" spellcheck="false" autocomplete="off" placeholder='One JSON object per line, for example: {"messages": [{"role": "user", "content": "Hi"}, {"role": "assistant", "content": "Hello!"}]}'></textarea>
+    <p class="hint" id="jl-file-note" hidden></p>
+    <div class="opts" style="margin-top:14px">
+      <div class="field"><label for="jl-tok">Tokenizer</label>
+        <select id="jl-tok"><option value="o200k_base">o200k_base (GPT-4o and newer)</option><option value="cl100k_base">cl100k_base (GPT-4, GPT-3.5)</option></select></div>
+      <div class="field"><label for="jl-max">Warn above (tokens per example)</label><input id="jl-max" type="text" inputmode="numeric" placeholder="optional, e.g. 4096" autocomplete="off" /></div>
+    </div>
+    <div class="row"><button class="btn" id="jl-go" type="button">Check the file</button></div>
+    <p class="msg" id="jl-status" role="status"></p>
+
+    <div id="jl-result" hidden>
+      <div class="tc-grid jl-stats" aria-live="polite">
+        <div class="stat big"><span class="eyebrow" id="jl-verdict-label">Result</span><strong id="jl-verdict">–</strong></div>
+        <div class="stat"><span class="eyebrow">Lines</span><strong id="jl-lines">0</strong></div>
+        <div class="stat"><span class="eyebrow">Valid examples</span><strong id="jl-valid">0</strong></div>
+        <div class="stat"><span class="eyebrow">Errors</span><strong id="jl-errors">0</strong></div>
+        <div class="stat"><span class="eyebrow">Warnings</span><strong id="jl-warns">0</strong></div>
+      </div>
+      <div class="tc-grid jl-tok">
+        <div class="stat"><span class="eyebrow">Total tokens</span><strong id="jl-total">0</strong><small>message content only</small></div>
+        <div class="stat"><span class="eyebrow">Average per example</span><strong id="jl-mean">0</strong></div>
+        <div class="stat"><span class="eyebrow">Median</span><strong id="jl-median">0</strong></div>
+        <div class="stat"><span class="eyebrow">Largest example</span><strong id="jl-maxtok">0</strong></div>
+      </div>
+      <h2 class="tc-h" id="jl-err-h" hidden>Errors</h2>
+      <div class="dtable-wrap" id="jl-err-wrap" hidden tabindex="0" role="region" aria-label="Errors"><table class="dtable"><thead><tr><th scope="col" class="num">Line</th><th scope="col">Problem</th></tr></thead><tbody id="jl-err-body"></tbody></table></div>
+      <h2 class="tc-h" id="jl-warn-h" hidden>Warnings</h2>
+      <div class="dtable-wrap" id="jl-warn-wrap" hidden tabindex="0" role="region" aria-label="Warnings"><table class="dtable"><thead><tr><th scope="col" class="num">Line</th><th scope="col">Note</th></tr></thead><tbody id="jl-warn-body"></tbody></table></div>
+      <p class="hint" id="jl-more"></p>
+    </div>
+  </div>
+  <div class="safety">Your file is checked in your browser and is never uploaded. Token counts cover message text only; chat formatting adds a few tokens per message that this tool does not include, so confirm totals with your provider before training.</div>
+  <script type="text/plain" id="jl-sample-text" set:html={sample}></script>
+</div>
+<script>
+  import '../../scripts/jsonlcheck';
+</script>

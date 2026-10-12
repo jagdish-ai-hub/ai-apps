@@ -1,0 +1,55 @@
+---
+import ToolPage from '../components/ToolPage.astro';
+import CaseConverter from '../components/tools/CaseConverter.astro';
+
+const steps = [
+  `Type or paste your text into the top box, or press <strong>Try an example</strong>.`,
+  `Choose a style: <strong>UPPER CASE</strong>, <strong>lower case</strong>, <strong>Sentence case</strong>, <strong>Title Case</strong>, <strong>camelCase</strong>, <strong>snake_case</strong> and more.`,
+  `The converted text appears in the result box. Press <strong>Copy result</strong>.`,
+  `To apply a second style on top, press <strong>Use result as input</strong> and choose another.`,
+];
+const sections = [
+  {
+    h2: 'The styles and when to use them',
+    paras: [
+      `<strong>UPPER CASE</strong> and <strong>lower case</strong> change every letter. <strong>Sentence case</strong> capitalises the first letter of each sentence and lowers the rest, which is the usual way to fix text typed with caps lock on. <strong>Capitalize Each Word</strong> capitalises every word. <strong>Title Case</strong> follows the common English style, keeping short words such as "of", "the" and "and" in lower case unless they are first or last. Style guides differ in the details, so check the guide for your publication.`,
+      `The programming styles are for names in code and files: <strong>camelCase</strong> (<code>helloWorld</code>), <strong>PascalCase</strong> (<code>HelloWorld</code>), <strong>snake_case</strong> (<code>hello_world</code>), <strong>kebab-case</strong> (<code>hello-world</code>) and <strong>CONSTANT_CASE</strong> (<code>HELLO_WORLD</code>). They split your text into words at spaces, punctuation and existing case changes, so converting from one style to another works, for example <code>myVariableName</code> to <code>my_variable_name</code>. A list with one name per line is converted line by line. <strong>aLtErNaTiNg</strong> and <strong>iNVERSE</strong> are for fun and for fixing text typed upside down on the shift key.`,
+    ],
+  },
+  {
+    h2: 'Works with accents and other alphabets',
+    paras: [
+      `The conversion uses your browser's Unicode rules, so accented letters, Greek, Cyrillic and other cased alphabets convert correctly, and "straße" becomes "STRASSE" in upper case. Scripts that have no upper and lower case, such as Japanese, Chinese, Hindi and Thai, are left as they are. The programming styles keep those words intact and join them with the separator.`,
+    ],
+  },
+  {
+    h2: 'Private and quick',
+    paras: [
+      `Your text is converted in your browser and never uploaded. For counts and reading time use the <a href="/word-counter/">word counter</a>, and the guide to <a href="/guides/how-to-change-text-case/">changing text case</a> has more on the style rules. To strip formatting symbols from AI text, try <a href="/strip-markdown/">Strip Markdown</a>.`,
+    ],
+  },
+];
+const faq = [
+  { q: 'How do I change text to Sentence case?', a: 'Paste the text, choose Sentence case, and copy the result. It lowers everything and then capitalises the first letter of each sentence and the word "I".' },
+  { q: 'What is the difference between Title Case and Capitalize Each Word?', a: 'Capitalize Each Word makes every word start with a capital. Title Case keeps short words like "of", "the" and "and" in lower case unless they come first or last, which is the common English headline style.' },
+  { q: 'Can I convert variable names between camelCase and snake_case?', a: 'Yes. The converter splits the text at spaces, punctuation and case changes, so myVariableName becomes my_variable_name or my-variable-name. A list with one name per line converts line by line.' },
+  { q: 'Does it work with accents and non-Latin alphabets?', a: 'Yes. It uses Unicode case rules, so accented letters, Greek and Cyrillic convert correctly. Scripts without upper and lower case, such as Japanese and Hindi, are left unchanged.' },
+  { q: 'Is my text uploaded?', a: 'No. The conversion happens in your browser, and nothing is sent to a server or stored.' },
+  { q: 'Why is "I" capitalised in Sentence case?', a: 'In English the pronoun "I" is always a capital letter, so Sentence case restores it after lowering the text. Names and acronyms are lowered too, so check proper nouns afterwards.' },
+];
+---
+<ToolPage
+  slug="case-converter"
+  title="Case Converter: UPPER, lower, Title, camelCase, snake_case"
+  description="Free online case converter: change text to upper case, lower case, sentence case, title case, camelCase, snake_case, kebab-case and more. Runs in your browser."
+  h1="Case converter"
+  lead="Change the case of any text in one click: upper, lower, sentence, title, camelCase, snake_case, kebab-case and more. It works with accents and other alphabets and runs in your browser."
+  eyebrow="~/case · runs in your browser"
+  steps={steps}
+  sections={sections}
+  faq={faq}
+  related={['word-counter', 'strip-markdown', 'text-to-word']}
+  shareText="Free case converter: upper, lower, sentence, title, camelCase, snake_case and more."
+>
+  <CaseConverter />
+</ToolPage>

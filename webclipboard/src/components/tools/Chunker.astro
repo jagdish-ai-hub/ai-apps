@@ -1,0 +1,48 @@
+---
+const sample = Array.from({ length: 12 }, (_, i) => `Section ${i + 1}. Retrieval-augmented generation (RAG) splits long documents into chunks so that only the most relevant pieces are sent to the model. Each chunk should be small enough to fit comfortably in the prompt, and large enough to keep an idea together. This paragraph is part ${i + 1} of the example text.`).join('\n\n');
+---
+<div class="tool ck" id="chunker">
+  <div class="panel">
+    <div class="tc-head">
+      <label class="eyebrow" for="ck-in">Paste the document to split</label>
+      <div class="actions" style="margin:0">
+        <button class="btn ghost small" id="ck-paste" type="button">Paste from clipboard</button>
+        <button class="btn ghost small" id="ck-sample" type="button">Try an example</button>
+        <button class="btn ghost small" id="ck-clear" type="button">Clear</button>
+      </div>
+    </div>
+    <textarea class="clip" id="ck-in" data-clr-mask="true" spellcheck="false" autocomplete="off" placeholder="Paste an article, a manual, a transcript or any long text…"></textarea>
+    <div class="opts" style="margin-top:14px">
+      <div class="field"><label for="ck-tok">Tokenizer</label>
+        <select id="ck-tok"><option value="o200k_base">o200k_base (GPT-4o and newer)</option><option value="cl100k_base">cl100k_base (GPT-4, GPT-3.5)</option></select></div>
+      <div class="field"><label for="ck-size">Chunk size (tokens)</label><input id="ck-size" type="text" inputmode="numeric" value="500" autocomplete="off" /></div>
+      <div class="field"><label for="ck-overlap">Overlap (tokens)</label><input id="ck-overlap" type="text" inputmode="numeric" value="50" autocomplete="off" /></div>
+      <div class="field"><label for="ck-split">Keep together</label>
+        <select id="ck-split"><option value="paragraph">Paragraphs</option><option value="sentence">Sentences</option><option value="line">Lines</option></select></div>
+    </div>
+    <div class="row"><button class="btn" id="ck-go" type="button">Split into chunks</button></div>
+    <p class="msg" id="ck-status" role="status"></p>
+
+    <div id="ck-result" hidden>
+      <div class="tc-grid ck-stats">
+        <div class="stat big"><span class="eyebrow">Chunks</span><strong id="ck-n">0</strong></div>
+        <div class="stat"><span class="eyebrow">Total tokens</span><strong id="ck-total">0</strong></div>
+        <div class="stat"><span class="eyebrow">Average</span><strong id="ck-avg">0</strong></div>
+        <div class="stat"><span class="eyebrow">Largest</span><strong id="ck-max">0</strong></div>
+        <div class="stat"><span class="eyebrow">Smallest</span><strong id="ck-min">0</strong></div>
+      </div>
+      <div class="actions">
+        <button class="btn small" id="ck-copy" type="button">Copy JSON</button>
+        <button class="btn ghost small" id="ck-jsonl" type="button">Download .jsonl</button>
+        <button class="btn ghost small" id="ck-json" type="button">Download .json</button>
+      </div>
+      <ol class="chunks" id="ck-list" dir="auto"></ol>
+      <p class="hint" id="ck-more"></p>
+    </div>
+  </div>
+  <div class="safety">Your text is split in your browser and is never uploaded. The tokenizer vocabulary is downloaded once, the first time you split.</div>
+  <script type="text/plain" id="ck-sample-text" set:html={sample}></script>
+</div>
+<script>
+  import '../../scripts/chunker';
+</script>

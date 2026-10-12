@@ -1,11 +1,11 @@
 ---
 // Shared converter UI. `mode` decides the input type and the output: text-pdf | text-docx | md-pdf | md-docx.
-interface Props { mode: 'text-pdf' | 'text-docx' | 'md-pdf' | 'md-docx'; sample: string; defaultName?: string }
-const { mode, sample, defaultName = 'document' } = Astro.props;
+interface Props { mode: 'text-pdf' | 'text-docx' | 'md-pdf' | 'md-docx'; sample: string; defaultName?: string; label?: string; placeholder?: string }
+const { mode, sample, defaultName = 'document', label: labelProp, placeholder: placeholderProp } = Astro.props;
 const isMd = mode.startsWith('md');
 const isPdf = mode.endsWith('pdf');
-const label = isMd ? 'Paste your Markdown' : 'Paste your text';
-const placeholder = isMd ? '# Title\n\nPaste Markdown here: **bold**, lists, links, code and tables are supported…' : 'Paste or type your text here…';
+const label = labelProp ?? (isMd ? 'Paste your Markdown' : 'Paste your text');
+const placeholder = placeholderProp ?? (isMd ? '# Title\n\nPaste Markdown here: **bold**, lists, links, code and tables are supported…' : 'Paste or type your text here…');
 ---
 <div class="tool cv" id="converter" data-mode={mode}>
   <div class="panel">

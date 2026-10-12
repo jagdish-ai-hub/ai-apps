@@ -1,0 +1,56 @@
+---
+import ToolPage from '../components/ToolPage.astro';
+import WordCounter from '../components/tools/WordCounter.astro';
+
+const steps = [
+  `Type or paste your text into the box above. The counts update as you go.`,
+  `Read the words, characters (with and without spaces), sentences, paragraphs, lines and the reading and speaking time.`,
+  `If you are writing to a limit, enter it in the <strong>Character limit</strong> field to see how many characters you have left.`,
+  `Check <strong>Most used words</strong> to spot repeated words you may want to vary.`,
+];
+const sections = [
+  {
+    h2: 'What the word counter measures',
+    paras: [
+      `<strong>Words</strong> are counted with your browser's word-boundary rules, which understand languages that do not put spaces between words, such as Japanese, Chinese and Thai. <strong>Characters</strong> are counted as people see them, so an emoji or a rare Han character counts once. You also get the count without spaces, the number of sentences, paragraphs and lines, and the size of the text in bytes (UTF-8), which matters for some databases and APIs.`,
+      `<strong>Reading time</strong> assumes about 238 words a minute for space-separated languages, a typical silent reading speed for adults, and about 500 characters a minute for Japanese, Chinese and Korean text. <strong>Speaking time</strong> assumes about 150 words a minute, a comfortable pace for a speech or a voice-over, and 300 characters a minute for those scripts. Real speeds vary with the text and the reader, so use them as a guide.`,
+    ],
+  },
+  {
+    h2: 'Writing to a limit',
+    paras: [
+      `Many places limit text by characters: social posts, ad headlines, text messages and form fields. Type your limit into the field to see how many characters you have left, or how many you are over. Note that some services count certain characters differently: for example, a text message holds fewer characters if it contains emoji or letters outside the basic set, so leave some room.`,
+      `Other limits are about words, such as essays, abstracts and assignments. The word count here follows common word-processor behaviour, but a given program or school can count slightly differently, for example for hyphenated words or numbers, so check against the tool the person who set the limit will use.`,
+    ],
+  },
+  {
+    h2: 'Private and instant',
+    paras: [
+      `Your text is analysed in your browser as you type. Nothing is uploaded or stored, and it disappears when you close the page. To change the case of your text, use the <a href="/case-converter/">case converter</a>; to count tokens for an AI prompt, use the <a href="/token-calculator/">token calculator</a>; and the guide to <a href="/guides/how-to-count-words-and-characters/">counting words and characters</a> has more on limits and reading time.`,
+    ],
+  },
+];
+const faq = [
+  { q: 'How does the word counter handle Japanese or Chinese?', a: 'It uses your browser\'s word segmentation, which recognises word boundaries in languages written without spaces. The reading time for those scripts is estimated from characters, because words are not marked by spaces.' },
+  { q: 'What is the difference between characters and characters without spaces?', a: 'Characters count every symbol, including spaces, tabs and line breaks. Characters without spaces leave out all whitespace. Some limits use one and some the other, so check which applies.' },
+  { q: 'How is reading time calculated?', a: 'About 238 words a minute for space-separated languages and about 500 characters a minute for Japanese, Chinese and Korean. These are averages; slow or technical text takes longer.' },
+  { q: 'Do emoji count as one character?', a: 'Yes, in the character count here each emoji counts once. Some systems count them as two or more units, which is why a text message or a database field may fill up sooner than expected.' },
+  { q: 'Is my text saved or uploaded?', a: 'No. The counts are computed in your browser as you type, and nothing is sent to a server or stored.' },
+  { q: 'Can I count the tokens used by an AI model?', a: 'Tokens are a different unit from words. Use the token calculator to count tokens with OpenAI tokenizers and estimate the cost of a prompt.' },
+];
+---
+<ToolPage
+  slug="word-counter"
+  title="Word Counter: Count Words, Characters and Reading Time"
+  description="Free online word counter: words, characters with and without spaces, sentences, paragraphs and reading time, including Japanese, Chinese and Thai. Runs in your browser."
+  h1="Word counter"
+  lead="Count words, characters, sentences and paragraphs as you type, and see the reading and speaking time. It works for Japanese, Chinese, Thai and other languages without spaces too."
+  eyebrow="~/count · runs in your browser"
+  steps={steps}
+  sections={sections}
+  faq={faq}
+  related={['case-converter', 'token-calculator', 'text-to-pdf']}
+  shareText="Free word counter: words, characters, sentences and reading time. Works for Japanese and Chinese too."
+>
+  <WordCounter />
+</ToolPage>

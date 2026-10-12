@@ -1,0 +1,82 @@
+---
+import ToolPage from '../components/ToolPage.astro';
+import Converter from '../components/Converter.astro';
+
+const sample = `# Launch checklist
+
+Here is a **short checklist** for the product launch. Each item has an owner and a date.
+
+## Before launch
+
+1. Finish the landing page copy
+2. Test the signup flow on phones
+3. Prepare the announcement email
+
+## Owners and dates
+
+| Task | Owner | Due |
+|------|-------|-----|
+| Landing page | Asha | Mon |
+| Signup test | Ben | Tue |
+| Email | Chloe | Wed |
+
+> **Tip:** ask for the answer in a table when you plan to paste it into a document.
+
+\`\`\`bash
+npm run build && npm run deploy
+\`\`\`
+`;
+const steps = [
+  `In the chat, use the <strong>copy</strong> button under the answer if there is one. It usually copies the answer's Markdown, including symbols such as <code>##</code> and <code>**</code>.`,
+  `Paste the answer into the box above (or press <strong>Try an example</strong>) and check the preview below the options.`,
+  `Choose the font, size, page size and margins, name the file, and press <strong>Download Word file (.docx)</strong>.`,
+  `Open the file in Word, Google Docs or Pages. The headings, lists and tables are real formatting you can edit.`,
+];
+const sections = [
+  {
+    h2: 'Why a ChatGPT answer looks wrong when you paste it into Word',
+    paras: [
+      `AI assistants write their answers in <strong>Markdown</strong>, a plain-text way of describing formatting: <code>#</code> for a heading, <code>**word**</code> for bold, <code>-</code> for a bullet, and pipes for a table. The chat window turns those symbols into formatting for you. Word does not, so a pasted answer can arrive with the symbols still in it, tables turned into rows of vertical bars, and bullets that are not real lists.`,
+      `This page does the conversion Word will not. It reads the Markdown and writes a real <strong>.docx</strong> file: <code>#</code> headings become Word's Heading styles, so the navigation pane and a table of contents work; bullet and numbered lists get real numbering; tables become Word tables with a header row; code blocks get a shaded monospace style; and links become clickable hyperlinks.`,
+    ],
+  },
+  {
+    h2: 'What the converter keeps and what it leaves out',
+    paras: [
+      `Kept: headings, bold, italic, strikethrough, nested lists, task lists, links, inline code, code blocks, block quotes, horizontal rules and tables with alignment. Left out on purpose: images (the alt text is written instead), raw HTML (shown as text), maths and syntax colouring in code. The page never loads anything from other sites, which keeps your text private.`,
+      `The conversion happens in your browser. Nothing you paste is uploaded or stored. This page is independent and is not affiliated with or endorsed by OpenAI; it works with Markdown from any AI assistant, and with Markdown from any other source.`,
+    ],
+  },
+  {
+    h2: 'Tips for better results',
+    paras: [
+      `<strong>Copy the Markdown, not the picture of it.</strong> Selecting text with the mouse often copies the rendered words and loses the table structure. A copy button, when the chat has one, usually keeps the Markdown. If the result looks flat, try a short answer first to see how your chat copies.`,
+      `<strong>Ask for what you need.</strong> If the answer is going into a document, ask for headings and a table, and for no extra commentary. Check the preview before you download, and fix a missing blank line before a list or table if one is not showing.`,
+      `<strong>Need a PDF instead?</strong> Use <a href="/chatgpt-to-pdf/">ChatGPT to PDF</a>. To get plain text with no symbols for an email or message, use <a href="/strip-markdown/">Strip Markdown</a>. The general converter is <a href="/markdown-to-word/">Markdown to Word</a>.`,
+    ],
+  },
+];
+const faq = [
+  { q: 'How do I copy a ChatGPT answer into Word without the symbols?', a: 'Copy the answer, ideally with the chat\'s copy button, paste it into this converter and download the .docx. The Markdown symbols become real headings, bold text, lists and tables. Pasting straight into Word usually leaves the symbols in place.' },
+  { q: 'Will tables from the answer become Word tables?', a: 'Yes, if the answer contains a Markdown table. The converter creates a Word table with a shaded header row and the column alignment from the Markdown. Check the preview to confirm the columns line up.' },
+  { q: 'Does it work with answers from other AI assistants?', a: 'Yes. Most assistants write Markdown, so the same steps work for answers from any of them, and for any other Markdown text. This tool is not affiliated with OpenAI or any assistant.' },
+  { q: 'Is my text sent to a server?', a: 'No. The document is built in your browser and saved straight to your device. Nothing you paste is uploaded or stored.' },
+  { q: 'Why are images or equations missing from my document?', a: 'The converter does not load images from other sites, and it does not render mathematical notation. Images are replaced by their alt text, and you can insert the picture in Word afterwards.' },
+  { q: 'Can I use it for a long conversation?', a: 'Yes, up to about two million characters at once. For several answers, paste them one after another in the same box, separated by blank lines.' },
+];
+---
+<ToolPage
+  slug="chatgpt-to-word"
+  title="ChatGPT to Word: Convert an AI Answer to a .docx File"
+  description="Paste a ChatGPT or other AI answer and download a Word file with real headings, lists, tables and code blocks. Free, runs in your browser, nothing is uploaded."
+  h1="ChatGPT to Word"
+  lead="Turn an AI answer into a clean Word document. Paste it, check the preview, and download a .docx with proper headings, lists and tables, with none of the stray symbols."
+  eyebrow="~/ai → word · runs in your browser"
+  steps={steps}
+  sections={sections}
+  faq={faq}
+  related={['chatgpt-to-pdf', 'strip-markdown', 'markdown-to-word']}
+  shareText="Free ChatGPT to Word converter: paste an AI answer, download a clean .docx. Runs in your browser."
+>
+  <Converter mode="md-docx" sample={sample} defaultName="ai-answer" label="Paste the AI answer" placeholder="Paste the answer here. Headings, lists, tables and code blocks are converted into Word formatting…" />
+</ToolPage>

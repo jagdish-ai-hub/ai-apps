@@ -72,9 +72,9 @@ const jsonld = [
       <section class="block" aria-labelledby="tools">
         <span class="eyebrow">Tools</span>
         <h2 id="tools">More free tools</h2>
-        <p class="prose" style="margin:6px 0 0">Turn the text you receive into a Word file or PDF, or count tokens for an AI prompt. Each tool runs in your browser, so nothing is uploaded.</p>
+        <p class="prose" style="margin:6px 0 0">Turn the text you receive into a Word file or PDF, clean up AI answers, count words and tokens, and more. Each tool runs in your browser, so nothing is uploaded.</p>
         <div class="cards">
-          {tools.filter((t) => t.group === 'transfer' || t.group === 'convert' || t.slug === 'token-calculator').map((t) => (
+          {tools.filter((t) => t.group !== 'tokens' || t.slug === 'token-calculator').map((t) => (
             <a class="card" href={toolPath(t.slug)}><strong>{t.name}</strong><span>{t.short}</span></a>
           ))}
         </div>

@@ -1,0 +1,57 @@
+---
+import ToolPage from '../components/ToolPage.astro';
+import JsonlCheck from '../components/tools/JsonlCheck.astro';
+
+const steps = [
+  `Paste your JSONL into the box above, or press <strong>Open a file…</strong> to load a .jsonl file from your computer. Press <strong>Try an example</strong> to see the kinds of problems it finds.`,
+  `Choose the <strong>tokenizer</strong> for your target model and, if you like, a token limit per example to warn about.`,
+  `Press <strong>Check the file</strong>. You get a verdict, the number of valid examples, and a list of errors and warnings with line numbers.`,
+  `Fix the lines it points to, check again, and use the token totals to estimate the size and cost of your training run.`,
+];
+const sections = [
+  {
+    h2: 'What the validator checks',
+    paras: [
+      `A fine-tuning file for chat models is <strong>JSON Lines</strong>: one complete JSON object per line, with no blank lines. In the chat format, each object has a <code>messages</code> list, and each message has a <code>role</code> (such as system, user or assistant) and some <code>content</code>. A single stray comma, an unquoted key or a blank line in the middle can make an upload fail, and the error message often does not say which line is at fault.`,
+      `This tool reads every line and reports, with the line number: invalid JSON, lines that are not objects, a missing or empty <code>messages</code> list, unknown or missing roles, missing content, and the older prompt and completion format. It also raises warnings for things that are legal but worth a second look: an example with no assistant reply, an example that does not end with one, a system message that is not first, duplicate examples, and files with very few examples.`,
+    ],
+  },
+  {
+    h2: 'Token counts for planning',
+    paras: [
+      `The tool also counts tokens in each example using OpenAI's real tokenizers and shows the total, the average, the median and the largest example. Training cost is usually based on the number of tokens in your file, so the total helps you estimate a run, and the largest example tells you whether anything is close to a model's per-example limit. Enter a limit in the optional field to be warned about the examples above it.`,
+      `Counts cover the text of the messages only. Chat formatting adds a few tokens per message that this tool does not include, and other providers tokenise differently, so confirm totals with your provider before you start. Rules, limits and pricing change; check your provider's current fine-tuning documentation. To turn tokens into a cost estimate, use the <a href="/token-calculator/">token calculator</a>, and see the guide to <a href="/guides/how-to-prepare-jsonl-for-fine-tuning/">preparing a JSONL file for fine-tuning</a>.`,
+    ],
+  },
+  {
+    h2: 'Private by design',
+    paras: [
+      `Training data is often confidential: support conversations, internal documents, customer text. The file is read and checked entirely in your browser. It is never uploaded, and nothing is stored. For very large files, open the file instead of pasting it, and the tool checks it straight from memory.`,
+    ],
+  },
+];
+const faq = [
+  { q: 'What format does a chat fine-tuning JSONL file need?', a: 'One JSON object per line, each with a "messages" list of objects that have a "role" (system, user, assistant, and so on) and "content". There are no blank lines and no commas between lines. Check your provider\'s current documentation for exact requirements.' },
+  { q: 'Why does my upload fail with a vague error?', a: 'The usual causes are a line that is not valid JSON, a blank line, a message without a role or content, or the old prompt and completion format. This tool lists the line number and the reason for each, so you can fix them before uploading.' },
+  { q: 'How many examples do I need?', a: 'Providers typically ask for a small minimum (at least 10 examples for OpenAI at the time of writing) and recommend many more for good results. The tool warns when the file has fewer than 10 valid examples; confirm the current minimum in your provider\'s documentation.' },
+  { q: 'Are the token counts exact?', a: 'They are exact for the text of the messages with the OpenAI tokenizer you choose. Chat formatting adds a few tokens per message that are not included, so the total is a close lower estimate, not a bill.' },
+  { q: 'Is my training data uploaded?', a: 'No. The file is checked in your browser and never leaves your device. The tokenizer vocabulary is downloaded once.' },
+  { q: 'Does it validate tool calls or images?', a: 'It accepts assistant messages with tool calls and message content given as a list of parts, and counts the text in them. It does not check every provider-specific field, so treat it as a first pass before the provider\'s own validation.' },
+];
+---
+<ToolPage
+  slug="jsonl-fine-tuning-validator"
+  title="JSONL Fine-Tuning Validator: Check Chat Training Files"
+  description="Validate a chat-format JSONL fine-tuning file line by line, find errors and warnings with line numbers, and count tokens per example. Runs in your browser."
+  h1="JSONL fine-tuning validator"
+  lead="Check a chat training file before you upload it. Find the exact line with a problem, see warnings, and count tokens per example and in total. Your file never leaves your browser."
+  eyebrow="~/jsonl · runs in your browser"
+  category="DeveloperApplication"
+  steps={steps}
+  sections={sections}
+  faq={faq}
+  related={['token-calculator', 'rag-text-chunker', 'cl100k-base-tokenizer']}
+  shareText="Free JSONL fine-tuning validator: find the broken line and count tokens, in your browser."
+>
+  <JsonlCheck />
+</ToolPage>

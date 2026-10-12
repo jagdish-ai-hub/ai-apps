@@ -1,0 +1,80 @@
+---
+import ToolPage from '../components/ToolPage.astro';
+import Converter from '../components/Converter.astro';
+
+const sample = `# How to prepare for a job interview
+
+Here is a short guide you can **save and print**.
+
+## Before the interview
+
+1. Read the job description twice
+2. Prepare three stories using the *STAR* method
+3. Write down two questions to ask
+
+## During the interview
+
+- Listen to the whole question first
+- Give concrete examples
+- Ask your questions at the end
+
+| Stage | Time |
+|-------|------|
+| Research | 1 hour |
+| Practice | 30 minutes |
+
+> Calm preparation beats last-minute cramming.
+`;
+const steps = [
+  `Copy the AI answer from the chat. If the chat has a <strong>copy</strong> button, use it: it usually keeps the Markdown formatting.`,
+  `Paste it into the box above, or press <strong>Try an example</strong>, and check the formatted preview.`,
+  `Choose the font, size, page size and margins, name the file, and press <strong>Save as PDF</strong>.`,
+  `In the print window, choose <strong>Save as PDF</strong> as the destination and confirm.`,
+];
+const sections = [
+  {
+    h2: 'Save an AI answer as a clean PDF',
+    paras: [
+      `A chat window is not a good place to keep an answer. It scrolls away, it is mixed with the rest of the conversation, and it is awkward to send to someone who does not use the same assistant. A PDF keeps one answer on its own pages, looks the same on every device and is easy to attach, print or file.`,
+      `AI assistants write in <strong>Markdown</strong>. This page reads that Markdown and builds a PDF with the formatting the chat showed you: headings, bold and italic text, bullet and numbered lists, tables, code blocks, block quotes and links. A preview shows what you will get before you save.`,
+    ],
+  },
+  {
+    h2: 'How the PDF is made',
+    paras: [
+      `The PDF is created by your browser's own print function, so it uses the fonts on your device. That is why Japanese, Chinese, Korean, Hindi, Thai, Arabic and Cyrillic answers print correctly, and why the text in the PDF stays <strong>selectable and searchable</strong>, not a flat picture. The one extra step is choosing <strong>Save as PDF</strong> in the print window. On an iPhone, choose Print, spread two fingers over the preview, then use the share button and Save to Files.`,
+      `Your text is processed in your browser and never uploaded. This tool is independent and is not affiliated with or endorsed by OpenAI; it works with Markdown from any AI assistant.`,
+    ],
+  },
+  {
+    h2: 'Making the result look right',
+    paras: [
+      `Use a <strong>serif font</strong> for reports and a <strong>sans-serif font</strong> for notes and lists. Pick <strong>A4</strong> or <strong>US Letter</strong> to match your paper, and narrow margins if the answer has wide tables. Long code lines wrap at the page edge.`,
+      `If a list or table does not look right in the preview, the Markdown probably needs a blank line before it. Fix that in the box and the preview updates. If you want an editable file instead, use <a href="/chatgpt-to-word/">ChatGPT to Word</a>; for plain text with the symbols removed, use <a href="/strip-markdown/">Strip Markdown</a>; and for any other Markdown, see <a href="/markdown-to-pdf/">Markdown to PDF</a>.`,
+    ],
+  },
+];
+const faq = [
+  { q: 'How do I save a ChatGPT answer as a PDF?', a: 'Copy the answer, paste it into this page, check the preview, press Save as PDF and choose Save as PDF in the print window. The PDF is made on your device.' },
+  { q: 'Will the text in the PDF be selectable?', a: 'Yes. The PDF comes from the browser\'s print function, so the text stays real text that you can select, search and copy, unlike a screenshot saved as PDF.' },
+  { q: 'Does it work in other languages?', a: 'Yes, as long as your device has a font for the script, which almost every phone and computer does. Answers in Japanese, Korean, Chinese, Hindi, Thai, Arabic and other scripts print normally.' },
+  { q: 'Can I save the whole conversation?', a: 'Paste the answers you want one after another, separated by blank lines, and save one PDF. The converter handles up to about two million characters at once.' },
+  { q: 'Is my conversation uploaded anywhere?', a: 'No. The preview and the PDF are built in your browser, and nothing you paste is sent to a server.' },
+  { q: 'Why are images missing from the PDF?', a: 'The page never loads images from other sites, to protect your privacy. The alt text is shown in place of an image.' },
+];
+---
+<ToolPage
+  slug="chatgpt-to-pdf"
+  title="ChatGPT to PDF: Save an AI Answer as a Clean PDF"
+  description="Paste a ChatGPT or other AI answer, preview it, and save a PDF with headings, lists, tables and code. Selectable text, every language, runs in your browser."
+  h1="ChatGPT to PDF"
+  lead="Save an AI answer as a tidy PDF. Paste it, preview the formatting, and save a document with real text, in any language, without uploading anything."
+  eyebrow="~/ai → pdf · runs in your browser"
+  steps={steps}
+  sections={sections}
+  faq={faq}
+  related={['chatgpt-to-word', 'strip-markdown', 'markdown-to-pdf']}
+  shareText="Free ChatGPT to PDF converter: paste an AI answer, save a clean PDF. Runs in your browser."
+>
+  <Converter mode="md-pdf" sample={sample} defaultName="ai-answer" label="Paste the AI answer" placeholder="Paste the answer here. Headings, lists, tables and code blocks keep their formatting in the PDF…" />
+</ToolPage>

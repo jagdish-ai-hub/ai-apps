@@ -1,0 +1,58 @@
+---
+import ToolPage from '../components/ToolPage.astro';
+import Chunker from '../components/tools/Chunker.astro';
+
+const steps = [
+  `Paste the document you want to split into the box above, or press <strong>Try an example</strong>.`,
+  `Choose the <strong>tokenizer</strong> that matches your embedding or chat model, a <strong>chunk size</strong> in tokens (500 is a common starting point) and an <strong>overlap</strong> (about 10 to 20 percent of the size).`,
+  `Choose what to keep together: <strong>paragraphs</strong>, <strong>sentences</strong> or <strong>lines</strong>, then press <strong>Split into chunks</strong>.`,
+  `Review the chunks and the token counts, then copy the JSON or download it as <strong>.jsonl</strong> or <strong>.json</strong> to feed your embedding or indexing step.`,
+];
+const sections = [
+  {
+    h2: 'What chunking is and why it matters for RAG',
+    paras: [
+      `<strong>Retrieval-augmented generation (RAG)</strong> answers questions by first searching your own documents and then giving the best-matching passages to a language model. Documents are usually too long to search or send whole, so they are cut into <strong>chunks</strong>. The size and the boundaries of those chunks affect everything that follows: a chunk that is too small loses context, a chunk that is too large mixes topics and wastes tokens, and a cut in the middle of a sentence can hide the very fact you need.`,
+      `This tool cuts text by <strong>tokens</strong>, the unit models actually read and charge for, using OpenAI's real tokenizers. Every chunk is guaranteed to be no larger than the size you set, and chunks are packed from whole paragraphs, sentences or lines so that boundaries fall in sensible places.`,
+    ],
+  },
+  {
+    h2: 'Choosing a chunk size and overlap',
+    paras: [
+      `There is no single right answer, and the figures below are common starting points, not rules. Chunks of a few hundred tokens (often 200 to 1,000) suit question answering over documentation, with an overlap of roughly 10 to 20 percent so that an idea at a boundary appears in both neighbouring chunks. Larger chunks keep more context but retrieve less precisely; smaller chunks retrieve precisely but may lack the surrounding explanation. Test with real questions from your users and adjust.`,
+      `Also check the limits of the embedding model you use, because it can only embed a certain number of tokens at once. For example, OpenAI's text-embedding-3 models list a limit of 8,191 tokens per input at the time of writing; confirm the current figure in your provider's documentation.`,
+    ],
+  },
+  {
+    h2: 'How this tool splits text',
+    paras: [
+      `The text is first divided into units (paragraphs, sentences or lines, as you choose). Units are added to a chunk until the next one would push it over the size. The next chunk then starts with whole units from the end of the previous one, up to the overlap you asked for, so the overlap is rounded down to a whole unit and never splits a sentence. A unit that is bigger than a whole chunk on its own is cut at the largest piece that fits, first at sentence boundaries and then by characters. Japanese, Chinese and other languages written without spaces work too.`,
+      `Everything runs in your browser. Your document is never uploaded, and the tokenizer is downloaded once, the first time you split. Counts are exact for the OpenAI encodings; other providers use different tokenizers, so treat them as a close guide. The guide on <a href="/guides/how-to-chunk-text-for-rag/">chunking text for RAG</a> explains the trade-offs in more detail, and the <a href="/token-calculator/">token calculator</a> shows how any piece of text is split.`,
+    ],
+  },
+];
+const faq = [
+  { q: 'What chunk size should I use for RAG?', a: 'A few hundred tokens is a common starting point, often 200 to 1,000, with 10 to 20 percent overlap. The best size depends on your documents, your questions and your embedding model, so test with real queries and compare retrieval quality.' },
+  { q: 'Why use overlap between chunks?', a: 'Overlap repeats a little of the end of one chunk at the start of the next, so an idea that sits on the boundary is still found whole in at least one chunk. Too much overlap wastes tokens and storage.' },
+  { q: 'Does it cut in the middle of a sentence?', a: 'Not unless a single sentence is larger than a whole chunk. Chunks are built from whole paragraphs, sentences or lines, and only an oversized unit is cut, first at sentence boundaries and finally by characters.' },
+  { q: 'Which tokenizer should I choose?', a: 'Choose the one used by the model you will send the chunks to: o200k_base for GPT-4o and newer models, cl100k_base for GPT-4, GPT-3.5 and the text-embedding-3 models. For other providers the count is only a close guide.' },
+  { q: 'Is my document uploaded?', a: 'No. The splitting runs in your browser. Only the tokenizer vocabulary is downloaded, once, and your text is never sent anywhere.' },
+  { q: 'What do the JSON and JSONL files contain?', a: 'Each chunk has an id, its text and its token count. JSONL has one chunk per line, which is easy to stream into an indexing script; JSON wraps all chunks in one object together with the settings you used.' },
+];
+---
+<ToolPage
+  slug="rag-text-chunker"
+  title="RAG Text Chunker: Split Text Into Token-Sized Chunks"
+  description="Split a long document into chunks of a set number of tokens, with overlap, using OpenAI tokenizers. Download JSON or JSONL for RAG. Runs in your browser."
+  h1="RAG text chunker"
+  lead="Split a document into token-sized chunks with overlap for retrieval and embeddings. Choose the size, keep paragraphs or sentences whole, and download the result as JSON or JSONL."
+  eyebrow="~/chunks · runs in your browser"
+  category="DeveloperApplication"
+  steps={steps}
+  sections={sections}
+  faq={faq}
+  related={['token-calculator', 'jsonl-fine-tuning-validator', 'o200k-base-token-counter']}
+  shareText="Free RAG text chunker: split documents into token-sized chunks with overlap and download JSONL."
+>
+  <Chunker />
+</ToolPage>

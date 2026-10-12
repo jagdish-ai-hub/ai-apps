@@ -1,0 +1,35 @@
+---
+import { MODES } from '../../lib/casing.js';
+const sample = 'the quick brown fox jumps over the lazy dog. this is a sample sentence for the case converter.';
+---
+<div class="tool cc" id="casetool">
+  <div class="panel">
+    <div class="tc-head">
+      <label class="eyebrow" for="cc-in">Paste or type your text</label>
+      <div class="actions" style="margin:0">
+        <button class="btn ghost small" id="cc-paste" type="button">Paste from clipboard</button>
+        <button class="btn ghost small" id="cc-sample" type="button">Try an example</button>
+        <button class="btn ghost small" id="cc-clear" type="button">Clear</button>
+      </div>
+    </div>
+    <textarea class="clip" id="cc-in" data-clr-mask="true" spellcheck="false" autocomplete="off" placeholder="Type or paste text, then choose a case below…"></textarea>
+    <p class="eyebrow" style="margin:18px 0 8px">Choose a case</p>
+    <div class="cc-modes" role="group" aria-label="Case styles">
+      {MODES.map((m) => <button class="btn ghost small" type="button" data-mode={m.id}>{m.label}</button>)}
+    </div>
+    <div class="tc-head" style="margin-top:18px">
+      <label class="eyebrow" for="cc-out">Result</label>
+      <div class="actions" style="margin:0">
+        <button class="btn small" id="cc-copy" type="button">Copy result</button>
+        <button class="btn ghost small" id="cc-use" type="button">Use result as input</button>
+      </div>
+    </div>
+    <textarea class="clip" id="cc-out" data-clr-mask="true" readonly spellcheck="false" placeholder="The converted text appears here."></textarea>
+    <p class="hint" id="cc-msg" aria-live="polite"></p>
+  </div>
+  <div class="safety">Your text is converted in your browser and is never uploaded.</div>
+  <script type="text/plain" id="cc-sample-text" set:html={sample}></script>
+</div>
+<script>
+  import '../../scripts/casetool';
+</script>

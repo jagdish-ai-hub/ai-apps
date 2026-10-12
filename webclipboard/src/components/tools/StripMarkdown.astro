@@ -1,0 +1,46 @@
+---
+const sample = `## Quick summary
+
+Here is a **short plan** for the launch:
+
+1. Finish the *draft* by Friday
+2. Send it to [the team](https://example.com/team)
+3. Publish on Monday
+
+- Keep the tone friendly
+- Use \`short\` sentences
+
+| Task | Owner |
+|------|-------|
+| Draft | Asha |
+| Review | Ben |
+
+> Tip: ship small, ship often.`;
+---
+<div class="tool st" id="strip">
+  <div class="panel">
+    <div class="tc-head">
+      <label class="eyebrow" for="st-in">Paste text with Markdown</label>
+      <div class="actions" style="margin:0">
+        <button class="btn ghost small" id="st-paste" type="button">Paste from clipboard</button>
+        <button class="btn ghost small" id="st-sample" type="button">Try an example</button>
+        <button class="btn ghost small" id="st-clear" type="button">Clear</button>
+      </div>
+    </div>
+    <textarea class="clip" id="st-in" data-clr-mask="true" spellcheck="false" autocomplete="off" placeholder="Paste an AI answer or any Markdown here, for example: **bold**, ## headings, - lists, tables…"></textarea>
+    <div class="tc-head" style="margin-top:18px">
+      <label class="eyebrow" for="st-out">Plain text</label>
+      <div class="actions" style="margin:0">
+        <button class="btn small" id="st-copy" type="button">Copy plain text</button>
+        <button class="btn ghost small" id="st-download" type="button">Download .txt</button>
+      </div>
+    </div>
+    <textarea class="clip" id="st-out" data-clr-mask="true" readonly spellcheck="false" placeholder="The text without Markdown symbols appears here as you type."></textarea>
+    <p class="hint" id="st-count" aria-live="polite"></p>
+  </div>
+  <div class="safety">Your text is converted in your browser and is never uploaded.</div>
+  <script type="text/plain" id="st-sample-text" set:html={sample}></script>
+</div>
+<script>
+  import '../../scripts/strip';
+</script>

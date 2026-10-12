@@ -404,3 +404,21 @@ ol.steps li > span { min-width: 0; }
 .print-md th { background: #eee; }
 .print-md a { color: #0563c1; }
 .print-md hr { border: 0; border-top: 1px solid #999; margin: 1.2em 0; }
+
+/* text tools (word counter, case converter, chunker, JSONL checker, strip Markdown) */
+.st .clip, .cc .clip { min-height: 180px; }
+.wc-grid { grid-template-columns: 1.4fr repeat(4, 1fr); }
+.wc-grid2 { grid-template-columns: repeat(4, 1fr); margin-top: 10px; }
+.jl-stats { grid-template-columns: 1.6fr repeat(4, 1fr); margin-top: 22px; }
+.jl-tok { grid-template-columns: repeat(4, 1fr); margin-top: 10px; }
+.ck-stats { grid-template-columns: 1.2fr repeat(4, 1fr); margin-top: 22px; }
+@media (max-width: 760px) { .wc-grid2, .jl-tok { grid-template-columns: 1fr 1fr; } .wc-grid, .jl-stats, .ck-stats { grid-template-columns: 1fr 1fr; } .wc-grid .stat.big, .jl-stats .stat.big, .ck-stats .stat.big { grid-column: 1 / -1; } }
+.toplist { list-style: none; margin: 8px 0 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); gap: 8px; }
+.toplist li { display: flex; justify-content: space-between; gap: 10px; padding: 9px 12px; background: var(--bg); border: 1px solid var(--line); border-radius: 8px; font-size: 14.5px; }
+.toplist b { font: 600 13px var(--mono); color: var(--muted); }
+.cc-modes { display: flex; flex-wrap: wrap; gap: 8px; }
+.cc-modes .btn[aria-pressed='true'] { background: var(--invert-bg); color: var(--invert-fg); border-color: var(--invert-bg); }
+.chunks { list-style: none; margin: 16px 0 0; padding: 0; display: grid; gap: 10px; max-height: 560px; overflow: auto; }
+.chunk-head { font: 12px var(--mono); letter-spacing: 0.03em; color: var(--muted); padding: 8px 12px; background: var(--surface-2); border: 1px solid var(--line); border-bottom: 0; border-radius: 8px 8px 0 0; }
+.chunk-body { white-space: pre-wrap; overflow-wrap: anywhere; padding: 12px; background: var(--bg); border: 1px solid var(--line); border-radius: 0 0 8px 8px; font-size: 14.5px; max-height: 220px; overflow: auto; }
+.jl .dtable td { vertical-align: top; }

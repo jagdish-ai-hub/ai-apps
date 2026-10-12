@@ -1,0 +1,56 @@
+---
+import ToolPage from '../components/ToolPage.astro';
+import StripMarkdown from '../components/tools/StripMarkdown.astro';
+
+const steps = [
+  `Paste the text that contains Markdown symbols into the top box, or press <strong>Try an example</strong>.`,
+  `The plain text appears in the lower box as you type: headings, bold marks, bullets, links and tables are turned into ordinary text.`,
+  `Press <strong>Copy plain text</strong>, or download it as a .txt file.`,
+  `Paste the result into your email, message, form or document.`,
+];
+const sections = [
+  {
+    h2: 'What this tool removes, and what it keeps',
+    paras: [
+      `AI assistants and many notes apps write in Markdown. The formatting symbols look fine in the app that understands them and messy everywhere else: <code>**bold**</code>, <code>## headings</code>, <code>- bullets</code>, backticks around code, <code>[links](https://…)</code> and tables made of pipes. This tool removes the symbols and keeps the words.`,
+      `Headings become plain lines, <strong>bold</strong> and <em>italic</em> text loses its marks, links keep their visible text, code keeps its characters, bullets become "•" and numbered lists keep their numbers, and tables become lines with the cells separated by " | ". Links are reduced to their link text, so if you need the web addresses, copy them before you convert.`,
+    ],
+  },
+  {
+    h2: 'When to use it',
+    paras: [
+      `Use it when you are pasting an AI answer into an <strong>email</strong>, a <strong>text message</strong>, a <strong>form field</strong>, a spreadsheet cell, a CMS or any place that shows the symbols literally. It is also handy for cleaning notes copied from a Markdown editor before you send them to someone who does not use Markdown.`,
+      `If you want to keep the formatting but in a document, use <a href="/chatgpt-to-word/">ChatGPT to Word</a> or <a href="/chatgpt-to-pdf/">ChatGPT to PDF</a> instead, which turn the symbols into real headings, lists and tables.`,
+    ],
+  },
+  {
+    h2: 'Privacy',
+    paras: [
+      `The text is converted in your browser as you type. It is not uploaded, stored or logged, and it disappears when you close or refresh the page.`,
+    ],
+  },
+];
+const faq = [
+  { q: 'How do I remove the asterisks and hashes from ChatGPT text?', a: 'Paste the text into this tool. It removes Markdown symbols such as ** and ## and gives you plain text you can copy, with the words, lists and numbers kept.' },
+  { q: 'What happens to bullet lists and numbered lists?', a: 'Bullets become the "•" character and numbered lists keep their numbers, so the structure stays readable in plain text. Nested items are indented.' },
+  { q: 'What happens to links?', a: 'Each link is reduced to its visible text, so the address is not shown. If you need the web addresses, copy them before converting.' },
+  { q: 'What about tables?', a: 'Each row becomes a line, with the cells separated by " | ". That keeps the data readable in plain text, although the columns will not line up.' },
+  { q: 'Is my text uploaded anywhere?', a: 'No. The conversion runs in your browser as you type. Nothing is sent to a server or stored.' },
+  { q: 'Can I keep the formatting instead?', a: 'Yes. Use ChatGPT to Word or ChatGPT to PDF to turn the Markdown into real headings, lists and tables in a document.' },
+];
+---
+<ToolPage
+  slug="strip-markdown"
+  title="Strip Markdown: Remove Formatting Symbols From AI Text"
+  description="Remove Markdown symbols such as asterisks, hashes, backticks and pipes from ChatGPT or other AI text. Get clean plain text to copy. Runs in your browser."
+  h1="Strip Markdown"
+  lead="Remove the asterisks, hashes and pipes from AI-written text and keep clean plain text for email, messages and forms. It runs in your browser as you type."
+  eyebrow="~/markdown → plain text · runs in your browser"
+  steps={steps}
+  sections={sections}
+  faq={faq}
+  related={['chatgpt-to-word', 'chatgpt-to-pdf', 'text-to-word']}
+  shareText="Free tool to remove Markdown symbols from ChatGPT text and get clean plain text."
+>
+  <StripMarkdown />
+</ToolPage>
