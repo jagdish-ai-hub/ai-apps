@@ -1,0 +1,173 @@
+{
+  "ui": {
+    "home": "Início",
+    "howTo": "Como usar",
+    "faq": "Perguntas frequentes",
+    "relatedTools": "Ferramentas relacionadas",
+    "relatedGuides": "Guias relacionados",
+    "names": { "text": "Gerador de QR Code", "url": "Link para QR Code", "wifi": "QR Code de Wi-Fi" },
+    "textLabel": "Texto do QR Code",
+    "textPlaceholder": "Digite ou cole qualquer texto: uma mensagem, um telefone, um endereço, um código…",
+    "textSample": "Olá! Escaneie este QR Code para ler esta mensagem.",
+    "urlLabel": "Endereço do site (URL)",
+    "urlPlaceholder": "exemplo.com.br/pagina",
+    "urlHint": "Se você não digitar http:// ou https://, o https:// é adicionado automaticamente.",
+    "urlSample": "https://webclipboard.online",
+    "ssidLabel": "Nome da rede (SSID)",
+    "ssidPlaceholder": "Wi-Fi de casa",
+    "passLabel": "Senha",
+    "showPass": "Mostrar senha",
+    "secLabel": "Segurança",
+    "secWpa": "WPA / WPA2 / WPA3 (a maioria das redes)",
+    "secWep": "WEP (roteadores antigos)",
+    "secNone": "Sem senha (rede aberta)",
+    "hiddenLabel": "Esta é uma rede oculta",
+    "sampleBtn": "Ver um exemplo",
+    "clearBtn": "Limpar",
+    "optionsTitle": "Aparência e tamanho",
+    "eccLabel": "Correção de erros",
+    "eccL": "Baixa (7%)",
+    "eccM": "Média (15%)",
+    "eccQ": "Quartil (25%)",
+    "eccH": "Alta (30%)",
+    "sizeLabel": "Tamanho da imagem",
+    "marginLabel": "Margem de silêncio",
+    "fgLabel": "Cor do código",
+    "bgLabel": "Cor do fundo",
+    "downloadPng": "Baixar PNG",
+    "downloadSvg": "Baixar SVG",
+    "preview": "Pré-visualização",
+    "empty": "Seu QR Code aparece aqui enquanto você digita.",
+    "altText": "QR Code",
+    "errEmpty": "Digite algo para transformar em QR Code.",
+    "errSpaces": "Um endereço de site não pode ter espaços.",
+    "errUnsafe": "Esse tipo de link não é permitido. Use um endereço de site comum.",
+    "errHost": "Isso não parece um endereço de site. Tente algo como exemplo.com.br.",
+    "errInvalid": "Esse endereço de site não é válido.",
+    "errTooLong": "São dados demais para um único QR Code. Encurte o texto ou reduza a correção de erros.",
+    "errSsid": "Digite o nome da rede.",
+    "errPass": "Digite a senha ou escolha “Sem senha”.",
+    "warnLow": "Essas cores têm pouco contraste, e alguns celulares podem não conseguir ler o código. Use um código escuro sobre fundo claro.",
+    "warnInverted": "Muitos leitores não conseguem ler um código claro sobre fundo escuro. Use um código escuro sobre fundo claro.",
+    "wifiNote": "A senha é usada apenas no seu navegador para montar o código e nunca é enviada a lugar nenhum. Qualquer pessoa que escanear o código impresso consegue entrar na rede, então trate-o como a própria senha.",
+    "safety": "Seu texto vira QR Code no seu navegador e nunca é enviado para um servidor. O código é estático: não expira e nenhuma informação sobre as leituras é rastreada."
+  },
+  "pages": {
+    "text": {
+      "title": "Gerador de QR Code Grátis: Transforme Qualquer Texto em QR Code",
+      "description": "Gerador de QR Code grátis para qualquer texto. Escolha tamanho e cores e baixe em PNG ou SVG. Sem cadastro, sem validade e sem enviar nada para servidores.",
+      "h1": "Gerador de QR Code",
+      "lead": "Transforme qualquer texto em QR Code em segundos. Escolha o tamanho e as cores e baixe um PNG nítido ou um SVG para impressão. É grátis, não precisa de cadastro e nada sai do seu navegador.",
+      "eyebrow": "~/qr · roda no seu navegador",
+      "steps": [
+        "Digite ou cole o seu texto na caixa acima. O QR Code aparece enquanto você escreve.",
+        "Abra <strong>Aparência e tamanho</strong> se quiser mudar o tamanho, a cor ou o nível de correção de erros.",
+        "Escaneie a pré-visualização com a câmera do celular para conferir se está funcionando.",
+        "Clique em <strong>Baixar PNG</strong> para telas e documentos ou em <strong>Baixar SVG</strong> para imprimir em qualquer tamanho."
+      ],
+      "sections": [
+        { "h2": "O que você pode colocar em um QR Code", "paras": [
+          "Um QR Code guarda texto. O app da câmera lê esse texto e decide o que fazer: um endereço de site abre no navegador, um número de telefone oferece ligar, um e-mail oferece escrever uma mensagem e qualquer outra coisa aparece como texto simples. Por isso este gerador serve para uma mensagem, um dado de contato, o código de um produto, um recado curto, um endereço ou um cupom de desconto.",
+          "Se for um endereço de site, use o <a href=\"/pt/url-to-qr-code/\">link para QR Code</a>, que já ajeita o endereço para você. Se for uma rede Wi-Fi que os convidados possam acessar com uma só leitura, use o <a href=\"/pt/wifi-qr-code-generator/\">gerador de QR Code de Wi-Fi</a>."
+        ]},
+        { "h2": "Como fazer um código que sempre lê", "paras": [
+          "<strong>Mantenha o texto curto.</strong> Quanto mais texto, mais denso fica o código, com quadradinhos menores, e isso dificulta a leitura de longe ou em uma impressão ruim. <strong>Use código escuro sobre fundo claro.</strong> Códigos claros sobre fundo escuro não funcionam em muitos leitores. <strong>Deixe a margem de silêncio.</strong> A borda em branco ao redor faz parte do código, e o padrão é ter quatro quadradinhos de largura.",
+          "O nível de <strong>correção de erros</strong> permite que o código continue legível mesmo com algum dano ou com um logotipo por cima, mas níveis mais altos deixam o código mais denso. O nível Médio (15%) atende à maioria dos casos. Escolha o Alto apenas se o código puder ficar riscado ou parcialmente coberto. E sempre teste o código pronto com um celular antes de imprimir mil cópias."
+        ]},
+        { "h2": "PNG ou SVG? E qual tamanho escolher?", "paras": [
+          "O <strong>PNG</strong> é uma imagem comum, boa para apresentações, sites e documentos. Escolha um tamanho pelo menos igual ao espaço que ele vai ocupar, porque ampliar um PNG pequeno deixa as bordas borradas. O <strong>SVG</strong> é desenhado com formas geométricas e por isso continua nítido em qualquer tamanho. Use-o em cartazes, embalagens e placas e envie o arquivo para a gráfica.",
+          "Para impressão, faça o código com pelo menos 2 cm de largura, e maior se as pessoas forem escanear de longe. Uma regra prática é que a distância de leitura não passe de dez vezes a largura do código."
+        ]},
+        { "h2": "Códigos estáticos: sem validade e sem rastreamento", "paras": [
+          "O código criado aqui contém o seu próprio texto. Por isso ele não expira, não exige conta e funciona enquanto aquilo a que ele leva continuar existindo. Nada fica guardado em nossos servidores e não temos como saber quantas pessoas escanearam. Se você precisa de estatísticas de leitura, vai precisar de um serviço que redirecione por um endereço próprio, o que cria uma dependência que pode expirar ou ser desligada."
+        ]}
+      ],
+      "faq": [
+        { "q": "Este gerador de QR Code é grátis mesmo?", "a": "Sim. Não tem cadastro, marca d’água nem limite de uso. O código é gerado no seu navegador, então não há custo para criar e nada fica armazenado." },
+        { "q": "O QR Code expira?", "a": "Não. O código contém o seu próprio texto, então funciona para sempre. Só pode parar de funcionar um código que aponta para um endereço de redirecionamento de terceiros." },
+        { "q": "Quanto texto cabe em um QR Code?", "a": "Bem menos do que uma página: cerca de 2.900 caracteres na correção de erros mais baixa, e menos nos níveis mais altos ou com caracteres que não sejam do alfabeto latino. Textos mais curtos geram códigos mais simples, que são lidos com mais facilidade." },
+        { "q": "Posso usar japonês, chinês ou emojis?", "a": "Pode. O texto é codificado em UTF-8, então qualquer idioma e emojis funcionam, embora ocupem mais espaço do que as letras comuns do português." },
+        { "q": "Devo baixar PNG ou SVG?", "a": "Use PNG para telas e documentos e SVG para impressão, porque o SVG continua nítido em qualquer tamanho." },
+        { "q": "Meu texto é enviado para algum servidor?", "a": "Não. O QR Code é montado no seu navegador e nada do que você digita é enviado para um servidor." }
+      ],
+      "relatedGuides": ["send-text-from-phone-to-pc"]
+    },
+    "url": {
+      "title": "Link para QR Code: Criar QR Code de Link ou Site Grátis",
+      "description": "Transforme o endereço de um site em QR Code e baixe em PNG ou SVG. Grátis, sem validade, sem rastreamento e sem cadastro. O https:// é adicionado sozinho.",
+      "h1": "Link para QR Code",
+      "lead": "Cole um link e receba um QR Code que abre esse endereço. Baixe em PNG ou em SVG para imprimir. O código nunca expira, não rastreamos as leituras e nada é enviado para servidores.",
+      "eyebrow": "~/qr · de link para código",
+      "steps": [
+        "Cole ou digite o endereço do site na caixa acima. Se você não colocar o https://, ele é adicionado automaticamente.",
+        "Confira a pré-visualização e escaneie com o celular para ter certeza de que abre a página certa.",
+        "Abra <strong>Aparência e tamanho</strong> para mudar o tamanho, as cores ou a correção de erros.",
+        "Clique em <strong>Baixar PNG</strong> para telas ou em <strong>Baixar SVG</strong> para impressão."
+      ],
+      "sections": [
+        { "h2": "Um QR Code para qualquer link", "paras": [
+          "Um QR Code de link é o jeito mais rápido de levar um endereço de site de uma tela ou de uma folha de papel para o celular. A pessoa aponta a câmera e toca no aviso que aparece: sem digitar, sem errar nenhuma letra. Funciona para um site, um cardápio, um perfil em rede social, um formulário, uma localização no mapa, um vídeo, a página de um app na loja ou um download.",
+          "Esta ferramenta confere o endereço enquanto você digita. Ela adiciona o <strong>https://</strong> quando você esquece, recusa links que poderiam executar código (como <code>javascript:</code>) e avisa se o endereço tem espaços ou não parece um endereço de site. Também dá para criar códigos para links <code>mailto:</code> e <code>tel:</code>."
+        ]},
+        { "h2": "Links curtos geram códigos melhores", "paras": [
+          "Quanto maior o endereço, mais quadradinhos o código precisa ter e mais difícil fica escanear de longe. Se o seu link tem parâmetros de rastreamento compridos, encurte-o antes ou use o endereço de uma página mais simples. Um endereço curto também ajuda quando alguém precisa digitá-lo porque a câmera não funcionou. Antes de imprimir, veja se a página carrega rápido no celular, já que é lá que acontece a maioria das leituras."
+        ]},
+        { "h2": "Códigos estáticos e rastreamento", "paras": [
+          "O código criado aqui guarda o próprio endereço. Ele nunca expira e funciona sem nenhuma conta, mas também não consegue contar leituras, porque não passa por um servidor. Se você precisa medir as leituras, adicione parâmetros de rastreamento como <code>utm_source</code> ao endereço e veja os resultados no seu próprio sistema de análise. Tome cuidado com serviços que colocam um endereço de redirecionamento próprio dentro do código: se o serviço sair do ar ou o plano acabar, todos os códigos já impressos deixam de funcionar."
+        ]},
+        { "h2": "Onde usar um QR Code de link", "paras": [
+          "Cardápios de restaurante, cartazes, folhetos, cartões de visita, embalagens de produtos, ingressos de eventos, vitrines de lojas, slides, crachás e apostilas de aula. Coloque o código em um lugar de fácil acesso, escreva um chamado claro como “Escaneie para ver o cardápio” e mantenha a margem de silêncio ao redor livre de textos e desenhos.",
+          "Se o que você quer passar não é um link, mas um recado ou outro tipo de texto, use o <a href=\"/pt/qr-code-generator/\">gerador de QR Code</a>. Para entregar a senha da sua rede sem ditar letra por letra, veja o <a href=\"/pt/wifi-qr-code-generator/\">QR Code de Wi-Fi</a>."
+        ]}
+      ],
+      "faq": [
+        { "q": "Como faço um QR Code de um link?", "a": "Cole o endereço na caixa e o QR Code aparece na hora. Teste com o celular e depois baixe o PNG ou o SVG." },
+        { "q": "O QR Code de uma URL expira?", "a": "Os criados aqui não. O código contém o próprio endereço, então continua funcionando enquanto a página existir." },
+        { "q": "Dá para ver quantas pessoas escanearam?", "a": "Pelo código em si não, porque ele não passa por nenhum servidor. Adicione parâmetros de rastreamento ao endereço e acompanhe-os na sua ferramenta de análise." },
+        { "q": "Preciso digitar o https://?", "a": "Não. Se você não digitar, o https:// é adicionado automaticamente. Digite http:// por conta própria apenas se o site realmente não aceitar https." },
+        { "q": "É seguro escanear QR Codes desconhecidos?", "a": "Cuidado: um código pode levar a qualquer endereço. Veja o endereço que o celular mostra antes de abrir e não digite senhas em páginas que você acessou por um código que não conhece." },
+        { "q": "O link é enviado para os seus servidores?", "a": "Não. O código é gerado no seu navegador e o endereço não é enviado nem armazenado." }
+      ],
+      "relatedGuides": ["send-text-from-phone-to-pc"]
+    },
+    "wifi": {
+      "title": "QR Code Wi-Fi: Compartilhe a Senha do Wi-Fi com Uma Leitura",
+      "description": "Crie um QR Code de Wi-Fi para os convidados entrarem na rede só escaneando, sem digitar. Funciona no iPhone e no Android. Grátis, e a senha não sai do navegador.",
+      "h1": "Gerador de QR Code de Wi-Fi",
+      "lead": "Crie um QR Code que conecta o celular à sua rede Wi-Fi com uma única leitura. Digite o nome da rede e a senha, baixe o código e imprima. A senha fica apenas no seu navegador.",
+      "eyebrow": "~/qr · entre no wi-fi escaneando",
+      "steps": [
+        "Digite o <strong>nome da rede (SSID)</strong> exatamente como ele aparece no seu celular, respeitando letras maiúsculas e minúsculas.",
+        "Digite a <strong>senha</strong> e escolha o tipo de <strong>segurança</strong>. A maioria das redes é WPA / WPA2 / WPA3. Marque a caixa se a rede for oculta.",
+        "Escaneie a pré-visualização com a câmera do celular. O aparelho deve oferecer a opção de entrar na rede. Depois clique em <strong>Baixar PNG</strong> ou <strong>Baixar SVG</strong>.",
+        "Imprima o código ou deixe-o em uma tela onde os convidados possam escanear."
+      ],
+      "sections": [
+        { "h2": "Como funciona um QR Code de Wi-Fi", "paras": [
+          "O código contém uma linha curta de texto que descreve a sua rede: o nome, a senha, o tipo de segurança e se ela é oculta. Ela tem este formato: <code>WIFI:T:WPA;S:MyNetwork;P:mypassword;;</code>. O app da câmera de um iPhone ou de um Android recente reconhece esse formato e oferece a opção de entrar na rede, então o convidado não precisa ouvir nem digitar uma senha comprida. Caracteres especiais, como ponto e vírgula, vírgula, dois-pontos, aspas e barra invertida, são tratados por nós automaticamente, e por isso senhas fora do comum também funcionam.",
+          "Celulares muito antigos e alguns apps de câmera de terceiros podem não entender o formato. Nesse caso, o convidado ainda pode escanear o código com um app leitor de QR Code, ou você pode mostrar a senha também em texto."
+        ]},
+        { "h2": "Mantenha a senha em segurança", "paras": [
+          "A sua senha é usada apenas no navegador para desenhar o código. Ela não é enviada, guardada nem registrada. Mas quem escanear o código impresso fica com a senha, então pense bem em onde ele vai ficar. Não deixe o código da sua rede principal em um lugar público. Uma <strong>rede de convidados</strong> é a melhor escolha para um código na parede: ela separa as visitas dos seus próprios aparelhos, você pode trocar a senha dela sem desconectar as suas coisas e muitos roteadores permitem desligá-la com um único ajuste.",
+          "Se o código foi compartilhado mais do que você pretendia, troque a senha no roteador e crie um código novo. O guia para <a href=\"/pt/guides/share-wifi-password/\">compartilhar a senha do Wi-Fi com segurança</a> explica a rede de convidados e outras opções."
+        ]},
+        { "h2": "Escolhendo o tipo de segurança certo", "paras": [
+          "Escolha <strong>WPA / WPA2 / WPA3</strong> para quase todas as redes criadas nos últimos dez anos. Escolha <strong>WEP</strong> apenas para um roteador muito antigo e pense em trocá-lo, porque o WEP é fraco. Escolha <strong>Sem senha</strong> para uma rede aberta, como um ponto de acesso público. Se a sua rede não divulga o nome, marque <strong>rede oculta</strong> para que o celular saiba que precisa procurá-la."
+        ]},
+        { "h2": "Se o código não conectar", "paras": [
+          "Confira o nome da rede e a senha para ver se não há erros de digitação, incluindo letras maiúsculas e caracteres parecidos, como o 0 e a letra O. Veja se o tipo de segurança é o mesmo do seu roteador. Verifique se o código está grande e bem iluminado, com a margem de silêncio ao redor. Algumas redes de empresas e escolas usam logins pessoais que um QR Code não consegue guardar, e nesses casos não dá para entrar na rede por esse método.",
+          "Se você só quer mandar um texto do celular para o computador, sem montar um código, veja o guia para <a href=\"/pt/guides/send-text-from-phone-to-pc/\">enviar texto do celular para o PC</a>. Para outros recados, use o <a href=\"/pt/qr-code-generator/\">gerador de QR Code</a>."
+        ]}
+      ],
+      "faq": [
+        { "q": "Como faço um QR Code para o meu Wi-Fi?", "a": "Digite o nome da rede e a senha, escolha o tipo de segurança e clique em Baixar. Os convidados escaneiam o código com o app da câmera e tocam para entrar." },
+        { "q": "Funciona no iPhone e no Android?", "a": "Sim. Nas versões recentes, o app da câmera que já vem no aparelho lê o formato de Wi-Fi e oferece a opção de entrar. Celulares muito antigos podem precisar de um app leitor de QR Code." },
+        { "q": "A senha do meu Wi-Fi é enviada para os seus servidores?", "a": "Não. A senha é usada no seu navegador para desenhar o código e nunca é enviada nem armazenada. Já quem escanear o código fica com a senha, então escolha bem onde colocá-lo." },
+        { "q": "Devo colocar a minha rede principal em um cartaz?", "a": "O melhor é usar uma rede de convidados para qualquer código que muita gente possa ver. Você pode trocar a senha dela sem desconectar os seus próprios aparelhos." },
+        { "q": "E se a minha senha tiver caracteres especiais?", "a": "O gerador trata ponto e vírgula, vírgula, dois-pontos, aspas e barra invertida automaticamente, então senhas fora do comum também funcionam." },
+        { "q": "Dá para fazer um código para uma rede oculta?", "a": "Dá. Marque a caixa de rede oculta para que o celular saiba que deve procurá-la, mesmo que a rede não divulgue o nome." }
+      ],
+      "relatedGuides": ["share-wifi-password", "send-text-from-phone-to-pc"]
+    }
+  }
+}

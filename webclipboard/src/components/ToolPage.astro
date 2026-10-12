@@ -7,6 +7,7 @@ import { findTool, toolPath, tools } from '../lib/tools';
 import { findGuide, guidePath } from '../lib/guides';
 import { absolute, site, langByCode } from '../lib/i18n';
 import { LANDING_SLUG, landingAlternates } from '../lib/landings';
+import { kindOfSlug, qrAlternates } from '../lib/qrpages';
 
 interface Props {
   slug: string;
@@ -27,7 +28,8 @@ const tool = findTool(slug)!;
 const url = absolute(toolPath(slug));
 const guide = tool.guide ? findGuide(tool.guide) : undefined;
 // Pages that also exist in other languages declare reciprocal hreflang.
-const alternates = slug === LANDING_SLUG ? landingAlternates(absolute, (l) => langByCode(l).hreflang) : [];
+const qrKind = kindOfSlug(slug);
+const alternates = slug === LANDING_SLUG ? landingAlternates(absolute, (l) => langByCode(l).hreflang) : qrKind ? qrAlternates(qrKind, absolute, (l) => langByCode(l).hreflang) : [];
 const relatedTools = related.map(findTool).filter(Boolean) as typeof tools;
 
 const jsonld = [

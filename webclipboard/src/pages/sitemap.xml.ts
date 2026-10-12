@@ -2,6 +2,7 @@ import { languages, localePath, absolute } from '../lib/i18n';
 import { guides, guidesFor, guidePath, guidesHubPath, guideAlternates } from '../lib/guides';
 import { guideLangs } from '../lib/guidelangs.js';
 import { tokenLangs } from '../lib/tokenlangs';
+import { qrKinds, qrLangs, qrPath, qrAlternates } from '../lib/qrpages';
 import { langByCode } from '../lib/i18n';
 import { landingLangs, landingPath, landingAlternates, LANDING_SLUG } from '../lib/landings';
 import { tools, toolPath } from '../lib/tools';
@@ -24,7 +25,11 @@ export function GET() {
     ...guidesFor(l).map((g) => `<url><loc>${absolute(guidePath(g.slug, l))}</loc><lastmod>${g.meta.updated}</lastmod><changefreq>monthly</changefreq><priority>0.8</priority>${alt(g.slug)}</url>`),
   ].join('')).join('');
   const landingAlt = landingLangs.length ? landingAlternates(absolute, (l) => langByCode(l).hreflang).map((a) => `<xhtml:link rel="alternate" hreflang="${a.hreflang}" href="${a.href}"/>`).join('') : '';
-  const toolPages = toolUrls.map((p) => `<url><loc>${absolute(p)}</loc><lastmod>${lastmod}</lastmod><changefreq>monthly</changefreq><priority>0.9</priority>${p === landingPath('en') ? landingAlt : ''}</url>`).join('')
+  const qrAlt = (kind: (typeof qrKinds)[number]) => (qrLangs.length ? qrAlternates(kind, absolute, (l) => langByCode(l).hreflang).map((a) => `<xhtml:link rel="alternate" hreflang="${a.hreflang}" href="${a.href}"/>`).join('') : '');
+  const qrEnAlt = new Map(qrKinds.map((k) => [qrPath(k, 'en'), qrAlt(k)]));
+  const qrNative = qrKinds.flatMap((k) => qrLangs.map((l) => `<url><loc>${absolute(qrPath(k, l))}</loc><lastmod>${lastmod}</lastmod><changefreq>monthly</changefreq><priority>0.8</priority>${qrAlt(k)}</url>`)).join('');
+  const toolPages = toolUrls.map((p) => `<url><loc>${absolute(p)}</loc><lastmod>${lastmod}</lastmod><changefreq>monthly</changefreq><priority>0.9</priority>${p === landingPath('en') ? landingAlt : qrEnAlt.get(p) ?? ''}</url>`).join('')
+    + qrNative
     + landingLangs.map((l) => `<url><loc>${absolute(landingPath(l))}</loc><lastmod>${lastmod}</lastmod><changefreq>monthly</changefreq><priority>0.8</priority>${landingAlt}</url>`).join('');
   const pages = legal.map((p) => `<url><loc>${absolute(p)}</loc><lastmod>${lastmod}</lastmod><changefreq>yearly</changefreq><priority>0.3</priority></url>`).join('');
   const xml = `<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">${home}${toolPages}${guidePages}${pages}</urlset>`;

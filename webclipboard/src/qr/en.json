@@ -1,0 +1,168 @@
+{
+  "ui": {
+    "home": "Home",
+    "howTo": "How to use it",
+    "faq": "Frequently asked questions",
+    "relatedTools": "Related tools",
+    "relatedGuides": "Related guides",
+    "names": { "text": "QR code generator", "url": "URL to QR code", "wifi": "Wi-Fi QR code generator" },
+    "textLabel": "Text for the QR code",
+    "textPlaceholder": "Type or paste any text: a message, a phone number, an address, a code…",
+    "textSample": "Hello! Scan this QR code to read this message.",
+    "urlLabel": "Web address (URL)",
+    "urlPlaceholder": "example.com/my-page",
+    "urlHint": "If you leave out http:// or https://, https:// is added for you.",
+    "urlSample": "https://webclipboard.online",
+    "ssidLabel": "Network name (SSID)",
+    "ssidPlaceholder": "Home Wi-Fi",
+    "passLabel": "Password",
+    "showPass": "Show password",
+    "secLabel": "Security",
+    "secWpa": "WPA / WPA2 / WPA3 (most networks)",
+    "secWep": "WEP (old routers)",
+    "secNone": "No password (open network)",
+    "hiddenLabel": "This is a hidden network",
+    "sampleBtn": "Try an example",
+    "clearBtn": "Clear",
+    "optionsTitle": "Appearance and size",
+    "eccLabel": "Error correction",
+    "eccL": "Low (7%)",
+    "eccM": "Medium (15%)",
+    "eccQ": "Quartile (25%)",
+    "eccH": "High (30%)",
+    "sizeLabel": "Image size",
+    "marginLabel": "Quiet zone",
+    "fgLabel": "Code colour",
+    "bgLabel": "Background colour",
+    "downloadPng": "Download PNG",
+    "downloadSvg": "Download SVG",
+    "preview": "Preview",
+    "empty": "Your QR code appears here as you type.",
+    "altText": "QR code",
+    "errEmpty": "Enter something to turn into a QR code.",
+    "errSpaces": "A web address cannot contain spaces.",
+    "errUnsafe": "This kind of link is not allowed. Use a normal web address.",
+    "errHost": "That does not look like a web address. Try something like example.com.",
+    "errInvalid": "That web address is not valid.",
+    "errTooLong": "That is too much data for one QR code. Shorten the text or lower the error correction.",
+    "errSsid": "Enter the network name.",
+    "errPass": "Enter the password, or choose “No password”.",
+    "warnLow": "These colours have low contrast, so some phones may not scan the code. Use a dark code on a light background.",
+    "warnInverted": "A light code on a dark background is not read by many scanners. Use a dark code on a light background.",
+    "wifiNote": "The password is only used in your browser to build the code and is never sent anywhere. Anyone who scans the printed code can join the network, so treat it like the password itself.",
+    "safety": "Your text is turned into a QR code in your browser and is never uploaded. The code is static: it never expires and nothing about your scans is tracked."
+  },
+  "pages": {
+    "text": {
+      "title": "QR Code Generator: Turn Any Text Into a QR Code, Free",
+      "description": "Free QR code generator for any text. Choose the size and colours, then download a PNG or SVG. No sign-up, no expiry, nothing uploaded.",
+      "h1": "QR code generator",
+      "lead": "Turn any text into a QR code in seconds. Pick the size and colours, then download a sharp PNG or an SVG for print. Free, no sign-up, and nothing leaves your browser.",
+      "eyebrow": "~/qr · runs in your browser",
+      "steps": [
+        "Type or paste your text into the box above. The QR code appears as you type.",
+        "Open <strong>Appearance and size</strong> if you want a different size, colour or error-correction level.",
+        "Scan the preview with your phone camera to check that it works.",
+        "Press <strong>Download PNG</strong> for screens and documents, or <strong>Download SVG</strong> for printing at any size."
+      ],
+      "sections": [
+        { "h2": "What you can put in a QR code", "paras": [
+          "A QR code stores text. A camera app reads it and decides what to do: a web address opens in the browser, a phone number offers to call, an email address offers to write a message, and anything else is shown as text. So this generator works for a message, a contact detail, a product code, a short note, an address or a coupon code.",
+          "For a web address, use <a href=\"/url-to-qr-code/\">URL to QR code</a>, which tidies the link for you. For a Wi-Fi network that guests can join with one scan, use the <a href=\"/wifi-qr-code-generator/\">Wi-Fi QR code generator</a>."
+        ]},
+        { "h2": "Make a code that scans every time", "paras": [
+          "<strong>Keep the text short.</strong> More text means a denser code with smaller squares, which is harder to scan from far away or on a poor print. <strong>Use a dark code on a light background.</strong> Light-on-dark codes fail on many scanners. <strong>Leave the quiet zone.</strong> The blank border around the code is part of the code, and four squares wide is the standard.",
+          "The <strong>error correction</strong> level lets a code survive damage or a logo placed on top, but higher levels make the code denser. Medium (15 percent) suits most uses; choose High only if the code will be scuffed or partly covered. Always test the finished code with a phone before you print a thousand copies."
+        ]},
+        { "h2": "PNG or SVG, and what size?", "paras": [
+          "A <strong>PNG</strong> is a normal picture: good for slides, websites and documents. Choose a size that is at least as big as the space it will fill, because enlarging a small PNG makes the edges blurry. An <strong>SVG</strong> is drawn with shapes, so it stays sharp at any size: use it for posters, packaging and signs, and send it to your printer.",
+          "For print, make the code at least about 2 cm (0.8 inch) wide, and bigger if people will scan it from a distance. A rough rule is that the scanning distance should be no more than ten times the width of the code."
+        ]},
+        { "h2": "Static codes: no expiry, no tracking", "paras": [
+          "The code you make here contains your text itself, so it never expires, needs no account and works as long as the thing it points to exists. Nothing is stored on our servers, and we cannot see how many people scan it. If you need scan statistics, you would need a service that redirects through its own address, which adds a dependency that can expire or be switched off."
+        ]}
+      ],
+      "faq": [
+        { "q": "Is this QR code generator really free?", "a": "Yes. There is no sign-up, no watermark and no limit. The code is generated in your browser, so it costs nothing to run and nothing is stored." },
+        { "q": "Does the QR code expire?", "a": "No. The code contains your text itself, so it works forever. Only a code that points to a third-party redirect address can stop working." },
+        { "q": "How much text fits in a QR code?", "a": "A lot less than a page: roughly 2,900 characters at the lowest error correction, and fewer at higher levels or with non-Latin characters. Shorter text gives a simpler code that scans more easily." },
+        { "q": "Can I use it for Japanese, Chinese or emoji?", "a": "Yes. The text is encoded as UTF-8, so any language and emoji work, although they use more space than plain English letters." },
+        { "q": "Should I download PNG or SVG?", "a": "Use PNG for screens and documents and SVG for print, because an SVG stays sharp at any size." },
+        { "q": "Is my text uploaded?", "a": "No. The QR code is built in your browser, and nothing you type is sent to a server." }
+      ]
+    },
+    "url": {
+      "title": "URL to QR Code: Make a QR Code for a Link, Free",
+      "description": "Turn a web address into a QR code you can download as PNG or SVG. Free, no expiry, no tracking and no sign-up. Add https:// automatically.",
+      "h1": "URL to QR code",
+      "lead": "Paste a link and get a QR code that opens it. Download a PNG or an SVG for print. The code never expires, we do not track scans, and nothing is uploaded.",
+      "eyebrow": "~/qr · link to code",
+      "steps": [
+        "Paste or type the web address into the box above. If you leave out https://, it is added for you.",
+        "Check the preview, and scan it with your phone to make sure it opens the right page.",
+        "Open <strong>Appearance and size</strong> to change the size, colours or error correction.",
+        "Press <strong>Download PNG</strong> for screens, or <strong>Download SVG</strong> for print."
+      ],
+      "sections": [
+        { "h2": "A QR code for any link", "paras": [
+          "A QR code for a link is the quickest way to move a web address from a screen or a page onto a phone. People point the camera at it and tap the banner that appears: no typing, no typos. It works for a website, a menu, a social profile, a form, a map location, a video, an app store page or a download.",
+          "This tool checks the address as you type. It adds <strong>https://</strong> when you leave it out, refuses links that could run code (such as <code>javascript:</code>), and warns if the address has spaces or does not look like a web address. You can also make codes for <code>mailto:</code> and <code>tel:</code> links."
+        ]},
+        { "h2": "Short links make better codes", "paras": [
+          "The longer the address, the more squares the code needs, and the harder it is to scan from a distance. If your link has long tracking parameters, shorten it first or link to a simpler page. A short address also helps if someone has to type it because a camera fails. Before you print, check that the page loads quickly on a phone, because that is where most scans happen."
+        ]},
+        { "h2": "Static codes and tracking", "paras": [
+          "The code made here holds the address itself. It never expires and works without any account, but it also cannot count scans, because it does not pass through a server. If you need to measure scans, add tracking parameters such as <code>utm_source</code> to the address, and read the results in your own analytics. Be careful with services that put their own redirect address in the code: if the service stops or the plan ends, every printed code breaks."
+        ]},
+        { "h2": "Where to use a link QR code", "paras": [
+          "Restaurant menus, posters, flyers, business cards, product packaging, event tickets, shop windows, slides, name badges and lecture handouts. Place the code where people can reach it, give it a clear call to action such as \"Scan for the menu\", and keep the quiet zone around it free of text and patterns."
+        ]}
+      ],
+      "faq": [
+        { "q": "How do I make a QR code for a link?", "a": "Paste the address into the box. The QR code appears straight away. Test it with your phone, then download the PNG or SVG." },
+        { "q": "Does a QR code for a URL expire?", "a": "Not one made here. The code contains the address itself, so it keeps working for as long as the page exists." },
+        { "q": "Can I see how many people scanned it?", "a": "Not from the code itself, because it does not pass through any server. Add tracking parameters to the address and read them in your analytics." },
+        { "q": "Do I need to type https://?", "a": "No. If you leave it out, https:// is added automatically. Type http:// yourself only if the site really does not support https." },
+        { "q": "Is it safe to scan unknown QR codes?", "a": "Take care: a code can point to any address. Look at the address your phone shows before you open it, and do not enter passwords on pages you reached by an unfamiliar code." },
+        { "q": "Is the link sent to your servers?", "a": "No. The code is generated in your browser, and the address is not uploaded or stored." }
+      ]
+    },
+    "wifi": {
+      "title": "Wi-Fi QR Code Generator: Share Your Wi-Fi Password With a Scan",
+      "description": "Make a Wi-Fi QR code so guests join your network by scanning, with no typing. Works on iPhone and Android. Free, and the password never leaves your browser.",
+      "h1": "Wi-Fi QR code generator",
+      "lead": "Create a QR code that connects a phone to your Wi-Fi in one scan. Enter the network name and password, download the code and print it. The password stays in your browser.",
+      "eyebrow": "~/qr · join wi-fi by scanning",
+      "steps": [
+        "Enter the <strong>network name (SSID)</strong> exactly as it appears on your phone, including capital letters.",
+        "Enter the <strong>password</strong> and choose the <strong>security</strong> type. Most networks are WPA / WPA2 / WPA3. Tick the box if the network is hidden.",
+        "Scan the preview with a phone camera. The phone should offer to join the network. Press <strong>Download PNG</strong> or <strong>Download SVG</strong>.",
+        "Print it or show it on a screen where guests can scan it."
+      ],
+      "sections": [
+        { "h2": "How a Wi-Fi QR code works", "paras": [
+          "The code contains a short line of text that describes your network: its name, its password, its security type, and whether it is hidden. It looks like <code>WIFI:T:WPA;S:MyNetwork;P:mypassword;;</code>. The camera app on a recent iPhone or Android phone recognises that format and offers to join the network, so the guest never has to read out or type a long password. Special characters such as semicolons, commas, colons, quotation marks and backslashes are escaped for you, so unusual passwords work.",
+          "Very old phones and some third-party camera apps may not understand the format. In that case, a guest can still scan the code with a QR reader app, or you can show the password as text as well."
+        ]},
+        { "h2": "Keep your password safe", "paras": [
+          "Your password is used only in your browser to draw the code. It is not uploaded, stored or logged. But anyone who scans the printed code gets the password, so decide where the code goes. Do not put your main network's code in a public place. A <strong>guest network</strong> is a better choice for a code on a wall: it separates visitors from your own devices, you can change its password without disconnecting your own things, and many routers can switch it off with one setting.",
+          "If the code was shared more widely than you meant, change the password on the router and make a new code. The guide to <a href=\"/guides/share-wifi-password/\">sharing a Wi-Fi password safely</a> covers guest networks and other options."
+        ]},
+        { "h2": "Choosing the right security type", "paras": [
+          "Choose <strong>WPA / WPA2 / WPA3</strong> for almost every network made in the last ten years. Choose <strong>WEP</strong> only for a very old router, and consider replacing it, because WEP is weak. Choose <strong>No password</strong> for an open network, such as a public hotspot. If your network does not broadcast its name, tick <strong>hidden network</strong> so the phone knows to look for it."
+        ]},
+        { "h2": "If the code does not connect", "paras": [
+          "Check the network name and password for typos, including capital letters and look-alike characters such as 0 and O. Make sure the security type matches your router. Check that the code is large and well lit, with the quiet zone around it. Some corporate and school networks use personal logins that a QR code cannot hold, and those cannot be joined this way."
+        ]}
+      ],
+      "faq": [
+        { "q": "How do I make a QR code for my Wi-Fi?", "a": "Enter the network name and password, choose the security type and press Download. Guests then scan the code with the camera app and tap to join." },
+        { "q": "Does it work on both iPhone and Android?", "a": "Yes, on recent versions the built-in camera app reads the Wi-Fi format and offers to join. Very old phones may need a QR reader app." },
+        { "q": "Is my Wi-Fi password sent to your servers?", "a": "No. The password is used in your browser to draw the code and is never uploaded or stored. Anyone who scans the code, however, gets the password, so place it carefully." },
+        { "q": "Should I put my main network on a poster?", "a": "It is better to use a guest network for any code that many people can see. You can change the guest password without disconnecting your own devices." },
+        { "q": "What if my password has special characters?", "a": "The generator escapes semicolons, commas, colons, quotation marks and backslashes for you, so unusual passwords still work." },
+        { "q": "Can I make a code for a hidden network?", "a": "Yes. Tick the hidden network box so the phone knows to look for it even though the network does not broadcast its name." }
+      ]
+    }
+  }
+}

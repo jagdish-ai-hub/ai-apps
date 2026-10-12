@@ -1,0 +1,24 @@
+---
+import ToolPage from '../components/ToolPage.astro';
+import QrTool from '../components/QrTool.astro';
+import { qrContent } from '../lib/qrpages';
+
+const c = qrContent.en;
+const p = c.pages.url;
+const related = ['qr-code-generator', 'url-to-qr-code', 'wifi-qr-code-generator'].filter((s) => s !== 'url-to-qr-code');
+---
+<ToolPage
+  slug="url-to-qr-code"
+  title={p.title}
+  description={p.description}
+  h1={p.h1}
+  lead={p.lead}
+  eyebrow={p.eyebrow}
+  steps={p.steps}
+  sections={p.sections}
+  faq={p.faq}
+  related={[...related, 'iphone-to-windows-clipboard']}
+  shareText={p.description}
+>
+  <QrTool kind="url" ui={c.ui} lang="en" />
+</ToolPage>

@@ -1,0 +1,11 @@
+---
+// /<lang>/qr-code-generator/, /<lang>/url-to-qr-code/, /<lang>/wifi-qr-code-generator/ (more specific routes such as guides/ win over this one)
+import NativeQrPage from '../../components/NativeQrPage.astro';
+import { qrLangs, qrKinds, QR_KINDS } from '../../lib/qrpages';
+
+export function getStaticPaths() {
+  return qrLangs.flatMap((lang) => qrKinds.map((kind) => ({ params: { lang, page: QR_KINDS[kind] }, props: { lang, kind } })));
+}
+const { lang, kind } = Astro.props;
+---
+<NativeQrPage lang={lang} kind={kind} />

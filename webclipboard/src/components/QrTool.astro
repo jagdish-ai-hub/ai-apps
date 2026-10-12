@@ -1,0 +1,73 @@
+---
+// QR code generator UI for one kind of content (text, URL or Wi-Fi). All labels come from src/qr/<lang>.json ("ui").
+interface Props { kind: 'text' | 'url' | 'wifi'; ui: Record<string, any>; lang?: string }
+const { kind, ui, lang = 'en' } = Astro.props;
+const config = { kind, lang, ui: Object.fromEntries(['empty', 'errEmpty', 'errSpaces', 'errUnsafe', 'errHost', 'errInvalid', 'errTooLong', 'errSsid', 'errPass', 'warnLow', 'warnInverted', 'altText', 'textSample', 'urlSample'].map((k) => [k, ui[k]])) };
+---
+<div class="tool qr" id="qrtool" data-kind={kind}>
+  <div class="panel">
+    <div class="qr-layout">
+      <div class="qr-inputs">
+        <div class="tc-head" style="margin-bottom:12px">
+          <span class="eyebrow">{kind === 'text' ? ui.textLabel : kind === 'url' ? ui.urlLabel : ui.names.wifi}</span>
+          <div class="actions" style="margin:0">
+            <button class="btn ghost small" id="qr-sample" type="button">{ui.sampleBtn}</button>
+            <button class="btn ghost small" id="qr-clear" type="button">{ui.clearBtn}</button>
+          </div>
+        </div>
+
+        {kind === 'text' && <textarea class="clip" id="qr-text" data-clr-mask="true" spellcheck="false" autocomplete="off" aria-label={ui.textLabel} placeholder={ui.textPlaceholder}></textarea>}
+
+        {kind === 'url' && (
+          <div class="field">
+            <input id="qr-url" type="text" inputmode="url" autocapitalize="off" autocomplete="off" spellcheck="false" aria-label={ui.urlLabel} placeholder={ui.urlPlaceholder} />
+            <p class="hint" style="margin:8px 0 0">{ui.urlHint}</p>
+          </div>
+        )}
+
+        {kind === 'wifi' && (
+          <div class="opts qr-wifi">
+            <div class="field"><label for="qr-ssid">{ui.ssidLabel}</label><input id="qr-ssid" type="text" autocomplete="off" autocapitalize="off" spellcheck="false" data-clr-mask="true" placeholder={ui.ssidPlaceholder} /></div>
+            <div class="field"><label for="qr-pass">{ui.passLabel}</label><input id="qr-pass" type="password" autocomplete="off" autocapitalize="off" spellcheck="false" data-clr-mask="true" /></div>
+            <div class="field"><label for="qr-sec">{ui.secLabel}</label>
+              <select id="qr-sec"><option value="WPA">{ui.secWpa}</option><option value="WEP">{ui.secWep}</option><option value="nopass">{ui.secNone}</option></select></div>
+            <div class="field checks">
+              <label class="check"><input type="checkbox" id="qr-show" /><span>{ui.showPass}</span></label>
+              <label class="check"><input type="checkbox" id="qr-hidden" /><span>{ui.hiddenLabel}</span></label>
+            </div>
+          </div>
+        )}
+
+        <details class="qr-options">
+          <summary>{ui.optionsTitle}</summary>
+          <div class="opts">
+            <div class="field"><label for="qr-ecc">{ui.eccLabel}</label>
+              <select id="qr-ecc"><option value="L">{ui.eccL}</option><option value="M" selected>{ui.eccM}</option><option value="Q">{ui.eccQ}</option><option value="H">{ui.eccH}</option></select></div>
+            <div class="field"><label for="qr-size">{ui.sizeLabel}</label>
+              <select id="qr-size">{[200, 300, 500, 800, 1200].map((n) => <option value={n} selected={n === 500}>{n} px</option>)}</select></div>
+            <div class="field"><label for="qr-margin">{ui.marginLabel}</label>
+              <select id="qr-margin">{[0, 2, 4, 6].map((n) => <option value={n} selected={n === 4}>{n}</option>)}</select></div>
+            <div class="field"><label for="qr-fg">{ui.fgLabel}</label><input id="qr-fg" type="color" value="#000000" /></div>
+            <div class="field"><label for="qr-bg">{ui.bgLabel}</label><input id="qr-bg" type="color" value="#ffffff" /></div>
+          </div>
+        </details>
+        <p class="msg err" id="qr-msg" role="alert"></p>
+        {kind === 'wifi' && <p class="hint">{ui.wifiNote}</p>}
+      </div>
+
+      <div class="qr-out">
+        <span class="eyebrow">{ui.preview}</span>
+        <div class="qr-preview" id="qr-preview" aria-live="polite"><p class="hint" id="qr-empty">{ui.empty}</p></div>
+        <div class="actions">
+          <button class="btn" id="qr-png" type="button" disabled>{ui.downloadPng}</button>
+          <button class="btn ghost" id="qr-svg" type="button" disabled>{ui.downloadSvg}</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="safety">{ui.safety}</div>
+  <script type="application/json" id="qr-config" set:html={JSON.stringify(config)} />
+</div>
+<script>
+  import '../scripts/qr';
+</script>

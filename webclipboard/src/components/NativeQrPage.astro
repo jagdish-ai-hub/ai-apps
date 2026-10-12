@@ -1,0 +1,77 @@
+---
+// A QR code tool page written natively in another language (content in src/qr/<code>.json).
+import Base from '../layouts/Base.astro';
+import QrTool from './QrTool.astro';
+import Ad from './Ad.astro';
+import { qrContent, qrPath, qrAlternates, qrKinds } from '../lib/qrpages';
+import type { QrKind } from '../lib/qrpages';
+import { findGuide, guidePath } from '../lib/guides';
+import { absolute, localePath, site, langByCode } from '../lib/i18n';
+
+interface Props { lang: string; kind: QrKind }
+const { lang, kind } = Astro.props;
+const c = qrContent[lang];
+const ui = c.ui;
+const p = c.pages[kind];
+const url = absolute(qrPath(kind, lang));
+const alternates = qrAlternates(kind, absolute, (l) => langByCode(l).hreflang);
+const inLanguage = langByCode(lang).htmlLang;
+const others = qrKinds.filter((k) => k !== kind);
+const guides = (p.relatedGuides ?? []).map((g) => findGuide(g, lang)).filter(Boolean) as NonNullable<ReturnType<typeof findGuide>>[];
+const jsonld = [
+  { '@context': 'https://schema.org', '@type': 'WebApplication', name: `${site.siteName}: ${ui.names[kind]}`, url, description: p.description, applicationCategory: 'UtilitiesApplication', operatingSystem: 'Any', browserRequirements: 'Requires JavaScript', inLanguage, isAccessibleForFree: true, offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' } },
+  { '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: [
+    { '@type': 'ListItem', position: 1, name: ui.home, item: absolute(localePath(lang)) },
+    { '@type': 'ListItem', position: 2, name: ui.names[kind], item: url },
+  ] },
+  { '@context': 'https://schema.org', '@type': 'HowTo', name: p.h1, description: p.description, inLanguage, step: p.steps.map((s, i) => ({ '@type': 'HowToStep', position: i + 1, text: s.replace(/<[^>]+>/g, '') })) },
+  { '@context': 'https://schema.org', '@type': 'FAQPage', inLanguage, mainEntity: p.faq.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })) },
+];
+---
+<Base lang={lang} title={p.title} description={p.description} page={qrPath(kind, lang)} alternates={alternates} jsonld={jsonld} shareText={p.description}>
+  <div class="hero">
+    <div class="wrap">
+      <nav class="crumbs" aria-label="Breadcrumb"><a href={localePath(lang)}>{ui.home}</a> / {ui.names[kind]}</nav>
+      <span class="eyebrow">{p.eyebrow}</span>
+      <h1>{p.h1}</h1>
+      <p>{p.lead}</p>
+    </div>
+  </div>
+  <div class="wrap">
+    <QrTool kind={kind} ui={ui} lang={lang} />
+    <Ad slot="afterTool" lang={lang} />
+
+    <section class="block" aria-labelledby="how">
+      <span class="eyebrow">01</span>
+      <h2 id="how">{ui.howTo}</h2>
+      <ol class="steps">{p.steps.map((s) => <li><span set:html={s} /></li>)}</ol>
+    </section>
+
+    {p.sections.map((s, i) => (
+      <>
+        <section class="block prose" aria-labelledby={`s${i}`}>
+          <span class="eyebrow">{String(i + 2).padStart(2, '0')}</span>
+          <h2 id={`s${i}`}>{s.h2}</h2>
+          {s.paras.map((t) => <p set:html={t} />)}
+        </section>
+        {i === 0 && <Ad slot="inContent" lang={lang} />}
+      </>
+    ))}
+
+    <section class="block faq" aria-labelledby="faq">
+      <span class="eyebrow">FAQ</span>
+      <h2 id="faq">{ui.faq}</h2>
+      {p.faq.map((f) => <details><summary>{f.q}</summary><p>{f.a}</p></details>)}
+    </section>
+
+    <section class="block" aria-labelledby="more">
+      <span class="eyebrow">{ui.relatedTools}</span>
+      <h2 id="more">{ui.relatedTools}</h2>
+      <div class="cards">
+        {others.map((k) => <a class="card" href={qrPath(k, lang)}><strong>{ui.names[k]}</strong><span>{c.pages[k].description}</span></a>)}
+        {guides.map((g) => <a class="card" href={guidePath(g.slug, lang)}><span class="eyebrow">{g.meta.category}</span><strong>{g.meta.h1}</strong></a>)}
+      </div>
+    </section>
+    <Ad slot="beforeFooter" lang={lang} />
+  </div>
+</Base>
