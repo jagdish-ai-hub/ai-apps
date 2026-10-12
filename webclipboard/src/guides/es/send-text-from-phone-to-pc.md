@@ -47,7 +47,7 @@ El límite es de 100.000 caracteres por texto, más que suficiente para casi cua
 
 ## Método 2: mandarte un mensaje a ti mismo
 
-La mayoría de las apps de mensajería permiten escribirte a ti mismo. En WhatsApp, por ejemplo, puedes usar «chatear contigo mismo» o los mensajes guardados. Pega el texto allí desde el móvil y abre la misma app en el ordenador (la aplicación de escritorio o la versión web) para copiarlo. Es cómodo porque queda un historial, y ese es también su inconveniente: todo lo que mandes se queda en tu chat hasta que lo borres.
+La mayoría de las apps de mensajería permiten escribirte a ti mismo. En WhatsApp, por ejemplo, puedes abrir un chat contigo mismo, y en Telegram existe «Mensajes guardados». Pega el texto allí desde el móvil y abre la misma app en el ordenador (la aplicación de escritorio o la versión web) para copiarlo. Es cómodo porque queda un historial, y ese es también su inconveniente: todo lo que mandes se queda en tu chat hasta que lo borres.
 
 ## Método 3: mandarte un correo
 

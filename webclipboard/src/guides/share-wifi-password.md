@@ -31,7 +31,7 @@ Look for "Guest network" in your router's settings. If you do not know how to op
 
 If your phone is next to the other person's phone, the built-in options are the neatest:
 
-- **iPhone to iPhone:** when the other person tries to join the network, your iPhone offers to share the password with them. Tap the prompt to send it.
+- **iPhone to iPhone:** when the other person tries to join the network, your iPhone offers to share the password with them. Tap the prompt to send it. Apple says this works when both devices have Wi-Fi and Bluetooth on, Personal Hotspot is off, and each person is saved in the other's Contacts.
 - **Android:** open the Wi-Fi settings, tap the connected network and look for a **Share** option. It shows a QR code the other phone can scan with its camera.
 
 Nobody has to read out or type the password, and it is never copied anywhere.

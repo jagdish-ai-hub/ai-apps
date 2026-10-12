@@ -31,7 +31,7 @@ Procure por "Rede de convidados" ("Guest") nas configurações do roteador. Se v
 
 Se o seu celular estiver ao lado do celular da outra pessoa, as opções nativas são as mais práticas:
 
-- **De iPhone para iPhone:** quando a outra pessoa tentar entrar na rede, o seu iPhone oferece compartilhar a senha com ela. Toque no aviso para enviar.
+- **De iPhone para iPhone:** quando a outra pessoa tentar entrar na rede, o seu iPhone oferece compartilhar a senha com ela. Toque no aviso para enviar. Segundo a Apple, isso funciona quando os dois aparelhos estão com Wi-Fi e Bluetooth ligados, o Acesso Pessoal desativado e cada pessoa salva nos contatos da outra.
 - **Android:** abra as configurações de Wi-Fi, toque na rede conectada e procure a opção **Compartilhar**. Ela mostra um QR code que o outro celular pode escanear com a câmera.
 
 Ninguém precisa ditar nem digitar a senha, e ela não é copiada para lugar nenhum.

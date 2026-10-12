@@ -25,13 +25,13 @@ Wenn deine Gäste nur ins Internet wollen, ist ein **Gastnetz** besser als die W
 - Du kannst ein einfaches Passwort wählen oder es so oft ändern, wie du willst, ohne deine eigenen Geräte neu zu verbinden.
 - Viele Router können das Gastnetz mit einem Schalter ausschalten, sobald der Besuch vorbei ist.
 
-Suche in den Einstellungen deines Routers nach „Gastnetz“ oder „Gastzugang“. Wenn du nicht weißt, wie du sie öffnest: Adresse und Zugangsdaten stehen meist auf einem Aufkleber am Router selbst. Bei einer FRITZ!Box ist das Gastnetz beispielsweise in der Benutzeroberfläche des Routers unter den WLAN-Einstellungen zu finden. Die genaue Bezeichnung unterscheidet sich je nach Hersteller und Version.
+Suche in den Einstellungen deines Routers nach „Gastnetz“ oder „Gastzugang“. Wenn du nicht weißt, wie du sie öffnest: Adresse und Zugangsdaten stehen meist auf einem Aufkleber am Router selbst. Bei einer FRITZ!Box findest du es in der Benutzeroberfläche (fritz.box) im Menü „WLAN“ unter „Gastzugang“. Die genaue Bezeichnung unterscheidet sich je nach Hersteller und Version.
 
 ## Vor Ort per QR-Code oder Freigabe
 
 Liegen die Handys nebeneinander, sind die eingebauten Funktionen am elegantesten:
 
-- **iPhone an iPhone:** Wenn die andere Person versucht, dem Netzwerk beizutreten, bietet dein iPhone an, das Passwort zu teilen. Tippe auf die Abfrage, um es zu senden.
+- **iPhone an iPhone:** Wenn die andere Person versucht, dem Netzwerk beizutreten, bietet dein iPhone an, das Passwort zu teilen. Tippe auf die Abfrage, um es zu senden. Laut Apple klappt das, wenn bei beiden Geräten WLAN und Bluetooth eingeschaltet sind, der persönliche Hotspot aus ist und beide in den Kontakten des anderen gespeichert sind.
 - **Android:** Öffne die WLAN-Einstellungen, tippe auf das verbundene Netzwerk und suche nach **Teilen**. Es erscheint ein QR-Code, den das andere Handy mit der Kamera scannen kann.
 
 Niemand muss das Passwort vorlesen oder eintippen, und es wird nirgends zwischengespeichert.

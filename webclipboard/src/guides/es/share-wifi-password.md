@@ -31,7 +31,7 @@ Busca «Red de invitados» (o «Guest network») en los ajustes del router. Si n
 
 Si tu móvil está junto al de la otra persona, las opciones integradas son las más limpias:
 
-- **De iPhone a iPhone:** cuando la otra persona intenta conectarse a la red, tu iPhone te ofrece compartir la contraseña. Toca el aviso para enviarla.
+- **De iPhone a iPhone:** cuando la otra persona intenta conectarse a la red, tu iPhone te ofrece compartir la contraseña. Toca el aviso para enviarla. Según Apple, funciona si ambos tienen el wifi y el Bluetooth activados, el Punto de acceso personal desactivado y cada persona guardada en los contactos de la otra.
 - **Android:** abre los ajustes del wifi, toca la red a la que estás conectado y busca la opción **Compartir**. Se muestra un código QR que el otro móvil puede escanear con la cámara.
 
 Nadie tiene que leer en voz alta ni teclear la contraseña, y no se copia en ningún sitio.

@@ -49,7 +49,7 @@ Já no caminho do iPhone para o PC, o QR code aparece no celular, e o jeito prá
 
 ## Outras formas de fazer
 
-- **Mandar mensagem ou e-mail para si mesmo.** Cole o texto em um aparelho e abra o mesmo aplicativo no outro. No WhatsApp, por exemplo, dá para usar a conversa "Mensagem para você mesmo" e abrir o WhatsApp Web no computador. É simples e deixa um registro, mas o histórico fica guardado até você apagar. Veja o guia sobre [como enviar texto do celular para o PC](/pt/guides/send-text-from-phone-to-pc/) para comparar os métodos.
+- **Mandar mensagem ou e-mail para si mesmo.** Cole o texto em um aparelho e abra o mesmo aplicativo no outro. No WhatsApp, por exemplo, dá para abrir uma conversa só com você mesmo e abrir o WhatsApp Web no computador. É simples e deixa um registro, mas o histórico fica guardado até você apagar. Veja o guia sobre [como enviar texto do celular para o PC](/pt/guides/send-text-from-phone-to-pc/) para comparar os métodos.
 - **Anotações sincronizadas.** Se você já usa um serviço de notas com aplicativo para Windows ou versão web, cole o texto em uma nota no iPhone e abra no PC. Lembre que o conteúdo continua na sua conta até você apagar.
 - **Histórico da área de transferência do Windows.** Pressione **Windows + V** no PC para ver o que você copiou recentemente. Isso vale só para o computador, mas ajuda bastante depois de trazer o texto do celular, porque vários itens ficam disponíveis para colar.
 

@@ -49,7 +49,7 @@ Alguns hábitos deixam tudo mais seguro e mais tranquilo:
 
 ## Método 2: mande uma mensagem para você mesmo
 
-A maioria dos aplicativos de mensagens deixa você conversar consigo mesmo. No WhatsApp, por exemplo, existe a conversa "Mensagem para você mesmo". Cole o texto lá no celular, abra o WhatsApp Web ou o aplicativo para computador e copie de volta. A vantagem é que o histórico fica guardado, e isso também é a desvantagem: tudo o que você envia continua na conversa até você apagar.
+A maioria dos aplicativos de mensagens deixa você conversar consigo mesmo. No WhatsApp, por exemplo, dá para abrir uma conversa só com você mesmo. Cole o texto lá no celular, abra o WhatsApp Web ou o aplicativo para computador e copie de volta. A vantagem é que o histórico fica guardado, e isso também é a desvantagem: tudo o que você envia continua na conversa até você apagar.
 
 ## Método 3: mande um e-mail para você mesmo
 
