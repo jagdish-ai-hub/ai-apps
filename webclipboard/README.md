@@ -158,6 +158,11 @@ Every tool is its own page (own URL, title, description, Open Graph tags and JSO
 
 Guides can be written natively (not translated) per language: `src/guides/<code>/<slug>.md` appears at `/<code>/guides/<slug>/` with a hub at `/<code>/guides/`. Register the language in `src/lib/guidelangs.js` (also holds the interface labels) and add a route under `src/pages/<code>/guides/`. A guide with the same slug as an English one is paired automatically with reciprocal `hreflang` (plus `x-default` to English) on both pages and in the sitemap; a guide with no counterpart declares none. Japanese has three (phone to PC, iPhone and Windows, Wi-Fi password) and a longer home FAQ (`faqExtra` in `src/i18n/ja.json`).
 
+## Native landing pages and per-language token pages
+
+- **iPhone to Windows landing** exists in English (`src/pages/iphone-to-windows-clipboard.astro`) and in Japanese, Korean, German, Spanish and Portuguese (`src/landings/<code>.json`, rendered by `src/components/NativeLanding.astro` at `/<code>/iphone-to-windows-clipboard/`). All six versions declare each other with `hreflang` and `x-default` (English). To add a language: write `src/landings/<code>.json` and `src/guides/<code>/*.md`, add the code to `src/lib/guidelangs.js` (labels) and to the glob list in `src/lib/guides.ts`.
+- **`/tokens-in/<language>/`** (16 languages, `src/pages/tokens-in/[slug].astro`, list and hand-written language notes in `src/lib/tokenlangs.ts`): every number (ratios, token counts, characters per token, rank, neighbours, the example sentence split into tokens) is measured at build time with gpt-tokenizer from the site's own copy, so the pages cannot drift from `/token-cost-by-language/` and its CSV/JSON; a test compares them. Only the linguistic notes are hand-written, and they deliberately make no cost claims.
+
 ## IndexNow (instant indexing for Bing, Yandex, Naver, Seznam and other participating engines)
 
 - The key lives in `site.config.json` (`indexNowKey`) and is published as `public/<key>.txt` (the file contains only the key). A key is public by design, not a secret.

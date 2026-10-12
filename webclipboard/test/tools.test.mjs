@@ -192,3 +192,40 @@ test('Japanese home page has the longer FAQ in both the page and the FAQPage dat
   assert.ok(faq.mainEntity.length >= 12, `${faq.mainEntity.length} questions`);
   assert.equal((html.match(/<details>/g) || []).length, faq.mainEntity.length);
 });
+
+
+// ------------------------------------------------------------------ per-language token pages (/tokens-in/<language>/)
+
+const tokenLangSrc = readFileSync(new URL('../src/lib/tokenlangs.ts', import.meta.url), 'utf8');
+const tokenLangs = [...tokenLangSrc.matchAll(/\{ slug: '([a-z-]+)', code: '([a-z-]+)', family/g)].map((m) => ({ slug: m[1], code: m[2] }));
+
+test('token language pages are registered', () => assert.ok(tokenLangs.length >= 12, `found ${tokenLangs.length}`));
+
+for (const l of tokenLangs) {
+  test(`/tokens-in/${l.slug}/: SEO basics, data matches the CSV, enough real content`, { skip }, () => {
+    const html = read(`tokens-in/${l.slug}/index.html`);
+    const title = /<title>([^<]*)<\/title>/.exec(html)[1];
+    const desc = /<meta name="description" content="([^"]*)"/.exec(html)[1];
+    assert.ok(title.length <= 70, `title ${title.length}`);
+    assert.ok(desc.length >= 80 && desc.length <= 170, `description ${desc.length}`);
+    assert.equal((html.match(/<h1[ >]/g) || []).length, 1);
+    assert.ok(html.includes(`<link rel="canonical" href="https://webclipboard.online/tokens-in/${l.slug}/">`));
+    assert.ok(!/<link rel="alternate" hreflang/.test(html));
+    const types = ld(html).map((x) => x['@type']);
+    for (const k of ['Article', 'BreadcrumbList', 'FAQPage']) assert.ok(types.includes(k), k);
+    assert.ok(text(html).split(' ').length >= 600, 'enough words');
+    assert.ok(!/NaN|undefined|\[object Object\]/.test(text(html)));
+    // The numbers on the page are the numbers in the downloadable data.
+    const csv = read('data/token-cost-by-language.csv').trim().split('\n');
+    const head = csv[0].split(',');
+    const row = csv.find((x) => x.startsWith(`${l.code},`)).split(',');
+    const get = (k) => row[head.indexOf(k)];
+    const t = text(html);
+    assert.ok(t.includes(`${Number(get('ratio_vs_english_o200k_base')).toFixed(2)}×`), 'o200k ratio matches CSV');
+    assert.ok(t.includes(`${Number(get('ratio_vs_english_cl100k_base')).toFixed(2)}×`), 'cl100k ratio matches CSV');
+    assert.ok(t.includes(`${get('tokens_o200k_base')} tokens`) && t.includes(`${get('tokens_cl100k_base')} tokens`), 'token counts match CSV');
+    assert.ok(read('sitemap.xml').includes(`<loc>https://webclipboard.online/tokens-in/${l.slug}/</loc>`), 'in sitemap');
+    assert.ok(read('token-cost-by-language/index.html').includes(`href="/tokens-in/${l.slug}/"`), 'linked from the data page');
+    assert.ok(html.includes('class="tk a"'), 'token chips rendered');
+  });
+}

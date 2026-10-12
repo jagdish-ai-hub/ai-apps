@@ -1,13 +1,14 @@
 import { languages, localePath, absolute } from '../lib/i18n';
 import { guides, guidesFor, guidePath, guidesHubPath, guideAlternates } from '../lib/guides';
 import { guideLangs } from '../lib/guidelangs.js';
+import { tokenLangs } from '../lib/tokenlangs';
 import { langByCode } from '../lib/i18n';
 import { landingLangs, landingPath, landingAlternates, LANDING_SLUG } from '../lib/landings';
 import { tools, toolPath } from '../lib/tools';
 
 const lastmod = new Date().toISOString().slice(0, 10);
 const legal = ['/about/', '/privacy/', '/terms/', '/contact/'];
-const toolUrls = ['/tools/', ...tools.map((t) => toolPath(t.slug))];
+const toolUrls = ['/tools/', ...tools.map((t) => toolPath(t.slug)), ...tokenLangs.map((l) => `/tokens-in/${l.slug}/`)];
 
 export function GET() {
   const alternates = [

@@ -1,0 +1,162 @@
+---
+// One page per language: measured token counts for the site's own copy, a real sentence split into tokens, neighbours, and tips.
+// All numbers come from langdata.ts at build time; only the language notes in tokenlangs.ts are hand-written.
+import Base from '../../layouts/Base.astro';
+import Ad from '../../components/Ad.astro';
+import { rows, englishRow, summary as s, libVersion, measuredOn, encoders } from '../../lib/langdata';
+import { tokenLangs, familyText } from '../../lib/tokenlangs';
+import { fmtRatio, fmtPct } from '../../lib/tokenstats.js';
+import { groupTokens } from '../../lib/tokencalc.js';
+import { messages, absolute, site } from '../../lib/i18n';
+import { findGuide, guidePath } from '../../lib/guides';
+
+export function getStaticPaths() {
+  return tokenLangs.map((l) => ({ params: { slug: l.slug }, props: { slug: l.slug } }));
+}
+const { slug } = Astro.props;
+const lang = tokenLangs.find((l) => l.slug === slug)!;
+const r = rows.find((x) => x.code === lang.code)!;
+const url = absolute(`/tokens-in/${slug}/`);
+const others = rows.filter((x) => x.code !== 'en');
+const byCost = [...others].sort((a, b) => a.ratioO - b.ratioO);
+const rank = byCost.findIndex((x) => x.code === r.code) + 1;
+const neighbours = [...others].filter((x) => x.code !== r.code).sort((a, b) => Math.abs(a.ratioO - r.ratioO) - Math.abs(b.ratioO - r.ratioO)).slice(0, 4).sort((a, b) => a.ratioO - b.ratioO);
+const compare = [englishRow, ...[...neighbours, r].sort((a, b) => a.ratioO - b.ratioO).filter((x) => x.code !== 'en')];
+const ratio = (x: number) => fmtRatio(x);
+const cheaperThanEnglish = r.ratioO < 1.0;
+const nearEnglish = r.ratioO <= 1.25;
+
+// A real sentence in this language and in English, split by each tokenizer.
+const m = messages(lang.code);
+const sampleText: string = m.tagline;
+const enSample: string = messages('en').tagline;
+const PLAIN = { disallowedSpecial: new Set<string>() };
+const idsO = encoders.o200k_base.encode(sampleText, PLAIN);
+const idsC = encoders.cl100k_base.encode(sampleText, PLAIN);
+const enO = encoders.o200k_base.encode(enSample, PLAIN).length;
+const enC = encoders.cl100k_base.encode(enSample, PLAIN).length;
+const groups = groupTokens(idsO, encoders.o200k_base.decode);
+const sampleChars = [...sampleText].length;
+
+const per1000 = Math.round(1000 / r.charsPerTokenO);
+const per1000C = Math.round(1000 / r.charsPerTokenC);
+const zhCn = rows.find((x) => x.code === 'zh-cn')!;
+const zhTw = rows.find((x) => x.code === 'zh-tw')!;
+
+const title = `Tokens in ${lang.name}: Token Count and Cost vs English`;
+const description = `${lang.name} text needs ${ratio(r.ratioO)} the tokens of English on o200k_base and ${ratio(r.ratioC)} on cl100k_base. Measured data, a real example and tips to cut token cost.`;
+
+const faq = [
+  { q: `How many tokens is ${lang.name} text?`, a: `In our measurement, the same website copy that is ${englishRow.o200k} tokens in English (${englishRow.chars.toLocaleString()} characters) is ${r.o200k} tokens in ${lang.name} on o200k_base (${r.chars.toLocaleString()} characters) and ${r.cl100k} tokens on cl100k_base. As a rule of thumb, 1,000 characters of ${lang.name} come to about ${per1000} tokens on o200k_base and about ${per1000C} on cl100k_base.` },
+  { q: `Is ${lang.name} more expensive than English in GPT-4o?`, a: cheaperThanEnglish ? `In this sample, no. The ${lang.name} copy needs ${ratio(r.ratioO)} the English token count on o200k_base, which is the encoding used by GPT-4o and newer OpenAI models, so it is slightly cheaper than English at the same price per token.` : `Slightly to noticeably, depending on the text. On o200k_base, the encoding used by GPT-4o and newer OpenAI models, the ${lang.name} copy needs ${ratio(r.ratioO)} the English token count, so at the same price per token the same message costs about ${ratio(r.ratioO)} as much. It was ${ratio(r.ratioC)} on the older cl100k_base.` },
+  { q: `Which tokenizer is better for ${lang.name}?`, a: `o200k_base needed ${fmtPct(r.saving)} fewer tokens than cl100k_base for ${lang.name} in this sample. Across all ${s.others} non-English languages in the data, the average saving was ${fmtPct(s.overallSaving)}, so ${lang.name} ${r.saving > s.overallSaving ? 'improved more than average' : 'improved less than average'}.` },
+  { q: `Why does ${lang.name} need ${cheaperThanEnglish || nearEnglish ? 'about as many' : 'more'} tokens than English?`, a: `${lang.note} ${familyText[lang.family]}` },
+  { q: `Does this apply to Claude, Gemini or Llama?`, a: 'Not directly. Other providers train their own tokenizers, so counts and ratios differ. These figures describe two OpenAI encodings only. Use your provider\'s own token counter before relying on a number for billing.' },
+  { q: 'How was this measured?', a: `We counted the tokens of the site's own copy in each language (tagline, two about paragraphs and four how-to steps) with the o200k_base and cl100k_base encodings from gpt-tokenizer ${libVersion}, on ${measuredOn}, and divided by the English count. It is one sample of marketing-style text, so other kinds of text, such as code or legal prose, will give different ratios.` },
+];
+
+const jsonld = [
+  { '@context': 'https://schema.org', '@type': 'Article', headline: title, description, inLanguage: 'en', datePublished: measuredOn, dateModified: measuredOn, mainEntityOfPage: url, image: absolute('/og.png'), author: { '@type': 'Organization', name: site.siteName, url: absolute('/') }, publisher: { '@type': 'Organization', name: site.siteName, logo: { '@type': 'ImageObject', url: absolute('/icon-512.png') } } },
+  { '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: absolute('/') },
+    { '@type': 'ListItem', position: 2, name: 'Token cost by language', item: absolute('/token-cost-by-language/') },
+    { '@type': 'ListItem', position: 3, name: `Tokens in ${lang.name}`, item: url },
+  ] },
+  { '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: faq.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })) },
+];
+const guides = ['tokens-in-different-languages', 'how-to-reduce-token-usage', 'how-llm-api-pricing-works'].map((g) => findGuide(g)).filter(Boolean) as NonNullable<ReturnType<typeof findGuide>>[];
+const siblings = tokenLangs.filter((l) => l.slug !== slug);
+---
+<Base title={title} description={description} page={`/tokens-in/${slug}/`} section="tokens" jsonld={jsonld} shareText={`How many tokens does ${lang.name} text use? Measured with OpenAI tokenizers.`}>
+  <div class="hero guide-hero">
+    <div class="wrap">
+      <nav class="crumbs" aria-label="Breadcrumb"><a href="/">Home</a> / <a href="/token-cost-by-language/">Token cost by language</a> / {lang.name}</nav>
+      <span class="eyebrow">Data · measured {measuredOn}</span>
+      <h1>Tokens in {lang.name}</h1>
+      <p>How many tokens does {lang.name} text use, compared with English? We measured the same copy in both languages with OpenAI's two main tokenizers.</p>
+    </div>
+  </div>
+
+  <div class="wrap">
+    <div class="findings">
+      <div class="stat big"><span class="eyebrow">Cost vs English, o200k_base</span><strong>{ratio(r.ratioO)}</strong><small>GPT-4o and newer models</small></div>
+      <div class="stat"><span class="eyebrow">Cost vs English, cl100k_base</span><strong>{ratio(r.ratioC)}</strong><small>GPT-4 and GPT-3.5 era</small></div>
+      <div class="stat"><span class="eyebrow">Characters per token</span><strong>{r.charsPerTokenO.toFixed(2)}</strong><small>o200k_base (English: {englishRow.charsPerTokenO.toFixed(2)})</small></div>
+      <div class="stat"><span class="eyebrow">Rank of {s.others}</span><strong>{rank}</strong><small>1 is the cheapest relative to English</small></div>
+      <div class="stat"><span class="eyebrow">Saved by o200k_base</span><strong>{fmtPct(r.saving)}</strong><small>fewer tokens than cl100k_base</small></div>
+    </div>
+
+    <section class="block prose" aria-labelledby="summary">
+      <h2 id="summary">What the numbers say</h2>
+      <p>The same website copy is <strong>{englishRow.o200k} tokens</strong> in English and <strong>{r.o200k} tokens</strong> in {lang.name} on the newer <strong>o200k_base</strong> encoding, a ratio of <strong>{ratio(r.ratioO)}</strong>. On the older <strong>cl100k_base</strong> encoding the {lang.name} copy needs <strong>{r.cl100k} tokens</strong>, which is <strong>{ratio(r.ratioC)}</strong> the English count of {englishRow.cl100k}. {cheaperThanEnglish ? `So ${lang.name} is not more expensive than English on the newer encoding in this sample.` : nearEnglish ? `So on the newer encoding ${lang.name} costs only a modest amount more than English.` : `At the same price per token, the same message costs about ${ratio(r.ratioO)} as much in ${lang.name} on the newer encoding.`} Among the {s.others} non-English languages we measured, {lang.name} ranks number {rank} from the cheapest.</p>
+      <p>The newer encoding made a real difference: o200k_base used <strong>{fmtPct(r.saving)}</strong> fewer tokens than cl100k_base for {lang.name}, compared with {fmtPct(s.overallSaving)} across all the non-English languages in the data. {r.saving > s.overallSaving ? `That is more than average, so ${lang.name} gained more from the newer vocabulary than most.` : `That is less than average, so ${lang.name} gained less from the newer vocabulary than most.`}</p>
+      {lang.code === 'zh-tw' && <p>Traditional Chinese needs <strong>{ratio(zhTw.ratioO / zhCn.ratioO)}</strong> the tokens of Simplified Chinese on o200k_base ({zhTw.o200k} against {zhCn.o200k}), and <strong>{ratio(zhTw.ratioC / zhCn.ratioC)}</strong> on cl100k_base. Part of that is the character forms, part is the different wording.</p>}
+      {lang.code === 'zh-cn' && <p>Simplified Chinese is the cheapest language in our data on the newer encoding, at {ratio(r.ratioO)} English, while Traditional Chinese needs {ratio(zhTw.ratioO)}. The two are written differently, so they cannot be compared character for character.</p>}
+      <p><strong>Why {lang.name}?</strong> {lang.note}</p>
+      <p>{familyText[lang.family]}</p>
+    </section>
+
+    <section class="block" aria-labelledby="split">
+      <span class="eyebrow">Example</span>
+      <h2 id="split">How a {lang.name} sentence is split into tokens</h2>
+      <p class="hint" style="margin-top:0">This is the tagline of this site in {lang.name}. Each shaded block is one token (or a few tokens that together make one character) on o200k_base.</p>
+      <div class="chips" dir="auto" lang={lang.code === 'zh-cn' ? 'zh-CN' : lang.code === 'zh-tw' ? 'zh-TW' : lang.code}>{groups.map((g, i) => <span class={`tk ${i % 2 ? 'b' : 'a'}`}>{g.text}</span>)}</div>
+      <p class="hint">{sampleChars} characters become <strong>{idsO.length} tokens</strong> on o200k_base and <strong>{idsC.length} tokens</strong> on cl100k_base. The English tagline, "{enSample}", is {enSample.length} characters and <strong>{enO} tokens</strong> on o200k_base and {enC} on cl100k_base.</p>
+      <p class="hint">Want to see your own text? Paste it into the <a href="/token-calculator/">token calculator</a> and compare the two tokenizers.</p>
+    </section>
+
+    <Ad slot="afterTool" />
+
+    <section class="block" aria-labelledby="compare">
+      <span class="eyebrow">Comparison</span>
+      <h2 id="compare">{lang.name} next to English and the closest languages</h2>
+      <div class="dtable-wrap" tabindex="0" role="region" aria-label="Token counts compared, scrollable">
+        <table class="dtable">
+          <thead><tr><th scope="col">Language</th><th scope="col" class="num">Characters</th><th scope="col" class="num">Tokens<br /><small>o200k_base</small></th><th scope="col" class="num">Tokens<br /><small>cl100k_base</small></th><th scope="col" class="num">× English<br /><small>o200k_base</small></th><th scope="col" class="num">× English<br /><small>cl100k_base</small></th></tr></thead>
+          <tbody>
+            {compare.map((x) => (
+              <tr class={x.code === r.code ? 'base' : undefined}>
+                <th scope="row">{x.englishName}<span class="native" lang={x.htmlLang}>{x.name}</span></th>
+                <td class="num">{x.chars.toLocaleString()}</td><td class="num">{x.o200k}</td><td class="num">{x.cl100k}</td><td class="num">{ratio(x.ratioO)}</td><td class="num">{ratio(x.ratioC)}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      <p class="hint">See all {s.count} languages, with a chart and CSV and JSON downloads, on <a href="/token-cost-by-language/">token cost by language</a>.</p>
+    </section>
+
+    <section class="block prose" aria-labelledby="cost">
+      <h2 id="cost">What it means for your bill</h2>
+      <p>API prices are per token, so the ratio is also a price ratio. If a prompt costs <strong>$1.00</strong> in English on o200k_base, the equivalent {lang.name} prompt costs about <strong>${r.ratioO.toFixed(2)}</strong>, and about <strong>${r.ratioC.toFixed(2)}</strong> on cl100k_base. A document of 1,000 {lang.name} characters is roughly <strong>{per1000} tokens</strong> on o200k_base. These are estimates from one sample: translated text is never exactly the same length as the original, and your text may be formal, technical or full of names, which changes the ratio.</p>
+      <p>To turn tokens into money, enter your provider's input and output prices per million tokens in the <a href="/token-calculator/">token calculator</a>. For how pricing works, see <a href="/guides/how-llm-api-pricing-works/">how LLM API pricing works</a>.</p>
+    </section>
+
+    <section class="block prose" aria-labelledby="tips">
+      <h2 id="tips">How to use fewer tokens with {lang.name} text</h2>
+      <ol class="steps">
+        <li><span><strong>Use a model with the newer tokenizer.</strong> For {lang.name}, o200k_base used {fmtPct(r.saving)} fewer tokens than cl100k_base in this sample, so a GPT-4o-class model needs fewer tokens than an older one for the same text.</span></li>
+        <li><span><strong>Count before you send.</strong> Paste a typical message into the <a href="/token-calculator/">token calculator</a> to see the real count, then multiply by the number of requests.</span></li>
+        <li><span><strong>Keep fixed instructions short.</strong> A system prompt that is sent with every request is paid for every time. Writing the standing instructions in English is often cheaper per token than in {lang.name}; test that answers stay as good as you need.</span></li>
+        <li><span><strong>Cut what is not needed.</strong> Remove greetings, repeated context and long examples. The guide to <a href="/guides/how-to-reduce-token-usage/">reducing token usage</a> has more.</span></li>
+        <li><span><strong>Be careful with emoji, rare characters and unusual formatting.</strong> They are often split into several byte-level tokens each.</span></li>
+      </ol>
+    </section>
+
+    <section class="block faq" aria-labelledby="faq">
+      <span class="eyebrow">FAQ</span>
+      <h2 id="faq">Frequently asked questions</h2>
+      {faq.map((f) => <details><summary>{f.q}</summary><p>{f.a}</p></details>)}
+    </section>
+
+    <section class="block" aria-labelledby="more">
+      <span class="eyebrow">More</span>
+      <h2 id="more">Other languages and guides</h2>
+      <div class="cards">
+        {guides.map((g) => <a class="card" href={guidePath(g.slug)}><span class="eyebrow">{g.meta.category}</span><strong>{g.meta.h1}</strong></a>)}
+      </div>
+      <p class="prose" style="margin-top:16px">Other languages: {siblings.map((l, i) => <><a href={`/tokens-in/${l.slug}/`}>{l.name}</a>{i < siblings.length - 1 ? ' · ' : ''}</>)}</p>
+    </section>
+    <Ad slot="beforeFooter" />
+  </div>
+</Base>

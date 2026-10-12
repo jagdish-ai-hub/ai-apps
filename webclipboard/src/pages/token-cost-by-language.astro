@@ -5,6 +5,7 @@ import { rows, summary as s, libVersion, measuredOn, englishRow } from '../lib/l
 import { fmtRatio, fmtPct } from '../lib/tokenstats.js';
 import { absolute, site } from '../lib/i18n';
 import { findGuide, guidePath } from '../lib/guides';
+import { tokenLangs } from '../lib/tokenlangs';
 
 const url = absolute('/token-cost-by-language/');
 const title = 'Token Cost by Language: 30 Languages, Two OpenAI Tokenizers';
@@ -176,6 +177,18 @@ const guides = ['tokens-in-different-languages', 'how-tokenizers-work', 'how-to-
       <p>You are welcome to quote or reuse these figures. Please link back to this page.</p>
       <pre class="codeblock" id="cite-text">{citation}</pre>
       <div class="actions"><button class="btn ghost small" id="cite-copy" type="button">Copy citation</button></div>
+    </section>
+
+    <section class="block" aria-labelledby="lang-pages">
+      <span class="eyebrow">Per language</span>
+      <h2 id="lang-pages">One page per language</h2>
+      <p class="prose" style="margin:6px 0 0">Each page shows the measured counts for one language, a real sentence split into tokens, its closest neighbours and tips.</p>
+      <div class="cards">
+        {tokenLangs.map((l) => {
+          const row = rows.find((x) => x.code === l.code)!;
+          return <a class="card" href={`/tokens-in/${l.slug}/`}><strong>Tokens in {l.name}</strong><span>{fmtRatio(row.ratioO)} English on o200k_base · {fmtRatio(row.ratioC)} on cl100k_base</span></a>;
+        })}
+      </div>
     </section>
 
     <section class="block faq" aria-labelledby="faq">
