@@ -1,7 +1,9 @@
 ---
 import { messages, fill, site } from '../lib/i18n';
-interface Props { lang?: string }
-const { lang = 'en' } = Astro.props;
+import { LANGUAGES } from '../lib/codeclip.js';
+// `code` turns on the code editor (syntax highlighting, language list). It is English-only and used on /code-share/.
+interface Props { lang?: string; code?: boolean }
+const { lang = 'en', code = false } = Astro.props;
 const m = messages(lang);
 
 // Only the strings the browser script needs, embedded as JSON (no extra request).
@@ -13,7 +15,7 @@ const dlLabel = dl.charAt(0).toLocaleUpperCase(lang) + dl.slice(1);
 const ui: Record<string, string> = Object.fromEntries(keys.map((k) => [k, fill(m[k])]));
 const config = { maxChars: site.maxChars, turnstileSiteKey: site.turnstileSiteKey, domain: site.domain, defaultExpiry: site.defaultExpiry };
 ---
-<div class="tool" id="tool" data-lang={lang}>
+<div class="tool" id="tool" data-lang={lang} data-code={code ? '1' : undefined}>
   <div class="tabs" role="tablist">
     <button class="tab" role="tab" id="tab-send" aria-controls="panel-send" aria-selected="true" type="button">{m.sendTitle}</button>
     <button class="tab" role="tab" id="tab-receive" aria-controls="panel-receive" aria-selected="false" type="button">{m.receiveTitle}</button>
@@ -24,11 +26,29 @@ const config = { maxChars: site.maxChars, turnstileSiteKey: site.turnstileSiteKe
     <form id="send-form" novalidate>
       <div id="compose">
         <label class="sr-only" for="text">{m.sendTitle}</label>
-        <textarea class="clip" id="text" data-clr-mask="true" name="text" placeholder={m.placeholder} spellcheck="false" autocomplete="off" autocapitalize="off"></textarea>
+        {code ? (
+          <div class="code-editor plain" id="code-editor">
+            <pre class="ce-hl" aria-hidden="true"><code id="ce-code"></code></pre>
+            <textarea class="ce-input" id="text" data-clr-mask="true" name="text" wrap="off" placeholder="Paste or type your code here…" spellcheck="false" autocomplete="off" autocapitalize="off" aria-describedby="ce-help"></textarea>
+          </div>
+        ) : (
+          <textarea class="clip" id="text" data-clr-mask="true" name="text" placeholder={m.placeholder} spellcheck="false" autocomplete="off" autocapitalize="off"></textarea>
+        )}
+        {code && <p class="hint" id="ce-help" style="margin:8px 0 0">Tab inserts two spaces; press Esc, then Tab, to move to the next field.</p>}
         <div class="row">
           <span class="count"><span id="count">0</span> / {site.maxChars.toLocaleString('en-US')} {m.characters}</span>
         </div>
         <div class="opts">
+          {code && (
+            <div class="field">
+              <label for="code-lang">Language</label>
+              <select id="code-lang">
+                <option value="auto" selected>Auto-detect</option>
+                <option value="plain">Plain text</option>
+                {LANGUAGES.map((l) => <option value={l.id}>{l.label}</option>)}
+              </select>
+            </div>
+          )}
           <div class="field">
             <label for="expiry">{m.expiryLabel}</label>
             <select id="expiry" name="expiry">
@@ -47,6 +67,7 @@ const config = { maxChars: site.maxChars, turnstileSiteKey: site.turnstileSiteKe
             <label class="check"><input type="checkbox" id="burn" /><span>{m.burnLabel}</span></label>
           </div>
         </div>
+        {code && <p class="hint" id="code-detected" hidden></p>}
         <p class="hint">{m.passwordHint}</p>
         <div class="row">
           <button class="btn" id="send-btn" type="submit">{m.sendBtn}</button>
@@ -100,6 +121,7 @@ const config = { maxChars: site.maxChars, turnstileSiteKey: site.turnstileSiteKe
     </form>
 
     <div class="opened" id="opened" hidden>
+      <p class="lang-badge" id="opened-lang" hidden></p>
       <pre id="opened-text" data-clr-mask="true" dir="auto"></pre>
       <div class="actions">
         <button class="btn small" id="copy-text" type="button">{m.copy}</button>
@@ -108,6 +130,7 @@ const config = { maxChars: site.maxChars, turnstileSiteKey: site.turnstileSiteKe
           <div class="dl-menu" id="download-menu" role="menu" hidden>
             <button type="button" role="menuitem" data-fmt="txt">.txt</button>
             <button type="button" role="menuitem" data-fmt="md">.md (Markdown)</button>
+            <button type="button" role="menuitem" data-fmt="code" id="dl-code" hidden></button>
             <button type="button" role="menuitem" data-fmt="docx">Word (.docx)</button>
             <button type="button" role="menuitem" data-fmt="pdf">PDF</button>
           </div>

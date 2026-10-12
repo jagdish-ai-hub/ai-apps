@@ -3,6 +3,8 @@
 
 type Cfg = { maxChars: number; turnstileSiteKey: string; domain: string; defaultExpiry: string; ui: Record<string, string> };
 
+import { decodeCode, encodeCode, languageById } from '../lib/codeclip.js';
+
 const $ = <T extends HTMLElement = HTMLElement>(id: string) => document.getElementById(id) as T;
 const cfg: Cfg = JSON.parse($('tool-config').textContent || '{}');
 const t = (k: string) => cfg.ui[k] || k;
@@ -126,6 +128,8 @@ const text = $<HTMLTextAreaElement>('text');
 const count = $('count');
 const sendMsg = $('send-msg');
 let currentCode = '';
+const codeMode = $('tool').dataset.code === '1';
+if (codeMode) void import('./codeeditor').then((m) => m.initEditor());
 
 text.addEventListener('input', () => {
   count.textContent = text.value.length.toLocaleString();
@@ -139,17 +143,21 @@ $('send-form').addEventListener('submit', async (ev) => {
   sendMsg.textContent = '';
   const value = text.value;
   if (!value.trim()) { sendMsg.textContent = t('errEmpty'); return; }
-  if (value.length > cfg.maxChars) { sendMsg.textContent = t('errTooLong'); return; }
 
   const btn = $<HTMLButtonElement>('send-btn');
   btn.disabled = true;
   btn.textContent = t('saving');
   try {
+    // Code clips carry an invisible marker with the language, so the receiver can show them highlighted.
+    let lang = codeMode ? $<HTMLSelectElement>('code-lang').value : 'plain';
+    if (lang === 'auto') lang = (await import('../lib/highlight')).detect(value) ?? 'plain';
+    const payload = encodeCode(value, lang);
+    if (payload.length > cfg.maxChars) { sendMsg.textContent = t('errTooLong'); return; }
     await loadTurnstile();
     if (cfg.turnstileSiteKey && !tsToken) { sendMsg.textContent = t('errGeneric'); return; }
     const password = $<HTMLInputElement>('password').value;
     const body = {
-      content: password ? await encrypt(value, password) : value,
+      content: password ? await encrypt(payload, password) : payload,
       encrypted: Boolean(password),
       burn: $<HTMLInputElement>('burn').checked,
       expiry: $<HTMLSelectElement>('expiry').value,
@@ -195,6 +203,7 @@ $('new-clip').addEventListener('click', () => {
   $<HTMLInputElement>('burn').checked = false;
   count.textContent = '0';
   $('qr').replaceChildren();
+  text.dispatchEvent(new Event('input')); // lets the code editor redraw its highlighting
   text.focus();
 });
 
@@ -204,6 +213,7 @@ const codeInput = $<HTMLInputElement>('code-input');
 const receiveMsg = $('receive-msg');
 let pending: { code: string; envelope: string } | null = null;
 let openedCode = '';
+let openedLang = '';
 
 codeInput.addEventListener('input', () => {
   codeInput.value = codeInput.value.replace(/\D/g, '').slice(0, 6);
@@ -246,7 +256,25 @@ function showOpened(content: string, meta: { burned?: boolean; expiresAt?: numbe
   $('receive-box').hidden = true;
   $('pw-form').hidden = true;
   $('opened').hidden = false;
-  $('opened-text').textContent = content; // textContent: never interpret clip text as HTML
+  // A code clip starts with an invisible marker naming the language: show it highlighted, without the marker.
+  const code = decodeCode(content);
+  const shown = code ? code.text : content;
+  openedLang = code ? code.lang : '';
+  const pre = $('opened-text');
+  pre.classList.toggle('hl', Boolean(code));
+  pre.dir = code ? 'ltr' : 'auto';
+  pre.textContent = shown; // textContent: never interpret clip text as HTML
+  const badge = $('opened-lang');
+  badge.hidden = !code;
+  const dlCode = $('dl-code');
+  dlCode.hidden = !code;
+  if (code) {
+    const l = languageById(code.lang)!;
+    badge.textContent = l.label;
+    dlCode.textContent = `.${l.ext} (${l.label})`;
+    // Highlighting is loaded only when a code clip is opened. highlight.js escapes the code, and textContent stays the raw code.
+    void import('../lib/highlight').then(({ highlight }) => { if (pre.classList.contains('hl') && pre.textContent === shown) pre.innerHTML = highlight(shown, code.lang); });
+  }
   $('burned').hidden = !meta.burned;
   $('opened-meta').textContent = meta.expiresAt && !meta.burned ? `${t('expiresAt')}: ${new Date(meta.expiresAt).toLocaleString()}` : '';
 }
@@ -282,7 +310,9 @@ dlMenu.addEventListener('click', async (e) => {
   const name = `clipboard-${openedCode}`;
   // The Word and PDF code is only loaded when someone picks those formats.
   const out = await import('../lib/export.js');
-  if (fmt === 'txt' || fmt === 'md') {
+  if (fmt === 'code' && openedLang) {
+    out.saveBlob(new Blob([text], { type: 'text/plain;charset=utf-8' }), `${name}.${languageById(openedLang)!.ext}`);
+  } else if (fmt === 'txt' || fmt === 'md') {
     out.saveBlob(new Blob([text], { type: fmt === 'md' ? 'text/markdown;charset=utf-8' : 'text/plain;charset=utf-8' }), `${name}.${fmt}`);
   } else if (fmt === 'docx') {
     const { textToDocx } = await import('../lib/docx.js');

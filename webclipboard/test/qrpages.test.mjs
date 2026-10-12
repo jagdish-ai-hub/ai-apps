@@ -92,3 +92,21 @@ test('QR pages are listed on /tools/ and the English pages embed the generator',
   for (const id of ['qr-ssid', 'qr-pass', 'qr-sec', 'qr-hidden']) assert.ok(wifi.includes(`id="${id}"`), id);
   assert.ok(/id="qr-pass"[^>]*data-clr-mask="true"/.test(wifi) || /data-clr-mask="true"[^>]*id="qr-pass"/.test(wifi), 'Wi-Fi password masked from session replay');
 });
+
+// ------------------------------------------------------------------ code share page
+test('/code-share/: editor, language list, highlighting assets and the highlighted receive view are wired', { skip }, () => {
+  const html = read('code-share/index.html');
+  for (const id of ['code-editor', 'code-lang', 'ce-code', 'text', 'send-btn', 'opened-lang', 'dl-code']) assert.ok(html.includes(`id="${id}"`), id);
+  assert.ok(html.includes('data-code="1"'));
+  for (const l of ['JavaScript', 'Python', 'SQL', 'Rust', 'Auto-detect', 'Plain text']) assert.ok(html.includes(l), l);
+  const types = ld(html).map((x) => x['@type']);
+  for (const k of ['WebApplication', 'BreadcrumbList', 'HowTo', 'FAQPage']) assert.ok(types.includes(k), k);
+  assert.ok(/data-clr-mask="true"[^>]*id="text"|id="text"[^>]*data-clr-mask="true"/.test(html), 'code box masked from session replay');
+  // the ordinary clipboard page never ships the editor, but can still show a received code clip highlighted
+  const home = read('index.html');
+  assert.ok(!home.includes('id="code-editor"') && !home.includes('id="code-lang"'));
+  assert.ok(home.includes('id="opened-lang"') && home.includes('id="dl-code"'));
+  assert.ok(read('tools/index.html').includes('href="/code-share/"'));
+  assert.ok(read('sitemap.xml').includes('<loc>https://webclipboard.online/code-share/</loc>'));
+  assert.ok(read('guides/how-to-share-code-online-with-syntax-highlighting/index.html').includes('href="/code-share/"'));
+});

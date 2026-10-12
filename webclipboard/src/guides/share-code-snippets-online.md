@@ -5,7 +5,7 @@ h1: "How to copy and share code snippets online"
 lead: "Developers constantly need to move a command, a stack trace or a config block between machines. This is how to do it quickly with a temporary link, keep the formatting intact, and avoid leaking secrets."
 category: "Developers"
 updated: "2026-10-08"
-related: ["copy-text-between-iphone-and-windows", "online-notes-transfer", "copy-text-to-a-public-computer-safely"]
+related: ["how-to-share-code-online-with-syntax-highlighting", "online-notes-transfer", "copy-text-to-a-public-computer-safely"]
 faq:
   - q: "Does the clipboard keep code formatting and indentation?"
     a: "Yes. Text is stored exactly as pasted, including tabs, spaces and line breaks, and shown in a monospaced font. Syntax highlighting is not applied."

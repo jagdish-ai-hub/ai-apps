@@ -21,6 +21,7 @@ export const toolGroups: Record<ToolGroup, { title: string; blurb: string }> = {
 
 export const tools: ToolInfo[] = [
   { slug: 'iphone-to-windows-clipboard', name: 'iPhone to Windows Clipboard', short: 'Copy text on your iPhone and paste it on a Windows PC with a 6-digit code or QR code. No app, no iCloud, no sign-in.', group: 'transfer', guide: 'send-a-link-from-iphone-to-pc' },
+  { slug: 'code-share', name: 'Share Code Online', short: 'Write or paste code with syntax highlighting, get a 6-digit code, and open it on any device. Optional password and auto-delete.', group: 'transfer', guide: 'how-to-share-code-online-with-syntax-highlighting' },
   { slug: 'qr-code-generator', name: 'QR Code Generator', short: 'Turn any text into a QR code and download it as PNG or SVG, with your choice of size and colours.', group: 'qr', guide: 'how-to-make-a-qr-code-for-free' },
   { slug: 'url-to-qr-code', name: 'URL to QR Code', short: 'Make a QR code for a link. The code never expires and scans are not tracked.', group: 'qr', guide: 'how-to-make-a-qr-code-for-a-link' },
   { slug: 'wifi-qr-code-generator', name: 'Wi-Fi QR Code Generator', short: 'Let guests join your Wi-Fi by scanning a code. The password never leaves your browser.', group: 'qr', guide: 'how-to-make-a-wifi-qr-code' },

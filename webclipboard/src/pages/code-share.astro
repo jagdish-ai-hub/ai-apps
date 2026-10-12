@@ -1,0 +1,64 @@
+---
+import ToolPage from '../components/ToolPage.astro';
+import Tool from '../components/Tool.astro';
+
+const steps = [
+  `Paste or type your code into the editor above. The language is detected automatically, or you can choose it from the <strong>Language</strong> list. The code is highlighted as you type.`,
+  `Choose how long the code should stay available. For anything private, add a <strong>password</strong> or turn on <strong>delete after first view</strong>.`,
+  `Press <strong>Save to clipboard</strong>. You get a 6-digit code, a short link and a QR code.`,
+  `On the other device, open the link, or open this page, choose <strong>Receive text</strong> and type the code. The code appears highlighted, with a button to copy it or download it as a file with the right extension.`,
+];
+const sections = [
+  {
+    h2: 'Share code without an account, a repository or a paste site',
+    paras: [
+      `Sometimes you only need to get a snippet from one machine to another: from your laptop to a lab computer, from a phone to a terminal, from a teammate's screen to your own. Committing it to a repository is too heavy, chat apps mangle indentation and turn straight quotes into curly ones, and paste sites ask you to pick an expiry, a visibility and sometimes to sign in. This page does one thing: you write or paste the code, you get a six-digit code, and the other person opens it with the exact characters you typed.`,
+      `The editor highlights the syntax of 20 common languages, including JavaScript, TypeScript, Python, HTML, CSS, JSON, Bash, SQL, Java, C, C++, C#, Go, Rust, PHP, Ruby, Kotlin, Swift, YAML and Markdown. The receiver sees the code highlighted too, in a light or dark theme to match their device. Tabs, spaces and line breaks are kept exactly, which is what makes a snippet runnable after you paste it.`,
+    ],
+  },
+  {
+    h2: 'How it works, and what is private',
+    paras: [
+      `A code clip is an ordinary clip with an invisible marker at the start that names the language. The server stores it like any other text, with the expiry you chose, and deletes it when the time is up (or after the first view if you chose that). If you add a password, the whole clip, marker included, is encrypted in your browser before it is sent, so the server only ever holds unreadable data and cannot tell what language it is.`,
+      `Highlighting happens in the browser. The code is never sent to a highlighting service, and the highlighting library is downloaded only when a code clip is shown. The marker is stripped before you copy or download, so you always get exactly your own code back. You can also download it as a file with the right extension, such as <code>.py</code> or <code>.ts</code>, or as a Word or PDF file.`,
+    ],
+  },
+  {
+    h2: 'What to share, and what not to',
+    paras: [
+      `Anyone who has the six-digit code can open an unprotected clip until it expires, so treat it like a link to a note, not like a private repository. <strong>Never share secrets here</strong>: API keys, passwords, tokens, private keys and connection strings do not belong in a snippet. If you must send something sensitive, use a short expiry, add a password and tell the password to the person another way, or use delete after first view. Remove secrets from logs and config files before you paste them.`,
+      `The size limit is 100,000 characters per clip, which is plenty for a file or a long snippet. It is not a place to keep code: clips expire after at most seven days, and there are no accounts or history. For long-lived code use a repository or a gist, and use this for quick hand-offs. If you only need to send plain text or a link, the <a href="/">online clipboard</a> works the same way, and the guide on <a href="/guides/how-to-share-code-online-with-syntax-highlighting/">sharing code online with syntax highlighting</a> explains the options.`,
+    ],
+  },
+  {
+    h2: 'Keyboard and editing',
+    paras: [
+      `The editor is a normal text box with the highlighting drawn behind it, so selection, undo, the mobile keyboard and input methods all work as usual. <strong>Tab</strong> inserts two spaces and <strong>Enter</strong> keeps the indentation of the line you were on. Press <strong>Esc</strong> and then Tab if you want Tab to move to the next field instead. Very long code (over about 40,000 characters) is shown without colours to keep typing smooth, but it is still shared exactly as written.`,
+    ],
+  },
+];
+const faq = [
+  { q: 'How do I share a code snippet with someone?', a: 'Paste the code into the editor, press Save to clipboard and send the 6-digit code or the link. They open it on any device and see the code with syntax highlighting, ready to copy.' },
+  { q: 'Which languages are highlighted?', a: 'JavaScript, TypeScript, Python, HTML and XML, CSS, JSON, Bash, SQL, Java, C, C++, C#, Go, Rust, PHP, Ruby, Kotlin, Swift, YAML and Markdown. The language is detected automatically, or you can choose it.' },
+  { q: 'Is my code private?', a: 'Anyone with the code can open an unprotected clip until it expires. Add a password to encrypt it in your browser, or turn on delete after first view. Never share keys, passwords or tokens in a snippet.' },
+  { q: 'How long does the code stay available?', a: 'You choose: 10 minutes, 1 hour, 1 day or 7 days. After that it is deleted and cannot be recovered.' },
+  { q: 'Does indentation survive?', a: 'Yes. Tabs, spaces and line breaks are stored exactly as typed, and the receiver can copy the code or download it as a file with the right extension.' },
+  { q: 'Is this a replacement for GitHub or a paste site?', a: 'No. It is for quick hand-offs between devices and people: no account, no history and an automatic expiry. For code you want to keep, link or version, use a repository, a gist or a paste site.' },
+];
+---
+<ToolPage
+  slug="code-share"
+  title="Share Code Online: Syntax Highlighting and a 6-Digit Code"
+  description="Paste code with syntax highlighting, get a 6-digit code or QR code, and open it on any device. Optional password and auto-delete. No account needed."
+  h1="Share code online"
+  lead="Write or paste code, see it highlighted, and share it with a 6-digit code. The other person gets the exact code, highlighted, to copy or download. No account, optional password."
+  eyebrow="~/code · highlight, share, expire"
+  category="DeveloperApplication"
+  steps={steps}
+  sections={sections}
+  faq={faq}
+  related={['iphone-to-windows-clipboard', 'qr-code-generator', 'rag-text-chunker']}
+  shareText="Share code online with syntax highlighting: paste, get a 6-digit code, open it anywhere."
+>
+  <Tool lang="en" code />
+</ToolPage>
