@@ -1,0 +1,10 @@
+---
+import GuideView from '../../../components/GuideView.astro';
+import { guidesFor } from '../../../lib/guides';
+
+export function getStaticPaths() {
+  return guidesFor('ja').map((g) => ({ params: { slug: g.slug }, props: { slug: g.slug } }));
+}
+const { slug } = Astro.props;
+---
+<GuideView slug={slug} lang="ja" />

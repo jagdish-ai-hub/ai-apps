@@ -1,0 +1,91 @@
+---
+import ToolPage from '../components/ToolPage.astro';
+import Converter from '../components/Converter.astro';
+
+const sample = `# Product brief
+
+This brief is written in **Markdown** and converted to a *real* Word document.
+
+## Goals
+
+1. Make copying text between devices effortless
+2. Keep it free and private
+3. Support every major language
+
+## Notes
+
+- Headings become Word **Heading** styles
+- Lists keep their bullets and numbers
+  - including nested lists
+- Visit [WebClipboard](https://webclipboard.online) for the tool
+
+| Feature | Status |
+|---------|:------:|
+| Clipboard | Done |
+| Converters | In progress |
+
+> Good tools disappear into the background.
+
+\`\`\`
+npm run build
+\`\`\`
+`;
+
+const steps = [
+  `Paste your Markdown into the box above, or press <strong>Try an example</strong>. Check the formatted preview below the options.`,
+  `Choose the <strong>font</strong>, <strong>size</strong>, <strong>page size</strong> (A4 or US Letter) and <strong>margins</strong>.`,
+  `Name the file and press <strong>Download Word file (.docx)</strong>.`,
+  `Open the file in Word, Google Docs, LibreOffice or Pages. The headings, lists and tables are real Word formatting you can edit.`,
+];
+const sections = [
+  {
+    h2: 'Real Word formatting, not a picture of the text',
+    paras: [
+      `Many converters give you a document where everything is one big block, or an image of the page. This one writes proper Word structure: <code>#</code> headings become <strong>Heading 1 to Heading 6</strong> styles (so Word's navigation pane and table of contents work), bullet and numbered lists become real lists with working numbering, links become clickable hyperlinks, code blocks use a shaded <strong>Code</strong> style, block quotes get an indented bar and tables become Word tables with a header row.`,
+      `The file is a standard <strong>.docx</strong> created in your browser. It opens in Microsoft Word, Google Docs, LibreOffice Writer and Apple Pages. Text in every language is stored as Unicode.`,
+    ],
+  },
+  {
+    h2: 'How to copy an AI answer into Word',
+    paras: [
+      `Chat assistants write their answers in Markdown. If you paste such an answer directly into Word you often get stray symbols such as <code>**</code>, <code>##</code> and <code>|---|</code>. Copy the answer, paste it into this page and download the .docx: the symbols turn into real formatting. When you copy from a chat window, use the assistant's own copy button if it has one, because it copies the Markdown source instead of the rendered text.`,
+      `For the details of that workflow, including what to do with tables and code, read the guide linked above.`,
+    ],
+  },
+  {
+    h2: 'Supported syntax and limits',
+    paras: [
+      `Supported: headings, <strong>bold</strong>, <em>italic</em>, <del>strikethrough</del>, nested ordered and unordered lists, task lists (shown as ☐ and ☑), links, inline code, fenced code blocks, block quotes, horizontal rules and tables with alignment. Not supported: images (the alt text is written instead, because the page never loads files from other sites), raw HTML (shown as plain text), maths and syntax colouring in code.`,
+      `If you only need to read or print the result, <a href="/markdown-to-pdf/">Markdown to PDF</a> is quicker. For text without Markdown, use <a href="/text-to-word/">Text to Word</a>.`,
+    ],
+  },
+  {
+    h2: 'Privacy',
+    paras: [
+      `The conversion runs entirely in your browser. Your text is not uploaded, stored or logged, and it is gone when you close the page.`,
+    ],
+  },
+];
+const faq = [
+  { q: 'How do I convert Markdown to Word?', a: 'Paste the Markdown into the box, check the preview, choose a font and page size and press Download Word file (.docx). Open it in Word, Google Docs or LibreOffice.' },
+  { q: 'Are the headings real Word headings?', a: 'Yes. They use Word\'s built-in Heading 1 to 6 styles, so the navigation pane, table of contents and style changes all work.' },
+  { q: 'Can I convert a ChatGPT answer to Word?', a: 'Yes. Copy the answer (ideally with the copy button, which keeps the Markdown), paste it here and download the .docx. Headings, lists, tables and code blocks become Word formatting.' },
+  { q: 'Do tables and code blocks work?', a: 'Yes. Tables become Word tables with a shaded header row and the alignment you set, and code blocks are shown in a monospace font on a shaded background.' },
+  { q: 'Why are images not included?', a: 'The converter never downloads images from other sites, to protect your privacy. The image\'s alt text is written in its place; you can insert the picture in Word afterwards.' },
+  { q: 'Is my text sent to a server?', a: 'No. The document is built in your browser and saved straight to your device.' },
+];
+---
+<ToolPage
+  slug="markdown-to-word"
+  title="Markdown to Word Converter: Download a .docx File"
+  description="Free Markdown to Word converter. Paste Markdown and download a .docx with real headings, lists, links, code and tables. Runs in your browser; nothing is uploaded."
+  h1="Markdown to Word"
+  lead="Paste Markdown and download a real Word document with proper headings, lists, links, code blocks and tables. Ideal for AI answers, README files and notes."
+  steps={steps}
+  sections={sections}
+  faq={faq}
+  related={['markdown-to-pdf', 'text-to-word', 'text-to-pdf']}
+  shareText="Free Markdown to Word converter: paste Markdown, download a .docx. Runs in your browser."
+>
+  <Converter mode="md-docx" sample={sample} defaultName="document" />
+</ToolPage>

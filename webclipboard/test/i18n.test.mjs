@@ -6,7 +6,7 @@ const read = (p) => JSON.parse(readFileSync(new URL(p, import.meta.url), 'utf8')
 const languages = read('../src/i18n/languages.json');
 const en = read('../src/i18n/en.json');
 // Strings that exist only in English on purpose (the "back to English" banner is always English).
-const UNUSED_OK = new Set(['langAuto', 'langBack']);
+const UNUSED_OK = new Set(['langAuto', 'langBack', 'faqExtra']);
 
 // Approximate width of a search-result title: CJK and fullwidth characters count double, Thai/Devanagari/Bengali letters 1.5,
 // combining marks 0. Google truncates around 600px, roughly 60 units.

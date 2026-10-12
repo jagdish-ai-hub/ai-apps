@@ -268,11 +268,28 @@ $('pw-form').addEventListener('submit', async (ev) => {
 });
 
 $('copy-text').addEventListener('click', (e) => copy($('opened-text').textContent || '', e.currentTarget as HTMLElement));
-$('download').addEventListener('click', () => {
-  const blob = new Blob([$('opened-text').textContent || ''], { type: 'text/plain;charset=utf-8' });
-  const a = Object.assign(document.createElement('a'), { href: URL.createObjectURL(blob), download: `clipboard-${openedCode}.txt` });
-  a.click();
-  setTimeout(() => URL.revokeObjectURL(a.href), 2000);
+const dlBtn = $('download');
+const dlMenu = $('download-menu');
+const setMenu = (open: boolean) => { dlMenu.hidden = !open; dlBtn.setAttribute('aria-expanded', String(open)); };
+dlBtn.addEventListener('click', (e) => { e.stopPropagation(); setMenu(dlMenu.hidden); });
+document.addEventListener('click', (e) => { if (!dlMenu.hidden && !dlMenu.contains(e.target as Node)) setMenu(false); });
+document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && !dlMenu.hidden) { setMenu(false); dlBtn.focus(); } });
+dlMenu.addEventListener('click', async (e) => {
+  const fmt = (e.target as HTMLElement).closest<HTMLElement>('[data-fmt]')?.dataset.fmt;
+  if (!fmt) return;
+  setMenu(false);
+  const text = $('opened-text').textContent || '';
+  const name = `clipboard-${openedCode}`;
+  // The Word and PDF code is only loaded when someone picks those formats.
+  const out = await import('../lib/export.js');
+  if (fmt === 'txt' || fmt === 'md') {
+    out.saveBlob(new Blob([text], { type: fmt === 'md' ? 'text/markdown;charset=utf-8' : 'text/plain;charset=utf-8' }), `${name}.${fmt}`);
+  } else if (fmt === 'docx') {
+    const { textToDocx } = await import('../lib/docx.js');
+    out.saveBlob(new Blob([textToDocx(text)], { type: out.DOCX_TYPE }), `${name}.docx`);
+  } else if (fmt === 'pdf') {
+    out.printAsPdf(out.textNode(text), {}, name);
+  }
 });
 $('report').addEventListener('click', async (e) => {
   const btn = e.currentTarget as HTMLButtonElement;

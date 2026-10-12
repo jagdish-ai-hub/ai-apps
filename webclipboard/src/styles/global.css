@@ -131,6 +131,11 @@ textarea.clip:focus { border-color: var(--fg); outline: none; }
 .opened pre { margin: 14px 0 0; padding: 14px 16px; max-height: 420px; overflow: auto; white-space: pre-wrap; word-break: break-word; background: var(--bg); border: 1px solid var(--line); border-radius: var(--radius); font: 14.5px/1.55 var(--mono); }
 .actions { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
 .notice { margin-top: 12px; padding: 10px 12px; border: 1px dashed var(--line-strong); border-radius: 8px; font-size: 14px; color: var(--muted); }
+.dl { position: relative; display: inline-block; }
+.dl-menu { position: absolute; z-index: 15; left: 0; bottom: calc(100% + 6px); min-width: 190px; padding: 6px; background: var(--surface); border: 1px solid var(--line-strong); border-radius: 10px; box-shadow: var(--shadow); display: grid; gap: 2px; }
+.dl-menu[hidden] { display: none; }
+.dl-menu button { text-align: left; padding: 9px 12px; background: none; border: 0; border-radius: 7px; color: var(--fg); font-size: 14.5px; cursor: pointer; }
+.dl-menu button:hover, .dl-menu button:focus-visible { background: var(--surface-2); }
 .safety { padding: 12px 20px; border-top: 1px solid var(--line); background: var(--surface-2); font-size: 13px; color: var(--muted); }
 
 /* ads: reserve space up front so nothing shifts (CLS = 0) */
@@ -372,3 +377,30 @@ ol.steps li > span { min-width: 0; }
 }
 @media (prefers-reduced-motion: reduce) { * { transition: none !important; scroll-behavior: auto !important; } }
 @media print { .site-header, .ad, .site-footer, .tabs { display: none; } }
+
+/* converters */
+.cv .clip { min-height: 240px; }
+.cv-opts { margin-top: 16px; }
+.cv .row { margin-top: 14px; }
+.cv-preview-wrap { margin-top: 26px; padding-top: 22px; border-top: 1px solid var(--line); }
+.cv-preview { margin-top: 10px; padding: 16px 18px; min-height: 120px; max-height: 520px; overflow: auto; background: var(--bg); border: 1px solid var(--line); border-radius: var(--radius); }
+.cv-preview > :first-child { margin-top: 0; }
+.cv-preview img { max-width: 100%; }
+.cv-preview pre { overflow: auto; padding: 12px 14px; background: var(--surface-2); border: 1px solid var(--line); border-radius: 8px; font: 14px/1.5 var(--mono); }
+.cv-preview pre code { padding: 0; border: 0; background: none; }
+.cv-preview blockquote { margin: 14px 0; padding: 2px 16px; border-left: 3px solid var(--line-strong); color: var(--muted); }
+.cv-preview table { display: block; overflow-x: auto; }
+.cv-preview hr { border: 0; border-top: 1px solid var(--line-strong); margin: 22px 0; }
+/* The print copy is shown only while printing (see lib/export.js); it must look good on white paper. */
+.print-md h1, .print-md h2, .print-md h3, .print-md h4 { line-height: 1.25; margin: 1.1em 0 0.4em; break-after: avoid; }
+.print-md h1 { font-size: 1.9em; } .print-md h2 { font-size: 1.5em; } .print-md h3 { font-size: 1.25em; } .print-md h4, .print-md h5, .print-md h6 { font-size: 1.05em; }
+.print-md p, .print-md ul, .print-md ol, .print-md blockquote, .print-md pre, .print-md table { margin: 0 0 0.8em; }
+.print-md pre { white-space: pre-wrap; overflow-wrap: anywhere; padding: 0.6em 0.8em; background: #f3f3f3; border: 1px solid #ddd; border-radius: 4px; font: 0.9em ui-monospace, Consolas, 'Courier New', monospace; break-inside: avoid; }
+.print-md code { font: 0.9em ui-monospace, Consolas, 'Courier New', monospace; background: #eee; padding: 0 0.25em; border-radius: 3px; }
+.print-md pre code { background: none; padding: 0; }
+.print-md blockquote { padding: 0 1em; border-left: 3px solid #999; color: #444; }
+.print-md table { border-collapse: collapse; width: 100%; break-inside: avoid; }
+.print-md th, .print-md td { border: 1px solid #999; padding: 0.3em 0.6em; text-align: left; }
+.print-md th { background: #eee; }
+.print-md a { color: #0563c1; }
+.print-md hr { border: 0; border-top: 1px solid #999; margin: 1.2em 0; }

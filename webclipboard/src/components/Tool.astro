@@ -7,6 +7,9 @@ const m = messages(lang);
 // Only the strings the browser script needs, embedded as JSON (no extra request).
 const keys = ['saving', 'sendBtn', 'copied', 'copy', 'loading', 'receiveBtn', 'errEmpty', 'errTooLong', 'errNotFound', 'errCode',
   'errRate', 'errGeneric', 'wrongPassword', 'reported', 'expiresAt', 'burnedNotice', 'passwordPrompt', 'characters'];
+// The download button now opens a menu of formats, so drop the ".txt" from the translated label ("Download .txt" -> "Download").
+const dl = m.download.replace(/\s*\.txt\s*/i, ' ').replace(/^\s*を/, '').replace(/\s+ang\s*$/, '').trim();
+const dlLabel = dl.charAt(0).toLocaleUpperCase(lang) + dl.slice(1);
 const ui: Record<string, string> = Object.fromEntries(keys.map((k) => [k, fill(m[k])]));
 const config = { maxChars: site.maxChars, turnstileSiteKey: site.turnstileSiteKey, domain: site.domain, defaultExpiry: site.defaultExpiry };
 ---
@@ -100,7 +103,15 @@ const config = { maxChars: site.maxChars, turnstileSiteKey: site.turnstileSiteKe
       <pre id="opened-text" data-clr-mask="true" dir="auto"></pre>
       <div class="actions">
         <button class="btn small" id="copy-text" type="button">{m.copy}</button>
-        <button class="btn ghost small" id="download" type="button">{m.download}</button>
+        <div class="dl">
+          <button class="btn ghost small" id="download" type="button" aria-haspopup="menu" aria-expanded="false" aria-controls="download-menu">{dlLabel} ▾</button>
+          <div class="dl-menu" id="download-menu" role="menu" hidden>
+            <button type="button" role="menuitem" data-fmt="txt">.txt</button>
+            <button type="button" role="menuitem" data-fmt="md">.md (Markdown)</button>
+            <button type="button" role="menuitem" data-fmt="docx">Word (.docx)</button>
+            <button type="button" role="menuitem" data-fmt="pdf">PDF</button>
+          </div>
+        </div>
         <button class="btn ghost small" id="report" type="button">{m.report}</button>
         <button class="btn ghost small" id="another" type="button">{m.receiveTitle}</button>
       </div>

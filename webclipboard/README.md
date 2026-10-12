@@ -138,6 +138,26 @@ Because it uses no cookies, it needs no consent banner. The privacy policy alrea
 
 `clarityId` in `site.config.json` (empty = no code emitted). The tag loads 2 s after the page's `load` event and is skipped when the URL holds a clip code (`#123456`). The textarea, password fields, code digits, share link, received text and token-calculator input carry `data-clr-mask="true"`, so Clarity never records them. Clarity uses cookies; for visitors in the EEA, UK and Switzerland Microsoft asks for a consent signal (`clarity("consent")`), so wire that to your consent banner once you add one for AdSense.
 
+## Tools, converters and download formats
+
+Every tool is its own page (own URL, title, description, Open Graph tags and JSON-LD: `WebApplication`, `BreadcrumbList`, `HowTo`, `FAQPage`) with its own guide. The registry is `src/lib/tools.ts`; the page shell is `src/components/ToolPage.astro`; `/tools/` lists them all and the homepage shows the converters.
+
+- **Converters** (`/text-to-pdf/`, `/text-to-word/`, `/markdown-to-pdf/`, `/markdown-to-word/`): shared UI in `src/components/Converter.astro` and `src/scripts/convert.ts`. Everything runs in the browser; text is never uploaded.
+- **Word (.docx)**: `src/lib/docx.js` writes the file itself (minimal ZIP in `src/lib/zip.js`): real Heading 1-6 styles, numbered and bulleted lists, hyperlinks, code style, tables, page size and margins. Tested by opening the output with python-docx and LibreOffice.
+- **PDF**: `src/lib/export.js` prints a clean copy of the text through the browser's own print dialog ("Save as PDF"), so every script (Japanese, Hindi, Thai, Arabic...) uses the device's fonts. A built-in PDF library would need large font files per script.
+- **Markdown**: `marked` builds the token tree; `src/lib/md.js` renders it to HTML with all text escaped (raw HTML is shown as text, only http/https/mailto links are kept, images become their alt text), and `docx.js` renders the same tree to Word XML.
+- **Clipboard downloads**: the received-text screen has a menu: .txt, .md, Word, PDF (code loaded only when picked).
+
+### Adding a tool
+1. Add an entry to `src/lib/tools.ts` with its `guide` slug.
+2. Create `src/pages/<slug>.astro` that renders `<ToolPage ...>` (steps, 2-4 sections, 5+ FAQs).
+3. Write `src/guides/<guide>.md` with `tool: <slug>` in its frontmatter.
+4. `npm test`: `test/tools.test.mjs` fails if the page lacks tags, JSON-LD, enough words, a link to its guide, a link back, a sitemap entry or a place on `/tools/`.
+
+## Native guides in other languages
+
+Guides can be written natively (not translated) per language: `src/guides/<code>/<slug>.md` appears at `/<code>/guides/<slug>/` with a hub at `/<code>/guides/`. Register the language in `src/lib/guidelangs.js` (also holds the interface labels) and add a route under `src/pages/<code>/guides/`. A guide with the same slug as an English one is paired automatically with reciprocal `hreflang` (plus `x-default` to English) on both pages and in the sitemap; a guide with no counterpart declares none. Japanese has three (phone to PC, iPhone and Windows, Wi-Fi password) and a longer home FAQ (`faqExtra` in `src/i18n/ja.json`).
+
 ## IndexNow (instant indexing for Bing, Yandex, Naver, Seznam and other participating engines)
 
 - The key lives in `site.config.json` (`indexNowKey`) and is published as `public/<key>.txt` (the file contains only the key). A key is public by design, not a secret.

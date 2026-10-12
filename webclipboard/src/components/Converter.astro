@@ -1,0 +1,53 @@
+---
+// Shared converter UI. `mode` decides the input type and the output: text-pdf | text-docx | md-pdf | md-docx.
+interface Props { mode: 'text-pdf' | 'text-docx' | 'md-pdf' | 'md-docx'; sample: string; defaultName?: string }
+const { mode, sample, defaultName = 'document' } = Astro.props;
+const isMd = mode.startsWith('md');
+const isPdf = mode.endsWith('pdf');
+const label = isMd ? 'Paste your Markdown' : 'Paste your text';
+const placeholder = isMd ? '# Title\n\nPaste Markdown here: **bold**, lists, links, code and tables are supported…' : 'Paste or type your text here…';
+---
+<div class="tool cv" id="converter" data-mode={mode}>
+  <div class="panel">
+    <div class="tc-head">
+      <label class="eyebrow" for="cv-text">{label}</label>
+      <div class="actions" style="margin:0">
+        <button class="btn ghost small" id="cv-paste" type="button">Paste from clipboard</button>
+        <button class="btn ghost small" id="cv-sample" type="button">Try an example</button>
+        <button class="btn ghost small" id="cv-clear" type="button">Clear</button>
+      </div>
+    </div>
+    <textarea class="clip" id="cv-text" data-clr-mask="true" spellcheck="false" autocomplete="off" placeholder={placeholder}></textarea>
+    <p class="hint" id="cv-count" aria-live="polite">0 characters · 0 words</p>
+
+    <div class="opts cv-opts">
+      <div class="field"><label for="cv-name">File name</label><input id="cv-name" type="text" value={defaultName} maxlength="80" autocomplete="off" /></div>
+      <div class="field"><label for="cv-font">Font</label>
+        <select id="cv-font"><option value="sans">Sans-serif</option><option value="serif">Serif</option><option value="mono">Monospace</option></select></div>
+      <div class="field"><label for="cv-size">Font size</label>
+        <select id="cv-size">{[10, 11, 12, 14, 16].map((n) => <option value={n} selected={n === 12}>{n} pt</option>)}</select></div>
+      <div class="field"><label for="cv-page">Page size</label>
+        <select id="cv-page"><option value="a4">A4</option><option value="letter">US Letter</option></select></div>
+      <div class="field"><label for="cv-margin">Margins</label>
+        <select id="cv-margin"><option value="narrow">Narrow</option><option value="normal" selected>Normal</option><option value="wide">Wide</option></select></div>
+    </div>
+
+    <div class="row">
+      <button class="btn" id="cv-go" type="button">{isPdf ? 'Save as PDF' : 'Download Word file (.docx)'}</button>
+    </div>
+    {isPdf && <p class="hint">Your browser's print window opens. Choose <strong>Save as PDF</strong> as the destination (on phones, choose <strong>Print</strong>, then pinch the preview or use the share option to save a PDF).</p>}
+    <p class="msg err" id="cv-msg" role="alert"></p>
+
+    {isMd && (
+      <div class="cv-preview-wrap">
+        <span class="eyebrow">Preview</span>
+        <div class="cv-preview article" id="cv-preview" dir="auto"><p class="hint">The formatted preview appears here as you type.</p></div>
+      </div>
+    )}
+  </div>
+  <div class="safety">Your text is converted in your browser and is never uploaded. This page does not store it.</div>
+  <script type="text/plain" id="cv-sample-text" set:html={sample}></script>
+</div>
+<script>
+  import '../scripts/convert';
+</script>

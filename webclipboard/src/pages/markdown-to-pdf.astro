@@ -1,0 +1,93 @@
+---
+import ToolPage from '../components/ToolPage.astro';
+import Converter from '../components/Converter.astro';
+
+const sample = `# Project plan
+
+A short plan written in **Markdown**. It has *emphasis*, \`inline code\` and a [link](https://webclipboard.online).
+
+## Tasks
+
+- [x] Write the first draft
+- [ ] Review with the team
+- Prepare the release
+  - Update the changelog
+  - Tag the version
+
+1. Collect feedback
+2. Fix the issues
+3. Ship it
+
+## Schedule
+
+| Week | Goal | Owner |
+|------|------|:-----:|
+| 1 | Draft | Asha |
+| 2 | Review | Ben |
+
+> Keep it simple. Ship small changes often.
+
+\`\`\`js
+function greet(name) {
+  return "Hello, " + name;
+}
+\`\`\`
+`;
+
+const steps = [
+  `Paste your Markdown into the box above, or press <strong>Try an example</strong>. The formatted preview appears below the options.`,
+  `Choose the <strong>font</strong>, <strong>size</strong>, <strong>page size</strong> and <strong>margins</strong>.`,
+  `Name the file and press <strong>Save as PDF</strong>.`,
+  `In the print window that opens, choose <strong>Save as PDF</strong> as the destination and confirm.`,
+];
+const sections = [
+  {
+    h2: 'Markdown in, formatted PDF out',
+    paras: [
+      `Markdown is the plain-text way of writing headings, bold text, lists and links, used by README files, notes apps, documentation and AI chat answers. This page reads your Markdown, shows how it will look and saves it as a clean PDF: headings become headings, lists keep their numbers and bullets, code goes into shaded blocks, and tables get borders.`,
+      `As with the <a href="/text-to-pdf/">text to PDF page</a>, the PDF is made by your browser's print function, so it uses the fonts on your device and every language prints correctly. Nothing is uploaded.`,
+    ],
+  },
+  {
+    h2: 'Supported Markdown',
+    paras: [
+      `The converter understands the common GitHub-style Markdown: headings (<code>#</code> to <code>######</code>), <strong>bold</strong>, <em>italic</em> and <del>strikethrough</del>, ordered and unordered lists with nesting, task lists (<code>- [x]</code>), links, inline <code>code</code>, fenced code blocks, block quotes, horizontal rules and tables with left, centred or right alignment.`,
+      `Some things are intentionally left out. Raw HTML in your text is shown as plain text instead of being run, links that do not start with http, https or mailto are shown without the link, and images are replaced by their alt text, because the page never loads anything from other sites. Maths notation and syntax colouring for code are not included.`,
+    ],
+  },
+  {
+    h2: 'Good uses for Markdown to PDF',
+    paras: [
+      `Turn a <strong>README</strong> or documentation page into a PDF to share with someone who does not use GitHub. Save an <strong>AI chat answer</strong> as a tidy document: copy the answer, paste it here and the headings and lists carry over. Make <strong>meeting notes</strong>, a one-page <strong>CV</strong> or a <strong>checklist</strong> from the notes you already write in Markdown. If someone needs to edit the result, use <a href="/markdown-to-word/">Markdown to Word</a> instead.`,
+    ],
+  },
+  {
+    h2: 'Your text stays with you',
+    paras: [
+      `The Markdown is processed in your browser. It is not sent to a server, and the preview and PDF are created on your device. Closing or refreshing the page clears it.`,
+    ],
+  },
+];
+const faq = [
+  { q: 'How do I convert Markdown to PDF?', a: 'Paste the Markdown into the box, check the preview, press Save as PDF and choose Save as PDF in the print window that opens. The PDF is created on your device.' },
+  { q: 'Is the Markdown uploaded to a server?', a: 'No. Everything runs in your browser, including the preview. We never receive your text.' },
+  { q: 'Which Markdown features are supported?', a: 'Headings, bold, italic, strikethrough, nested ordered and unordered lists, task lists, links, inline code, fenced code blocks, block quotes, horizontal rules and tables. Raw HTML, images and maths are not rendered.' },
+  { q: 'Why are my images missing?', a: 'The converter never loads images from other sites, to keep your document private and the page fast. The image\'s alt text is shown in its place.' },
+  { q: 'Can I convert a ChatGPT or other AI answer to PDF?', a: 'Yes. AI answers are written in Markdown, so copy the answer, paste it here and save the PDF. The headings, lists, code blocks and tables are kept.' },
+  { q: 'Does it work in other languages?', a: 'Yes. The PDF uses your device\'s fonts, so Japanese, Chinese, Korean, Hindi, Thai, Arabic, Cyrillic and other scripts print normally.' },
+];
+---
+<ToolPage
+  slug="markdown-to-pdf"
+  title="Markdown to PDF Converter: Preview and Save as PDF"
+  description="Free Markdown to PDF converter. Paste Markdown, preview headings, lists, code and tables, and save a PDF. Runs in your browser; nothing is uploaded."
+  h1="Markdown to PDF"
+  lead="Paste Markdown, see exactly how it will look, and save it as a formatted PDF. Headings, lists, links, code blocks and tables are supported, in every language."
+  steps={steps}
+  sections={sections}
+  faq={faq}
+  related={['markdown-to-word', 'text-to-pdf', 'text-to-word']}
+  shareText="Free Markdown to PDF converter with live preview. Runs in your browser."
+>
+  <Converter mode="md-pdf" sample={sample} defaultName="document" />
+</ToolPage>

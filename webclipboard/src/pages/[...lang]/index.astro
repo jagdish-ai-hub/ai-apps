@@ -3,7 +3,9 @@ import Base from '../../layouts/Base.astro';
 import Tool from '../../components/Tool.astro';
 import Ad from '../../components/Ad.astro';
 import { languages, messages, fill, site, absolute, localePath } from '../../lib/i18n';
-import { guides, guidePath } from '../../lib/guides';
+import { guidesFor, guidePath, guidesHubPath } from '../../lib/guides';
+import { guideLabels } from '../../lib/guidelangs.js';
+import { tools, toolPath } from '../../lib/tools';
 
 export function getStaticPaths() {
   // English lives at "/", every other language at "/<code>/".
@@ -11,7 +13,9 @@ export function getStaticPaths() {
 }
 const { code } = Astro.props;
 const m = messages(code);
-const faq = (m.faq as { q: string; a: string }[]).map((f) => ({ q: fill(f.q), a: fill(f.a) }));
+const guides = guidesFor(code);
+const L = guideLabels[code];
+const faq = ([...(m.faq as any[]), ...((m.faqExtra as any[]) ?? [])] as { q: string; a: string }[]).map((f) => ({ q: fill(f.q), a: fill(f.a) }));
 const url = absolute(localePath(code));
 
 const jsonld = [
@@ -65,17 +69,32 @@ const jsonld = [
     </section>
 
     {code === 'en' && (
+      <section class="block" aria-labelledby="tools">
+        <span class="eyebrow">Tools</span>
+        <h2 id="tools">More free tools</h2>
+        <p class="prose" style="margin:6px 0 0">Turn the text you receive into a Word file or PDF, or count tokens for an AI prompt. Each tool runs in your browser, so nothing is uploaded.</p>
+        <div class="cards">
+          {tools.filter((t) => t.group === 'convert' || t.slug === 'token-calculator').map((t) => (
+            <a class="card" href={toolPath(t.slug)}><strong>{t.name}</strong><span>{t.short}</span></a>
+          ))}
+        </div>
+        <p class="prose" style="margin-top:14px"><a href="/tools/">See all tools →</a></p>
+      </section>
+    )}
+
+    {guides.length > 0 && (
       <section class="block" aria-labelledby="guides">
-        <span class="eyebrow">Guides</span>
-        <h2 id="guides">Popular guides</h2>
+        <span class="eyebrow">{L.nav}</span>
+        <h2 id="guides">{L.popular}</h2>
         <div class="cards">
           {guides.map((g) => (
-            <a class="card" href={guidePath(g.slug)}>
+            <a class="card" href={guidePath(g.slug, code)}>
               <span class="eyebrow">{g.meta.category}</span>
               <strong>{g.meta.h1}</strong>
             </a>
           ))}
         </div>
+        {code !== 'en' && <p class="prose" style="margin-top:14px"><a href={guidesHubPath(code)}>{L.nav} →</a></p>}
       </section>
     )}
 

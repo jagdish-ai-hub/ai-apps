@@ -1,0 +1,75 @@
+---
+import ToolPage from '../components/ToolPage.astro';
+import Converter from '../components/Converter.astro';
+
+const sample = `Dear team,
+
+Here are the notes from today's call.
+
+• The release is on track for November.
+• Please send me your slides by Thursday.
+• Questions? Reply to this message.
+
+Thanks,
+Asha
+
+追伸：来週の会議は月曜日の10時からです。`;
+
+const steps = [
+  `Paste your text into the box above, or press <strong>Try an example</strong>.`,
+  `Choose the <strong>font</strong>, <strong>size</strong>, <strong>page size</strong> (A4 or US Letter) and <strong>margins</strong> you want in the Word file.`,
+  `Name the file and press <strong>Download Word file (.docx)</strong>.`,
+  `Open the downloaded file in Word, Google Docs, LibreOffice or Pages and edit it as usual.`,
+];
+const sections = [
+  {
+    h2: 'A real .docx file, made in your browser',
+    paras: [
+      `The file this page creates is a genuine Word document in the modern <strong>.docx</strong> format, not a text file with a different name. It is built on your device from your text, with the page size, margins and font you chose, so you can open it in Microsoft Word, Google Docs, LibreOffice Writer, Apple Pages and most other word processors.`,
+      `Each line of your text becomes a paragraph, blank lines stay blank, tabs are kept and long lines wrap to the page. Characters from any language are stored as Unicode, so Japanese, Chinese, Korean, Hindi, Thai, Arabic, Cyrillic and emoji survive the trip. The fonts you can pick are common ones (Calibri, Times New Roman and Courier New); if a device does not have one, the word processor picks a close match.`,
+    ],
+  },
+  {
+    h2: 'Open it in Google Docs, Pages or on a phone',
+    paras: [
+      `<strong>Google Docs:</strong> upload the file to Google Drive, then right-click it and choose <em>Open with</em> then <em>Google Docs</em>. <strong>Apple Pages:</strong> open the file from the Files app or double-click it on a Mac, and Pages converts it. <strong>Phones:</strong> the Word, Google Docs and Pages apps open .docx files directly from your Downloads folder.`,
+      `If you started on a phone and want the document on a computer, paste the text into the <a href="/">online clipboard</a> first, open it on the computer, and convert it there.`,
+    ],
+  },
+  {
+    h2: 'Plain text, Markdown or something else?',
+    paras: [
+      `This page is for plain text. If your text uses Markdown (lines that start with <code>#</code> for headings, <code>**bold**</code> or <code>-</code> for lists), use <a href="/markdown-to-word/">Markdown to Word</a> and those marks become real Word headings, bold text and lists. If you only need a file to read or print and not to edit, <a href="/text-to-pdf/">Text to PDF</a> is simpler.`,
+      `If you are copying an answer from an AI chat, the answer is usually Markdown, so the Markdown page will give a much better document than this one.`,
+    ],
+  },
+  {
+    h2: 'What stays on your device',
+    paras: [
+      `Your text is turned into the Word file inside your browser. It is not uploaded, not logged and not kept after you close the page. The downloaded file is stored only where you save it.`,
+    ],
+  },
+];
+const faq = [
+  { q: 'Is the file a real Word document?', a: 'Yes. It is a standard .docx file that Microsoft Word, Google Docs, LibreOffice and Apple Pages open and edit normally. It is created from your text on your own device.' },
+  { q: 'Do I need Microsoft Word to use it?', a: 'No. You only need something that opens .docx files. Google Docs, LibreOffice and Apple Pages are free options, and most phones have an app for it.' },
+  { q: 'Will it keep my formatting?', a: 'Plain text has no formatting to keep, so each line becomes a paragraph in the font and size you choose. For headings, bold text, lists and links, write Markdown and use the Markdown to Word page.' },
+  { q: 'Does it work for non-English text?', a: 'Yes. The text is stored as Unicode, so Japanese, Chinese, Arabic, Hindi, Thai and other scripts are kept. If the chosen font lacks a character, Word substitutes a font that has it.' },
+  { q: 'Is my text uploaded anywhere?', a: 'No. The Word file is built in your browser and downloaded straight to your device. We never receive the text.' },
+  { q: 'Why does Word show a "Protected View" bar?', a: 'Word shows it for any file downloaded from the internet. Click Enable Editing to edit the document. It is a normal Word safety feature and does not mean the file is damaged.' },
+];
+---
+<ToolPage
+  slug="text-to-word"
+  title="Text to Word Converter: Paste Text, Download .docx"
+  description="Free text to Word converter. Paste text, choose font and page size, and download a real .docx file. Runs in your browser, works in every language, no upload."
+  h1="Text to Word"
+  lead="Turn plain text into a real Word document (.docx) in seconds. Choose the font, size and page layout, then open the file in Word, Google Docs or LibreOffice."
+  steps={steps}
+  sections={sections}
+  faq={faq}
+  related={['markdown-to-word', 'text-to-pdf', 'markdown-to-pdf']}
+  shareText="Free text to Word converter: paste text, download a .docx. Runs in your browser."
+>
+  <Converter mode="text-docx" sample={sample} defaultName="document" />
+</ToolPage>

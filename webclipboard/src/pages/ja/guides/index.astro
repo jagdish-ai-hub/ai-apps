@@ -1,0 +1,40 @@
+---
+import Base from '../../../layouts/Base.astro';
+import { guidesFor, guidePath, guidesHubPath } from '../../../lib/guides';
+import { guideLabels } from '../../../lib/guidelangs.js';
+import { absolute, localePath } from '../../../lib/i18n';
+
+const lang = 'ja';
+const L = guideLabels[lang];
+const guides = guidesFor(lang);
+const categories = [...new Set(guides.map((g) => g.meta.category))];
+const jsonld = [
+  { '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: [
+    { '@type': 'ListItem', position: 1, name: L.home, item: absolute(localePath(lang)) },
+    { '@type': 'ListItem', position: 2, name: L.hubTitle, item: absolute(guidesHubPath(lang)) },
+  ] },
+];
+---
+<Base lang={lang} title="ガイド：端末間でテキストをコピー・共有する方法｜WebClipboard" description="スマホからパソコンへの文字の送り方、iPhoneとWindowsのコピペ、Wi-Fiパスワードの共有など、日常で役立つ手順をやさしく解説します。" page={guidesHubPath(lang)} jsonld={jsonld} section="guides">
+  <div class="hero guide-hero">
+    <div class="wrap">
+      <nav class="crumbs" aria-label="Breadcrumb"><a href={localePath(lang)}>{L.home}</a> / {L.hubTitle}</nav>
+      <span class="eyebrow">{L.hubTitle}</span>
+      <h1>端末のあいだでテキストをコピー・共有する</h1>
+      <p>スマホからパソコンへ文字を送る、iPhoneとWindowsでコピペする、Wi-Fiのパスワードを伝える。毎日のちょっとした困りごとを、手順つきで解説します。</p>
+    </div>
+  </div>
+  <div class="wrap">
+    {categories.map((c) => (
+      <section class="block" aria-label={c}>
+        <span class="eyebrow">{c}</span>
+        <div class="cards">
+          {guides.filter((g) => g.meta.category === c).map((g) => (
+            <a class="card" href={guidePath(g.slug, lang)}><strong>{g.meta.h1}</strong><span>{g.meta.description}</span></a>
+          ))}
+        </div>
+      </section>
+    ))}
+    <p class="prose" style="margin-top:40px"><a href={localePath(lang)}>{L.backToTool}</a></p>
+  </div>
+</Base>

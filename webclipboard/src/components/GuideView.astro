@@ -1,0 +1,114 @@
+---
+// One guide page, in any language that has guides. English: /guides/<slug>/, others: /<code>/guides/<slug>/.
+import Base from '../layouts/Base.astro';
+import Tool from './Tool.astro';
+import Ad from './Ad.astro';
+import { guidesFor, guidePath, guidesHubPath, findGuide, guideAlternates } from '../lib/guides';
+import { guideLabels } from '../lib/guidelangs.js';
+import { site, absolute, localePath, langByCode } from '../lib/i18n';
+import { findTool, toolPath } from '../lib/tools';
+
+interface Props { slug: string; lang?: string }
+const { slug, lang = 'en' } = Astro.props;
+const L = guideLabels[lang];
+const guide = findGuide(slug, lang)!;
+const { meta, Content, headings } = guide;
+const url = absolute(guidePath(slug, lang));
+const toc = headings.filter((h) => h.depth === 2);
+const toolSlug = (meta as any).tool as string | undefined;
+const showTokensCta = toolSlug === 'tokens';
+const linkedTool = toolSlug && toolSlug !== 'tokens' ? findTool(toolSlug) : undefined;
+const related = meta.related.map((s) => findGuide(s, lang)).filter(Boolean) as ReturnType<typeof guidesFor>;
+const alternates = guideAlternates(slug, absolute, (l) => langByCode(l).hreflang);
+const hub = absolute(guidesHubPath(lang));
+
+const jsonld = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'Article',
+    headline: meta.h1,
+    description: meta.description,
+    inLanguage: langByCode(lang).htmlLang,
+    datePublished: meta.updated,
+    dateModified: meta.updated,
+    mainEntityOfPage: url,
+    image: absolute('/og.png'),
+    author: { '@type': 'Organization', name: site.siteName, url: absolute('/') },
+    publisher: { '@type': 'Organization', name: site.siteName, logo: { '@type': 'ImageObject', url: absolute('/icon-512.png') } },
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: L.home, item: absolute(localePath(lang)) },
+      { '@type': 'ListItem', position: 2, name: L.hubTitle, item: hub },
+      { '@type': 'ListItem', position: 3, name: meta.h1, item: url },
+    ],
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: meta.faq.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })),
+  },
+];
+---
+<Base lang={lang} title={meta.title} description={meta.description} page={guidePath(slug, lang)} alternates={alternates} jsonld={jsonld} section="guides" shareText={meta.title}>
+  <div class="hero guide-hero">
+    <div class="wrap">
+      <nav class="crumbs" aria-label="Breadcrumb"><a href={localePath(lang)}>{L.home}</a> / <a href={guidesHubPath(lang)}>{L.hubTitle}</a></nav>
+      <span class="eyebrow">{meta.category}</span>
+      <h1>{meta.h1}</h1>
+      <p>{meta.lead}</p>
+    </div>
+  </div>
+
+  <div class="wrap">
+    {showTokensCta ? (
+      <div class="cta">
+        <p><strong>Count your own tokens</strong>Paste any text to see exactly how many tokens it uses with OpenAI's tokenizers, how it is split, and what it costs at your prices.</p>
+        <a class="btn" href="/token-calculator/">Open the Token Calculator</a>
+      </div>
+    ) : linkedTool ? (
+      <div class="cta">
+        <p><strong>{L.tryNow}</strong>{linkedTool.short}</p>
+        <a class="btn" href={toolPath(linkedTool.slug)}>{L.open} {linkedTool.name}</a>
+      </div>
+    ) : (<Tool lang={lang} />)}
+    <Ad slot="afterTool" lang={lang} />
+
+    <div class="guide-body">
+      {toc.length > 2 && (
+        <nav class="toc" aria-label={L.toc}>
+          <span class="eyebrow">{L.toc}</span>
+          <ol>{toc.map((h) => <li><a href={`#${h.slug}`}>{h.text}</a></li>)}</ol>
+        </nav>
+      )}
+      <article class="article"><Content /></article>
+    </div>
+
+    <Ad slot="inContent" lang={lang} />
+
+    <section class="block faq" aria-labelledby="faq">
+      <span class="eyebrow">{L.faqEyebrow}</span>
+      <h2 id="faq">{L.faq}</h2>
+      {meta.faq.map((f) => <details><summary>{f.q}</summary><p>{f.a}</p></details>)}
+    </section>
+
+    {related.length > 0 && (
+      <section class="block" aria-labelledby="more">
+        <span class="eyebrow">{L.moreEyebrow}</span>
+        <h2 id="more">{L.more}</h2>
+        <div class="cards">
+          {related.map((g) => (
+            <a class="card" href={guidePath(g.slug, lang)}>
+              <span class="eyebrow">{g.meta.category}</span>
+              <strong>{g.meta.h1}</strong>
+              <span>{g.meta.description}</span>
+            </a>
+          ))}
+        </div>
+      </section>
+    )}
+    <Ad slot="beforeFooter" lang={lang} />
+  </div>
+</Base>

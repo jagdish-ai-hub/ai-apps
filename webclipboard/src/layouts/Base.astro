@@ -3,6 +3,8 @@ import '../styles/global.css';
 import ShareWidget from '../components/ShareWidget.astro';
 import { detectLanguage } from '../lib/langmatch.js';
 import { languages, site, messages, localePath, absolute, langByCode } from '../lib/i18n';
+import { guideLangs, guideLabels } from '../lib/guidelangs.js';
+import { guidesHubPath } from '../lib/guides';
 
 interface Props {
   lang?: string;
@@ -12,14 +14,16 @@ interface Props {
   page?: string;
   /** Emit hreflang alternates for every language (only for pages that exist in all of them) */
   translated?: boolean;
+  /** Explicit hreflang alternates for pages that exist in only some languages (e.g. natively written guides) */
+  alternates?: { hreflang: string; href: string }[];
   noindex?: boolean;
   jsonld?: object[];
   /** Highlights the matching nav item */
-  section?: 'tokens' | 'guides';
+  section?: 'tokens' | 'guides' | 'tools';
   /** Text offered with the Share button (defaults to the clipboard tagline in the page language) */
   shareText?: string;
 }
-const { lang = 'en', title, description, page = '/', translated = false, noindex = false, jsonld = [], section, shareText } = Astro.props;
+const { lang = 'en', title, description, page = '/', translated = false, alternates = [], noindex = false, jsonld = [], section, shareText } = Astro.props;
 const m = messages(lang);
 const meta = langByCode(lang);
 const canonical = absolute(translated ? localePath(lang, page) : page);
@@ -50,6 +54,7 @@ const shareUrl = ['/about/', '/privacy/', '/terms/', '/contact/', '/404/'].inclu
     {!noindex && <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1" />}
     {translated && languages.map((l) => <link rel="alternate" hreflang={l.hreflang} href={absolute(localePath(l.code, page))} />)}
     {translated && <link rel="alternate" hreflang="x-default" href={absolute(page)} />}
+    {alternates.map((a) => <link rel="alternate" hreflang={a.hreflang} href={a.href} />)}
 
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content={site.siteName} />
@@ -90,7 +95,7 @@ const shareUrl = ['/about/', '/privacy/', '/terms/', '/contact/', '/404/'].inclu
   <body>
     <header class="site-header">
       <div class="wrap">
-        <a class="brand" href={translated ? localePath(lang) : '/'} aria-label={site.siteName}>
+        <a class="brand" href={localePath(lang)} aria-label={site.siteName}>
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
             <rect x="5" y="4" width="14" height="17" rx="2.5" />
             <path d="M9 4V3h6v1" />
@@ -99,8 +104,9 @@ const shareUrl = ['/about/', '/privacy/', '/terms/', '/contact/', '/404/'].inclu
           <span>webclipboard<b>.online</b></span>
         </a>
         <nav class="main-nav" aria-label="Main">
+          <a href="/tools/" aria-current={section === 'tools' ? 'page' : undefined}>Tools</a>
           <a href="/token-calculator/" aria-current={section === 'tokens' ? 'page' : undefined}>Token Calculator</a>
-          {lang === 'en' && <a href="/guides/" aria-current={section === 'guides' ? 'page' : undefined}>Guides</a>}
+          {guideLangs.includes(lang) && <a href={guidesHubPath(lang)} aria-current={section === 'guides' ? 'page' : undefined}>{guideLabels[lang].nav}</a>}
         </nav>
         <div class="header-tools">
           <label class="sr-only" for="lang-switch">{m.language}</label>
@@ -139,7 +145,8 @@ const shareUrl = ['/about/', '/privacy/', '/terms/', '/contact/', '/404/'].inclu
         </ul>
         <div class="foot-row">
           <nav class="foot-links" aria-label="Legal">
-            {lang === 'en' && <a href="/guides/">Guides</a>}
+            {lang === 'en' && <a href="/tools/">Tools</a>}
+            {guideLangs.includes(lang) && <a href={guidesHubPath(lang)}>{guideLabels[lang].nav}</a>}
             <a href="/about/">{m.footerAbout}</a>
             <a href="/privacy/">{m.footerPrivacy}</a>
             <a href="/terms/">{m.footerTerms}</a>

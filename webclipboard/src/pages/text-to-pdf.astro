@@ -1,0 +1,73 @@
+---
+import ToolPage from '../components/ToolPage.astro';
+import Converter from '../components/Converter.astro';
+
+const sample = `Meeting notes – 12 October
+
+Attendees: Asha, Ben, Chloe, 田中さん
+
+1. Launch date moved to the first week of November.
+2. Ben will send the updated price list by Friday.
+3. Chloe will test the signup flow on phones and report back.
+
+Next meeting: Monday, 10:00. Bring your questions.`;
+
+const steps = [
+  `Paste your text into the box above, or press <strong>Try an example</strong> to see how it looks.`,
+  `Pick a <strong>font</strong>, a <strong>font size</strong>, the <strong>page size</strong> (A4 or US Letter) and the <strong>margins</strong>.`,
+  `Give the file a name, then press <strong>Save as PDF</strong>.`,
+  `In the print window that opens, choose <strong>Save as PDF</strong> as the destination and confirm. The file is saved to your device.`,
+];
+const sections = [
+  {
+    h2: 'How this text to PDF converter works',
+    paras: [
+      `The converter does not send your text anywhere. When you press the button, the page prepares a clean, print-only copy of your text and asks your browser to print it. Printing to the <strong>Save as PDF</strong> destination turns that copy into a PDF file on your own device.`,
+      `Using the browser's printing engine has one big advantage: it uses the fonts already installed on your device, so text in Japanese, Chinese, Korean, Hindi, Thai, Arabic, Cyrillic, Greek and other scripts prints correctly without the page having to download large font files. Many online converters that build the PDF themselves cannot show these scripts at all.`,
+      `The trade-off is one extra click: you choose <strong>Save as PDF</strong> in the print window. On Chrome, Edge and Firefox for desktop and on Android that option is built in. On an iPhone or iPad, choose <strong>Print</strong>, spread two fingers over the preview to open it as a full page, then use the share button and pick <strong>Save to Files</strong>.`,
+    ],
+  },
+  {
+    h2: 'When it is useful to turn text into a PDF',
+    paras: [
+      `A PDF looks the same on every device, which makes it a safe way to send or keep text that should not change: meeting notes, a short contract draft, instructions, a recipe, a cover letter, a list of links or a snippet of code for a reviewer. Unlike a plain text file it keeps the font, line breaks and page layout, and it is easy to attach to an email, upload to a form or print.`,
+      `It is also a handy way to keep a copy of text that you received through the <a href="/">online clipboard</a>. Open the text on the receiving device, copy it, paste it here and save a PDF in a few seconds.`,
+    ],
+  },
+  {
+    h2: 'Tips for a good-looking PDF',
+    paras: [
+      `Use a <strong>serif</strong> font for letters and longer reading, <strong>sans-serif</strong> for notes and lists, and <strong>monospace</strong> for code or anything where the alignment of characters matters. A size of 11 or 12 pt works for most documents; 10 pt fits more on a page, 14 pt or 16 pt is easier on the eyes.`,
+      `Blank lines in your text become blank lines in the PDF, and long lines wrap at the page margin, so you do not need to add line breaks yourself. If you want headings, bold text or lists to look like headings, bold and lists, write the text in Markdown and use the <a href="/markdown-to-pdf/">Markdown to PDF</a> page instead. If the recipient needs to edit the file, <a href="/text-to-word/">convert the text to a Word document</a>.`,
+    ],
+  },
+  {
+    h2: 'Privacy',
+    paras: [
+      `Your text stays in your browser. This page loads the code to build the file, but the text you paste is never uploaded or stored, and it disappears when you close or refresh the page. For anything very sensitive, remember that the saved PDF is an ordinary file on your device and can be copied like any other.`,
+    ],
+  },
+];
+const faq = [
+  { q: 'Is this text to PDF converter free?', a: 'Yes. It is free, needs no account and has no watermark. The conversion runs in your browser, so it also costs us nothing to run and there is no limit on how many files you make.' },
+  { q: 'Is my text uploaded to a server?', a: 'No. The PDF is made on your device through your browser\'s print function. The text is never sent to us or anyone else, and it is not saved when you leave the page.' },
+  { q: 'Why does a print window open instead of the file downloading directly?', a: 'Building the PDF with the browser\'s own print engine lets every language print correctly using the fonts on your device. The price is that you confirm Save as PDF in the print window. Most browsers remember the choice.' },
+  { q: 'Does it work with Japanese, Chinese, Arabic or Hindi text?', a: 'Yes, as long as your device has a font for that script, which almost every phone and computer does. Because the PDF uses your system fonts, no characters are replaced by empty boxes in normal use.' },
+  { q: 'Can I save a PDF on my phone?', a: 'Yes. On Android, choose Save as PDF as the printer. On iPhone and iPad, choose Print, open the preview with a two-finger spread, then use the share button and Save to Files.' },
+  { q: 'How long a text can I convert?', a: 'Up to about two million characters in one go, which is hundreds of pages. Very long texts can make an older phone slow, so split them if the page becomes sluggish.' },
+];
+---
+<ToolPage
+  slug="text-to-pdf"
+  title="Text to PDF Converter: Paste Text, Save as PDF Free"
+  description="Free text to PDF converter that runs in your browser. Paste text, pick font, size and margins, and save a PDF. Nothing is uploaded and every language works."
+  h1="Text to PDF"
+  lead="Paste any text and save it as a PDF in a few seconds. Choose the font, size, page size and margins. It works in every language and your text never leaves your device."
+  steps={steps}
+  sections={sections}
+  faq={faq}
+  related={['markdown-to-pdf', 'text-to-word', 'markdown-to-word']}
+  shareText="Free text to PDF converter: paste text, save a PDF. Runs in your browser."
+>
+  <Converter mode="text-pdf" sample={sample} defaultName="document" />
+</ToolPage>
