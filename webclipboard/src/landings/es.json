@@ -1,0 +1,74 @@
+{
+  "title": "Pasar texto del iPhone a Windows: portapapeles online",
+  "description": "Copia texto en tu iPhone y pégalo en un PC con Windows con un código de 6 dígitos o un QR. Sin app, sin iCloud, sin registro. Con contraseña y autodestrucción.",
+  "h1": "Portapapeles del iPhone a Windows",
+  "lead": "Copia en tu iPhone y pega en tu PC con Windows. Guarda el texto, escribe un código de 6 dígitos en el ordenador y aparece al instante. Sin app, sin iCloud y sin cuenta.",
+  "eyebrow": "~/iphone → windows · sin app, sin registro",
+  "steps": [
+    "En tu iPhone, abre esta página en Safari y pega el texto o el enlace en el cuadro de arriba (pestaña <strong>Enviar texto</strong>).",
+    "Elige cuánto tiempo debe durar en <strong>Eliminar después de</strong>. <strong>10 minutos</strong> bastan para una transferencia rápida. Activa <strong>Eliminar tras la primera vista</strong> si el texto es privado.",
+    "Toca <strong>Guardar en el portapapeles</strong>. Obtendrás un código de 6 dígitos, un enlace corto y un código QR.",
+    "En el PC con Windows, abre esta página, entra en <strong>Recibir texto</strong> y escribe el código. Pulsa <strong>Obtener texto</strong>, luego <strong>Copiar</strong>, y pega el texto donde lo necesites."
+  ],
+  "sections": [
+    {
+      "h2": "Por qué no puedes copiar y pegar directamente del iPhone a Windows",
+      "paras": [
+        "En un Mac, el portapapeles universal de Apple te deja copiar en el iPhone y pegar en el ordenador. Pero esa función solo existe entre dispositivos Apple que usan la misma cuenta de Apple. Un PC con Windows no forma parte de ese sistema, y la aplicación Phone Link de Microsoft admite un iPhone para llamadas, mensajes y notificaciones, pero no sincroniza el portapapeles.",
+        "Según informes publicados en 2026, Apple acabaría añadiendo una forma de compartir el portapapeles del iPhone con un PC con Windows, aunque no antes de finales de 2027 aproximadamente, y los detalles no están confirmados. Hasta entonces necesitas un paso intermedio que ambos dispositivos puedan abrir, y eso es justo lo que ofrece esta página. Si quieres ver más opciones, lee nuestra guía para <a href=\"/es/guides/copy-text-between-iphone-and-windows/\">copiar texto entre un iPhone y Windows</a>."
+      ]
+    },
+    {
+      "h2": "Qué la hace diferente de otras formas de hacerlo",
+      "paras": [
+        "<strong>Sin app y sin cuenta.</strong> No hay nada que instalar en el iPhone ni en el PC, y no interviene ningún ID de Apple, cuenta de Microsoft ni iCloud para Windows. Por eso encaja bien en un ordenador del trabajo, del colegio o de una biblioteca que no controlas.",
+        "<strong>Privada por diseño.</strong> Tú eliges la caducidad (10 minutos, 1 hora, 1 día o 7 días), puedes eliminar el texto después de abrirlo una vez y puedes añadir una contraseña. Con contraseña, el texto se cifra en tu navegador antes de enviarse, así que el servidor solo guarda datos cifrados. Eso sí, si olvidas la contraseña no se puede recuperar.",
+        "<strong>En los dos sentidos y en cualquier dispositivo.</strong> Los mismos pasos sirven de Windows al iPhone, desde un móvil Android o entre dos ordenadores. Al ir del PC al iPhone puedes escanear con la cámara el código QR de la pantalla en lugar de teclear los dígitos."
+      ]
+    },
+    {
+      "h2": "Comparación con otros métodos",
+      "paras": [
+        "Enviarte un <strong>mensaje o un correo</strong> funciona, pero deja el texto en tu historial y exige iniciar sesión en el PC. <strong>iCloud para Windows</strong> sincroniza fotos, archivos y contraseñas, no el texto que acabas de copiar. Las <strong>apps de notas</strong> son mejores para lo que quieres conservar y seguir editando. Para un enlace, una dirección, un código o un párrafo puntual, un texto de corta duración es lo más rápido y no deja rastro. Si buscas más alternativas, consulta la guía para <a href=\"/es/guides/send-text-from-phone-to-pc/\">pasar texto del móvil al PC</a>, donde se comparan cinco métodos, y la de <a href=\"/es/guides/share-wifi-password/\">compartir la contraseña del wifi</a> si es eso lo que quieres enviar."
+      ]
+    },
+    {
+      "h2": "Conviértelo en un hábito de un solo toque",
+      "paras": [
+        "En Safari, toca el botón de compartir y elige <strong>Añadir a pantalla de inicio</strong> para que la página se abra como una app. Si dejas abierta la pestaña <strong>Recibir texto</strong> en el PC, solo tendrás que escribir los seis dígitos. Como cada texto admite hasta 100.000 caracteres, la misma página sirve también para notas largas, actas de reuniones o fragmentos de código. Y ten presente que no hace falta cuenta: cualquier navegador moderno basta, tanto en tu PC como en uno prestado."
+      ]
+    }
+  ],
+  "faq": [
+    {
+      "q": "¿Puedo copiar texto de un iPhone a un PC con Windows?",
+      "a": "Con las herramientas integradas, no. El portapapeles universal de Apple solo funciona entre dispositivos Apple y Phone Link no sincroniza el portapapeles del iPhone. Un portapapeles online sí funciona hoy: pega en el iPhone, apunta el código de 6 dígitos y escríbelo en el PC."
+    },
+    {
+      "q": "¿Necesito iCloud para Windows o alguna aplicación?",
+      "a": "No. Los dos dispositivos solo necesitan un navegador web. No hay que iniciar sesión ni instalar nada, y por eso también sirve en ordenadores que no son tuyos."
+    },
+    {
+      "q": "¿Funciona también de Windows al iPhone?",
+      "a": "Sí. Pega el texto en el PC, guárdalo y luego escribe el código en el iPhone o escanea con su cámara el código QR que aparece en la pantalla del PC."
+    },
+    {
+      "q": "¿Es seguro enviar texto privado?",
+      "a": "Usa una caducidad corta y activa «Eliminar tras la primera vista». Para lo delicado, añade una contraseña: cifra el texto en tu navegador antes de enviarlo. Cualquiera que tenga el código puede abrir un texto sin protección hasta que caduque."
+    },
+    {
+      "q": "¿Cuánto texto puedo enviar?",
+      "a": "Hasta 100.000 caracteres por texto, mucho más que un enlace o unos cuantos párrafos. Si necesitas más, divídelo en dos textos."
+    },
+    {
+      "q": "¿Apple hará innecesario este método?",
+      "a": "Según informes, Apple planea admitir el portapapeles compartido entre el iPhone y Windows, pero no antes de finales de 2027 aproximadamente, y los detalles no están confirmados. Esta página funciona ya y sirve también con Android, Linux y ordenadores que no son tuyos."
+    }
+  ],
+  "relatedGuides": [
+    "copy-text-between-iphone-and-windows",
+    "send-text-from-phone-to-pc",
+    "share-wifi-password"
+  ],
+  "shareText": "Copia texto en tu iPhone y pégalo en un PC con Windows con un código de 6 dígitos. Sin app, sin registro."
+}

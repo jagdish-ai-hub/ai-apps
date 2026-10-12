@@ -5,7 +5,8 @@ import Base from '../layouts/Base.astro';
 import Ad from './Ad.astro';
 import { findTool, toolPath, tools } from '../lib/tools';
 import { findGuide, guidePath } from '../lib/guides';
-import { absolute, site } from '../lib/i18n';
+import { absolute, site, langByCode } from '../lib/i18n';
+import { LANDING_SLUG, landingAlternates } from '../lib/landings';
 
 interface Props {
   slug: string;
@@ -25,6 +26,8 @@ const { slug, title, description, h1, lead, eyebrow = '~/convert · runs in your
 const tool = findTool(slug)!;
 const url = absolute(toolPath(slug));
 const guide = tool.guide ? findGuide(tool.guide) : undefined;
+// Pages that also exist in other languages declare reciprocal hreflang.
+const alternates = slug === LANDING_SLUG ? landingAlternates(absolute, (l) => langByCode(l).hreflang) : [];
 const relatedTools = related.map(findTool).filter(Boolean) as typeof tools;
 
 const jsonld = [
@@ -39,7 +42,7 @@ const jsonld = [
   { '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: faq.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })) },
 ];
 ---
-<Base title={title} description={description} page={toolPath(slug)} section="tools" jsonld={jsonld} shareText={shareText ?? description}>
+<Base title={title} description={description} page={toolPath(slug)} alternates={alternates.length > 1 ? alternates : []} section="tools" jsonld={jsonld} shareText={shareText ?? description}>
   <div class="hero">
     <div class="wrap">
       <nav class="crumbs" aria-label="Breadcrumb"><a href="/">Home</a> / <a href="/tools/">Tools</a> / {tool.name}</nav>

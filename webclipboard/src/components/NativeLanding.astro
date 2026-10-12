@@ -1,0 +1,76 @@
+---
+// The iPhone-to-Windows landing page written natively in another language (content in src/landings/<code>.json).
+import Base from '../layouts/Base.astro';
+import Tool from './Tool.astro';
+import Ad from './Ad.astro';
+import { landings, landingPath, landingAlternates } from '../lib/landings';
+import { findGuide, guidePath } from '../lib/guides';
+import { guideLabels } from '../lib/guidelangs.js';
+import { absolute, localePath, site, langByCode } from '../lib/i18n';
+
+interface Props { lang: string }
+const { lang } = Astro.props;
+const c = landings[lang];
+const L = guideLabels[lang];
+const url = absolute(landingPath(lang));
+const related = c.relatedGuides.map((s) => findGuide(s, lang)).filter(Boolean) as NonNullable<ReturnType<typeof findGuide>>[];
+const alternates = landingAlternates(absolute, (l) => langByCode(l).hreflang);
+const inLanguage = langByCode(lang).htmlLang;
+const jsonld = [
+  { '@context': 'https://schema.org', '@type': 'WebApplication', name: `${site.siteName}: ${L.landingCrumb}`, url, description: c.description, applicationCategory: 'UtilitiesApplication', operatingSystem: 'Any', browserRequirements: 'Requires JavaScript', inLanguage, isAccessibleForFree: true, offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' } },
+  { '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: [
+    { '@type': 'ListItem', position: 1, name: L.home, item: absolute(localePath(lang)) },
+    { '@type': 'ListItem', position: 2, name: L.landingCrumb, item: url },
+  ] },
+  { '@context': 'https://schema.org', '@type': 'HowTo', name: c.h1, description: c.description, inLanguage, step: c.steps.map((s, i) => ({ '@type': 'HowToStep', position: i + 1, text: s.replace(/<[^>]+>/g, '') })) },
+  { '@context': 'https://schema.org', '@type': 'FAQPage', inLanguage, mainEntity: c.faq.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })) },
+];
+---
+<Base lang={lang} title={c.title} description={c.description} page={landingPath(lang)} alternates={alternates} jsonld={jsonld} shareText={c.shareText}>
+  <div class="hero">
+    <div class="wrap">
+      <nav class="crumbs" aria-label="Breadcrumb"><a href={localePath(lang)}>{L.home}</a> / {L.landingCrumb}</nav>
+      <span class="eyebrow">{c.eyebrow}</span>
+      <h1>{c.h1}</h1>
+      <p>{c.lead}</p>
+    </div>
+  </div>
+  <div class="wrap">
+    <Tool lang={lang} />
+    <Ad slot="afterTool" lang={lang} />
+
+    <section class="block" aria-labelledby="how">
+      <span class="eyebrow">01</span>
+      <h2 id="how">{L.howTo}</h2>
+      <ol class="steps">{c.steps.map((s) => <li><span set:html={s} /></li>)}</ol>
+    </section>
+
+    {c.sections.map((s, i) => (
+      <>
+        <section class="block prose" aria-labelledby={`s${i}`}>
+          <span class="eyebrow">{String(i + 2).padStart(2, '0')}</span>
+          <h2 id={`s${i}`}>{s.h2}</h2>
+          {s.paras.map((p) => <p set:html={p} />)}
+        </section>
+        {i === 0 && <Ad slot="inContent" lang={lang} />}
+      </>
+    ))}
+
+    <section class="block faq" aria-labelledby="faq">
+      <span class="eyebrow">{L.faqEyebrow}</span>
+      <h2 id="faq">{L.faq}</h2>
+      {c.faq.map((f) => <details><summary>{f.q}</summary><p>{f.a}</p></details>)}
+    </section>
+
+    {related.length > 0 && (
+      <section class="block" aria-labelledby="more">
+        <span class="eyebrow">{L.moreEyebrow}</span>
+        <h2 id="more">{L.more}</h2>
+        <div class="cards">
+          {related.map((g) => <a class="card" href={guidePath(g.slug, lang)}><span class="eyebrow">{g.meta.category}</span><strong>{g.meta.h1}</strong><span>{g.meta.description}</span></a>)}
+        </div>
+      </section>
+    )}
+    <Ad slot="beforeFooter" lang={lang} />
+  </div>
+</Base>

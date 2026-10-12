@@ -1,0 +1,76 @@
+{
+ "title": "iPhoneからWindowsへコピペ｜6桁のコードで文字を送る",
+ "description": "iPhoneでコピーした文字を、Windowsパソコンに貼り付けたい。6桁のコードかQRコードだけで送れます。アプリ、iCloud、ログインは不要。パスワードや自動削除にも対応。",
+ "h1": "iPhoneからWindowsへコピペ",
+ "lead": "iPhoneでコピーした文字を、Windowsパソコンに貼り付けます。保存して、パソコンで6桁のコードを入力するだけ。アプリもiCloudもアカウントも要りません。",
+ "eyebrow": "~/iphone → windows · アプリ不要、ログイン不要",
+ "steps": [
+  "iPhoneのSafariでこのページを開き、上のボックス（<strong>テキストを送る</strong>タブ）に文字やリンクを貼り付けます。",
+  "保存しておく時間を選びます。ちょっと送るだけなら<strong>10分</strong>で十分です。大事な内容は<strong>最初の閲覧後に削除</strong>をオンにしましょう。",
+  "<strong>クリップボードに保存</strong>をタップします。6桁のコード、短縮リンク、QRコードが表示されます。",
+  "Windowsパソコンでこのページを開き、<strong>テキストを受け取る</strong>を選んでコードを入力します。<strong>コピー</strong>を押して、使いたい場所に貼り付けます。"
+ ],
+ "sections": [
+  {
+   "h2": "なぜiPhoneからWindowsへ、そのままコピペできないのか",
+   "paras": [
+    "MacではAppleの「ユニバーサルクリップボード」で、iPhoneでコピーした内容をそのまま貼り付けられます。ただしこれは、同じApple IDを使うApple製品どうしの機能で、Windowsパソコンは対象外です。MicrosoftのPhone Linkも、iPhoneは通話、メッセージ、通知に対応しますが、クリップボードは同期しません。",
+    "2026年の報道では、AppleがいずれiPhoneのクリップボードをWindowsと共有できる仕組みを用意するとされていますが、早くても2027年の終わりごろと伝えられています（<a href=\"/ja/guides/will-windows-get-iphone-clipboard-sync/\">iPhoneとWindowsのクリップボード共有は実現する？</a>）。それまでは、両方から開ける中継地点が必要です。このページが、その役目を果たします。"
+   ]
+  },
+  {
+   "h2": "ほかの方法との違い",
+   "paras": [
+    "<strong>アプリもアカウントも不要。</strong>iPhoneにもパソコンにも何もインストールせず、Apple ID、Microsoftアカウント、iCloud for Windowsも使いません。会社や学校、図書館など、自分で設定を変えられないパソコンにもぴったりです。",
+    "<strong>プライバシーを守れる。</strong>保存時間を選べて、一度開いたら削除でき、パスワードも付けられます。パスワードを付けると、文字はブラウザの中で暗号化されてから送られるので、パスワードを知る人しか読めません。",
+    "<strong>どちら向きでも、どの端末でも。</strong>WindowsからiPhoneへ、Androidから、パソコンどうしでも同じ手順です。パソコンからiPhoneへ送るときは、画面のQRコードをiPhoneのカメラで読み取れば、数字を入力する手間も省けます。"
+   ]
+  },
+  {
+   "h2": "ほかの方法と比べると",
+   "paras": [
+    "<strong>自分宛てのメッセージやメール</strong>でも送れますが、履歴に文章が残り、パソコンでもログインが必要です。<strong>iCloud for Windows</strong>は、写真、ファイル、パスワードの同期用で、いまコピーした文字を運ぶものではありません。<strong>メモアプリ</strong>は、保存して編集し続けたい文章向けです。リンク、住所、コード、一段落の文章を一度だけ送るなら、短時間で消えるクリップがいちばん早く、何も残りません。違いの詳細は、<a href=\"/ja/guides/iphone-to-windows-without-icloud/\">iCloudなしでiPhoneからWindowsへ文字を送る方法</a>と、<a href=\"/ja/guides/what-phone-link-can-do-with-iphone/\">Phone LinkでiPhoneにできること、できないこと</a>で説明しています。"
+   ]
+  },
+  {
+   "h2": "ワンタップで使えるようにしておく",
+   "paras": [
+    "Safariで共有ボタンをタップして<strong>ホーム画面に追加</strong>を選ぶと、アプリのように開けます。パソコン側では<strong>テキストを受け取る</strong>のタブを開いておけば、6桁を打つだけです。1回に最大10万文字まで送れるので、長いメモや議事録、コードにも使えます。"
+   ]
+  }
+ ],
+ "faq": [
+  {
+   "q": "iPhoneからWindowsパソコンへ、文字をコピペできますか？",
+   "a": "標準の機能ではできません。AppleのユニバーサルクリップボードはApple製品どうしだけで、Phone Linkも、iPhoneのクリップボードは同期しません。オンラインクリップボードなら、今日から使えます。iPhoneで貼り付けて、6桁のコードをパソコンで入力してください。"
+  },
+  {
+   "q": "iCloud for Windowsやアプリは必要ですか？",
+   "a": "いいえ。両方にブラウザがあれば使えます。ログインもインストールも要らないので、自分のものではないパソコンにも向いています。"
+  },
+  {
+   "q": "WindowsからiPhoneへも送れますか？",
+   "a": "はい。パソコンで貼り付けて保存し、iPhoneで6桁のコードを入力するか、パソコンの画面に出たQRコードをiPhoneのカメラで読み取ります。"
+  },
+  {
+   "q": "大事な文章を送っても安全ですか？",
+   "a": "保存時間を短くして、「最初の閲覧後に削除」をオンにしてください。特に大事なら、パスワードを付けると、送る前にブラウザの中で暗号化されます。パスワードのないクリップは、コードを知る人なら期限まで誰でも開けます。"
+  },
+  {
+   "q": "どのくらいの量を送れますか？",
+   "a": "1回に最大10万文字までです。リンクや数段落には十分すぎる量で、それより長い文章は2回に分けてください。"
+  },
+  {
+   "q": "Appleが対応したら、不要になりますか？",
+   "a": "報道では、AppleはiPhoneとWindowsのクリップボード共有に対応する予定ですが、早くても2027年の終わりごろで、対象の地域などの詳細は確定していません。このページは今すぐ使えて、Android、Linux、他人のパソコンでも使えます。"
+  }
+ ],
+ "relatedGuides": [
+  "send-a-link-from-iphone-to-pc",
+  "iphone-to-windows-without-icloud",
+  "copy-text-between-iphone-and-windows",
+  "what-phone-link-can-do-with-iphone",
+  "will-windows-get-iphone-clipboard-sync"
+ ],
+ "shareText": "iPhoneでコピーした文字を、Windowsパソコンに貼り付け。6桁のコードだけ、アプリ不要。"
+}

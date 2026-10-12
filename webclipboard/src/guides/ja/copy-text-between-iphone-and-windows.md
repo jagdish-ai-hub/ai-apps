@@ -5,7 +5,7 @@ h1: "iPhoneとWindowsでコピペする方法"
 lead: "MacならiPhoneでコピーしてそのまま貼り付けられるのに、Windowsではできない。実は、仕組みの違いが理由です。アプリを入れずに、iPhoneとWindowsのあいだで文字を送る方法を紹介します。"
 category: "スマホとパソコン"
 updated: "2026-10-12"
-related: ["send-text-from-phone-to-pc", "share-wifi-password"]
+related: ["send-a-link-from-iphone-to-pc", "iphone-to-windows-without-icloud", "will-windows-get-iphone-clipboard-sync"]
 faq:
   - q: "iPhoneとWindowsでユニバーサルクリップボードは使えますか？"
     a: "いいえ。ユニバーサルクリップボードは、同じApple IDでサインインしたAppleの端末同士の機能です。Windowsパソコンとはつながりません。"

@@ -1,0 +1,10 @@
+---
+import NativeLanding from '../../components/NativeLanding.astro';
+import { landingLangs } from '../../lib/landings';
+
+export function getStaticPaths() {
+  return landingLangs.map((lang) => ({ params: { lang }, props: { lang } }));
+}
+const { lang } = Astro.props;
+---
+<NativeLanding lang={lang} />

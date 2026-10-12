@@ -1,0 +1,74 @@
+{
+  "title": "iPhone Windows Zwischenablage: Text per Code auf den PC",
+  "description": "Text vom iPhone auf den Windows-PC senden: kopieren, 6-stelligen Code oder QR-Code erhalten und am PC einfügen. Ohne App, ohne iCloud, ohne Anmeldung.",
+  "h1": "Zwischenablage vom iPhone auf Windows",
+  "lead": "Auf dem iPhone kopieren, am Windows-PC einfügen: Text speichern, am PC den 6-stelligen Code eingeben, fertig. Ohne App, ohne iCloud, ohne Konto.",
+  "eyebrow": "~/iphone → windows · ohne App, ohne Anmeldung",
+  "steps": [
+    "Öffne diese Seite auf dem iPhone in Safari und füge den Text oder Link oben im Feld auf dem Tab <strong>Text senden</strong> ein.",
+    "Wähle unter <strong>Löschen nach</strong>, wie lange der Text verfügbar bleiben soll. <strong>10 Minuten</strong> reichen für eine schnelle Übertragung. Bei Privatem aktiviere zusätzlich <strong>Nach dem ersten Aufruf löschen</strong>.",
+    "Tippe auf <strong>In Zwischenablage speichern</strong>. Du erhältst einen 6-stelligen Code, einen Kurzlink und einen QR-Code.",
+    "Öffne diese Seite am Windows-PC, wechsle zu <strong>Text empfangen</strong>, gib den Code ein und klicke auf <strong>Text abrufen</strong>. Mit <strong>Kopieren</strong> landet der Text in der Zwischenablage des PCs, und du fügst ihn mit Strg + V ein."
+  ],
+  "sections": [
+    {
+      "h2": "Warum Kopieren und Einfügen vom iPhone auf Windows nicht einfach klappt",
+      "paras": [
+        "Auf dem Mac kannst du dank der Universellen Zwischenablage von Apple auf dem iPhone kopieren und am Computer einfügen. Diese Funktion arbeitet aber nur zwischen Apple-Geräten, die mit derselben Apple-ID angemeldet sind. Ein Windows-PC gehört nicht dazu. Auch die App „Phone Link“ von Microsoft unterstützt das iPhone nur für Anrufe, Nachrichten und Benachrichtigungen, gleicht aber die Zwischenablage nicht ab.",
+        "Berichten zufolge will Apple irgendwann eine Zwischenablage-Freigabe vom iPhone zu Windows einführen, allerdings nicht vor etwa Ende 2027, und Einzelheiten sind unbestätigt. Bis dahin brauchst du einen Zwischenschritt, den beide Geräte öffnen können. Genau den bietet diese Seite."
+      ]
+    },
+    {
+      "h2": "Was diesen Weg von anderen unterscheidet",
+      "paras": [
+        "<strong>Keine App und kein Konto.</strong> Weder auf dem iPhone noch am PC musst du etwas installieren, und es ist keine Apple-ID, kein Microsoft-Konto und kein iCloud für Windows im Spiel. Das passt gut zu Rechnern in Firma, Schule oder Bibliothek, die du nicht selbst verwaltest.",
+        "<strong>Privatsphäre von Anfang an.</strong> Du bestimmst die Aufbewahrungsdauer, kannst den Text nach dem ersten Aufruf löschen lassen und optional ein Passwort vergeben. Mit Passwort wird der Text schon in deinem Browser per AES verschlüsselt, bevor er gesendet wird. Der Server speichert nur den verschlüsselten Text, und ein vergessenes Passwort lässt sich nicht wiederherstellen. Ohne Passwort kann jeder, der den Code kennt, den Eintrag öffnen, bis er abläuft.",
+        "<strong>Beide Richtungen, jedes Gerät.</strong> Dieselben Schritte funktionieren vom PC zum iPhone, von Android aus oder zwischen zwei Computern. Der QR-Code erscheint immer auf dem Gerät, auf dem du speicherst. Auf dem Weg vom PC zum iPhone scannst du ihn deshalb einfach mit der iPhone-Kamera vom Bildschirm, statt den Code einzutippen."
+      ]
+    },
+    {
+      "h2": "Im Vergleich mit anderen Methoden",
+      "paras": [
+        "Eine <strong>Nachricht oder E-Mail an dich selbst</strong> funktioniert, hinterlässt den Text aber im Verlauf und verlangt eine Anmeldung am PC. <strong>iCloud für Windows</strong> synchronisiert Fotos, Dateien und Passwörter, nicht aber den Text, den du gerade kopiert hast. <strong>Notiz-Apps</strong> eignen sich am besten für Texte, die du aufbewahrst und weiterbearbeitest. Für einen einzelnen Link, eine Adresse, einen Code oder einen Absatz ist ein kurzlebiger Eintrag am schnellsten und hinterlässt nichts. Die Anleitung <a href=\"/de/guides/copy-text-between-iphone-and-windows/\">Text zwischen iPhone und Windows-PC kopieren</a> geht auf alle Schritte im Detail ein. Einen Überblick über fünf Wege gibt <a href=\"/de/guides/send-text-from-phone-to-pc/\">Text vom Handy auf den PC senden</a>."
+      ]
+    },
+    {
+      "h2": "Mit einem Tipp zur Gewohnheit machen",
+      "paras": [
+        "Tippe in Safari auf das Teilen-Symbol und wähle <strong>Zum Home-Bildschirm</strong>. Dann öffnet sich die Seite wie eine App. Lass am PC den Tab <strong>Text empfangen</strong> geöffnet, und du musst nur noch die sechs Ziffern eintippen. Weil ein Eintrag bis zu 100.000 Zeichen fassen kann, eignet sich dieselbe Seite auch für lange Notizen, Protokolle und Code. Empfangenen Text kannst du außerdem als .txt, Markdown, Word-Datei (.docx) oder PDF herunterladen. Und wenn ein anderes Netzwerk im Spiel ist, hilft dir die Anleitung <a href=\"/de/guides/share-wifi-password/\">WLAN-Passwort sicher teilen</a> beim Weitergeben von Zugangsdaten."
+      ]
+    }
+  ],
+  "faq": [
+    {
+      "q": "Kann ich Text vom iPhone auf einen Windows-PC kopieren?",
+      "a": "Mit den eingebauten Funktionen nicht. Die Universelle Zwischenablage von Apple gibt es nur zwischen Apple-Geräten, und Phone Link gleicht die Zwischenablage eines iPhones nicht ab. Mit einer Online-Zwischenablage klappt es heute schon: Auf dem iPhone einfügen, den 6-stelligen Code notieren und am PC eingeben."
+    },
+    {
+      "q": "Brauche ich iCloud für Windows oder eine App?",
+      "a": "Nein. Beide Geräte brauchen nur einen Webbrowser. Es gibt keine Anmeldung und nichts zu installieren, deshalb eignet sich der Weg auch für Computer, die dir nicht gehören."
+    },
+    {
+      "q": "Funktioniert das auch vom Windows-PC aufs iPhone?",
+      "a": "Ja. Am PC einfügen und speichern, dann auf dem iPhone den Code eintippen oder den QR-Code auf dem PC-Bildschirm mit der iPhone-Kamera scannen."
+    },
+    {
+      "q": "Ist es sicher, private Texte zu senden?",
+      "a": "Wähle eine kurze Aufbewahrungsdauer und aktiviere „Nach dem ersten Aufruf löschen“. Bei sensiblen Inhalten vergib ein Passwort, das den Text in deinem Browser verschlüsselt, bevor er gesendet wird. Ohne Passwort kann jeder, der den Code hat, den Eintrag öffnen, bis er abläuft. Passwörter und Bankdaten gehören in einen Passwort-Manager, nicht in einen Schnellübertragungsdienst."
+    },
+    {
+      "q": "Wie viel Text kann ich senden?",
+      "a": "Bis zu 100.000 Zeichen pro Eintrag. Das ist weit mehr als ein Link oder ein paar Absätze. Wenn dein Text länger ist, teile ihn auf zwei Einträge auf."
+    },
+    {
+      "q": "Macht Apple diese Lösung bald überflüssig?",
+      "a": "Berichten zufolge plant Apple eine Zwischenablage-Freigabe vom iPhone zu Windows, jedoch nicht vor etwa Ende 2027, und Einzelheiten wie die Verfügbarkeit nach Ländern sind unbestätigt. Diese Seite funktioniert schon jetzt und auch mit Android, Linux und Computern, die nicht dir gehören."
+    }
+  ],
+  "relatedGuides": [
+    "copy-text-between-iphone-and-windows",
+    "send-text-from-phone-to-pc",
+    "share-wifi-password"
+  ],
+  "shareText": "Text auf dem iPhone kopieren und mit einem 6-stelligen Code am Windows-PC einfügen. Ohne App und ohne Anmeldung."
+}

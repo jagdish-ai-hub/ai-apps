@@ -1,0 +1,76 @@
+{
+  "title": "Copiar texto do iPhone para o Windows com um código de 6 dígitos",
+  "description": "Copie o texto no iPhone e cole no PC com Windows usando um código de 6 dígitos ou QR code. Sem app, sem iCloud, sem cadastro. Senha e exclusão automática opcionais.",
+  "h1": "Enviar texto do iPhone para o PC com Windows",
+  "lead": "Copie no iPhone, cole no PC com Windows. Salve o texto, digite um código de 6 dígitos no computador e pronto. Sem aplicativo, sem iCloud e sem cadastro.",
+  "eyebrow": "~/iphone → windows · sem app, sem cadastro",
+  "steps": [
+    "No iPhone, abra esta página no Safari e cole o texto ou o link na caixa acima (aba <strong>Enviar texto</strong>).",
+    "Em <strong>Excluir após</strong>, escolha por quanto tempo ele deve ficar disponível. <strong>10 minutos</strong> bastam para uma transferência rápida. Ative <strong>Excluir após a primeira visualização</strong> para qualquer coisa privada.",
+    "Toque em <strong>Salvar na área de transferência</strong>. Você recebe um código de 6 dígitos, um link curto e um QR code.",
+    "No PC com Windows, abra esta página, vá para <strong>Receber texto</strong>, digite o código e clique em <strong>Obter texto</strong>. Depois, clique em <strong>Copiar</strong> e cole o texto onde precisar."
+  ],
+  "sections": [
+    {
+      "h2": "Por que não dá para simplesmente copiar e colar do iPhone para o Windows",
+      "paras": [
+        "Entre um iPhone e um Mac, a Área de Transferência Universal da Apple deixa você copiar em um aparelho e colar no outro. Só que esse recurso funciona apenas entre aparelhos Apple conectados ao mesmo ID Apple. Um PC com Windows não faz parte desse sistema. O Phone Link, da Microsoft, aceita o iPhone para ligações, mensagens e notificações, mas não sincroniza a área de transferência.",
+        "Segundo relatos de 2026, a Apple deve adicionar um dia o compartilhamento da área de transferência do iPhone com o Windows, mas não antes do fim de 2027, e os detalhes ainda não foram confirmados. Até lá, você precisa de um passo intermediário que os dois aparelhos consigam abrir. É exatamente isso que esta página oferece."
+      ]
+    },
+    {
+      "h2": "O que muda em relação às outras formas",
+      "paras": [
+        "<strong>Sem app e sem conta.</strong> Não há nada para instalar no iPhone nem no PC, e nenhum ID Apple, conta Microsoft ou iCloud para Windows entra na história. Por isso funciona bem em computador de trabalho, de escola ou de lan house, onde você não manda em nada.",
+        "<strong>Privacidade de verdade.</strong> Você escolhe por quanto tempo o texto fica disponível (10 minutos, 1 hora, 1 dia ou 7 dias), pode apagá-lo depois da primeira abertura e ainda pode definir uma senha. Com senha, o texto é criptografado no seu navegador antes de ser enviado, e o servidor guarda apenas dados embaralhados. Se você esquecer a senha, ela não pode ser recuperada.",
+        "<strong>Nos dois sentidos e em qualquer aparelho.</strong> Os mesmos passos valem do Windows para o iPhone, de um Android ou entre dois computadores. Note que o QR code aparece no aparelho que envia: do PC para o iPhone, basta apontar a câmera do iPhone para o QR code na tela do computador, sem digitar os números. Do iPhone para o PC, você digita o código no computador."
+      ]
+    },
+    {
+      "h2": "Comparação com outros métodos",
+      "paras": [
+        "Uma <strong>mensagem ou e-mail para você mesmo</strong> funciona, mas deixa o texto no seu histórico e exige login no PC. No WhatsApp, a conversa \"Mensagem para você mesmo\" é prática para guardar coisas, só que tudo continua lá até você apagar. O <strong>iCloud para Windows</strong> sincroniza fotos, arquivos e senhas, mas não o texto que você acabou de copiar. Os <strong>aplicativos de notas</strong> são ideais para textos que você vai guardar e editar.",
+        "Para um link, um endereço, um código ou um parágrafo que você precisa levar uma vez só, um texto de curta duração é o mais rápido e não deixa rastro. Para ver outras opções lado a lado, leia o guia sobre <a href=\"/pt/guides/copy-text-between-iphone-and-windows/\">como copiar texto entre o iPhone e o Windows</a> e o que compara <a href=\"/pt/guides/send-text-from-phone-to-pc/\">cinco jeitos de enviar texto do celular para o PC</a>."
+      ]
+    },
+    {
+      "h2": "Transforme em um hábito de um toque",
+      "paras": [
+        "No Safari, toque no botão de compartilhar e escolha <strong>Adicionar à Tela de Início</strong>: a página passa a abrir como se fosse um aplicativo. No PC, deixe a aba <strong>Receber texto</strong> aberta ou salva nos favoritos, e só falta digitar os seis números.",
+        "Como cada texto aceita até 100.000 caracteres, a mesma página serve para anotações longas, atas de reunião e trechos de código. Depois de receber o texto, você também pode baixá-lo em .txt, .md, Word (.docx) ou PDF. Se o texto for a senha de uma rede, veja como <a href=\"/pt/guides/share-wifi-password/\">compartilhar a senha do Wi-Fi com segurança</a>."
+      ]
+    }
+  ],
+  "faq": [
+    {
+      "q": "Dá para copiar texto do iPhone para um PC com Windows?",
+      "a": "Com as ferramentas nativas, não. A Área de Transferência Universal da Apple só funciona entre aparelhos Apple, e o Phone Link não sincroniza a área de transferência do iPhone. Uma área de transferência online resolve hoje: cole o texto no iPhone, anote o código de 6 dígitos e digite no PC."
+    },
+    {
+      "q": "Preciso do iCloud para Windows ou de algum aplicativo?",
+      "a": "Não. Os dois aparelhos só precisam de um navegador. Não há login nem instalação, o que também torna o serviço útil em computadores que não são seus."
+    },
+    {
+      "q": "Funciona também do Windows para o iPhone?",
+      "a": "Funciona. Cole o texto no PC, salve e digite o código no iPhone ou escaneie com a câmera do iPhone o QR code que aparece na tela do computador."
+    },
+    {
+      "q": "É seguro enviar um texto privado?",
+      "a": "Use um prazo curto e ative a exclusão após a primeira visualização. Para textos sensíveis, defina uma senha, que criptografa o conteúdo no seu navegador antes do envio. Qualquer pessoa com o código pode abrir um texto sem senha até ele expirar."
+    },
+    {
+      "q": "Quanto texto posso enviar?",
+      "a": "Até 100.000 caracteres por texto, bem mais do que um link ou alguns parágrafos. Para um conteúdo maior, divida em dois textos."
+    },
+    {
+      "q": "A Apple vai tornar isso desnecessário?",
+      "a": "Segundo relatos, a Apple planeja aceitar o compartilhamento da área de transferência entre o iPhone e o Windows, mas não antes do fim de 2027, e detalhes como as regiões atendidas não foram confirmados. Esta página funciona agora e também serve para Android, Linux e computadores que não são seus."
+    }
+  ],
+  "relatedGuides": [
+    "copy-text-between-iphone-and-windows",
+    "send-text-from-phone-to-pc",
+    "share-wifi-password"
+  ],
+  "shareText": "Copie o texto no iPhone e cole no PC com Windows usando um código de 6 dígitos. Sem aplicativo."
+}

@@ -29,9 +29,15 @@ const load = (files: Record<string, any>): Guide[] =>
 export const guides: Guide[] = load(import.meta.glob('../guides/*.md', { eager: true }) as Record<string, any>);
 
 /** Guides written natively in other languages, in src/guides/<code>/, at /<code>/guides/<slug>/. */
+// import.meta.glob needs literal patterns, so each language with guides is listed here (and in guidelangs.js).
 const native: Record<string, Guide[]> = {
   ja: load(import.meta.glob('../guides/ja/*.md', { eager: true }) as Record<string, any>),
+  ko: load(import.meta.glob('../guides/ko/*.md', { eager: true }) as Record<string, any>),
+  de: load(import.meta.glob('../guides/de/*.md', { eager: true }) as Record<string, any>),
+  es: load(import.meta.glob('../guides/es/*.md', { eager: true }) as Record<string, any>),
+  pt: load(import.meta.glob('../guides/pt/*.md', { eager: true }) as Record<string, any>),
 };
+export const nativeGuideLangs = Object.keys(native).filter((l) => native[l].length > 0);
 
 export const guidesFor = (lang: string): Guide[] => (lang === 'en' ? guides : native[lang] ?? []);
 export const guidePath = (slug: string, lang = 'en') => (lang === 'en' ? `/guides/${slug}/` : `/${lang}/guides/${slug}/`);
