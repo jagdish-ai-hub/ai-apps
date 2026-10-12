@@ -1,0 +1,63 @@
+---
+import ToolPage from '../components/ToolPage.astro';
+import Tool from '../components/Tool.astro';
+
+const steps = [
+  `On your iPhone, open this page in Safari and paste the text or link into the box above (the <strong>Send text</strong> tab).`,
+  `Choose how long it should last. <strong>10 minutes</strong> is enough for a quick transfer. Turn on <strong>delete after first view</strong> for anything private.`,
+  `Tap <strong>Save to clipboard</strong>. You get a 6-digit code, a short link and a QR code.`,
+  `On the Windows PC, open this page, select <strong>Receive text</strong> and type the code. Press <strong>Copy</strong> and paste the text where you need it.`,
+];
+const sections = [
+  {
+    h2: 'Why you cannot just copy and paste from an iPhone to Windows',
+    paras: [
+      `On a Mac, Apple's Universal Clipboard lets you copy on an iPhone and paste on the computer. That feature works only between Apple devices that use the same Apple account. A Windows PC is not part of it, and Microsoft's Phone Link supports an iPhone for calls, messages and notifications but does not sync the clipboard.`,
+      `Reports in 2026 say Apple will eventually add a way for an iPhone to share its clipboard with a Windows PC, but not before about late 2027 (see <a href="/guides/will-windows-get-iphone-clipboard-sync/">will Windows get iPhone clipboard sync?</a>). Until then, you need a middle step that both devices can open. That is what this page provides.`,
+    ],
+  },
+  {
+    h2: 'What makes this different from the other ways',
+    paras: [
+      `<strong>No app and no account.</strong> There is nothing to install on the iPhone or the PC, and no Apple ID, Microsoft account or iCloud for Windows is involved. That makes it a good fit for a work, school or library computer you do not control.`,
+      `<strong>Private by design.</strong> You choose the expiry, you can delete the text after it has been opened once, and you can add a password. With a password, the text is encrypted in your browser before it is sent, so only someone who knows the password can read it.`,
+      `<strong>Both directions, any device.</strong> The same steps work from Windows to the iPhone, from Android, or between two PCs. Going from the PC to the iPhone, you can scan the QR code on the screen with the iPhone camera instead of typing the digits.`,
+    ],
+  },
+  {
+    h2: 'Compared with other methods',
+    paras: [
+      `A <strong>message or email to yourself</strong> works, but it leaves the text in your history and needs a sign-in on the PC. <strong>iCloud for Windows</strong> syncs photos, files and passwords, not the text you have just copied. <strong>Notes apps</strong> are best for text you keep and edit. For a one-off link, address, code or paragraph, a short-lived clip is the quickest and leaves nothing behind. The guide to <a href="/guides/iphone-to-windows-without-icloud/">iPhone to Windows without iCloud</a> compares them in detail, and <a href="/guides/what-phone-link-can-do-with-iphone/">what Phone Link can do with an iPhone</a> explains Microsoft's side.`,
+    ],
+  },
+  {
+    h2: 'Make it a one-tap habit',
+    paras: [
+      `In Safari, tap the share button and choose <strong>Add to Home Screen</strong>, so the page opens like an app. Keep the <strong>Receive text</strong> tab open on the PC, and you only need to type the six digits. Because the text can be up to 100,000 characters, the same page also handles long notes, meeting minutes and code, and you can turn what you receive into a <a href="/text-to-word/">Word file</a> or a <a href="/text-to-pdf/">PDF</a> afterwards.`,
+    ],
+  },
+];
+const faq = [
+  { q: 'Can I copy text from an iPhone to a Windows PC?', a: 'Not with the built-in tools. Apple\'s Universal Clipboard is Apple-only and Phone Link does not sync an iPhone\'s clipboard. An online clipboard works today: paste on the iPhone, note the 6-digit code and enter it on the PC.' },
+  { q: 'Do I need iCloud for Windows or any app?', a: 'No. Both devices only need a web browser. There is no sign-in and nothing to install, which also makes it suitable for computers you do not own.' },
+  { q: 'Does it work from Windows to the iPhone too?', a: 'Yes. Paste on the PC, save, then type the code on the iPhone or scan the QR code on the PC screen with the iPhone camera.' },
+  { q: 'Is it safe to send private text?', a: 'Use a short expiry and turn on delete after first view. For sensitive text add a password, which encrypts it in your browser before it is sent. Anyone who has the code can open an unprotected clip until it expires.' },
+  { q: 'How much text can I send?', a: 'Up to 100,000 characters in one clip, which is far more than a link or a few paragraphs. For longer text, split it into two clips.' },
+  { q: 'Will Apple make this unnecessary?', a: 'Reports say Apple plans to support iPhone to Windows clipboard sharing, but not before about late 2027, and details such as which regions get it are unconfirmed. This page works now and also works with Android, Linux and computers that are not yours.' },
+];
+---
+<ToolPage
+  slug="iphone-to-windows-clipboard"
+  title="iPhone to Windows Clipboard: Copy and Paste With a Code"
+  description="Copy text on your iPhone and paste it on a Windows PC with a 6-digit code or QR code. No app, no iCloud, no sign-in. Optional password and auto-delete."
+  h1="iPhone to Windows clipboard"
+  lead="Copy on your iPhone, paste on your Windows PC. Save the text, type a 6-digit code on the PC, and it appears. No app, no iCloud, no account."
+  eyebrow="~/iphone → windows · no app, no sign-in"
+  steps={steps}
+  sections={sections}
+  faq={faq}
+  related={['markdown-to-word', 'text-to-pdf', 'token-calculator']}
+  shareText="Copy text on your iPhone and paste it on a Windows PC with a 6-digit code. No app needed."
+>
+  <Tool lang="en" />
+</ToolPage>

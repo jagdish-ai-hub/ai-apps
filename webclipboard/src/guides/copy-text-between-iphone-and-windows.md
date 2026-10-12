@@ -5,7 +5,7 @@ h1: "How to copy text between an iPhone and a Windows PC"
 lead: "If you have used copy on an iPhone and paste on a Mac, you know how smooth it can be. With a Windows PC, that feature is not available, but there are several simple workarounds."
 category: "Phone and PC"
 updated: "2026-10-08"
-related: ["send-text-from-phone-to-pc", "share-code-snippets-online", "online-notes-transfer"]
+related: ["send-a-link-from-iphone-to-pc", "iphone-to-windows-without-icloud", "will-windows-get-iphone-clipboard-sync"]
 faq:
   - q: "Does Universal Clipboard work between iPhone and Windows?"
     a: "No. Universal Clipboard is an Apple feature that works between Apple devices signed in to the same Apple ID. It does not connect to Windows PCs."
