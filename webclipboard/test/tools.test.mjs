@@ -229,3 +229,22 @@ for (const l of tokenLangs) {
     assert.ok(html.includes('class="tk a"'), 'token chips rendered');
   });
 }
+
+// Regression: a shared module once got merged into the clipboard's chunk, so QR/converter pages ran the clipboard script and threw.
+test('pages without the clipboard tool never load the clipboard script', { skip: !existsSync(new URL('index.html', new URL('../dist/', import.meta.url))) && 'run `npm run build` first' }, () => {
+  const dist = new URL('../dist/', import.meta.url);
+  const seen = new Map();
+  const reads = (src) => {
+    if (seen.has(src)) return seen.get(src);
+    seen.set(src, false);
+    const code = readFileSync(new URL('.' + src, dist), 'utf8');
+    let hit = code.includes('tool-config');
+    for (const m of code.matchAll(/(?:from|import)\s*["']\.\/([^"']+\.js)["']/g)) hit = reads('/_astro/' + m[1]) || hit;
+    seen.set(src, hit);
+    return hit;
+  };
+  for (const p of ['qr-code-generator', 'url-to-qr-code', 'wifi-qr-code-generator', 'ja/qr-code-generator', 'strip-markdown', 'rag-text-chunker', 'text-to-pdf', 'markdown-to-word', 'word-counter', 'case-converter']) {
+    const html = readFileSync(new URL(`${p}/index.html`, dist), 'utf8');
+    for (const m of html.matchAll(/(?:src|href)="(\/_astro\/[^"]+\.js)"/g)) assert.equal(reads(m[1]), false, `${p} loads ${m[1]}, which reaches the clipboard script`);
+  }
+});

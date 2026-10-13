@@ -1,7 +1,10 @@
 // The code editor on /code-share/: a plain textarea with a syntax-highlighted copy drawn behind it (so typing, selection, undo,
 // IME input and mobile keyboards all stay native), plus Tab and auto-indent. Highlighting is loaded on first use.
-import { $ } from './shared';
 import { languageById } from '../lib/codeclip.js';
+
+// Deliberately not importing ./shared: this file is loaded from app.ts, and sharing a module between the clipboard script and the
+// other tool scripts lets the bundler pull the clipboard code into pages that have no clipboard.
+const $ = <T extends HTMLElement = HTMLElement>(id: string) => document.getElementById(id) as T;
 
 export function initEditor() {
   const ta = $<HTMLTextAreaElement>('text');

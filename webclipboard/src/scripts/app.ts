@@ -3,7 +3,8 @@
 
 type Cfg = { maxChars: number; turnstileSiteKey: string; domain: string; defaultExpiry: string; ui: Record<string, string> };
 
-import { decodeCode, encodeCode, languageById } from '../lib/codeclip.js';
+// codeclip.js is imported on demand (see showOpened and the send handler): a static import would put it inside this entry's chunk,
+// and then every other tool script that shares a module with it would drag the whole clipboard script into its page.
 
 const $ = <T extends HTMLElement = HTMLElement>(id: string) => document.getElementById(id) as T;
 const cfg: Cfg = JSON.parse($('tool-config').textContent || '{}');
@@ -151,7 +152,7 @@ $('send-form').addEventListener('submit', async (ev) => {
     // Code clips carry an invisible marker with the language, so the receiver can show them highlighted.
     let lang = codeMode ? $<HTMLSelectElement>('code-lang').value : 'plain';
     if (lang === 'auto') lang = (await import('../lib/highlight')).detect(value) ?? 'plain';
-    const payload = encodeCode(value, lang);
+    const payload = codeMode ? (await import('../lib/codeclip.js')).encodeCode(value, lang) : value;
     if (payload.length > cfg.maxChars) { sendMsg.textContent = t('errTooLong'); return; }
     await loadTurnstile();
     if (cfg.turnstileSiteKey && !tsToken) { sendMsg.textContent = t('errGeneric'); return; }
@@ -252,12 +253,15 @@ async function openClip(code: string) {
   }
 }
 
-function showOpened(content: string, meta: { burned?: boolean; expiresAt?: number }) {
+let codeLib: typeof import('../lib/codeclip.js') | undefined;
+async function showOpened(content: string, meta: { burned?: boolean; expiresAt?: number }) {
+  if (content.charCodeAt(0) === 0x2063) codeLib = await import('../lib/codeclip.js');
   $('receive-box').hidden = true;
   $('pw-form').hidden = true;
   $('opened').hidden = false;
   // A code clip starts with an invisible marker naming the language: show it highlighted, without the marker.
-  const code = decodeCode(content);
+  // Plain clips never load the code helpers: the marker starts with U+2063, so checking that one character is enough.
+  const code = content.charCodeAt(0) === 0x2063 ? codeLib!.decodeCode(content) : null;
   const shown = code ? code.text : content;
   openedLang = code ? code.lang : '';
   const pre = $('opened-text');
@@ -269,7 +273,7 @@ function showOpened(content: string, meta: { burned?: boolean; expiresAt?: numbe
   const dlCode = $('dl-code');
   dlCode.hidden = !code;
   if (code) {
-    const l = languageById(code.lang)!;
+    const l = codeLib!.languageById(code.lang)!;
     badge.textContent = l.label;
     dlCode.textContent = `.${l.ext} (${l.label})`;
     // Highlighting is loaded only when a code clip is opened. highlight.js escapes the code, and textContent stays the raw code.
@@ -311,7 +315,7 @@ dlMenu.addEventListener('click', async (e) => {
   // The Word and PDF code is only loaded when someone picks those formats.
   const out = await import('../lib/export.js');
   if (fmt === 'code' && openedLang) {
-    out.saveBlob(new Blob([text], { type: 'text/plain;charset=utf-8' }), `${name}.${languageById(openedLang)!.ext}`);
+    out.saveBlob(new Blob([text], { type: 'text/plain;charset=utf-8' }), `${name}.${(await import('../lib/codeclip.js')).languageById(openedLang)!.ext}`);
   } else if (fmt === 'txt' || fmt === 'md') {
     out.saveBlob(new Blob([text], { type: fmt === 'md' ? 'text/markdown;charset=utf-8' : 'text/plain;charset=utf-8' }), `${name}.${fmt}`);
   } else if (fmt === 'docx') {
