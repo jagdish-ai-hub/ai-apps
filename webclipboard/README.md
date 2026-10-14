@@ -1,5 +1,7 @@
 # WebClipboard.online
 
+> What is built, what is verified and what is left: see [STATUS.md](STATUS.md).
+
 A free, multilingual online clipboard: paste text on one device, get a **6-digit code + short link + QR code**, open it on another device. No sign-up. Built to run entirely on the **Cloudflare free plan** and to rank in Google across Europe, Latin America and Asia-Pacific.
 
 ## Stack
