@@ -186,7 +186,7 @@ const guides = ['tokens-in-different-languages', 'how-tokenizers-work', 'how-to-
       <div class="cards">
         {tokenLangs.map((l) => {
           const row = rows.find((x) => x.code === l.code)!;
-          return <a class="card" href={`/tokens-in/${l.slug}/`}><strong>Tokens in {l.name}</strong><span>{fmtRatio(row.ratioO)} English on o200k_base · {fmtRatio(row.ratioC)} on cl100k_base</span></a>;
+          return <a class="card" href={`/tokens-in/${l.slug}/`}><strong>Tokens in {l.name}</strong>{' '}<span>{fmtRatio(row.ratioO)} English on o200k_base · {fmtRatio(row.ratioC)} on cl100k_base</span></a>;
         })}
       </div>
     </section>
@@ -203,10 +203,10 @@ const guides = ['tokens-in-different-languages', 'how-tokenizers-work', 'how-to-
       <span class="eyebrow">Related</span>
       <h2 id="more">Keep reading</h2>
       <div class="cards">
-        <a class="card" href="/o200k-base-token-counter/"><span class="eyebrow">Tool</span><strong>o200k_base token counter</strong><span>Count tokens with the encoding used by GPT-4o and newer models.</span></a>
-        <a class="card" href="/cl100k-base-tokenizer/"><span class="eyebrow">Tool</span><strong>cl100k_base tokenizer online</strong><span>Count tokens with the encoding used by GPT-4 and GPT-3.5.</span></a>
+        <a class="card" href="/o200k-base-token-counter/"><span class="eyebrow">Tool</span>{' '}<strong>o200k_base token counter</strong>{' '}<span>Count tokens with the encoding used by GPT-4o and newer models.</span></a>
+        <a class="card" href="/cl100k-base-tokenizer/"><span class="eyebrow">Tool</span>{' '}<strong>cl100k_base tokenizer online</strong>{' '}<span>Count tokens with the encoding used by GPT-4 and GPT-3.5.</span></a>
         {guides.map((g) => (
-          <a class="card" href={guidePath(g.slug)}><span class="eyebrow">{g.meta.category}</span><strong>{g.meta.h1}</strong><span>{g.meta.description}</span></a>
+          <a class="card" href={guidePath(g.slug)}><span class="eyebrow">{g.meta.category}</span>{' '}<strong>{g.meta.h1}</strong>{' '}<span>{g.meta.description}</span></a>
         ))}
       </div>
     </section>

@@ -112,7 +112,7 @@ const config = { maxChars: site.maxChars, turnstileSiteKey: site.turnstileSiteKe
     </div>
 
     <form class="pw" id="pw-form" hidden>
-      <p class="hint" style="margin-top:0">{m.passwordPrompt}</p>
+      <p class="hint" id="pw-prompt" style="margin-top:0"></p>
       <div class="receive-form">
         <input type="password" id="pw-input" data-clr-mask="true" autocomplete="off" style="letter-spacing:normal;font-size:18px" aria-label={m.passwordLabel} />
         <button class="btn" type="submit">{m.unlock}</button>
@@ -138,7 +138,7 @@ const config = { maxChars: site.maxChars, turnstileSiteKey: site.turnstileSiteKe
         <button class="btn ghost small" id="report" type="button">{m.report}</button>
         <button class="btn ghost small" id="another" type="button">{m.receiveTitle}</button>
       </div>
-      <div class="notice" id="burned" hidden>{m.burnedNotice}</div>
+      <div class="notice" id="burned" hidden></div>
       <p class="hint" id="opened-meta"></p>
       <p class="share-nudge"><span>{m.shareNudge}</span><button class="btn ghost small" type="button" data-share-open>{m.shareTitle}</button></p>
     </div>

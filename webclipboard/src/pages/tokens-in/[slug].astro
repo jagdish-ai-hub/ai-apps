@@ -153,7 +153,7 @@ const siblings = tokenLangs.filter((l) => l.slug !== slug);
       <span class="eyebrow">More</span>
       <h2 id="more">Other languages and guides</h2>
       <div class="cards">
-        {guides.map((g) => <a class="card" href={guidePath(g.slug)}><span class="eyebrow">{g.meta.category}</span><strong>{g.meta.h1}</strong></a>)}
+        {guides.map((g) => <a class="card" href={guidePath(g.slug)}><span class="eyebrow">{g.meta.category}</span>{' '}<strong>{g.meta.h1}</strong></a>)}
       </div>
       <p class="prose" style="margin-top:16px">Other languages: {siblings.map((l, i) => <><a href={`/tokens-in/${l.slug}/`}>{l.name}</a>{i < siblings.length - 1 ? ' · ' : ''}</>)}</p>
     </section>

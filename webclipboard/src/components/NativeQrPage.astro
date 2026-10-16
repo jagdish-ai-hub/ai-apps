@@ -68,8 +68,8 @@ const jsonld = [
       <span class="eyebrow">{ui.relatedTools}</span>
       <h2 id="more">{ui.relatedTools}</h2>
       <div class="cards">
-        {others.map((k) => <a class="card" href={qrPath(k, lang)}><strong>{ui.names[k]}</strong><span>{c.pages[k].description}</span></a>)}
-        {guides.map((g) => <a class="card" href={guidePath(g.slug, lang)}><span class="eyebrow">{g.meta.category}</span><strong>{g.meta.h1}</strong></a>)}
+        {others.map((k) => <a class="card" href={qrPath(k, lang)}><strong>{ui.names[k]}</strong>{' '}<span>{c.pages[k].description}</span></a>)}
+        {guides.map((g) => <a class="card" href={guidePath(g.slug, lang)}><span class="eyebrow">{g.meta.category}</span>{' '}<strong>{g.meta.h1}</strong></a>)}
       </div>
     </section>
     <Ad slot="beforeFooter" lang={lang} />

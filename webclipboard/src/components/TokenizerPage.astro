@@ -173,11 +173,11 @@ const guides = ['how-tokenizers-work', 'how-many-tokens-in-a-word-or-page', 'how
       <span class="eyebrow">08</span>
       <h2 id="more">More token tools and guides</h2>
       <div class="cards">
-        <a class="card" href={other.path}><span class="eyebrow">Tool</span><strong>{other.h1}</strong><span>Compare the same text with the {other.id} encoding.</span></a>
-        <a class="card" href="/token-cost-by-language/"><span class="eyebrow">Data</span><strong>Token cost by language</strong><span>30 languages, two tokenizers, with CSV and JSON downloads.</span></a>
-        <a class="card" href="/token-calculator/"><span class="eyebrow">Tool</span><strong>Token Calculator</strong><span>All tokenizers, pricing and context-window fit in one page.</span></a>
+        <a class="card" href={other.path}><span class="eyebrow">Tool</span>{' '}<strong>{other.h1}</strong>{' '}<span>Compare the same text with the {other.id} encoding.</span></a>
+        <a class="card" href="/token-cost-by-language/"><span class="eyebrow">Data</span>{' '}<strong>Token cost by language</strong>{' '}<span>30 languages, two tokenizers, with CSV and JSON downloads.</span></a>
+        <a class="card" href="/token-calculator/"><span class="eyebrow">Tool</span>{' '}<strong>Token Calculator</strong>{' '}<span>All tokenizers, pricing and context-window fit in one page.</span></a>
         {guides.map((g) => (
-          <a class="card" href={guidePath(g.slug)}><span class="eyebrow">{g.meta.category}</span><strong>{g.meta.h1}</strong><span>{g.meta.description}</span></a>
+          <a class="card" href={guidePath(g.slug)}><span class="eyebrow">{g.meta.category}</span>{' '}<strong>{g.meta.h1}</strong>{' '}<span>{g.meta.description}</span></a>
         ))}
       </div>
     </section>

@@ -33,7 +33,7 @@ const jsonld = [
         <span class="eyebrow">{c}</span>
         <div class="cards">
           {guides.filter((g) => g.meta.category === c).map((g) => (
-            <a class="card" href={guidePath(g.slug, lang)}><strong>{g.meta.h1}</strong><span>{g.meta.description}</span></a>
+            <a class="card" href={guidePath(g.slug, lang)}><strong>{g.meta.h1}</strong>{' '}<span>{g.meta.description}</span></a>
           ))}
         </div>
       </section>

@@ -94,7 +94,7 @@ const jsonld = [
         <h2 id="more-tools">Related tools</h2>
         <div class="cards">
           {relatedTools.map((t) => (
-            <a class="card" href={toolPath(t.slug)}><strong>{t.name}</strong><span>{t.short}</span></a>
+            <a class="card" href={toolPath(t.slug)}><strong>{t.name}</strong>{' '}<span>{t.short}</span></a>
           ))}
         </div>
       </section>

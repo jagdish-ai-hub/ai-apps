@@ -30,7 +30,7 @@ const jsonld = [
         <p class="prose" style="margin:6px 0 0">{toolGroups[g].blurb}</p>
         <div class="cards">
           {tools.filter((t) => t.group === g).map((t) => (
-            <a class="card" href={toolPath(t.slug)}><strong>{t.name}</strong><span>{t.short}</span></a>
+            <a class="card" href={toolPath(t.slug)}><strong>{t.name}</strong>{' '}<span>{t.short}</span></a>
           ))}
         </div>
       </section>

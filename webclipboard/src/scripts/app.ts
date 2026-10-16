@@ -9,6 +9,12 @@ type Cfg = { maxChars: number; turnstileSiteKey: string; domain: string; default
 const $ = <T extends HTMLElement = HTMLElement>(id: string) => document.getElementById(id) as T;
 const cfg: Cfg = JSON.parse($('tool-config').textContent || '{}');
 const t = (k: string) => cfg.ui[k] || k;
+// Notices for the receive states get their text only when shown, so search engines don't read "deleted" or "password" as page content.
+function showBurned(on: boolean) {
+  const el = $('burned');
+  el.textContent = on ? t('burnedNotice') : '';
+  el.hidden = !on;
+}
 
 // ---------------------------------------------------------------- helpers
 
@@ -239,8 +245,9 @@ async function openClip(code: string) {
     if (data.encrypted) {
       pending = { code, envelope: data.content };
       $('receive-box').hidden = true;
+      $('pw-prompt').textContent = t('passwordPrompt');
       $('pw-form').hidden = false;
-      $('burned').hidden = !data.burned;
+      showBurned(data.burned);
       $<HTMLInputElement>('pw-input').focus();
       return;
     }
@@ -279,7 +286,7 @@ async function showOpened(content: string, meta: { burned?: boolean; expiresAt?:
     // Highlighting is loaded only when a code clip is opened. highlight.js escapes the code, and textContent stays the raw code.
     void import('../lib/highlight').then(({ highlight }) => { if (pre.classList.contains('hl') && pre.textContent === shown) pre.innerHTML = highlight(shown, code.lang); });
   }
-  $('burned').hidden = !meta.burned;
+  showBurned(meta.burned);
   $('opened-meta').textContent = meta.expiresAt && !meta.burned ? `${t('expiresAt')}: ${new Date(meta.expiresAt).toLocaleString()}` : '';
 }
 

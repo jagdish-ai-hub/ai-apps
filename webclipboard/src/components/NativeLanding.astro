@@ -67,7 +67,7 @@ const jsonld = [
         <span class="eyebrow">{L.moreEyebrow}</span>
         <h2 id="more">{L.more}</h2>
         <div class="cards">
-          {related.map((g) => <a class="card" href={guidePath(g.slug, lang)}><span class="eyebrow">{g.meta.category}</span><strong>{g.meta.h1}</strong><span>{g.meta.description}</span></a>)}
+          {related.map((g) => <a class="card" href={guidePath(g.slug, lang)}><span class="eyebrow">{g.meta.category}</span>{' '}<strong>{g.meta.h1}</strong>{' '}<span>{g.meta.description}</span></a>)}
         </div>
       </section>
     )}
