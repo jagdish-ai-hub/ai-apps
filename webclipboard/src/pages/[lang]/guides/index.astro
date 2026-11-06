@@ -1,8 +1,8 @@
 ---
 import Base from '../../../layouts/Base.astro';
-import { guidesFor, guidePath, guidesHubPath, nativeGuideLangs } from '../../../lib/guides';
+import { guidesFor, guidePath, guidesHubPath, nativeGuideLangs, hubAlternates } from '../../../lib/guides';
 import { guideLabels } from '../../../lib/guidelangs.js';
-import { absolute, localePath } from '../../../lib/i18n';
+import { absolute, localePath, langByCode } from '../../../lib/i18n';
 
 export function getStaticPaths() {
   return nativeGuideLangs.map((lang) => ({ params: { lang }, props: { lang } }));
@@ -18,7 +18,7 @@ const jsonld = [
   ] },
 ];
 ---
-<Base lang={lang} title={L.hubMetaTitle} description={L.hubMetaDesc} page={guidesHubPath(lang)} jsonld={jsonld} section="guides">
+<Base lang={lang} title={L.hubMetaTitle} description={L.hubMetaDesc} page={guidesHubPath(lang)} alternates={hubAlternates(absolute, (l) => langByCode(l).hreflang)} jsonld={jsonld} section="guides">
   <div class="hero guide-hero">
     <div class="wrap">
       <nav class="crumbs" aria-label="Breadcrumb"><a href={localePath(lang)}>{L.home}</a> / {L.hubTitle}</nav>

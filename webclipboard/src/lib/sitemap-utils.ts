@@ -2,7 +2,7 @@
 // Every URL comes from the same lists that build the pages, so a sitemap can never list a page that does not exist.
 // A URL belongs to the language of its first path segment (/ja/... -> ja); everything else (tools, token pages, legal) is English.
 import { languages, localePath, absolute, langByCode } from './i18n';
-import { guidesFor, guidePath, guidesHubPath, guideAlternates } from './guides';
+import { guidesFor, guidePath, guidesHubPath, guideAlternates, hubAlternates } from './guides';
 import { guideLangs } from './guidelangs.js';
 import { tokenLangs } from './tokenlangs';
 import { qrKinds, qrLangs, qrPath, qrAlternates } from './qrpages';
@@ -34,7 +34,7 @@ function entries(): Entry[] {
     ...qrKinds.flatMap((k) => qrLangs.map((l) => e(qrPath(k, l), 'monthly', '0.8', qrAlt(k)))),
     ...landingLangs.map((l) => e(landingPath(l), 'monthly', '0.8', landingAlt)),
     ...guideLangs.flatMap((l) => [
-      e(guidesHubPath(l), 'weekly', '0.7'),
+      e(guidesHubPath(l), 'weekly', '0.7', hubAlternates(absolute, hreflang)),
       ...guidesFor(l).map((g) => e(guidePath(g.slug, l), 'monthly', '0.8', guideAlternates(g.slug, absolute, hreflang), g.meta.updated)),
     ]),
     ...legal.map((p) => e(p, 'yearly', '0.3')),

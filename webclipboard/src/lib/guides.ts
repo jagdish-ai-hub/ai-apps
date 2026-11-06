@@ -45,6 +45,15 @@ export const guidesHubPath = (lang = 'en') => (lang === 'en' ? '/guides/' : `/${
 export const findGuide = (slug: string, lang = 'en') => guidesFor(lang).find((g) => g.slug === slug);
 
 /** Pages that exist in several languages share a slug. Returns hreflang alternates for a guide, or [] if it has no counterpart. */
+/** hreflang alternates for the guides hub, which exists in every guide language. */
+export function hubAlternates(absolute: (p: string) => string, hreflangOf: (lang: string) => string) {
+  const langs = ['en', ...Object.keys(native)];
+  return [
+    ...langs.map((l) => ({ hreflang: hreflangOf(l), href: absolute(guidesHubPath(l)) })),
+    { hreflang: 'x-default', href: absolute(guidesHubPath('en')) },
+  ];
+}
+
 export function guideAlternates(slug: string, absolute: (p: string) => string, hreflangOf: (lang: string) => string) {
   const langs = Object.keys(native).concat('en').filter((l) => findGuide(slug, l));
   if (langs.length < 2) return [];

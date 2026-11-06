@@ -73,3 +73,22 @@ test('no orphan pages: every sitemap URL is linked with <a href> from another pa
   const orphans = sitemapUrls().map((u) => new URL(u).pathname).filter((p) => p !== '/' && !linked.has(p));
   assert.deepEqual(orphans, [], 'pages only reachable through the sitemap');
 });
+
+test('hreflang on every page: self link, x-default, and every alternate links back', { skip }, () => {
+  const pages = new Map();
+  for (const p of sitemapUrls().map((u) => new URL(u).pathname)) {
+    const h = read(`${p.slice(1)}index.html`);
+    const alts = [...h.matchAll(/<link rel="alternate" hreflang="([^"]+)" href="https:\/\/webclipboard\.online([^"]*)"/g)].map((m) => [m[1], m[2]]);
+    pages.set(p, alts);
+  }
+  const problems = [];
+  for (const [p, alts] of pages) {
+    if (!alts.length) continue;
+    const targets = alts.map(([, t]) => t);
+    if (!targets.includes(p)) problems.push(`${p}: no self link`);
+    if (!alts.some(([l]) => l === 'x-default')) problems.push(`${p}: no x-default`);
+    for (const t of targets) if (!pages.get(t)?.some(([, b]) => b === p)) problems.push(`${p} -> ${t}: no return link`);
+  }
+  assert.deepEqual(problems, []);
+  for (const hub of ['/guides/', '/ja/guides/', '/de/guides/']) assert.ok(pages.get(hub).length >= 6, `${hub} has hreflang`);
+});
