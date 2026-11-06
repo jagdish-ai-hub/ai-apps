@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 // Tell IndexNow search engines (Bing, Yandex, Naver, Seznam and others) that pages are new or changed.
 //
-//   node scripts/indexnow.mjs                 submit every URL in dist/sitemap.xml
+//   node scripts/indexnow.mjs                 submit every URL in dist/sitemap.xml (index) and its language sitemaps
 //   node scripts/indexnow.mjs URL [URL ...]   submit only these URLs
 //   --dry-run   print what would be sent, send nothing
 //   --soft      never exit non-zero (safe to chain after `wrangler deploy`)
@@ -9,7 +9,7 @@
 //
 // Submit when you add or change pages, not on every deploy: repeated bulk submissions of unchanged URLs can be flagged as spam.
 import { readFileSync, existsSync } from 'node:fs';
-import { buildPayloads, parseSitemap, keyLocation, describeStatus, isSuccess, ENDPOINT } from '../src/lib/indexnow.js';
+import { buildPayloads, sitemapPageUrls, keyLocation, describeStatus, isSuccess, ENDPOINT } from '../src/lib/indexnow.js';
 
 const args = process.argv.slice(2);
 const flags = new Set(args.filter((a) => a.startsWith('--')));
@@ -25,7 +25,8 @@ let urls = explicit;
 if (urls.length === 0) {
   const sitemap = new URL('../dist/sitemap.xml', import.meta.url);
   if (!existsSync(sitemap)) fail('dist/sitemap.xml not found. Run `npm run build` first, or pass URLs explicitly.');
-  urls = parseSitemap(readFileSync(sitemap, 'utf8'));
+  // dist/sitemap.xml is an index; each child sitemap is read from dist/ by its file name.
+  urls = sitemapPageUrls(readFileSync(sitemap, 'utf8'), (u) => readFileSync(new URL(`../dist/${new URL(u).pathname.slice(1)}`, import.meta.url), 'utf8'));
 }
 
 let plan;

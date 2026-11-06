@@ -1,5 +1,6 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
+import { sitemapXml } from './sitemap-read.mjs';
 import { readFileSync, readdirSync, existsSync } from 'node:fs';
 
 const dist = new URL('../dist/', import.meta.url);
@@ -70,7 +71,7 @@ for (const l of native) {
         for (const x of langs) assert.ok(h.includes(`<link rel="alternate" hreflang="${x === 'zh' ? 'zh' : x}" href="https://webclipboard.online/${x === 'en' ? '' : `${x}/`}${slug}/">`), `${x} alternate`);
         assert.ok(h.includes(`hreflang="x-default" href="https://webclipboard.online/${slug}/"`));
       }
-      assert.ok(read('sitemap.xml').includes(`<loc>https://webclipboard.online/${l}/${slug}/</loc>`));
+      assert.ok(sitemapXml().includes(`<loc>https://webclipboard.online/${l}/${slug}/</loc>`));
       const types = ld(html).map((x) => x['@type']);
       for (const k of ['WebApplication', 'BreadcrumbList', 'HowTo', 'FAQPage']) assert.ok(types.includes(k), k);
       assert.equal(ld(html).find((x) => x['@type'] === 'WebApplication').inLanguage, l === 'pt' ? 'pt-BR' : l);
@@ -107,6 +108,6 @@ test('/code-share/: editor, language list, highlighting assets and the highlight
   assert.ok(!home.includes('id="code-editor"') && !home.includes('id="code-lang"'));
   assert.ok(home.includes('id="opened-lang"') && home.includes('id="dl-code"'));
   assert.ok(read('tools/index.html').includes('href="/code-share/"'));
-  assert.ok(read('sitemap.xml').includes('<loc>https://webclipboard.online/code-share/</loc>'));
+  assert.ok(sitemapXml().includes('<loc>https://webclipboard.online/code-share/</loc>'));
   assert.ok(read('guides/how-to-share-code-online-with-syntax-highlighting/index.html').includes('href="/code-share/"'));
 });

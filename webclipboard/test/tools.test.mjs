@@ -1,5 +1,6 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
+import { sitemapXml } from './sitemap-read.mjs';
 import { readFileSync, readdirSync, existsSync } from 'node:fs';
 import { load } from 'js-yaml';
 
@@ -50,7 +51,7 @@ for (const t of tools.filter((x) => x.guide)) {
     assert.ok(read(`guides/${t.guide}/index.html`).includes(`href="/${t.slug}/"`), 'guide links to the tool');
     // listed in the hub and the sitemap, and in the main navigation
     assert.ok(read('tools/index.html').includes(`href="/${t.slug}/"`), 'listed on /tools/');
-    assert.ok(read('sitemap.xml').includes(`<loc>https://webclipboard.online/${t.slug}/</loc>`), 'in sitemap');
+    assert.ok(sitemapXml().includes(`<loc>https://webclipboard.online/${t.slug}/</loc>`), 'in sitemap');
     assert.ok(html.includes('href="/tools/"'), 'nav has Tools');
   });
 }
@@ -139,7 +140,7 @@ for (const [lang, cfg] of Object.entries(LANGS)) {
   });
 
   test(`${lang}: built pages, hreflang pairs (both directions), sitemap, nav`, { skip }, () => {
-    const sitemap = read('sitemap.xml');
+    const sitemap = sitemapXml();
     for (const f of guideFiles(lang)) {
       const slug = f.replace(/\.md$/, '');
       const page = read(`${lang}/guides/${slug}/index.html`);
@@ -224,7 +225,7 @@ for (const l of tokenLangs) {
     assert.ok(t.includes(`${Number(get('ratio_vs_english_o200k_base')).toFixed(2)}×`), 'o200k ratio matches CSV');
     assert.ok(t.includes(`${Number(get('ratio_vs_english_cl100k_base')).toFixed(2)}×`), 'cl100k ratio matches CSV');
     assert.ok(t.includes(`${get('tokens_o200k_base')} tokens`) && t.includes(`${get('tokens_cl100k_base')} tokens`), 'token counts match CSV');
-    assert.ok(read('sitemap.xml').includes(`<loc>https://webclipboard.online/tokens-in/${l.slug}/</loc>`), 'in sitemap');
+    assert.ok(sitemapXml().includes(`<loc>https://webclipboard.online/tokens-in/${l.slug}/</loc>`), 'in sitemap');
     assert.ok(read('token-cost-by-language/index.html').includes(`href="/tokens-in/${l.slug}/"`), 'linked from the data page');
     assert.ok(html.includes('class="tk a"'), 'token chips rendered');
   });

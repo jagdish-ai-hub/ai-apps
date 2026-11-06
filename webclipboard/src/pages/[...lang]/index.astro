@@ -6,6 +6,8 @@ import { languages, messages, fill, site, absolute, localePath } from '../../lib
 import { guidesFor, guidePath, guidesHubPath } from '../../lib/guides';
 import { guideLabels } from '../../lib/guidelangs.js';
 import { tools, toolPath } from '../../lib/tools';
+import { landings, landingPath } from '../../lib/landings';
+import { qrContent, qrKinds, qrPath } from '../../lib/qrpages';
 
 export function getStaticPaths() {
   // English lives at "/", every other language at "/<code>/".
@@ -17,6 +19,12 @@ const guides = guidesFor(code);
 const L = guideLabels[code];
 const faq = ([...(m.faq as any[]), ...((m.faqExtra as any[]) ?? [])] as { q: string; a: string }[]).map((f) => ({ q: fill(f.q), a: fill(f.a) }));
 const url = absolute(localePath(code));
+// Languages with their own tool pages link to them from their home page, so search engines can reach them by links, not only via the sitemap.
+const qr = code !== 'en' ? qrContent[code] : undefined;
+const nativeTools = [
+  ...(code !== 'en' && landings[code] ? [{ href: landingPath(code), name: landings[code].h1, desc: landings[code].description }] : []),
+  ...(qr ? qrKinds.map((k) => ({ href: qrPath(k, code), name: qr.ui.names[k] as string, desc: qr.pages[k].description })) : []),
+];
 
 const jsonld = [
   {
@@ -79,6 +87,16 @@ const jsonld = [
           ))}
         </div>
         <p class="prose" style="margin-top:14px"><a href="/tools/">See all tools →</a></p>
+      </section>
+    )}
+
+    {nativeTools.length > 0 && qr && (
+      <section class="block" aria-labelledby="tools">
+        <span class="eyebrow">{qr.ui.relatedTools}</span>
+        <h2 id="tools">{qr.ui.relatedTools}</h2>
+        <div class="cards">
+          {nativeTools.map((t) => <a class="card" href={t.href}><strong>{t.name}</strong>{' '}<span>{t.desc}</span></a>)}
+        </div>
       </section>
     )}
 

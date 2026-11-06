@@ -1,5 +1,6 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
+import { sitemapUrls } from './sitemap-read.mjs';
 import { readdirSync, readFileSync, existsSync } from 'node:fs';
 import { load } from 'js-yaml';
 
@@ -70,7 +71,6 @@ test('built site: no broken internal links, sitemap URLs all exist', { skip: !ex
     }
   }
   assert.deepEqual([...new Set(broken)], [], 'broken internal links');
-  const sitemap = readFileSync(new URL('sitemap.xml', dist), 'utf8');
-  const missing = [...sitemap.matchAll(/<loc>https:\/\/[^/]+(\/[^<]*)<\/loc>/g)].map((m) => m[1]).filter((p) => !resolves(p));
+  const missing = sitemapUrls().map((u) => new URL(u).pathname).filter((p) => !resolves(p));
   assert.deepEqual(missing, [], 'sitemap URLs without a built page');
 });

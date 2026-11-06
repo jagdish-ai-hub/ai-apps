@@ -14,6 +14,12 @@ export function parseSitemap(xml) {
   return [...xml.matchAll(/<loc>\s*([^<\s]+)\s*<\/loc>/g)].map((m) => m[1].replaceAll('&amp;', '&'));
 }
 
+/** Page URLs from a sitemap or a sitemap index. `load(url)` returns the XML of a child sitemap listed in the index. */
+export function sitemapPageUrls(xml, load) {
+  if (!/<sitemapindex[\s>]/.test(xml)) return parseSitemap(xml);
+  return parseSitemap(xml).flatMap((child) => parseSitemap(load(child)));
+}
+
 /**
  * Build one or more request bodies. URLs outside https://<host>/ are dropped (IndexNow rejects them with 422),
  * duplicates are removed, and long lists are split into chunks of at most `max` URLs.

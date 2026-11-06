@@ -1,5 +1,6 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
+import { sitemapXml } from './sitemap-read.mjs';
 import { readFileSync, existsSync } from 'node:fs';
 
 const dist = new URL('../dist/', import.meta.url);
@@ -67,7 +68,7 @@ test('prose claims on the data page are consistent with the table it sits above'
 });
 
 test('new pages are in the sitemap and linked from the calculator page', { skip }, () => {
-  const sitemap = read('sitemap.xml');
+  const sitemap = sitemapXml();
   const calc = read('token-calculator/index.html');
   for (const p of PAGES) {
     assert.ok(sitemap.includes(`<loc>${p.url}</loc>`), `${p.url} in sitemap`);

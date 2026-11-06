@@ -5,6 +5,7 @@ import Tool from './Tool.astro';
 import Ad from './Ad.astro';
 import { landings, landingPath, landingAlternates } from '../lib/landings';
 import { findGuide, guidePath } from '../lib/guides';
+import { qrContent, qrKinds, qrPath } from '../lib/qrpages';
 import { guideLabels } from '../lib/guidelangs.js';
 import { absolute, localePath, site, langByCode } from '../lib/i18n';
 
@@ -61,6 +62,16 @@ const jsonld = [
       <h2 id="faq">{L.faq}</h2>
       {c.faq.map((f) => <details><summary>{f.q}</summary><p>{f.a}</p></details>)}
     </section>
+
+    {qrContent[lang] && (
+      <section class="block" aria-labelledby="tools">
+        <span class="eyebrow">{qrContent[lang].ui.relatedTools}</span>
+        <h2 id="tools">{qrContent[lang].ui.relatedTools}</h2>
+        <div class="cards">
+          {qrKinds.map((k) => <a class="card" href={qrPath(k, lang)}><strong>{qrContent[lang].ui.names[k]}</strong>{' '}<span>{qrContent[lang].pages[k].description}</span></a>)}
+        </div>
+      </section>
+    )}
 
     {related.length > 0 && (
       <section class="block" aria-labelledby="more">

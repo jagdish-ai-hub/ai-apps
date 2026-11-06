@@ -1,5 +1,6 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
+import { sitemapUrls } from './sitemap-read.mjs';
 import { readFileSync, existsSync, readdirSync } from 'node:fs';
 import { isValidKey, buildPayloads, parseSitemap, keyLocation, describeStatus, isSuccess } from '../src/lib/indexnow.js';
 
@@ -52,7 +53,7 @@ test('status codes are described and success is 200 or 202 only', () => {
 const dist = new URL('../dist/', import.meta.url);
 test('built site: key file is served, sitemap URLs are all on the configured host, key file is not in the sitemap', { skip: !existsSync(new URL('sitemap.xml', dist)) && 'run `npm run build` first' }, () => {
   assert.equal(readFileSync(new URL(`${cfg.indexNowKey}.txt`, dist), 'utf8'), cfg.indexNowKey);
-  const urls = parseSitemap(readFileSync(new URL('sitemap.xml', dist), 'utf8'));
+  const urls = sitemapUrls();
   assert.ok(urls.length >= 50, `${urls.length} urls`);
   const { kept, dropped } = buildPayloads({ host: cfg.domain, key: cfg.indexNowKey, urls });
   assert.deepEqual(dropped, [], 'every sitemap URL belongs to the host');
