@@ -1,6 +1,6 @@
 # WebClipboard.online: project status
 
-Last updated: 2026-10-14. Live at https://webclipboard.online (deployed from `main` by Cloudflare Workers Builds).
+Last updated: 2026-11-06. Live at https://webclipboard.online (deployed from `main` by Cloudflare Workers Builds).
 For setup, deploy steps and technical detail see [README.md](README.md). This file says what is built, what is verified and what is left.
 
 ## At a glance
@@ -10,8 +10,8 @@ For setup, deploy steps and technical detail see [README.md](README.md). This fi
 | What it is | Free multilingual online clipboard (paste text, get a 6-digit code, short link and QR) plus a set of free in-browser text, QR, converter and AI-text tools |
 | Stack | Astro static site, Cloudflare Worker, D1 database, Cloudflare Workers Static Assets. Free plan only |
 | Languages | 30 for the clipboard; 6 (en, ja, ko, de, es, pt) for native guides, landing pages and QR pages |
-| Pages live | 152 URLs in the sitemap, all returning 200 |
-| Tests | 272 passing (`npm test`, needs a build first) |
+| Pages live | 152 URLs in the sitemap (163 once the notes pages are deployed), all returning 200 |
+| Tests | 308 passing (`npm test`, needs a build first) |
 | `main` vs dev branch | identical (`b840916`); dev branch is `ccr-a2a0a830-dn3nce` |
 
 ## Built
@@ -27,6 +27,7 @@ For setup, deploy steps and technical detail see [README.md](README.md). This fi
 ### Tools (each has its own page, title, JSON-LD, FAQ and its own guide)
 | Group | Pages |
 |---|---|
+| Notes | `/online-notepad/` (bold, headings, lists, autosave on the device, Word/PDF/.txt/.md downloads), `/share-notes-online/` (formatted note by 6-digit code); Portuguese `/pt/bloco-de-notas-online/`, `/pt/compartilhar-notas/` |
 | Move text between devices | `/iphone-to-windows-clipboard/`, `/code-share/` (syntax-highlighted code, 20 languages, auto-detect) |
 | QR codes | `/qr-code-generator/`, `/url-to-qr-code/`, `/wifi-qr-code-generator/` (PNG and SVG, colours, size, error correction; also in ja/ko/de/es/pt) |
 | Converters | `/text-to-pdf/`, `/text-to-word/`, `/markdown-to-pdf/`, `/markdown-to-word/` |

@@ -43,3 +43,11 @@ export function decodeCode(content) {
   if (!m || !languageById(m[1])) return null;
   return { lang: m[1], text: content.slice(m[0].length) };
 }
+
+// Note clips: the same idea for formatted notes. The text after the marker is Markdown; receivers that know the marker show it formatted.
+const NOTE_MARK = '\u2063wc-note\u2063\n';
+/** Characters the note marker adds to the stored text. */
+export const NOTE_MARKER_LENGTH = NOTE_MARK.length;
+export const encodeNote = (text) => NOTE_MARK + text;
+/** The Markdown of a note clip, or null when `content` is not one. */
+export const decodeNote = (content) => (String(content ?? '').startsWith(NOTE_MARK) ? content.slice(NOTE_MARK.length) : null);

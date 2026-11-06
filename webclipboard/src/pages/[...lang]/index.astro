@@ -8,6 +8,7 @@ import { guideLabels } from '../../lib/guidelangs.js';
 import { tools, toolPath } from '../../lib/tools';
 import { landings, landingPath } from '../../lib/landings';
 import { qrContent, qrKinds, qrPath } from '../../lib/qrpages';
+import { notesContent, notesKinds, notesPath } from '../../lib/notespages';
 
 export function getStaticPaths() {
   // English lives at "/", every other language at "/<code>/".
@@ -21,7 +22,9 @@ const faq = ([...(m.faq as any[]), ...((m.faqExtra as any[]) ?? [])] as { q: str
 const url = absolute(localePath(code));
 // Languages with their own tool pages link to them from their home page, so search engines can reach them by links, not only via the sitemap.
 const qr = code !== 'en' ? qrContent[code] : undefined;
+const notes = code !== 'en' ? notesContent[code] : undefined;
 const nativeTools = [
+  ...(notes ? notesKinds.map((k) => ({ href: notesPath(k, code), name: notes.ui.names[k] as string, desc: notes.pages[k].description })) : []),
   ...(code !== 'en' && landings[code] ? [{ href: landingPath(code), name: landings[code].h1, desc: landings[code].description }] : []),
   ...(qr ? qrKinds.map((k) => ({ href: qrPath(k, code), name: qr.ui.names[k] as string, desc: qr.pages[k].description })) : []),
 ];
@@ -90,10 +93,10 @@ const jsonld = [
       </section>
     )}
 
-    {nativeTools.length > 0 && qr && (
+    {nativeTools.length > 0 && (qr || notes) && (
       <section class="block" aria-labelledby="tools">
-        <span class="eyebrow">{qr.ui.relatedTools}</span>
-        <h2 id="tools">{qr.ui.relatedTools}</h2>
+        <span class="eyebrow">{(qr ?? notes)!.ui.relatedTools}</span>
+        <h2 id="tools">{(qr ?? notes)!.ui.relatedTools}</h2>
         <div class="cards">
           {nativeTools.map((t) => <a class="card" href={t.href}><strong>{t.name}</strong>{' '}<span>{t.desc}</span></a>)}
         </div>

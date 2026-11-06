@@ -1,9 +1,11 @@
 ---
 import { messages, fill, site } from '../lib/i18n';
 import { LANGUAGES } from '../lib/codeclip.js';
+import NoteBar from './NoteBar.astro';
 // `code` turns on the code editor (syntax highlighting, language list). It is English-only and used on /code-share/.
-interface Props { lang?: string; code?: boolean }
-const { lang = 'en', code = false } = Astro.props;
+// `note` (the notes "ui" strings) turns on the notes editor: formatting toolbar and preview, shared as a formatted note.
+interface Props { lang?: string; code?: boolean; note?: Record<string, any> }
+const { lang = 'en', code = false, note } = Astro.props;
 const m = messages(lang);
 
 // Only the strings the browser script needs, embedded as JSON (no extra request).
@@ -13,9 +15,12 @@ const keys = ['saving', 'sendBtn', 'copied', 'copy', 'loading', 'receiveBtn', 'e
 const dl = m.download.replace(/\s*\.txt\s*/i, ' ').replace(/^\s*を/, '').replace(/\s+ang\s*$/, '').trim();
 const dlLabel = dl.charAt(0).toLocaleUpperCase(lang) + dl.slice(1);
 const ui: Record<string, string> = Object.fromEntries(keys.map((k) => [k, fill(m[k])]));
-const config = { maxChars: site.maxChars, turnstileSiteKey: site.turnstileSiteKey, domain: site.domain, defaultExpiry: site.defaultExpiry };
+const config = {
+  maxChars: site.maxChars, turnstileSiteKey: site.turnstileSiteKey, domain: site.domain, defaultExpiry: site.defaultExpiry,
+  note: note ? { preview: note.preview, edit: note.edit, previewEmpty: note.previewEmpty } : undefined,
+};
 ---
-<div class="tool" id="tool" data-lang={lang} data-code={code ? '1' : undefined}>
+<div class="tool" id="tool" data-lang={lang} data-code={code ? '1' : undefined} data-note={note ? '1' : undefined}>
   <div class="tabs" role="tablist">
     <button class="tab" role="tab" id="tab-send" aria-controls="panel-send" aria-selected="true" type="button">{m.sendTitle}</button>
     <button class="tab" role="tab" id="tab-receive" aria-controls="panel-receive" aria-selected="false" type="button">{m.receiveTitle}</button>
@@ -26,7 +31,13 @@ const config = { maxChars: site.maxChars, turnstileSiteKey: site.turnstileSiteKe
     <form id="send-form" novalidate>
       <div id="compose">
         <label class="sr-only" for="text">{m.sendTitle}</label>
-        {code ? (
+        {note && <NoteBar ui={note} id="note" />}
+        {note ? (
+          <div class="note-wrap" id="note-wrap" data-view="edit">
+            <textarea class="clip note-text" id="text" data-clr-mask="true" name="text" spellcheck="true" autocomplete="off" placeholder={note.bodyPlaceholder}></textarea>
+            <div class="cv-preview article note-preview" id="note-preview" dir="auto"></div>
+          </div>
+        ) : code ? (
           <div class="code-editor plain" id="code-editor">
             <pre class="ce-hl" aria-hidden="true"><code id="ce-code"></code></pre>
             <textarea class="ce-input" id="text" data-clr-mask="true" name="text" wrap="off" placeholder="Paste or type your code here…" spellcheck="false" autocomplete="off" autocapitalize="off" aria-describedby="ce-help"></textarea>
@@ -123,6 +134,7 @@ const config = { maxChars: site.maxChars, turnstileSiteKey: site.turnstileSiteKe
     <div class="opened" id="opened" hidden>
       <p class="lang-badge" id="opened-lang" hidden></p>
       <pre id="opened-text" data-clr-mask="true" dir="auto"></pre>
+      <div class="cv-preview article note-preview opened-note" id="opened-note" data-clr-mask="true" dir="auto" hidden></div>
       <div class="actions">
         <button class="btn small" id="copy-text" type="button">{m.copy}</button>
         <div class="dl">

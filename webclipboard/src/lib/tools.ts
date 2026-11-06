@@ -1,6 +1,6 @@
 // Registry of every tool page. Used by the /tools/ hub, the homepage cards, the sitemap and the tests.
 // Each tool lives at /<slug>/ and (where `guide` is set) has its own guide at /guides/<guide>/.
-export type ToolGroup = 'transfer' | 'qr' | 'convert' | 'ai' | 'text' | 'tokens';
+export type ToolGroup = 'notes' | 'transfer' | 'qr' | 'convert' | 'ai' | 'text' | 'tokens';
 
 export interface ToolInfo {
   slug: string;
@@ -11,6 +11,7 @@ export interface ToolInfo {
 }
 
 export const toolGroups: Record<ToolGroup, { title: string; blurb: string }> = {
+  notes: { title: 'Notes', blurb: 'Write notes with bold, headings and lists, keep them on your device, and download or share them. No account needed.' },
   transfer: { title: 'Move text between devices', blurb: 'Copy on one device and paste on another with a 6-digit code or QR code. No app, no account.' },
   qr: { title: 'QR codes', blurb: 'Make QR codes for text, links and Wi-Fi networks. Download PNG or SVG. Codes never expire and nothing is uploaded.' },
   convert: { title: 'Convert and download', blurb: 'Turn text or Markdown into a Word file or a PDF. Everything runs in your browser, so your text never leaves your device.' },
@@ -20,6 +21,8 @@ export const toolGroups: Record<ToolGroup, { title: string; blurb: string }> = {
 };
 
 export const tools: ToolInfo[] = [
+  { slug: 'online-notepad', name: 'Online Notepad', short: 'Write notes with bold, headings and lists, saved on your device. Download as Word, PDF or text, or share with a 6-digit code.', group: 'notes', guide: 'how-to-take-notes-online-without-an-account' },
+  { slug: 'share-notes-online', name: 'Share Notes Online', short: 'Send a formatted note to another phone or computer with a 6-digit code, link or QR code. Optional password and auto-delete.', group: 'notes', guide: 'how-to-share-notes-online' },
   { slug: 'iphone-to-windows-clipboard', name: 'iPhone to Windows Clipboard', short: 'Copy text on your iPhone and paste it on a Windows PC with a 6-digit code or QR code. No app, no iCloud, no sign-in.', group: 'transfer', guide: 'send-a-link-from-iphone-to-pc' },
   { slug: 'code-share', name: 'Share Code Online', short: 'Write or paste code with syntax highlighting, get a 6-digit code, and open it on any device. Optional password and auto-delete.', group: 'transfer', guide: 'how-to-share-code-online-with-syntax-highlighting' },
   { slug: 'qr-code-generator', name: 'QR Code Generator', short: 'Turn any text into a QR code and download it as PNG or SVG, with your choice of size and colours.', group: 'qr', guide: 'how-to-make-a-qr-code-for-free' },

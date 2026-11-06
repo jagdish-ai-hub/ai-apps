@@ -32,7 +32,7 @@ for (const t of tools.filter((x) => x.guide)) {
     assert.equal((html.match(/<h1[ >]/g) || []).length, 1);
     assert.ok(html.includes(`<link rel="canonical" href="https://webclipboard.online/${t.slug}/">`));
     // The iPhone-to-Windows page and the QR pages exist in other languages and declare them; every other tool page is English-only.
-    if (!['iphone-to-windows-clipboard', 'qr-code-generator', 'url-to-qr-code', 'wifi-qr-code-generator'].includes(t.slug)) assert.ok(!/<link rel="alternate" hreflang/.test(html), 'English-only page declares no hreflang');
+    if (!['iphone-to-windows-clipboard', 'qr-code-generator', 'url-to-qr-code', 'wifi-qr-code-generator', 'online-notepad', 'share-notes-online'].includes(t.slug)) assert.ok(!/<link rel="alternate" hreflang/.test(html), 'English-only page declares no hreflang');
     for (const p of ['og:title', 'og:description', 'og:image', 'og:url']) assert.ok(html.includes(`property="${p}"`), p);
     assert.ok(html.includes('name="twitter:card"'));
     const types = ld(html).map((x) => x['@type']);
@@ -244,7 +244,7 @@ test('pages without the clipboard tool never load the clipboard script', { skip:
     seen.set(src, hit);
     return hit;
   };
-  for (const p of ['qr-code-generator', 'url-to-qr-code', 'wifi-qr-code-generator', 'ja/qr-code-generator', 'strip-markdown', 'rag-text-chunker', 'text-to-pdf', 'markdown-to-word', 'word-counter', 'case-converter']) {
+  for (const p of ['qr-code-generator', 'url-to-qr-code', 'wifi-qr-code-generator', 'ja/qr-code-generator', 'strip-markdown', 'rag-text-chunker', 'text-to-pdf', 'markdown-to-word', 'word-counter', 'case-converter', 'online-notepad', 'pt/bloco-de-notas-online']) {
     const html = readFileSync(new URL(`${p}/index.html`, dist), 'utf8');
     for (const m of html.matchAll(/(?:src|href)="(\/_astro\/[^"]+\.js)"/g)) assert.equal(reads(m[1]), false, `${p} loads ${m[1]}, which reaches the clipboard script`);
   }

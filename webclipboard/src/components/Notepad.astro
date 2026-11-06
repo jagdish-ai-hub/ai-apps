@@ -1,0 +1,45 @@
+---
+// The online notepad: write with bold, headings and lists, keep the note on this device, download it or share it. All labels come from src/notes/<lang>.json ("ui").
+import NoteBar from './NoteBar.astro';
+interface Props { ui: Record<string, any>; lang?: string; shareHref: string }
+const { ui, lang = 'en', shareHref } = Astro.props;
+const keys = ['count', 'saved', 'notSaved', 'newConfirm', 'shareEmpty', 'shareFail', 'previewEmpty', 'edit', 'preview', 'defaultName', 'errCreate', 'errEmpty'];
+const config = { lang, shareHref, ui: Object.fromEntries(keys.map((k) => [k, ui[k]])) };
+---
+<div class="tool notepad" id="notepad" data-lang={lang}>
+  <div class="panel">
+    <div class="tc-head">
+      <label class="eyebrow" for="np-title">{ui.titleLabel}</label>
+      <div class="actions" style="margin:0">
+        <button class="btn ghost small" id="np-new" type="button">{ui.newNote}</button>
+      </div>
+    </div>
+    <input class="np-title" id="np-title" type="text" maxlength="120" data-clr-mask="true" autocomplete="off" placeholder={ui.titlePlaceholder} />
+    <NoteBar ui={ui} id="np" />
+    <div class="note-wrap" id="np-wrap" data-view="edit">
+      <label class="sr-only" for="np-text">{ui.bodyLabel}</label>
+      <textarea class="clip note-text" id="np-text" data-clr-mask="true" spellcheck="true" autocomplete="off" placeholder={ui.bodyPlaceholder}></textarea>
+      <div class="cv-preview article note-preview" id="np-preview" dir="auto"></div>
+    </div>
+    <p class="hint" id="np-count" aria-live="polite"></p>
+    <div class="actions">
+      <div class="dl">
+        <button class="btn small" id="np-download" type="button" aria-haspopup="menu" aria-expanded="false" aria-controls="np-menu">{ui.download} ▾</button>
+        <div class="dl-menu" id="np-menu" role="menu" hidden>
+          <button type="button" role="menuitem" data-fmt="docx">{ui.dlDocx}</button>
+          <button type="button" role="menuitem" data-fmt="pdf">{ui.dlPdf}</button>
+          <button type="button" role="menuitem" data-fmt="txt">.txt</button>
+          <button type="button" role="menuitem" data-fmt="md">.md (Markdown)</button>
+        </div>
+      </div>
+      <button class="btn" id="np-share" type="button">{ui.shareBtn}</button>
+    </div>
+    <p class="hint" id="np-saved" aria-live="polite"></p>
+    <p class="msg err" id="np-msg" role="alert"></p>
+  </div>
+  <div class="safety">{ui.localNote}</div>
+  <script type="application/json" id="np-config" set:html={JSON.stringify(config)} />
+</div>
+<script>
+  import '../scripts/notepad';
+</script>

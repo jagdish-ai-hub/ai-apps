@@ -1,7 +1,7 @@
 // Browser logic for the clipboard tool: send, receive, optional end-to-end encryption, QR code.
 // Passwords never leave the browser; the server only ever stores ciphertext for protected clips.
 
-type Cfg = { maxChars: number; turnstileSiteKey: string; domain: string; defaultExpiry: string; ui: Record<string, string> };
+type Cfg = { maxChars: number; turnstileSiteKey: string; domain: string; defaultExpiry: string; ui: Record<string, string>; note?: { preview: string; edit: string; previewEmpty: string } };
 
 // codeclip.js is imported on demand (see showOpened and the send handler): a static import would put it inside this entry's chunk,
 // and then every other tool script that shares a module with it would drag the whole clipboard script into its page.
@@ -137,6 +137,22 @@ const sendMsg = $('send-msg');
 let currentCode = '';
 const codeMode = $('tool').dataset.code === '1';
 if (codeMode) void import('./codeeditor').then((m) => m.initEditor());
+// Notes: formatting toolbar and preview, and a note handed over from the notepad page.
+const noteMode = $('tool').dataset.note === '1';
+if (noteMode) void initNotes();
+async function initNotes() {
+  const [{ initNoteEditor }, { withTitle }] = await Promise.all([import('./noteeditor'), import('../lib/mdtoolbar.js')]);
+  const labels = cfg.note!;
+  const editor = initNoteEditor({ text, wrap: $('note-wrap'), bar: $('note-bar'), preview: $('note-preview'), viewBtn: $<HTMLButtonElement>('note-view'), labels });
+  try {
+    const raw = sessionStorage.getItem('wc-note-draft');
+    if (raw) {
+      sessionStorage.removeItem('wc-note-draft');
+      const d = JSON.parse(raw);
+      if (typeof d.text === 'string') { text.value = withTitle(d.title, d.text); text.dispatchEvent(new Event('input')); void editor.render(); }
+    }
+  } catch { /* no draft */ }
+}
 
 text.addEventListener('input', () => {
   count.textContent = text.value.length.toLocaleString();
@@ -158,7 +174,8 @@ $('send-form').addEventListener('submit', async (ev) => {
     // Code clips carry an invisible marker with the language, so the receiver can show them highlighted.
     let lang = codeMode ? $<HTMLSelectElement>('code-lang').value : 'plain';
     if (lang === 'auto') lang = (await import('../lib/highlight')).detect(value) ?? 'plain';
-    const payload = codeMode ? (await import('../lib/codeclip.js')).encodeCode(value, lang) : value;
+    // Notes carry a marker too, so the receiver shows them formatted.
+    const payload = noteMode ? (await import('../lib/codeclip.js')).encodeNote(value) : codeMode ? (await import('../lib/codeclip.js')).encodeCode(value, lang) : value;
     if (payload.length > cfg.maxChars) { sendMsg.textContent = t('errTooLong'); return; }
     await loadTurnstile();
     if (cfg.turnstileSiteKey && !tsToken) { sendMsg.textContent = t('errGeneric'); return; }
@@ -221,6 +238,7 @@ const receiveMsg = $('receive-msg');
 let pending: { code: string; envelope: string } | null = null;
 let openedCode = '';
 let openedLang = '';
+let openedNote = false;
 
 codeInput.addEventListener('input', () => {
   codeInput.value = codeInput.value.replace(/\D/g, '').slice(0, 6);
@@ -269,9 +287,16 @@ async function showOpened(content: string, meta: { burned?: boolean; expiresAt?:
   // A code clip starts with an invisible marker naming the language: show it highlighted, without the marker.
   // Plain clips never load the code helpers: the marker starts with U+2063, so checking that one character is enough.
   const code = content.charCodeAt(0) === 0x2063 ? codeLib!.decodeCode(content) : null;
-  const shown = code ? code.text : content;
+  const note = content.charCodeAt(0) === 0x2063 ? codeLib!.decodeNote(content) : null;
+  const shown = code ? code.text : note ?? content;
   openedLang = code ? code.lang : '';
+  openedNote = note !== null;
   const pre = $('opened-text');
+  const noteBox = $('opened-note');
+  pre.hidden = openedNote; // a note is shown formatted; the Markdown stays in the hidden <pre> for copy and download
+  noteBox.hidden = !openedNote;
+  noteBox.replaceChildren();
+  if (note !== null) void import('../lib/md.js').then(({ markdownToHtml }) => { if (openedNote) noteBox.innerHTML = markdownToHtml(note); }); // markdownToHtml escapes everything
   pre.classList.toggle('hl', Boolean(code));
   pre.dir = code ? 'ltr' : 'auto';
   pre.textContent = shown; // textContent: never interpret clip text as HTML
@@ -323,13 +348,15 @@ dlMenu.addEventListener('click', async (e) => {
   const out = await import('../lib/export.js');
   if (fmt === 'code' && openedLang) {
     out.saveBlob(new Blob([text], { type: 'text/plain;charset=utf-8' }), `${name}.${(await import('../lib/codeclip.js')).languageById(openedLang)!.ext}`);
+  } else if (openedNote && fmt === 'txt') {
+    out.saveBlob(new Blob([(await import('../lib/md.js')).markdownToPlain(text)], { type: 'text/plain;charset=utf-8' }), `${name}.txt`);
   } else if (fmt === 'txt' || fmt === 'md') {
     out.saveBlob(new Blob([text], { type: fmt === 'md' ? 'text/markdown;charset=utf-8' : 'text/plain;charset=utf-8' }), `${name}.${fmt}`);
   } else if (fmt === 'docx') {
-    const { textToDocx } = await import('../lib/docx.js');
-    out.saveBlob(new Blob([textToDocx(text)], { type: out.DOCX_TYPE }), `${name}.docx`);
+    const docx = await import('../lib/docx.js');
+    out.saveBlob(new Blob([openedNote ? docx.markdownToDocx(text) : docx.textToDocx(text)], { type: out.DOCX_TYPE }), `${name}.docx`);
   } else if (fmt === 'pdf') {
-    out.printAsPdf(out.textNode(text), {}, name);
+    out.printAsPdf(openedNote ? out.htmlNode((await import('../lib/md.js')).markdownToHtml(text)) : out.textNode(text), {}, name);
   }
 });
 $('report').addEventListener('click', async (e) => {
@@ -341,6 +368,8 @@ $('report').addEventListener('click', async (e) => {
 $('another').addEventListener('click', () => {
   $('opened').hidden = true;
   $('opened-text').textContent = '';
+  $('opened-note').replaceChildren();
+  openedNote = false;
   $('receive-box').hidden = false;
   codeInput.value = '';
   if (location.hash) history.replaceState(null, '', location.pathname + location.search);

@@ -7,6 +7,7 @@ import { qrContent, qrPath, qrAlternates, qrKinds } from '../lib/qrpages';
 import type { QrKind } from '../lib/qrpages';
 import { findGuide, guidePath } from '../lib/guides';
 import { landings, landingPath } from '../lib/landings';
+import { notesContent, notesKinds, notesPath } from '../lib/notespages';
 import { absolute, localePath, site, langByCode } from '../lib/i18n';
 
 interface Props { lang: string; kind: QrKind }
@@ -69,6 +70,7 @@ const jsonld = [
       <span class="eyebrow">{ui.relatedTools}</span>
       <h2 id="more">{ui.relatedTools}</h2>
       <div class="cards">
+        {notesContent[lang] && notesKinds.map((k) => <a class="card" href={notesPath(k, lang)}><strong>{notesContent[lang].ui.names[k]}</strong>{' '}<span>{notesContent[lang].pages[k].description}</span></a>)}
         {landings[lang] && <a class="card" href={landingPath(lang)}><strong>{landings[lang].h1}</strong>{' '}<span>{landings[lang].description}</span></a>}
         {others.map((k) => <a class="card" href={qrPath(k, lang)}><strong>{ui.names[k]}</strong>{' '}<span>{c.pages[k].description}</span></a>)}
         {guides.map((g) => <a class="card" href={guidePath(g.slug, lang)}><span class="eyebrow">{g.meta.category}</span>{' '}<strong>{g.meta.h1}</strong></a>)}

@@ -7,6 +7,7 @@ import { guideLangs } from './guidelangs.js';
 import { tokenLangs } from './tokenlangs';
 import { qrKinds, qrLangs, qrPath, qrAlternates } from './qrpages';
 import { landingLangs, landingPath, landingAlternates } from './landings';
+import { notesKinds, notesLangs, notesPath, notesAlternates } from './notespages';
 import { tools, toolPath } from './tools';
 
 const lastmod = new Date().toISOString().slice(0, 10);
@@ -27,10 +28,13 @@ function entries(): Entry[] {
   const landingAlt = landingLangs.length ? landingAlternates(absolute, hreflang) : [];
   const qrAlt = (k: (typeof qrKinds)[number]) => (qrLangs.length ? qrAlternates(k, absolute, hreflang) : []);
   const qrEnAlt = new Map(qrKinds.map((k) => [qrPath(k, 'en'), qrAlt(k)]));
+  const notesAlt = (k: (typeof notesKinds)[number]) => (notesLangs.length ? notesAlternates(k, absolute, hreflang) : []);
+  const notesEnAlt = new Map(notesKinds.map((k) => [notesPath(k, 'en'), notesAlt(k)]));
   const toolUrls = ['/tools/', ...tools.map((t) => toolPath(t.slug)), ...tokenLangs.map((l) => `/tokens-in/${l.slug}/`)];
   return [
     ...languages.map((l) => e(localePath(l.code), 'weekly', l.code === 'en' ? '1.0' : '0.9', homeAlternates)),
-    ...toolUrls.map((p) => e(p, 'monthly', '0.9', p === landingPath('en') ? landingAlt : qrEnAlt.get(p) ?? [])),
+    ...toolUrls.map((p) => e(p, 'monthly', '0.9', p === landingPath('en') ? landingAlt : qrEnAlt.get(p) ?? notesEnAlt.get(p) ?? [])),
+    ...notesKinds.flatMap((k) => notesLangs.map((l) => e(notesPath(k, l), 'monthly', '0.8', notesAlt(k)))),
     ...qrKinds.flatMap((k) => qrLangs.map((l) => e(qrPath(k, l), 'monthly', '0.8', qrAlt(k)))),
     ...landingLangs.map((l) => e(landingPath(l), 'monthly', '0.8', landingAlt)),
     ...guideLangs.flatMap((l) => [

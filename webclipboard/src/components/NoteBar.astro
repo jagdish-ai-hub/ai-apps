@@ -1,0 +1,20 @@
+---
+// The notes formatting toolbar and the Edit/Preview switch. Labels come from the notes JSON ("ui").
+interface Props { ui: Record<string, any>; id: string }
+const { ui, id } = Astro.props;
+const buttons = [
+  { fmt: 'bold', label: ui.bold, text: 'B', cls: 'b' },
+  { fmt: 'italic', label: ui.italic, text: 'I', cls: 'i' },
+  { fmt: 'h1', label: ui.title, text: 'H1', cls: '' },
+  { fmt: 'h2', label: ui.heading, text: 'H2', cls: '' },
+  { fmt: 'bullet', label: ui.bullets, text: '•', cls: '' },
+  { fmt: 'number', label: ui.numbered, text: '1.', cls: '' },
+  { fmt: 'check', label: ui.checklist, text: '☐', cls: '' },
+];
+---
+<div class="note-tools">
+  <div class="note-bar" id={`${id}-bar`} role="toolbar" aria-label={ui.toolbar}>
+    {buttons.map((b) => <button type="button" class={`nb ${b.cls}`} data-fmt={b.fmt} aria-label={b.label} title={b.label}>{b.text}</button>)}
+  </div>
+  <button class="btn ghost small" id={`${id}-view`} type="button" aria-pressed="false">{ui.preview}</button>
+</div>

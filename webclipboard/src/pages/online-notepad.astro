@@ -1,0 +1,23 @@
+---
+import ToolPage from '../components/ToolPage.astro';
+import Notepad from '../components/Notepad.astro';
+import { notesContent, notesPath } from '../lib/notespages';
+
+const c = notesContent.en;
+const p = c.pages.notepad;
+---
+<ToolPage
+  slug={p.slug}
+  title={p.title}
+  description={p.description}
+  h1={p.h1}
+  lead={p.lead}
+  eyebrow={p.eyebrow}
+  steps={p.steps}
+  sections={p.sections}
+  faq={p.faq}
+  related={['share-notes-online', 'markdown-to-word', 'markdown-to-pdf', 'word-counter']}
+  shareText={p.description}
+>
+  <Notepad ui={c.ui} lang="en" shareHref={notesPath('share')} />
+</ToolPage>

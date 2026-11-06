@@ -1,0 +1,185 @@
+{
+  "ui": {
+    "home": "Home",
+    "names": {
+      "notepad": "Online Notepad",
+      "share": "Share Notes Online"
+    },
+    "howTo": "How to use it",
+    "faq": "Frequently asked questions",
+    "relatedTools": "Related tools",
+    "toolbar": "Formatting",
+    "bold": "Bold (Ctrl+B)",
+    "italic": "Italic (Ctrl+I)",
+    "title": "Title",
+    "heading": "Heading",
+    "bullets": "Bullet list",
+    "numbered": "Numbered list",
+    "checklist": "Checklist",
+    "preview": "Preview",
+    "edit": "Edit",
+    "previewEmpty": "Your formatted note appears here.",
+    "titleLabel": "Title",
+    "titlePlaceholder": "Untitled note",
+    "bodyLabel": "Your note",
+    "bodyPlaceholder": "Start typing. Select text and use the buttons above for bold, headings and lists.",
+    "count": "{chars} characters · {words} words",
+    "saved": "Saved on this device",
+    "notSaved": "Your browser did not allow saving. Download or share your note so you do not lose it.",
+    "newNote": "New note",
+    "newConfirm": "Start a new note? The current note will be removed from this device. Download or share it first if you want to keep it.",
+    "shareBtn": "Share this note",
+    "shareEmpty": "Write something first, then share it.",
+    "shareFail": "Your browser did not allow opening the share page with your note. Copy the text and paste it there.",
+    "download": "Download",
+    "dlDocx": "Word (.docx)",
+    "dlPdf": "PDF",
+    "defaultName": "note",
+    "errCreate": "Something went wrong while creating the file. Try a shorter note.",
+    "errEmpty": "Write something first.",
+    "localNote": "Your note is saved only in this browser. It is not uploaded unless you press Share this note, and clearing your browser data removes it.",
+    "noteHint": "Select text and use the toolbar for bold, headings and lists. The receiver sees the note formatted."
+  },
+  "pages": {
+    "notepad": {
+      "slug": "online-notepad",
+      "title": "Online Notepad: Free Notes With Bold, Headings and Lists",
+      "description": "Write notes online with bold, headings and lists. Saved on your device, no sign-up. Download as Word, PDF or text, or share a note with a 6-digit code.",
+      "h1": "Online Notepad",
+      "lead": "A free notepad in your browser. Write, format with bold, headings and lists, and your note is saved on this device as you type. Download it as Word, PDF or plain text, or share it with a 6-digit code. No account needed.",
+      "eyebrow": "~/notes · saved on this device",
+      "steps": [
+        "Click the box and start typing. Add a title if you like: it becomes the heading of the note and the name of the file you download.",
+        "Select text and use the toolbar for <strong>bold</strong>, italic, titles, headings, bullet lists, numbered lists and checklists, or press Ctrl+B and Ctrl+I. Press <strong>Preview</strong> to see how the note will look.",
+        "Your note is saved on this device as you type. Close the tab, come back tomorrow, and it is still here.",
+        "Press <strong>Download</strong> to save the note as a Word file, a PDF, plain text or Markdown, or press <strong>Share this note</strong> to get a 6-digit code, a link and a QR code for another device."
+      ],
+      "sections": [
+        {
+          "h2": "A notepad that works without an account",
+          "paras": [
+            "Most note apps want you to sign up, install something or sync a folder before you can write a single line. Sometimes you only need a clean page: a shopping list, a few points for a call, a draft of a message, meeting minutes, or a checklist for the day. This page opens straight onto an empty note, with a small toolbar for the formatting you actually use, and nothing else in the way.",
+            "The toolbar covers what a quick note needs: <strong>bold</strong> and italic for emphasis, a title and a heading to organise longer notes, bullet and numbered lists, and checklists. Enter continues a list on the next line, and pressing Enter on an empty item ends the list, so typing a list feels natural. The Preview button shows the note as it will look when you download or share it."
+          ]
+        },
+        {
+          "h2": "How your notes are saved, and when they can be lost",
+          "paras": [
+            "Your note is kept in your browser's own storage on this device. It is saved a moment after you stop typing, and again when you leave the page, so refreshing the tab or coming back later brings it back. Nothing is uploaded to a server while you write, which also means we cannot recover a note for you.",
+            "That has one important consequence: a note exists only in the browser where you wrote it. If you clear your browser data, use a private window, switch to another browser or open the page on another device, the note will not be there. For anything you want to keep, download it as a file, or share it with a code and open it elsewhere. There is no sync between devices because there are no accounts."
+          ]
+        },
+        {
+          "h2": "Formatting that becomes real Word and PDF formatting",
+          "paras": [
+            "Notes are written in plain text with simple Markdown marks: two asterisks around a word for bold, a hash for a heading, a dash for a bullet. You do not have to type the marks yourself, because the toolbar adds them, but this is why the note stays small, portable and readable anywhere.",
+            "When you download, the marks become real formatting. The Word file has true Word headings, bold and italic text, bullet and numbered lists, so it behaves like any other document you edit in Word, Google Docs or LibreOffice. The PDF is made by your browser, so text stays selectable and every language and script prints correctly. The plain text download removes the marks and keeps the words, and the Markdown download keeps them. For more control over fonts and page size, use the <a href=\"/markdown-to-word/\">Markdown to Word</a> and <a href=\"/markdown-to-pdf/\">Markdown to PDF</a> converters."
+          ]
+        },
+        {
+          "h2": "Share a note with a code, and what stays private",
+          "paras": [
+            "Press <strong>Share this note</strong> and your note opens on the <a href=\"/share-notes-online/\">share notes</a> page, ready to send. You choose how long it stays available, from ten minutes to seven days, and you get a 6-digit code, a link and a QR code. On the other device you type the code or scan the QR code, and the note appears formatted, with buttons to copy it or download it as Word or PDF.",
+            "Anyone who has the code can open an unprotected note until it expires, so add a password for anything private: it encrypts the note in your browser before it is sent, so the server only holds unreadable data. You can also delete the note after it is opened once. Do not put passwords, bank details or other secrets in a note you share. For a plain text or link without formatting, the <a href=\"/\">online clipboard</a> works the same way."
+          ]
+        }
+      ],
+      "faq": [
+        {
+          "q": "Is the online notepad free?",
+          "a": "Yes. It is free, with no account, no trial and no limit on how many notes you write. The page may show ads in the future to cover its costs, but the tool itself will stay free."
+        },
+        {
+          "q": "Where are my notes saved?",
+          "a": "In your browser's storage on the device you are using. They are not sent to a server while you write. That keeps them private, but it also means a note is only available in the browser where you wrote it."
+        },
+        {
+          "q": "Will I lose my notes if I clear my browser data?",
+          "a": "Yes. Clearing site data, using a private window or removing the browser removes the saved note. Download anything important as a file, or share it with a code, so you have a copy."
+        },
+        {
+          "q": "Can I open the same note on my phone and my computer?",
+          "a": "Not automatically, because there are no accounts to sync with. Press Share this note to get a 6-digit code, then enter it on the other device to open the note there, or download it as a file and send it yourself."
+        },
+        {
+          "q": "Can I save my notes as a PDF or a Word document?",
+          "a": "Yes. The Download menu saves the note as a Word (.docx) file, a PDF, plain text or Markdown. Headings, bold text and lists become real formatting in Word and in the PDF."
+        },
+        {
+          "q": "How long can a note be?",
+          "a": "The notepad saves what your browser allows, typically several megabytes of text, far more than most notes need. When you share a note, the limit is 100,000 characters, which is roughly 15,000 to 20,000 words."
+        }
+      ]
+    },
+    "share": {
+      "slug": "share-notes-online",
+      "title": "Share Notes Online With a 6-Digit Code or QR Code",
+      "description": "Write a note with bold, headings and lists, then share it with a 6-digit code, link or QR code. Optional password and auto-delete. No account needed.",
+      "h1": "Share Notes Online",
+      "lead": "Write a note, press Save, and get a 6-digit code, a short link and a QR code. The other person opens it on any phone or computer and sees your note with its formatting. Add a password or delete it after the first view for anything private.",
+      "eyebrow": "~/notes · share with a code",
+      "steps": [
+        "Write or paste your note in the box. Use the toolbar for <strong>bold</strong>, titles, headings, bullet lists, numbered lists and checklists, and press <strong>Preview</strong> to check how it looks.",
+        "Choose how long the note should stay available, from 10 minutes to 7 days. For anything private, add a <strong>password</strong> or turn on <strong>delete after first view</strong>.",
+        "Press <strong>Save to clipboard</strong>. You get a 6-digit code, a short link and a QR code.",
+        "On the other device, open the link or scan the QR code, or open this site, choose <strong>Receive text</strong> and type the code. The note appears formatted, with buttons to copy it or download it as Word, PDF, text or Markdown."
+      ],
+      "sections": [
+        {
+          "h2": "Share a note, not just a block of text",
+          "paras": [
+            "Sending a note through a chat app flattens it: lists lose their structure, headings become ordinary lines and the asterisks you typed for bold stay as asterisks. When the note is a checklist for a trip, the steps of a recipe, minutes from a meeting or instructions for a colleague, that structure is the point.",
+            "Here the note travels as formatted text. You write it with simple tools for bold, headings and lists, and the person who opens it sees real headings, bold words and bullet points. They can copy it, or download it as a Word file or a PDF, without installing anything or creating an account."
+          ]
+        },
+        {
+          "h2": "How sharing works, and what is private",
+          "paras": [
+            "A shared note is stored like any clip: text on the server with the expiry you chose, deleted automatically when the time is up, or after the first view if you choose that. If you add a password, the whole note is encrypted in your browser before it is sent, so the server only ever holds unreadable data and cannot read it or tell it is a note.",
+            "The formatting is applied in the receiver's browser. The note you share is plain text with a few simple marks, and the page that shows it escapes everything it displays, so a note can never run code on the page that opens it. Links in a note are shown as links only when they start with http, https or mailto."
+          ]
+        },
+        {
+          "h2": "Who it is for",
+          "paras": [
+            "Students sending class notes to a classmate, teams passing around meeting minutes, people moving a list from a phone to a laptop, parents sharing instructions with a sitter, and anyone who wants a quick, formatted hand-off without email. If you only want to write and keep a note for yourself, the <a href=\"/online-notepad/\">online notepad</a> saves it on your device as you type and you can share it from there.",
+            "Anyone who has the 6-digit code can open an unprotected note until it expires, so treat it like a link to a document. Never share passwords, card numbers or other secrets in a note. If you must send something sensitive, use a short expiry, add a password and tell the password to the person another way."
+          ]
+        },
+        {
+          "h2": "Limits and good habits",
+          "paras": [
+            "A shared note can be up to 100,000 characters, which fits several pages. Notes expire after at most seven days and are not kept in any account or history, so use this for hand-offs, not for storage. Keep the original in the notepad or in a file.",
+            "Before sharing, press Preview to check the structure. If the person you are sending to uses a plain text app, they can still read the note, because the marks (stars for bold, hashes for headings) are readable as they are. For longer documents with page size and font choices, use the <a href=\"/markdown-to-pdf/\">Markdown to PDF</a> or <a href=\"/markdown-to-word/\">Markdown to Word</a> converters."
+          ]
+        }
+      ],
+      "faq": [
+        {
+          "q": "How do I share a note with someone else?",
+          "a": "Write the note, press Save to clipboard, and send the person the 6-digit code, the link or the QR code. They open it on any phone or computer and see the note formatted. They do not need an account."
+        },
+        {
+          "q": "Can the other person edit my note?",
+          "a": "No. A shared note is read only. They can copy it or download it as a file, but the version you shared does not change. To share an update, send a new note."
+        },
+        {
+          "q": "How long does a shared note stay online?",
+          "a": "You choose: 10 minutes, 1 hour, 1 day or 7 days. It is deleted automatically afterwards. You can also delete it after the first time it is opened."
+        },
+        {
+          "q": "Is a shared note private?",
+          "a": "Anyone with the code can read an unprotected note until it expires. Add a password to encrypt the note in your browser, so the server only holds unreadable data, and tell the password to the person another way."
+        },
+        {
+          "q": "Does the formatting survive when I share a note?",
+          "a": "Yes. Titles, headings, bold and italic text, bullet and numbered lists and checklists are shown formatted to the person who opens it, and they are kept when they download it as a Word file or a PDF."
+        },
+        {
+          "q": "What is the size limit for a shared note?",
+          "a": "100,000 characters, which is about 15,000 to 20,000 words. Longer notes should be split into parts or shared as a file."
+        }
+      ]
+    }
+  }
+}
