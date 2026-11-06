@@ -9,7 +9,7 @@ For setup, deploy steps and technical detail see [README.md](README.md). This fi
 |---|---|
 | What it is | Free multilingual online clipboard (paste text, get a 6-digit code, short link and QR) plus a set of free in-browser text, QR, converter and AI-text tools |
 | Stack | Astro static site, Cloudflare Worker, D1 database, Cloudflare Workers Static Assets. Free plan only |
-| Languages | 30 for the clipboard; 6 (en, ja, ko, de, es, pt) for native guides, landing pages and QR pages |
+| Languages | 30 for the clipboard; 7 (en, ja, ko, de, es, pt, zh-cn) for native guides and landing pages; QR pages in en, ja, ko, de, es, pt; notes pages in en, pt, zh-cn |
 | Pages live | 152 URLs in the sitemap (163 once the notes pages are deployed), all returning 200 |
 | Tests | 308 passing (`npm test`, needs a build first) |
 | `main` vs dev branch | identical (`b840916`); dev branch is `ccr-a2a0a830-dn3nce` |
@@ -27,7 +27,7 @@ For setup, deploy steps and technical detail see [README.md](README.md). This fi
 ### Tools (each has its own page, title, JSON-LD, FAQ and its own guide)
 | Group | Pages |
 |---|---|
-| Notes | `/online-notepad/` (bold, headings, lists, autosave on the device, Word/PDF/.txt/.md downloads), `/share-notes-online/` (formatted note by 6-digit code); Portuguese `/pt/bloco-de-notas-online/`, `/pt/compartilhar-notas/` |
+| Notes | `/online-notepad/` (bold, headings, lists, autosave on the device, Word/PDF/.txt/.md downloads), `/share-notes-online/` (formatted note by 6-digit code); Portuguese `/pt/bloco-de-notas-online/`, `/pt/compartilhar-notas/`; Chinese `/zh-cn/online-notepad/`, `/zh-cn/share-notes-online/` |
 | Move text between devices | `/iphone-to-windows-clipboard/`, `/code-share/` (syntax-highlighted code, 20 languages, auto-detect) |
 | QR codes | `/qr-code-generator/`, `/url-to-qr-code/`, `/wifi-qr-code-generator/` (PNG and SVG, colours, size, error correction; also in ja/ko/de/es/pt) |
 | Converters | `/text-to-pdf/`, `/text-to-word/`, `/markdown-to-pdf/`, `/markdown-to-word/` |

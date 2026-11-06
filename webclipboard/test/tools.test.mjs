@@ -94,11 +94,14 @@ test('homepage links the converters and the tools hub', { skip }, () => {
 const LANGS = {
   ja: { cjk: true, minUnits: 1500 }, ko: { cjk: true, minUnits: 1500 },
   de: { cjk: false, minUnits: 650 }, es: { cjk: false, minUnits: 650 }, pt: { cjk: false, minUnits: 650 },
+  'zh-cn': { cjk: true, minUnits: 1500 },
 };
 const guideDir = (l) => new URL(`../src/guides/${l}/`, import.meta.url);
 const guideFiles = (l) => readdirSync(guideDir(l)).filter((f) => f.endsWith('.md'));
 const wordsOf = (t) => t.replace(/[#*|`>\[\]()-]/g, ' ').split(/\s+/).filter(Boolean).length;
 // Slugs that every language must have (the English originals' topics) plus the new pages Japanese has.
+// html lang and hreflang values per site language (zh-cn is "zh-CN" / "zh-Hans", pt is "pt-BR" / "pt").
+const LANGINFO = Object.fromEntries(JSON.parse(readFileSync(new URL('../src/i18n/languages.json', import.meta.url), 'utf8')).map((x) => [x.code, x]));
 const CORE = ['copy-text-between-iphone-and-windows', 'send-text-from-phone-to-pc', 'share-wifi-password'];
 
 for (const [lang, cfg] of Object.entries(LANGS)) {
@@ -144,13 +147,13 @@ for (const [lang, cfg] of Object.entries(LANGS)) {
     for (const f of guideFiles(lang)) {
       const slug = f.replace(/\.md$/, '');
       const page = read(`${lang}/guides/${slug}/index.html`);
-      assert.ok(new RegExp(`<html lang="${lang === 'pt' ? 'pt-BR' : lang}"`).test(page), 'html lang');
+      assert.ok(page.includes(`<html lang="${LANGINFO[lang].htmlLang}"`), 'html lang');
       assert.ok(page.includes(`<link rel="canonical" href="https://webclipboard.online/${lang}/guides/${slug}/">`));
       const hasEn = existsSync(new URL(`../src/guides/${slug}.md`, import.meta.url));
       if (hasEn) {
         const en = read(`guides/${slug}/index.html`);
         for (const html of [page, en]) {
-          assert.ok(html.includes(`hreflang="${lang}" href="https://webclipboard.online/${lang}/guides/${slug}/"`), `${lang} alternate`);
+          assert.ok(html.includes(`hreflang="${LANGINFO[lang].hreflang}" href="https://webclipboard.online/${lang}/guides/${slug}/"`), `${lang} alternate`);
           assert.ok(html.includes(`hreflang="en" href="https://webclipboard.online/guides/${slug}/"`), 'en alternate');
           assert.ok(html.includes(`hreflang="x-default" href="https://webclipboard.online/guides/${slug}/"`), 'x-default');
         }
@@ -169,7 +172,7 @@ for (const [lang, cfg] of Object.entries(LANGS)) {
     assert.ok(land.includes(`<link rel="canonical" href="https://webclipboard.online/${lang}/iphone-to-windows-clipboard/">`));
     const en = read('iphone-to-windows-clipboard/index.html');
     for (const html of [land, en]) {
-      assert.ok(html.includes(`hreflang="${lang}" href="https://webclipboard.online/${lang}/iphone-to-windows-clipboard/"`), 'landing alternate');
+      assert.ok(html.includes(`hreflang="${LANGINFO[lang].hreflang}" href="https://webclipboard.online/${lang}/iphone-to-windows-clipboard/"`), 'landing alternate');
       assert.ok(html.includes('hreflang="x-default" href="https://webclipboard.online/iphone-to-windows-clipboard/"'));
     }
     const lt = ld(land).map((x) => x['@type']);

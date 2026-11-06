@@ -1,6 +1,6 @@
 // Languages that have their own guides and landing page (written natively, not translated).
 // English guides live at /guides/, others at /<code>/guides/. Add a language here, in src/lib/guides.ts (glob) and src/guides/<code>/.
-export const guideLangs = ['en', 'ja', 'ko', 'de', 'es', 'pt'];
+export const guideLangs = ['en', 'ja', 'ko', 'de', 'es', 'pt', 'zh-cn'];
 
 // Interface strings for guide pages, guide hubs and landing pages. Kept here (not in src/i18n) because only these languages have them.
 export const guideLabels = {
@@ -45,5 +45,12 @@ export const guideLabels = {
     hubH1: 'Copie e compartilhe texto entre dispositivos', hubIntro: 'Guias passo a passo para o dia a dia: enviar texto do celular para o PC, copiar e colar entre iPhone e Windows, compartilhar a senha do Wi-Fi e fazer tudo isso com segurança em aparelhos de outras pessoas.',
     hubMetaTitle: 'Guias: copiar e compartilhar texto entre dispositivos | WebClipboard', hubMetaDesc: 'Guias práticos para enviar texto do celular para o PC, copiar e colar entre iPhone e Windows, compartilhar a senha do Wi-Fi e mais, sem app e sem conta.',
     landingCrumb: 'Área de transferência do iPhone para o Windows',
+  },
+  'zh-cn': {
+    nav: '指南', home: '首页', hubTitle: '指南', popular: '热门指南', toc: '本页内容', faqEyebrow: 'FAQ', faq: '常见问题',
+    moreEyebrow: '更多指南', more: '相关指南', tryNow: '立即使用', open: '打开', backToTool: '← 打开在线剪贴板', howTo: '使用方法',
+    hubH1: '在设备之间复制和分享文本', hubIntro: '把手机上的文字发到电脑、在 iPhone 和 Windows 之间复制粘贴、分享 Wi-Fi 密码、整理和分享笔记。日常小麻烦，一步一步讲清楚。',
+    hubMetaTitle: '指南：在设备之间复制和分享文本｜WebClipboard', hubMetaDesc: '手机发文字到电脑、iPhone 与 Windows 互相复制粘贴、分享 Wi-Fi 密码、保存和分享笔记等实用方法，无需安装应用，无需注册。',
+    landingCrumb: 'iPhone 到 Windows 剪贴板',
   },
 };

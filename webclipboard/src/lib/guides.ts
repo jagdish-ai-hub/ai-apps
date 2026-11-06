@@ -36,6 +36,7 @@ const native: Record<string, Guide[]> = {
   de: load(import.meta.glob('../guides/de/*.md', { eager: true }) as Record<string, any>),
   es: load(import.meta.glob('../guides/es/*.md', { eager: true }) as Record<string, any>),
   pt: load(import.meta.glob('../guides/pt/*.md', { eager: true }) as Record<string, any>),
+  'zh-cn': load(import.meta.glob('../guides/zh-cn/*.md', { eager: true }) as Record<string, any>),
 };
 export const nativeGuideLangs = Object.keys(native).filter((l) => native[l].length > 0);
 

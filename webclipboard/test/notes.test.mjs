@@ -11,12 +11,14 @@ const ld = (html) => [...html.matchAll(/<script type="application\/ld\+json">([\
 const words = (t) => t.split(/\s+/).filter(Boolean).length;
 const plain = (html) => html.replace(/<[^>]+>/g, ' ');
 const KINDS = ['notepad', 'share'];
+const CJK = new Set(['ja', 'ko', 'zh-cn', 'zh-tw']);
+const HREFLANG = Object.fromEntries(JSON.parse(readFileSync(new URL('../src/i18n/languages.json', import.meta.url), 'utf8')).map((x) => [x.code, x.hreflang]));
 const langs = readdirSync(new URL('../src/notes/', import.meta.url)).map((f) => f.replace('.json', ''));
 const en = json('en');
 const pageText = (p) => plain([p.lead, ...p.steps, ...p.sections.flatMap((s) => [s.h2, ...s.paras]), ...p.faq.flatMap((f) => [f.q, f.a])].join(' '));
 const path = (kind, l) => (l === 'en' ? `/${json('en').pages[kind].slug}/` : `/${l}/${json(l).pages[kind].slug}/`);
 
-test('notes content exists for English and Portuguese', () => { assert.ok(langs.includes('en') && langs.includes('pt')); });
+test('notes content exists for English, Portuguese and Chinese', () => { for (const l of ['en', 'pt', 'zh-cn']) assert.ok(langs.includes(l), l); });
 
 for (const l of langs) {
   test(`${l}: notes content has the same ui keys as English and complete pages`, () => {
@@ -31,25 +33,34 @@ for (const l of langs) {
       assert.match(p.slug, /^[a-z0-9-]+$/);
       assert.equal(p.steps.length, 4); assert.equal(p.sections.length, 4); assert.equal(p.faq.length, 6);
       assert.ok(p.title.length <= 70, `${l}/${kind} title ${p.title.length}`);
-      assert.ok(p.description.length >= 80 && p.description.length <= 170, `${l}/${kind} description ${p.description.length}`);
-      assert.ok(words(pageText(p)) >= 520, `${l}/${kind} only ${words(pageText(p))} words`);
+      if (CJK.has(l)) {
+        assert.ok(p.description.length >= 50 && p.description.length <= 140, `${l}/${kind} description ${p.description.length}`);
+        const n = pageText(p).replace(/\s/g, '').length;
+        assert.ok(n >= 1500, `${l}/${kind} only ${n} characters`);
+      } else {
+        assert.ok(p.description.length >= 80 && p.description.length <= 170, `${l}/${kind} description ${p.description.length}`);
+        assert.ok(words(pageText(p)) >= 520, `${l}/${kind} only ${words(pageText(p))} words`);
+      }
       assert.ok(!/NaN|undefined|\[object/.test(JSON.stringify(p)));
     }
     assert.notEqual(c.pages.notepad.slug, c.pages.share.slug);
   });
 }
 
-test('pt: links stay inside /pt/ and related guides exist', () => {
-  const c = json('pt');
-  const guides = readdirSync(new URL('../src/guides/pt/', import.meta.url)).map((f) => f.replace('.md', ''));
-  for (const kind of KINDS) {
-    const p = c.pages[kind];
-    const html = [...p.steps, ...p.sections.flatMap((s) => s.paras), ...p.faq.map((f) => f.a)].join(' ');
-    for (const [, h] of html.matchAll(/href="([^"]+)"/g)) assert.ok(h.startsWith('/pt/'), `${kind}: link ${h}`);
-    for (const [, g] of html.matchAll(/href="\/pt\/guides\/([a-z0-9-]+)\/"/g)) assert.ok(guides.includes(g), `guide ${g}`);
-    for (const g of p.relatedGuides ?? []) assert.ok(guides.includes(g), `relatedGuides ${g}`);
-  }
-});
+for (const l of langs.filter((x) => x !== 'en')) {
+  test(`${l}: notes links stay inside /${l}/ and related guides exist`, () => {
+    const c = json(l);
+    const guides = readdirSync(new URL(`../src/guides/${l}/`, import.meta.url)).map((f) => f.replace('.md', ''));
+    for (const kind of KINDS) {
+      const p = c.pages[kind];
+      const html = [...p.steps, ...p.sections.flatMap((s) => s.paras), ...p.faq.map((f) => f.a)].join(' ');
+      for (const [, h] of html.matchAll(/href="([^"]+)"/g)) assert.ok(h.startsWith(`/${l}/`), `${kind}: link ${h}`);
+      for (const [, g] of html.matchAll(new RegExp(`href="/${l}/guides/([a-z0-9-]+)/"`, 'g'))) assert.ok(guides.includes(g), `guide ${g}`);
+      assert.ok((p.relatedGuides ?? []).length >= 1, `${kind} has related guides`);
+      for (const g of p.relatedGuides ?? []) assert.ok(guides.includes(g), `relatedGuides ${g}`);
+    }
+  });
+}
 
 for (const l of langs) {
   for (const kind of KINDS) {
@@ -66,7 +77,7 @@ for (const l of langs) {
       // hreflang pairs with the other language, both ways, plus x-default
       for (const o of langs) {
         const href = `https://webclipboard.online${path(kind, o)}`;
-        assert.ok(html.includes(`rel="alternate" hreflang="${o}" href="${href}"`), `hreflang ${o}`);
+        assert.ok(html.includes(`rel="alternate" hreflang="${HREFLANG[o]}" href="${href}"`), `hreflang ${o}`);
         assert.ok(read(`${path(kind, o).slice(1)}index.html`).includes(`href="https://webclipboard.online${p}"`), `${o} links back`);
       }
       assert.ok(html.includes(`hreflang="x-default" href="https://webclipboard.online${path(kind, 'en')}"`), 'x-default');
@@ -99,15 +110,19 @@ test('English notes pages link to their guides, and the guides link back', { ski
   for (const g of ['how-to-save-notes-as-pdf', 'how-to-convert-notes-to-word']) assert.ok(read(`guides/${g}/index.html`).includes('href="/online-notepad/"'), `${g} links to the notepad`);
 });
 
-test('Portuguese notes pages link to their Portuguese guides', { skip }, () => {
-  const guides = { notepad: ['como-recuperar-bloco-de-notas-nao-salvo', 'como-salvar-notas-em-pdf-ou-word'], share: ['como-compartilhar-notas-online'] };
-  for (const [kind, gs] of Object.entries(guides)) {
-    const html = read(`${path(kind, 'pt').slice(1)}index.html`);
-    for (const g of gs) { assert.ok(html.includes(`href="/pt/guides/${g}/"`), `${kind} -> ${g}`); assert.ok(read(`pt/guides/${g}/index.html`).includes('href="/pt/'), `${g} has /pt/ links`); }
-  }
-  for (const g of ['como-recuperar-bloco-de-notas-nao-salvo', 'como-salvar-notas-em-pdf-ou-word']) assert.ok(read(`pt/guides/${g}/index.html`).includes(`href="${path('notepad', 'pt')}"`), `${g} links to the notepad`);
-  assert.ok(read('pt/guides/como-compartilhar-notas-online/index.html').includes(`href="${path('share', 'pt')}"`));
-});
+for (const l of langs.filter((x) => x !== 'en')) {
+  test(`${l}: notes pages link to their own guides, and those guides link back to a notes page`, { skip }, () => {
+    for (const kind of KINDS) {
+      const html = read(`${path(kind, l).slice(1)}index.html`);
+      for (const g of json(l).pages[kind].relatedGuides) {
+        assert.ok(html.includes(`href="/${l}/guides/${g}/"`), `${kind} -> ${g}`);
+        const guide = read(`${l}/guides/${g}/index.html`);
+        assert.ok(KINDS.some((k) => guide.includes(`href="${path(k, l)}"`)), `${g} links to a notes page`);
+      }
+    }
+  });
+}
+
 
 test('the notes pages are listed on /tools/ in their own group, and the home page shows them', { skip }, () => {
   const tools = read('tools/index.html');
