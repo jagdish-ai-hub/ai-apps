@@ -38,7 +38,12 @@
     "errCreate": "Algo deu errado ao criar o arquivo. Tente uma nota mais curta.",
     "errEmpty": "Escreva algo primeiro.",
     "localNote": "Sua nota fica salva só neste navegador. Ela não é enviada a lugar nenhum, a menos que você use Compartilhar esta nota, e limpar os dados do navegador a apaga.",
-    "noteHint": "Selecione o texto e use a barra para negrito, títulos e listas. Quem receber vê a nota formatada."
+    "noteHint": "Selecione o texto e use a barra para negrito, títulos e listas. Quem receber vê a nota formatada.",
+    "undo": "Desfazer",
+    "redo": "Refazer",
+    "copyAll": "Copiar tudo",
+    "copied": "Copiado",
+    "copyFail": "Seu navegador bloqueou a cópia. Selecione o texto e copie com Ctrl+C, ou toque e segure e escolha Copiar."
   },
   "pages": {
     "notepad": {

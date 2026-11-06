@@ -83,7 +83,10 @@ for (const l of langs) {
       assert.ok(html.includes(`hreflang="x-default" href="https://webclipboard.online${path(kind, 'en')}"`), 'x-default');
       assert.ok(sitemapXml().includes(`<loc>https://webclipboard.online${p}</loc>`), 'in sitemap');
       if (kind === 'notepad') {
-        for (const id of ['np-title', 'np-text', 'np-bar', 'np-view', 'np-preview', 'np-count', 'np-saved', 'np-download', 'np-menu', 'np-share', 'np-new', 'np-config']) assert.ok(html.includes(`id="${id}"`), `#${id}`);
+        for (const id of ['np-title', 'np-text', 'np-bar', 'np-view', 'np-preview', 'np-count', 'np-saved', 'np-download', 'np-menu', 'np-share', 'np-new', 'np-config', 'np-copy']) assert.ok(html.includes(`id="${id}"`), `#${id}`);
+        for (const act of ['undo', 'redo']) assert.ok(html.includes(`data-act="${act}"`), `${act} button`);
+        assert.ok(!/class="eyebrow" for="np-title"/.test(html), 'no visible TITLE label');
+        assert.ok(html.includes(`>${json(l).ui.copyAll}</button>`), 'Copy all label');
         for (const f of ['bold', 'italic', 'h1', 'h2', 'bullet', 'number', 'check']) assert.ok(html.includes(`data-fmt="${f}"`), `button ${f}`);
         assert.ok(html.includes('data-clr-mask="true"'), 'text masked from session replay');
         assert.ok(!html.includes('id="tool-config"'), 'notepad page does not embed the clipboard config');
@@ -93,6 +96,7 @@ for (const l of langs) {
         assert.ok(html.includes('data-note="1"'), 'note mode on');
         for (const id of ['note-bar', 'note-view', 'note-preview', 'text', 'send-btn', 'tool-config', 'opened-note']) assert.ok(html.includes(`id="${id}"`), `#${id}`);
         assert.ok(html.includes('data-fmt="bold"'));
+        for (const act of ['undo', 'redo']) assert.ok(html.includes(`data-act="${act}"`), `${act} button on the share page`);
       }
       // linked from the other notes page and from the language home page
       assert.ok(read(`${path(kind === 'notepad' ? 'share' : 'notepad', l).slice(1)}index.html`).includes(`href="${p}"`), 'linked from the sibling page');

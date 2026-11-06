@@ -38,7 +38,12 @@
     "errCreate": "Something went wrong while creating the file. Try a shorter note.",
     "errEmpty": "Write something first.",
     "localNote": "Your note is saved only in this browser. It is not uploaded unless you press Share this note, and clearing your browser data removes it.",
-    "noteHint": "Select text and use the toolbar for bold, headings and lists. The receiver sees the note formatted."
+    "noteHint": "Select text and use the toolbar for bold, headings and lists. The receiver sees the note formatted.",
+    "undo": "Undo",
+    "redo": "Redo",
+    "copyAll": "Copy all",
+    "copied": "Copied",
+    "copyFail": "Your browser blocked copying. Select the text and copy it with Ctrl+C, or long-press and choose Copy."
   },
   "pages": {
     "notepad": {

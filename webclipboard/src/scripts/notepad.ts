@@ -48,13 +48,13 @@ window.addEventListener('pagehide', save);
 document.addEventListener('visibilitychange', () => { if (document.visibilityState === 'hidden') save(); });
 
 const old = load();
-if (old) { title.value = old.title; text.value = old.text; saved.textContent = ui.saved; }
+if (old) { title.value = old.title; text.value = old.text; saved.textContent = ui.saved; editor.autosize(); }
 void updateCount();
 
 $('np-new').addEventListener('click', () => {
   if ((text.value.trim() || title.value.trim()) && !confirm(ui.newConfirm)) return;
   title.value = ''; text.value = ''; msg.textContent = '';
-  save(); void updateCount(); void editor.render(); text.focus();
+  save(); void updateCount(); void editor.render(); editor.autosize(); text.focus();
 });
 
 // ------------------------------------------------------------ downloads
@@ -81,6 +81,48 @@ menu.addEventListener('click', async (e) => {
     else if (fmt === 'docx') out.saveBlob(new Blob([(await import('../lib/docx.js')).markdownToDocx(md)], { type: out.DOCX_TYPE }), `${name}.docx`);
     else if (fmt === 'pdf') out.printAsPdf(out.htmlNode((await import('../lib/md.js')).markdownToHtml(md)), {}, name);
   } catch { msg.textContent = ui.errCreate; }
+});
+
+// ------------------------------------------------------------ copy all: formatted for Word, Docs and email, clean plain text for chat apps
+
+let md: typeof import('../lib/md.js') | undefined;
+void import('../lib/md.js').then((m) => { md = m; }); // loaded ahead, so the copy happens inside the click (Safari requires that)
+
+function legacyCopy(value: string) {
+  const ta = Object.assign(document.createElement('textarea'), { value });
+  ta.setAttribute('readonly', '');
+  ta.style.cssText = 'position:fixed;top:0;left:0;opacity:0';
+  document.body.appendChild(ta);
+  ta.select();
+  let ok = false;
+  try { ok = document.execCommand('copy'); } catch { /* reported below */ }
+  ta.remove();
+  return ok;
+}
+
+const copyBtn = $<HTMLButtonElement>('np-copy');
+copyBtn.addEventListener('click', async () => {
+  msg.textContent = '';
+  if (!text.value.trim() && !title.value.trim()) { msg.textContent = ui.errEmpty; text.focus(); return; }
+  const lib = md ?? (md = await import('../lib/md.js'));
+  const note = withTitle(title.value, text.value);
+  const plain = lib.markdownToPlain(note);
+  const html = lib.markdownToHtml(note);
+  let ok = false;
+  try {
+    if (typeof ClipboardItem !== 'undefined' && navigator.clipboard?.write) {
+      await navigator.clipboard.write([new ClipboardItem({
+        'text/plain': new Blob([plain], { type: 'text/plain' }),
+        'text/html': new Blob([html], { type: 'text/html' }),
+      })]);
+    } else await navigator.clipboard.writeText(plain);
+    ok = true;
+  } catch {
+    try { await navigator.clipboard.writeText(plain); ok = true; } catch { ok = legacyCopy(plain); }
+  }
+  if (!ok) { msg.textContent = ui.copyFail; return; }
+  copyBtn.textContent = ui.copied;
+  setTimeout(() => { copyBtn.textContent = ui.copyAll; }, 1600);
 });
 
 // ------------------------------------------------------------ share: hand the note to the share page (it has the code, link, QR and password logic)
