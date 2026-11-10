@@ -68,7 +68,7 @@ npm run deploy              # astro build && wrangler deploy
 - Build command: `npm ci && npm run build`
 - Deploy command: `npx wrangler deploy`
 
-**Custom domain**: add `webclipboard.online` to Cloudflare (Websites → Add a site), switch the registrar's nameservers, then uncomment the `routes` block in `wrangler.toml` and redeploy. Also add a redirect rule `www.webclipboard.online → https://webclipboard.online` (one canonical host).
+**Custom domain**: add `webclipboard.online` to Cloudflare (Websites → Add a site), switch the registrar's nameservers, then deploy: the `routes` block in `wrangler.toml` attaches `webclipboard.online` and `www.webclipboard.online` as Custom Domains (Cloudflare creates the DNS records and certificates; the deploy token needs Zone → Workers Routes → Edit). In the dashboard, also add a Redirect Rule (template "Redirect from WWW to Root", 301) so `www` redirects to `https://webclipboard.online`, and turn on SSL/TLS → Edge Certificates → Always Use HTTPS.
 
 Re-running `npm run db:migrate` is safe; the migration is idempotent.
 
