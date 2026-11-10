@@ -2,7 +2,11 @@
 name = "webclipboard"
 main = "worker/index.js"
 compatibility_date = "2026-10-01"
-workers_dev = true
+# The site lives on its own domains (routes below). A public *.workers.dev copy, or a preview-URL
+# copy, is a duplicate of every page for search engines, so both stay off. If workers_dev were
+# true, every deploy would switch them back on even after they are disabled in the dashboard.
+workers_dev = false
+preview_urls = false
 
 # Custom domains. `wrangler deploy` attaches each one and creates its DNS record and certificate.
 # The www host serves the same site; its pages name the apex as canonical, and a Cloudflare
