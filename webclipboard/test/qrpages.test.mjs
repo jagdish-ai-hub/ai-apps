@@ -12,7 +12,9 @@ const json = (l) => JSON.parse(readFileSync(new URL(`../src/qr/${l}.json`, impor
 const SLUGS = { text: 'qr-code-generator', url: 'url-to-qr-code', wifi: 'wifi-qr-code-generator' };
 const langs = readdirSync(new URL('../src/qr/', import.meta.url)).map((f) => f.replace('.json', ''));
 const native = langs.filter((l) => l !== 'en');
-const CJK = new Set(['ja', 'ko']);
+const CJK = new Set(['ja', 'ko', 'zh-cn']);
+// html lang and hreflang values per site language (zh-cn is "zh-CN" / "zh-Hans", pt is "pt-BR" / "pt").
+const LANGINFO = Object.fromEntries(JSON.parse(readFileSync(new URL('../src/i18n/languages.json', import.meta.url), 'utf8')).map((x) => [x.code, x]));
 const en = json('en');
 const words = (t) => t.split(/\s+/).filter(Boolean).length;
 const plain = (html) => html.replace(/<[^>]+>/g, ' ');
@@ -20,7 +22,7 @@ const pageText = (p) => plain([p.lead, ...p.steps, ...p.sections.flatMap((s) => 
 
 test('QR content exists for English and the native languages', () => {
   assert.ok(langs.includes('en'));
-  for (const l of ['ja', 'ko', 'de', 'es', 'pt']) assert.ok(native.includes(l), `${l}.json`);
+  for (const l of ['ja', 'ko', 'de', 'es', 'pt', 'zh-cn']) assert.ok(native.includes(l), `${l}.json`);
 });
 
 for (const l of langs) {
@@ -62,19 +64,19 @@ for (const l of native) {
   for (const [kind, slug] of Object.entries(SLUGS)) {
     test(`/${l}/${slug}/: built page, hreflang pairs with English and every other language, sitemap, JSON-LD`, { skip }, () => {
       const html = read(`${l}/${slug}/index.html`);
-      assert.match(html, new RegExp(`<html lang="${l === 'pt' ? 'pt-BR' : l}"`));
+      assert.ok(html.includes(`<html lang="${LANGINFO[l].htmlLang}"`));
       assert.ok(html.includes(`<link rel="canonical" href="https://webclipboard.online/${l}/${slug}/">`));
       assert.ok(html.includes('id="qr-config"') && html.includes('id="qr-preview"'), 'embeds the generator');
       assert.ok(html.includes(`data-kind="${kind}"`));
       const enHtml = read(`${slug}/index.html`);
       for (const h of [html, enHtml]) {
-        for (const x of langs) assert.ok(h.includes(`<link rel="alternate" hreflang="${x === 'zh' ? 'zh' : x}" href="https://webclipboard.online/${x === 'en' ? '' : `${x}/`}${slug}/">`), `${x} alternate`);
+        for (const x of langs) assert.ok(h.includes(`<link rel="alternate" hreflang="${LANGINFO[x].hreflang}" href="https://webclipboard.online/${x === 'en' ? '' : `${x}/`}${slug}/">`), `${x} alternate`);
         assert.ok(h.includes(`hreflang="x-default" href="https://webclipboard.online/${slug}/"`));
       }
       assert.ok(sitemapXml().includes(`<loc>https://webclipboard.online/${l}/${slug}/</loc>`));
       const types = ld(html).map((x) => x['@type']);
       for (const k of ['WebApplication', 'BreadcrumbList', 'HowTo', 'FAQPage']) assert.ok(types.includes(k), k);
-      assert.equal(ld(html).find((x) => x['@type'] === 'WebApplication').inLanguage, l === 'pt' ? 'pt-BR' : l);
+      assert.equal(ld(html).find((x) => x['@type'] === 'WebApplication').inLanguage, LANGINFO[l].htmlLang);
     });
   }
 }
