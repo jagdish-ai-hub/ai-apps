@@ -92,3 +92,20 @@ test('hreflang on every page: self link, x-default, and every alternate links ba
   assert.deepEqual(problems, []);
   for (const hub of ['/guides/', '/ja/guides/', '/de/guides/']) assert.ok(pages.get(hub).length >= 6, `${hub} has hreflang`);
 });
+
+test('lastmod is only written for pages with a real content date (guides), never the build date', { skip }, () => {
+  const guidePath = /^\/([a-z-]+\/)?guides\/[a-z0-9-]+\/$/;
+  let dated = 0;
+  for (const f of readdirSync(dist).filter((n) => /^sitemap-.+\.xml$/.test(n))) {
+    for (const m of read(f).matchAll(/<url><loc>https:\/\/webclipboard\.online(\/[^<]*)<\/loc>(<lastmod>([^<]*)<\/lastmod>)?/g)) {
+      const [, path, , date] = m;
+      if (date) { dated += 1; assert.match(date, /^\d{4}-\d{2}-\d{2}/); assert.ok(guidePath.test(path), `${path} has a lastmod but no content date`); }
+    }
+  }
+  assert.ok(dated > 20, `guides keep their dates (${dated})`);
+  const index = read('sitemap.xml');
+  const today = new Date().toISOString().slice(0, 10);
+  const hubOnly = index.match(/<sitemap><loc>https:\/\/webclipboard\.online\/sitemap-fr\.xml<\/loc>(<lastmod>[^<]*<\/lastmod>)?<\/sitemap>/);
+  assert.ok(hubOnly && !hubOnly[1], 'a sitemap with no dated pages has no lastmod');
+  assert.ok(!new RegExp(`<sitemap><loc>[^<]*sitemap-fr\\.xml</loc><lastmod>${today}`).test(index));
+});

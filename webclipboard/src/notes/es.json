@@ -1,0 +1,197 @@
+{
+  "ui": {
+    "home": "Inicio",
+    "names": {
+      "notepad": "Bloc de Notas Online",
+      "share": "Compartir Notas Online"
+    },
+    "howTo": "Cómo usarlo",
+    "faq": "Preguntas frecuentes",
+    "relatedTools": "Herramientas relacionadas",
+    "toolbar": "Formato",
+    "bold": "Negrita (Ctrl+B)",
+    "italic": "Cursiva (Ctrl+I)",
+    "title": "Título",
+    "heading": "Subtítulo",
+    "bullets": "Lista con viñetas",
+    "numbered": "Lista numerada",
+    "checklist": "Lista de tareas",
+    "undo": "Deshacer",
+    "redo": "Rehacer",
+    "preview": "Vista previa",
+    "edit": "Editar",
+    "previewEmpty": "Tu nota con formato aparece aquí.",
+    "titleLabel": "Título",
+    "titlePlaceholder": "Nota sin título",
+    "bodyLabel": "Tu nota",
+    "bodyPlaceholder": "Empieza a escribir. Selecciona texto y usa los botones de arriba para negrita, títulos y listas.",
+    "count": "{chars} caracteres · {words} palabras",
+    "saved": "Guardado en este dispositivo",
+    "notSaved": "Tu navegador no permitió guardar. Descarga o comparte tu nota para no perderla.",
+    "newNote": "Nueva nota",
+    "newConfirm": "¿Empezar una nota nueva? La nota actual se borrará de este dispositivo. Descárgala o compártela antes si quieres conservarla.",
+    "shareBtn": "Compartir esta nota",
+    "shareEmpty": "Escribe algo primero y luego compártelo.",
+    "shareFail": "Tu navegador no permitió abrir la página para compartir con tu nota. Copia el texto y pégalo allí.",
+    "download": "Descargar",
+    "dlDocx": "Word (.docx)",
+    "dlPdf": "PDF",
+    "defaultName": "nota",
+    "copyAll": "Copiar todo",
+    "copied": "Copiado",
+    "copyFail": "Tu navegador bloqueó la copia. Selecciona el texto y cópialo con Ctrl+C, o mantén pulsado y elige Copiar.",
+    "errCreate": "Algo salió mal al crear el archivo. Prueba con una nota más corta.",
+    "errEmpty": "Escribe algo primero.",
+    "localNote": "Tu nota se guarda solo en este navegador. No se envía a ningún sitio a menos que pulses Compartir esta nota, y al borrar los datos del navegador se elimina.",
+    "noteHint": "Selecciona texto y usa la barra para negrita, títulos y listas. Quien la reciba verá la nota con formato."
+  },
+  "pages": {
+    "notepad": {
+      "slug": "bloc-de-notas-online",
+      "title": "Bloc de Notas Online Gratis: Negrita, Títulos y Listas",
+      "description": "Bloc de notas online gratis: escribe con negrita, títulos y listas. Se guarda en tu dispositivo, sin registro. Descarga en Word, PDF o texto, o comparte con un código.",
+      "h1": "Bloc de Notas Online",
+      "lead": "Un bloc de notas gratis en tu navegador. Escribe, da formato con negrita, títulos y listas, y la nota se guarda en este dispositivo mientras escribes. Descárgala en Word, PDF o texto sencillo, o compártela con un código de 6 dígitos. Sin registro.",
+      "eyebrow": "~/notas · guardado en este dispositivo",
+      "steps": [
+        "Haz clic en la caja y empieza a escribir. Si quieres, ponle título a la nota: será el encabezado y el nombre del archivo que descargues.",
+        "Selecciona texto y usa la barra para <strong>negrita</strong>, cursiva, títulos, subtítulos, listas con viñetas, listas numeradas y listas de tareas, o pulsa Ctrl+B y Ctrl+I. Pulsa <strong>Vista previa</strong> para ver cómo quedará la nota.",
+        "La nota se guarda en este dispositivo mientras escribes. Cierra la pestaña, vuelve mañana y seguirá aquí.",
+        "Pulsa <strong>Descargar</strong> para guardar la nota en Word, PDF, texto sencillo o Markdown, o <strong>Compartir esta nota</strong> para obtener un código de 6 dígitos, un enlace y un código QR para otro dispositivo."
+      ],
+      "sections": [
+        {
+          "h2": "Un bloc de notas que funciona sin cuenta",
+          "paras": [
+            "La mayoría de las aplicaciones de notas piden registro, instalación o sincronizar una carpeta antes de que puedas escribir la primera línea. A veces solo necesitas una página en blanco: una lista de la compra, los puntos de una reunión, el borrador de un mensaje, los apuntes de una clase o la lista de tareas del día. Esta página se abre directamente en una nota vacía, con una barra pequeña con el formato que de verdad usas y nada más que estorbe.",
+            "La barra cubre lo que necesita una nota rápida: <strong>negrita</strong> y cursiva para destacar, título y subtítulo para organizar notas más largas, listas con viñetas y numeradas, y listas de tareas. Al pulsar Intro se continúa la lista en la línea siguiente, y si pulsas Intro en un elemento vacío la lista termina, así que escribir una lista resulta natural. El botón Vista previa muestra la nota tal como quedará al descargarla o compartirla."
+          ]
+        },
+        {
+          "h2": "Cómo se guardan las notas y cuándo se pueden perder",
+          "paras": [
+            "Tu nota se guarda en el almacenamiento del propio navegador, en este dispositivo. Se guarda un instante después de que dejas de escribir y otra vez cuando sales de la página, así que actualizar la pestaña o volver más tarde recupera la nota. No se envía nada a un servidor mientras escribes, y por eso tampoco podemos recuperar una nota por ti.",
+            "Eso tiene una consecuencia importante: la nota solo existe en el navegador donde la escribiste. Si borras los datos del navegador, usas una ventana de incógnito, cambias de navegador o abres la página en otro dispositivo, la nota no estará allí. Para lo que quieras conservar, descárgalo como archivo o compártelo con un código y ábrelo en otro sitio. No hay sincronización entre dispositivos porque no existen cuentas."
+          ]
+        },
+        {
+          "h2": "Formato que se convierte en formato de verdad en Word y PDF",
+          "paras": [
+            "Las notas se escriben en texto sencillo con marcas básicas de Markdown: dos asteriscos alrededor de la palabra para la negrita, una almohadilla para el título, un guion para la viñeta. No tienes que escribir las marcas, porque la barra las inserta, pero por eso la nota es pequeña, portátil y legible en cualquier sitio.",
+            "Al descargar, las marcas se convierten en formato real. El archivo de Word tiene títulos de verdad, negrita, cursiva y listas con viñetas y numeradas, así que funciona como cualquier documento que edites en Word, Google Docs o LibreOffice. El PDF lo genera tu navegador, así que el texto sigue siendo seleccionable y todos los idiomas salen bien. La descarga en texto sencillo quita las marcas y deja las palabras, y la de Markdown conserva las marcas."
+          ]
+        },
+        {
+          "h2": "Comparte una nota con un código y qué sigue siendo privado",
+          "paras": [
+            "Pulsa <strong>Compartir esta nota</strong> y la nota se abre en la página de <a href=\"/es/compartir-notas/\">compartir notas</a>, lista para enviar. Eliges cuánto tiempo estará disponible, de diez minutos a siete días, y recibes un código de 6 dígitos, un enlace y un código QR. En el otro dispositivo, la persona escribe el código o escanea el QR, y la nota aparece con formato, con botones para copiarla o descargarla en Word o PDF.",
+            "Quien tenga el código puede abrir una nota sin protección hasta que caduque, así que pon una contraseña en todo lo privado: cifra la nota en tu navegador antes de enviarla, y el servidor solo guarda datos ilegibles. También puedes borrar la nota tras abrirla una vez. No pongas contraseñas, datos bancarios u otros secretos en una nota compartida."
+          ]
+        }
+      ],
+      "faq": [
+        {
+          "q": "¿El bloc de notas online es gratis?",
+          "a": "Sí. Es gratis, sin registro, sin prueba y sin límite de notas. La página puede mostrar anuncios en el futuro para cubrir los costes, pero la herramienta seguirá siendo gratuita."
+        },
+        {
+          "q": "¿Dónde se guardan mis notas?",
+          "a": "En el almacenamiento del navegador, en el dispositivo que estás usando. No se envían a un servidor mientras escribes. Eso las mantiene privadas, pero también significa que la nota solo está disponible en el navegador donde se escribió."
+        },
+        {
+          "q": "¿Perderé mis notas si borro los datos del navegador?",
+          "a": "Sí. Borrar los datos del sitio, usar una ventana de incógnito o eliminar el navegador borra la nota guardada. Descarga lo importante como archivo, o compártelo con un código, para tener una copia."
+        },
+        {
+          "q": "¿Puedo abrir la misma nota en el móvil y en el ordenador?",
+          "a": "No automáticamente, porque no hay cuentas con las que sincronizar. Pulsa Compartir esta nota para obtener un código de 6 dígitos y escríbelo en el otro dispositivo, o descarga la nota como archivo y envíatela tú mismo."
+        },
+        {
+          "q": "¿Puedo guardar mis notas en PDF o Word?",
+          "a": "Sí. El menú Descargar guarda la nota en Word (.docx), PDF, texto sencillo o Markdown. Los títulos, la negrita y las listas se convierten en formato real en Word y en el PDF."
+        },
+        {
+          "q": "¿Qué tamaño máximo puede tener una nota?",
+          "a": "El bloc de notas guarda lo que permita tu navegador, normalmente varios megabytes de texto, mucho más de lo que necesita la mayoría de las notas. Al compartir, el límite es de 100.000 caracteres, unas 15.000 a 20.000 palabras."
+        }
+      ],
+      "relatedGuides": [
+        "como-recuperar-un-bloc-de-notas-no-guardado",
+        "como-guardar-notas-en-pdf-o-word"
+      ]
+    },
+    "share": {
+      "slug": "compartir-notas",
+      "title": "Compartir Notas Online con un Código de 6 Dígitos o QR",
+      "description": "Escribe una nota con negrita, títulos y listas y compártela con un código de 6 dígitos, enlace o QR. Contraseña opcional y borrado automático. Sin registro.",
+      "h1": "Compartir Notas Online",
+      "lead": "Escribe una nota, pulsa Guardar y recibe un código de 6 dígitos, un enlace corto y un código QR. La otra persona la abre en cualquier móvil u ordenador y ve la nota con su formato. Pon una contraseña o bórrala tras la primera vista para lo que sea privado.",
+      "eyebrow": "~/notas · comparte con un código",
+      "steps": [
+        "Escribe o pega tu nota en la caja. Usa la barra para <strong>negrita</strong>, títulos, subtítulos, listas con viñetas, listas numeradas y listas de tareas, y pulsa <strong>Vista previa</strong> para comprobarla.",
+        "Elige cuánto tiempo estará disponible la nota, de 10 minutos a 7 días. Para lo privado, pon una <strong>contraseña</strong> o activa <strong>borrar tras la primera vista</strong>.",
+        "Pulsa <strong>Guardar en el portapapeles</strong>. Recibes un código de 6 dígitos, un enlace corto y un código QR.",
+        "En el otro dispositivo, abre el enlace o escanea el QR, o abre este sitio, elige <strong>Recibir texto</strong> y escribe el código. La nota aparece con formato, con botones para copiarla o descargarla en Word, PDF, texto o Markdown."
+      ],
+      "sections": [
+        {
+          "h2": "Comparte una nota, no solo un bloque de texto",
+          "paras": [
+            "Mandar una nota por una aplicación de mensajería la aplana: las listas pierden la estructura, los títulos se convierten en líneas normales y los asteriscos que escribiste para la negrita siguen siendo asteriscos. Cuando la nota es la lista de un viaje, los pasos de una receta, el acta de una reunión o instrucciones para un compañero, esa estructura es lo que importa.",
+            "Aquí la nota viaja como texto con formato. Escribes con herramientas sencillas de negrita, títulos y listas, y quien la abre ve títulos de verdad, palabras en negrita y viñetas. La persona puede copiarla o descargarla en Word o PDF, sin instalar nada y sin crear una cuenta."
+          ]
+        },
+        {
+          "h2": "Cómo funciona compartir y qué es privado",
+          "paras": [
+            "Una nota compartida se guarda como cualquier texto: en el servidor, con la caducidad que elijas, y se borra automáticamente cuando acaba el tiempo, o tras la primera vista si lo prefieres. Si pones una contraseña, la nota entera se cifra en tu navegador antes de enviarla, así que el servidor solo guarda datos ilegibles y no puede leerla ni saber que es una nota.",
+            "El formato se aplica en el navegador de quien recibe. La nota que compartes es texto sencillo con unas pocas marcas básicas, y la página que la muestra escapa todo lo que enseña, así que una nota nunca puede ejecutar código en la página que la abre. Los enlaces de una nota solo se muestran como enlaces cuando empiezan por http, https o mailto."
+          ]
+        },
+        {
+          "h2": "Para quién es",
+          "paras": [
+            "Estudiantes que mandan los apuntes de clase a un compañero, equipos que se pasan el acta de la reunión, personas que llevan una lista del móvil al portátil, padres que dejan instrucciones a la canguro y cualquiera que quiera una entrega rápida y con formato sin correo electrónico. Si solo quieres escribir y guardar una nota para ti, el <a href=\"/es/bloc-de-notas-online/\">bloc de notas online</a> la guarda en tu dispositivo mientras escribes, y desde allí puedes compartirla.",
+            "Quien tenga el código de 6 dígitos puede abrir una nota sin protección hasta que caduque, así que trata el código como el enlace a un documento. Nunca compartas contraseñas, números de tarjeta u otros secretos en una nota. Si tienes que enviar algo sensible, usa una caducidad corta, pon una contraseña y dísela a la persona por otro medio."
+          ]
+        },
+        {
+          "h2": "Límites y buenas costumbres",
+          "paras": [
+            "Una nota compartida puede tener hasta 100.000 caracteres, lo que cabe en varias páginas. Las notas caducan como máximo a los siete días y no se guardan en ninguna cuenta ni historial, así que usa esto para entregar, no para almacenar. Conserva el original en el bloc de notas o en un archivo.",
+            "Antes de compartir, usa la vista previa para comprobar la estructura. Si la persona usa una aplicación de texto sencillo, aun así puede leer la nota, porque las marcas (asteriscos para la negrita, almohadillas para los títulos) se entienden tal como están."
+          ]
+        }
+      ],
+      "faq": [
+        {
+          "q": "¿Cómo comparto una nota con otra persona?",
+          "a": "Escribe la nota, pulsa Guardar en el portapapeles y envía a la persona el código de 6 dígitos, el enlace o el código QR. La abre en cualquier móvil u ordenador y ve la nota con formato. No necesita cuenta."
+        },
+        {
+          "q": "¿La otra persona puede editar mi nota?",
+          "a": "No. Una nota compartida es de solo lectura. La persona puede copiarla o descargarla como archivo, pero la versión que compartiste no cambia. Para enviar una actualización, comparte una nota nueva."
+        },
+        {
+          "q": "¿Cuánto tiempo permanece en línea una nota compartida?",
+          "a": "Tú eliges: 10 minutos, 1 hora, 1 día o 7 días. Después se borra automáticamente. También puedes borrarla tras la primera vez que se abra."
+        },
+        {
+          "q": "¿Una nota compartida es privada?",
+          "a": "Quien tenga el código puede leer una nota sin protección hasta que caduque. Pon una contraseña para cifrar la nota en tu navegador, de modo que el servidor solo guarde datos ilegibles, y dile la contraseña a la persona por otro medio."
+        },
+        {
+          "q": "¿Se conserva el formato al compartir una nota?",
+          "a": "Sí. Títulos, subtítulos, negrita, cursiva, listas con viñetas, listas numeradas y listas de tareas se muestran con formato a quien la abre, y se mantienen cuando descarga la nota en Word o PDF."
+        },
+        {
+          "q": "¿Cuál es el límite de tamaño de una nota compartida?",
+          "a": "100.000 caracteres, unas 15.000 a 20.000 palabras. Las notas más largas conviene dividirlas en partes o compartirlas como archivo."
+        }
+      ],
+      "relatedGuides": [
+        "como-compartir-notas-online"
+      ]
+    }
+  }
+}

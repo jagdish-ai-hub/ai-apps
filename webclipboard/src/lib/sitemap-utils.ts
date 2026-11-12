@@ -10,12 +10,13 @@ import { landingLangs, landingPath, landingAlternates } from './landings';
 import { notesKinds, notesLangs, notesPath, notesAlternates } from './notespages';
 import { tools, toolPath } from './tools';
 
-const lastmod = new Date().toISOString().slice(0, 10);
+// <lastmod> is only written where the page has a real content date (guides carry `updated`). Every other page leaves it out:
+// using the build date would claim that all pages changed on every deploy, and search engines learn to ignore such dates.
 const legal = ['/about/', '/privacy/', '/terms/', '/contact/'];
 const XMLNS = 'xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"';
 
 type Alt = { hreflang: string; href: string };
-type Entry = { path: string; lastmod: string; changefreq: string; priority: string; alternates: Alt[] };
+type Entry = { path: string; lastmod?: string; changefreq: string; priority: string; alternates: Alt[] };
 
 const hreflang = (code: string) => langByCode(code).hreflang;
 const homeAlternates: Alt[] = [
@@ -24,7 +25,7 @@ const homeAlternates: Alt[] = [
 ];
 
 function entries(): Entry[] {
-  const e = (path: string, changefreq: string, priority: string, alternates: Alt[] = [], updated = lastmod): Entry => ({ path, lastmod: updated, changefreq, priority, alternates });
+  const e = (path: string, changefreq: string, priority: string, alternates: Alt[] = [], updated?: string): Entry => ({ path, lastmod: updated, changefreq, priority, alternates });
   const landingAlt = landingLangs.length ? landingAlternates(absolute, hreflang) : [];
   const qrAlt = (k: (typeof qrKinds)[number]) => (qrLangs.length ? qrAlternates(k, absolute, hreflang) : []);
   const qrEnAlt = new Map(qrKinds.map((k) => [qrPath(k, 'en'), qrAlt(k)]));
@@ -63,13 +64,15 @@ export const sitemapPath = (code: string) => `/sitemap-${code}.xml`;
 export function generateLanguageSitemap(code: string): string {
   const urls = entries()
     .filter((x) => sitemapLangOf(x.path) === code)
-    .map((x) => `<url><loc>${absolute(x.path)}</loc><lastmod>${x.lastmod}</lastmod><changefreq>${x.changefreq}</changefreq><priority>${x.priority}</priority>${
+    .map((x) => `<url><loc>${absolute(x.path)}</loc>${x.lastmod ? `<lastmod>${x.lastmod}</lastmod>` : ''}<changefreq>${x.changefreq}</changefreq><priority>${x.priority}</priority>${
       x.alternates.map((a) => `<xhtml:link rel="alternate" hreflang="${a.hreflang}" href="${a.href}"/>`).join('')}</url>`)
     .join('');
   return `<?xml version="1.0" encoding="UTF-8"?><urlset ${XMLNS} xmlns:xhtml="http://www.w3.org/1999/xhtml">${urls}</urlset>`;
 }
 
 export function generateSitemapIndexXml(): string {
-  const items = sitemapLangs().map((c) => `<sitemap><loc>${absolute(sitemapPath(c))}</loc><lastmod>${lastmod}</lastmod></sitemap>`).join('');
+  // A child sitemap's date is the newest content date inside it (none when it holds no dated pages).
+  const newest = (c: string) => entries().filter((x) => sitemapLangOf(x.path) === c && x.lastmod).map((x) => String(x.lastmod).slice(0, 10)).sort().pop();
+  const items = sitemapLangs().map((c) => `<sitemap><loc>${absolute(sitemapPath(c))}</loc>${newest(c) ? `<lastmod>${newest(c)}</lastmod>` : ''}</sitemap>`).join('');
   return `<?xml version="1.0" encoding="UTF-8"?><sitemapindex ${XMLNS}>${items}</sitemapindex>`;
 }
