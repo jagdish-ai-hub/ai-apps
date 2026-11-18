@@ -212,7 +212,9 @@ const shareUrl = ['/about/', '/privacy/', '/terms/', '/contact/', '/404/'].inclu
     )}
     {site.gtagId && (
       <script is:inline define:vars={{ id: site.gtagId }}>
+        // Google Analytics. Skipped when the address holds a clip code (#123456), like Clarity above.
         window.addEventListener('load', function () {
+          if (/^#\d{6}$/.test(location.hash)) return;
           setTimeout(function () {
             var s = document.createElement('script');
             s.async = true;
