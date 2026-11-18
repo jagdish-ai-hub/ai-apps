@@ -43,6 +43,16 @@ const jsonld = [
     isAccessibleForFree: true,
     offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
   },
+  // Site-name markup, English home page only (the root page is where Google reads it). Tells Google the spellings are one site.
+  ...(code === 'en'
+    ? [{
+        '@context': 'https://schema.org',
+        '@type': 'WebSite',
+        name: site.siteName,
+        alternateName: ['Web Clipboard', site.domain],
+        url: absolute('/'),
+      }]
+    : []),
   {
     '@context': 'https://schema.org',
     '@type': 'FAQPage',

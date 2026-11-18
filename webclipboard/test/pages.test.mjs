@@ -75,3 +75,15 @@ test('new pages are in the sitemap and linked from the calculator page', { skip 
     assert.ok(calc.includes(`href="/${p.path.replace('index.html', '')}"`), `${p.path} linked from /token-calculator/`);
   }
 });
+
+test('English home page carries WebSite site-name markup; the visible head and text are unchanged', { skip }, () => {
+  const html = read('index.html');
+  const blocks = [...html.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g)].map((m) => JSON.parse(m[1]));
+  const site = blocks.find((b) => b['@type'] === 'WebSite');
+  assert.ok(site, 'WebSite block on the home page');
+  assert.equal(site.url, 'https://webclipboard.online/');
+  assert.ok(site.alternateName.includes('Web Clipboard') && site.alternateName.includes('webclipboard.online'));
+  assert.equal(blocks.filter((b) => b['@type'] === 'WebSite').length, 1);
+  assert.ok(!read('de/index.html').includes('"WebSite"'), 'only the root page carries it');
+  assert.equal(/<title>([^<]*)<\/title>/.exec(html)[1], 'Online Clipboard – Copy &amp; Paste Text Between Devices Free');
+});
